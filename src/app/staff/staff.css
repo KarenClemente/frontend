@@ -1,0 +1,250 @@
+/***********************************
+Navigation bar
+************************************/
+/*cor da barra de navegação*/
+.navbar-default {
+background-color: #212529;
+}
+
+/*caracteristicas do conteudo da barra*/
+.navbar-default .navbar-nav > li > a {
+color: white;
+font-size: 14px;
+font-weight: 700;
+padding: 0px;
+margin: 10px 5px;
+padding: 10px 15px;
+}
+/*Quando passa o mouse*/
+.navbar-default .navbar-nav > li > a:hover
+{
+color: rgb(101, 191, 91);
+}
+/*Quando clica*/
+.navbar-nav .active a{
+background: none !important;
+color: rgb(101, 191, 91) !important;
+outline: none;
+}
+/***********************************
+Sidebar
+************************************/
+
+/* Primary Styles */
+*, *::before, *::after {
+box-sizing: border-box;
+}
+
+em {
+font-style: normal;
+color: white;
+font-size: 14px;
+font-weight: 700;
+}
+em:hover {
+ color: rgb(101, 191, 91);
+}
+.modal > .modal-dialog{
+    max-width: 500px !important;
+    min-width: 200px !important;   
+    width: 45% !important;
+}
+.s-layout__content .table .table-bordered
+{
+  max-width: 800px !important;
+  min-width: 200px !important;   
+  width: 100% !important;
+  padding: 0;
+  text-align: center;
+  position: relative;
+}
+.table thead,
+.table tbody
+{
+  max-width: 800px !important;
+  min-width: 200px !important;   
+  width: 100% !important;
+  padding: 0;
+  text-align: center;
+  position: relative;
+}
+
+/* Sidebar */
+
+.s-sidebar__nav {
+position: fixed;
+top: 0;
+overflow: hidden;
+transition: all .3s ease-in;
+height: 100%;
+background-color: #212529;
+}
+
+.s-layout__content {
+margin-top:60px;
+}
+.s-sidebar__nav:hover,
+.s-sidebar__nav:focus,
+.s-sidebar__trigger:focus + .s-sidebar__nav,
+.s-sidebar__trigger:hover + .s-sidebar__nav {
+left: 0;
+}
+
+.s-sidebar__nav ul {
+position: absolute;
+left: 0;
+margin: 0;
+padding: 0;
+width: 10em;
+top: 4em;
+}
+
+.s-sidebar__nav ul li {
+width: 100%; 
+margin: 10px;
+
+}
+
+.s-sidebar__nav-link {
+position: relative;
+display: inline-block;
+width: 100%;
+color:white;
+margin: 0;
+}
+
+.s-sidebar__nav-link em {
+position: absolute;
+left: 3.5em;
+transform: translateY(-50%);
+}
+.s-sidebar__nav-link > i , .s-sidebar__nav-link a{
+position: absolute;
+top: 0;
+width: 4em;
+}
+.s-sidebar__nav-link > i::before {
+position: absolute;
+top: 90%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+/* Mobile First */
+@media (min-width: 10em) {
+
+  /*Content*/
+  .s-layout__content {
+    padding-right: 3em;
+    padding-left: 5em;
+    height: 100%;
+  }
+  .list-inline{
+  font-size: 12px;
+  }
+  
+  /* Sidebar */
+  .s-sidebar__nav {
+     width: 4em;
+     left: 0;
+  }
+  .s-sidebar__nav ul{
+   top: 1.3em;
+  }
+  .s-sidebar__nav-link{
+   top: 2.3em;
+  }
+  .s-sidebar__nav:hover em,
+  .s-sidebar__nav:focus em,
+  .s-sidebar__nav:hover ,
+  .s-sidebar__trigger:hover + .s-sidebar__nav,
+  .s-sidebar__trigger:focus + .s-sidebar__nav
+  {
+     width: 11em;
+     color: white;
+  }
+  .s-sidebar__nav:hover ul,
+  .s-sidebar__nav:focus ul
+  {
+   top: 1.3em;
+  }
+  .s-sidebar__nav-link em{
+   color: transparent;
+  }
+  .s-sidebar__nav-link em:hover{
+   color: rgb(101, 191, 91);
+  }
+  
+  /* Agora vamos definir o elemento tbody, para overflow: auto. Ativando assim as barras de rolagem. */
+  table tbody {
+  overflow: auto;
+  height: 250px;
+}
+::-webkit-scrollbar-track {
+  background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+  background: #dad7d7;
+}
+
+   .table-bordered {
+     border: solid;
+     border-top-color: white;
+    
+   } 
+  .s-layout__content > input{
+    color:navy;
+    width:200px;
+    padding: 0;
+    margin-top: 20px;
+
+  }
+   }
+
+@media (min-width: 48em) {
+
+  /*Content*/
+  .s-layout__content {
+    margin-right: 15em;
+    margin-left: 15em;
+    height: 100%;
+
+  }
+  .list-inline{
+    font-size: 16px;
+  }
+  
+  /* Sidebar */
+  .s-sidebar__nav {
+     width: 11em;
+     left: 0;
+  }
+  .s-sidebar__nav-link em{
+   color: white;
+  }
+  .s-sidebar__nav-link em:hover{
+   color: rgb(101, 191, 91);
+  }
+  
+  /*Table*/
+
+
+/* Agora vamos definir o elemento tbody, para overflow: auto. Ativando assim as barras de rolagem. */
+table tbody {
+  overflow: auto;
+  height: 400px;
+}
+
+  .s-layout__content > input{
+    color:#0066cc;
+    width:200px;
+    padding: 0;
+    margin-top: 70px;
+  }
+  
+  }
+ 
