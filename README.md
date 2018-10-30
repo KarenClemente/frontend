@@ -1,3 +1,3 @@
 # sosunb
 
-Repositório do projeto destinado a disciplina projeto transversal 2
+Repositório destinado a disciplina projeto transversal 2
