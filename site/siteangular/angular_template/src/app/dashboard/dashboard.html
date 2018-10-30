@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Dashboard</title>
+    
+  </head>
+
+
+  <body>
+
+      <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!--<a class="navbar-brand" href="index.html">SoS<span>UnB</span></a>-->
+            <a routerLink="/home" style="margin-left: 10px"><img src="../../assets/img/logo.png" width="60" height="60" alt="" ></a>
+        </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
+              <li><a href="#" id="alerts" role="button" data-toggle="modal" data-target="#SuspectModal">
+                  <i class="fa fa-bell"></i><span class="badge" style="background-color:red; ">9+</span>
+                </a></li>
+              <li><a routerLink="/home">Logout</a></li>
+              </ul>
+          </div>
+    
+      </nav>
+         
+
+      <!-- Sidebar -->
+      <!-- Sidebar-->
+      <div class="s-layout__sidebar">
+          <nav class="s-sidebar__nav" style="margin-top: 60px;">
+  
+  
+             <ul>
+              <li>
+                   <a class="s-sidebar__nav-link" (click)="goDashboard()" role="button">
+                      <i class="fa fa-user"></i><em>Dashboard</em>
+                   </a>
+                </li>
+                <li>
+                   <a class="s-sidebar__nav-link" (click)="goFeed()" role="button">
+                     <i class="fa fa-feed"></i><em>Feed</em>
+                   </a>
+                </li>
+                <li>
+                   <a class="s-sidebar__nav-link"  (click)="goRanking()" role="button">
+                      <i class="fa fa-trophy"></i><em>Ranking</em>
+                   </a>
+                </li>
+                <li>
+                  <a class="s-sidebar__nav-link" (click)="goStaff" role="button">
+                     <i class="fa fa-address-card-o"></i><em>Funcionários</em>
+                  </a>
+               </li>
+             </ul>
+          </nav>
+        </div>
+
+        <div class="s-layout__content">
+
+           
+   <!--Modal pendências-->
+   <div class="modal fade" id="SuspectModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header ">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="modalLabel">Gerência de demandas</h4>
+          </div>
+          <div class="modal-body">
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Data</th>
+                      <th scope="col">Publicação</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                </table>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    <!-- Bootstrap core JavaScript-->
+    <!-- Page level plugin JavaScript-->
+   
+
+  </body>
+  <script src="dashboard.ts"></script>
+</html>

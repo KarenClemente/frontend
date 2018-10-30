@@ -1,0 +1,349 @@
+<div class="principal">
+  <!--Navigation bar-->
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!--<a class="navbar-brand" href="index.html">SoS<span>UnB</span></a>-->
+        <a routerLink="/home" style="margin-left: 10px"><img src="../../assets/img/logo.png" width="60" height="60" alt="" ></a>
+    </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
+          <li><a routerLink="/feed">Feed</a></li>
+          <li><a href="#" data-target="#changepsw" data-toggle="modal">Ranking</a></li>
+          <li><a routerLink="/home">Logout</a></li>
+          <li>
+          <form class="navbar-form">
+
+            <input type="text" class= "search-txt " placeholder="Pesquisar no Feed">
+            <a type="submit"  class="btn-search"><i class="fa fa-search"></i></a>
+
+          </form>
+
+        </li>
+
+        </ul>
+      </div>
+  </nav>
+  <!--Modal box-->
+  <div class="modal fade" id="changepsw" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+
+          <!-- Modal content no 1-->
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
+              <h4 class="modal-title text-center form-title" style="color: #0066cc;">Alterar senha</h4>
+            </div>
+            <div class="modal-body">
+
+              <div class="login-box-body">
+                <form action="#" method="post" name="changepsw">
+                    <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
+
+                    <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
+                      <label for="pass" style="font-size: 1.3rem">Senha atual</label>
+                      <input class="form-control" placeholder="Senha atual" id="pass" type="password" name="pass" required=""/>
+                      <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
+
+                    </div>
+                    <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
+                      <label for="password1" style="font-size: 1.3rem">Nova Senha</label>
+                      <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required=""/>
+                      <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
+
+                    </div>
+                    <div class="form-group">                    <!----- password -------------->
+                      <label for="password2" style="font-size: 1.3rem">Confirme a senha</label>
+                      <input class="form-control" placeholder="Repita senha" id="password2" type="password" name="password2" required=""/>
+                      <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw2"></span>
+
+                      <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Cadastrar">
+                    </div>
+                  </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <!--/ Modal box-->
+        <!--Modal box-->
+  <div class="modal fade" id="changeimg" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+
+          <!-- Modal alterar imagem-->
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title text-center form-title" style="color: #0066cc;">Alterar foto de perfil</h4>
+            </div>
+            <div class="modal-body">
+
+              <div class="login-box-body">
+
+                    <p class="login-box-msg" style="color: grey;">Insira uma foto</p>
+                    <form action="#" method="post" name="changeimg" style="width: 350px; margin-left:-20px;" >
+                     <input class="form-control" id="perfilImg" type="file" name="perfilImg" accept="image/*"/>
+
+                      <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Alterar">
+                      </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+      <!--/ Modal alterar imagem-->
+
+  <!--/ Navigation bar-->
+
+
+    <!-- Sidebar-->
+    <div class="s-layout__sidebar">
+        <nav class="s-sidebar__nav" style="margin-top: 60px;">
+
+
+           <ul>
+                <img src="../../assets/img/avatar.png">
+            <li>
+                 <a class="s-sidebar__nav-link" href="#" data-target="#changeimg" data-toggle="modal" >
+                    <i class="fa fa-camera"></i><em>Editar Foto</em>
+                 </a>
+
+            </li>
+              <li>
+                 <a class="s-sidebar__nav-link" routerLink="/demanda">
+                   <i class="fa fa-newspaper-o"></i><em>Publicar</em>
+                 </a>
+              </li>
+              <li>
+                 <a class="s-sidebar__nav-link" href="#demo" data-toggle="collapse">
+                    <i class="fa fa-pencil-square-o"></i><em>Demandas</em>
+                 </a>
+              </li>
+              <div id="demo" class="collapse in">
+                <div style="margin-left: 60px; margin-top: 8px;"><a  style="color: #fff; text-decoration: none;font-size:1.1vw;" routerLink="/perfilindex" >Criadas</a></div>
+                <div style="margin-left: 60px; margin-top: 8px;"><a  style="color: #fff; text-decoration: none;font-size:1.1vw;" href="curtidas.html">Curtidas/<br>Comentadas</a></div>
+                <div style="margin-left: 60px; margin-top: 8px;"><a  style="color: #fff; text-decoration: none;font-size:1.1vw;" routerLink="/perfilsec">Solucionadas</a></div>
+
+              </div>
+
+              <li>
+                 <a class="s-sidebar__nav-link"  href="#" data-target="#changepsw" data-toggle="modal">
+                    <i class="fa fa-unlock-alt" aria-hidden="true" style="font-size: 18px; height: 31px; margin-left: -5px;"></i><em>Alterar Senha</em>
+                 </a>
+              </li>
+           </ul>
+        </nav>
+      </div>
+
+      <!--Modal box Alterar Senha-->
+      <div class="modal fade" id="changepsw" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+
+              <!-- Modal content no 1-->
+              <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
+                  <h4 class="modal-title text-center form-title" style="color: #0066cc;">Alterar senha</h4>
+                </div>
+                <div class="modal-body">
+
+                  <div class="login-box-body">
+                    <form action="#" method="post" name="changepsw">
+                        <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
+
+                        <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
+                          <label for="pass" style="font-size: 1.3rem">Senha atual</label>
+                          <input class="form-control" placeholder="Senha atual" id="pass" type="password" name="pass" required=""/>
+                          <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
+
+                        </div>
+                        <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
+                          <label for="password1" style="font-size: 1.3rem">Nova Senha</label>
+                          <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required=""/>
+                          <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
+
+                        </div>
+                        <div class="form-group">                    <!----- password -------------->
+                          <label for="password2" style="font-size: 1.3rem">Confirme a senha</label>
+                          <input class="form-control" placeholder="Repita senha" id="password2" type="password" name="password2" required=""/>
+                          <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw2"></span>
+
+                          <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Cadastrar">
+                        </div>
+                      </form>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          <!--/ Modal box Alterar Senha-->
+
+    <!--/ Sidebar-->
+
+    <!--Cards-->
+    <div class="s-layout__content">
+      <div class="mar">
+
+        <!--Título-->
+        <div class="card" >
+        <div class="card-header textcenter">
+            <h2 style="color:#0066cc;">Demandas Solucionadas</h2>
+            </div>
+        </div>
+        <!--/Título-->
+
+
+
+        <!--Card1-->
+        <div class="card" >
+            <div class="row">
+
+              <div class="col-md-4 firstcol column">
+                <img src="../../assets/img/janela.jpg" class="rounded" style="width: 70px; height:70px;"  vspace="5">
+              </div>
+
+              <div class="col-md-4 secndcol column">
+
+                <div class="row " >
+                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public" data-toggle="collapse">Janela quebrada</a>
+                </div>
+                <div class="row">
+                  <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
+                  <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
+                  <a href="#" style="color:black;">ICC Norte</a>
+                </div>
+                <div class="row">
+                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                </div>
+              </div>
+
+              <div class="col-md-4 thirdcol column" >
+                <i class="fa fa-check-circle" style="font-size:24px; color:rgb(101, 191, 91);" title="Solucionado!"></i>
+              </div>
+
+            </div>
+        </div>
+        <!--/Card1-->
+
+        <!--Card2-->
+        <div class="card" >
+            <div class="row">
+
+              <div class="col-md-4 firstcol column">
+                <img src="../../assets/img/AC.jpg" class="rounded" style="width: 70px; height:70px;"  vspace="5">
+              </div>
+
+              <div class="col-md-4 secndcol column">
+
+                <div class="row " >
+                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public2" data-toggle="collapse">Ar Condicionado Quebrado</a>
+                </div>
+                <div class="row">
+                  <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
+                  <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
+                  <a href="#" style="color:black;">ICC Sul</a>
+                </div>
+                <div class="row">
+                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>55 Curtidas</a>&nbsp;
+                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>10 Comentários</a>
+                </div>
+              </div>
+
+              <div class="col-md-4 thirdcol column" >
+                <i class="fa fa-check-circle" style="font-size:24px; color:rgb(101, 191, 91);" title="Solucionado!"></i>
+              </div>
+
+            </div>
+        </div>
+        <!--/Card2-->
+
+        <!--Card3-->
+        <div class="card" >
+            <div class="row">
+
+              <div class="col-md-4 firstcol column">
+                <img src="../../assets/img/pc.jpg" class="rounded" style="width: 70px; height:70px;"  vspace="5">
+              </div>
+
+              <div class="col-md-4 secndcol column">
+
+                <div class="row " >
+                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public3" data-toggle="collapse">Computador Quebrado</a>
+                </div>
+                <div class="row">
+                  <a class="text-muted"> 17/05/2001 às 17:58</a>&nbsp;
+                  <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
+                  <a href="#" style="color:black;">Faculdade de Tecnologia</a>
+                </div>
+                <div class="row">
+                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>55 Curtidas</a>&nbsp;
+                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>10 Comentários</a>
+                </div>
+              </div>
+
+              <div class="col-md-4 thirdcol column" >
+                <i class="fa fa-check-circle" style="font-size:24px; color:rgb(101, 191, 91);" title="Solucionado!"></i>
+              </div>
+
+            </div>
+        </div>
+        <!--/Card3-->
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+
+<!--/Cards-->
+
+
+
+
+</div>
+
+  <!--/ wrapper-->
+  <script src="perfilindex.ts"></script>
+  <script>
+        window.onload = function () {
+          document.getElementById("password1").onchange = validatePassword;
+          document.getElementById("password2").onchange = validatePassword;
+        }
+
+        function validatePassword() {
+          var pass2 = document.getElementById("password2").value;
+          var pass1 = document.getElementById("password1").value;
+          if (pass1 != pass2)
+            document.getElementById("password2").setCustomValidity("Senhas não compatíveis");
+          else
+            document.getElementById("password2").setCustomValidity('');
+          //empty string means no validation error
+        }
+      </script>
+
+      <script>
+      document.getElementById("demo").onmouseover = function() {mouseOver()};
+      document.getElementById("demo").onmouseout = function() {mouseOut()};
+
+      function mouseOver() {
+          document.getElementById("demo").style.color = "red";
+      }
+
+      function mouseOut() {
+          document.getElementById("demo").style.color = "black";
+      }
+    </script>
