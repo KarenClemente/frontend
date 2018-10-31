@@ -64,9 +64,11 @@ em:hover {
   text-align: center;
   background-color: #212529;
   margin-bottom: 0;
+  margin-top: 100px;
   max-width: 800px !important;
   min-width: 300px !important;   
   width: 100% !important;
+  padding: 10px;
 }
 
 /* Sidebar */
@@ -181,7 +183,9 @@ transform: translate(-50%, -50%);
   height: 250px;
   font-size: 2vw;
   color: black;
-
+}
+.table > p{
+  font-size: 2.5vw;
 }
   .table-bordered {
      border: solid;
@@ -231,8 +235,8 @@ transform: translate(-50%, -50%);
 {
   min-width: 450px !important; 
 }
-  table tbody, .table thead {
-    font-size: 1vw;
+  table tbody, table thead, .table > p {
+    font-size: 1.2vw;
   }
  
   }
