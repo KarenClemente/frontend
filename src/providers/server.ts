@@ -1,23 +1,54 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { Observable, of, from } from 'rxjs';
-import { User } from '../app/staff/user';
-import { FilterPipe } from '../filter/filter'
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import { FilterPipe } from '../filter/filter';
 import {catchError} from 'rxjs/operators';
-//import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ServerProvider {
     
-    USERS = [
-        new User('130125288','Mariana Varanda','varandaeng@gmail.com'),
-        new User('120048374','Lucas Correa Cerqueira Soares','lcorrea@gmail.com'),
-        new User('10006381637','Josias Martins da Silva','josilva@gmail.com'),
-        new User('1001735266','Manoel Gamalhaes Souza','manoa@gmail.com'),
-        new User('130999920','Marina Gadelha Lima','marinalima@gmail.com'),
-        new User('11725472046','Ana Beatriz Cavalcante do Planalto','anabcp@gmail.com'),
-        new User('09008373622','Roberto Oliveira Soares Martins','betomartins@gmail.com'),
-        new User('1527364826','Ana Galvão','anag@gmail.com')
+    CHARACTERS = [
+    {
+        registry: '130125288',
+        name: 'Mariana Varanda',
+        email: 'varandaeng@gmail.com'
+    },
+    {
+        registry: '120048374',
+        name: 'Lucas Correa Cerqueira Soares',
+        email: 'lcorrea@gmail.com'
+    },
+    {
+        registry: '10006381637',
+        name: 'Josias Martins da Silva',
+        email: 'josilva@gmail.com'
+    },
+    {
+        registry: '1001735266',
+        name: 'Manoel Gamalhaes Souza',
+        email: 'manoa@gmail.com'
+    },
+    {
+        registry: '130999920',
+        name: 'Marina Gadelha Lima',
+        email: 'marinalima@gmail.com'
+    },
+    {
+        registry: '11725472046',
+        name: 'Ana Beatriz Cavalcante do Planalto',
+        email: 'anabcp@gmail.com'
+    },
+    {
+        registry: '09008373622',
+        name: 'Roberto Oliveira Soares Martins',
+        email: 'betomartins@gmail.com'
+    },
+    {
+        registry: '1527364826',
+        name: 'Ana Galvão',
+        email: 'anag@gmail.com'
+    },
     ];    
 
     public cusId: any;
@@ -90,17 +121,11 @@ export class ServerProvider {
     return this.http.post('https://www.sosunb/demands', demand, options).toPromise();
   }
 
-    getAllUsers(): Observable<User[]>{
-        return of(this.USERS);
+    getCharacters(): Observable<any[]>{
+        return Observable.of(this.CHARACTERS);
     }
-    add(user){
-        let maxIndex = this.USERS.length-1;
-        let objWithMaxIndex = this.USERS[maxIndex];
-        this.USERS.push(new User(user.registry, user.name, user.email));
-    }
-    remove(registry:string){
-        let obj = this.USERS.find(ob => ob.registry === registry);
-        this.USERS.splice(this.USERS.indexOf(obj), 1);
+    getColumns(): string[]{
+        return["registry","name","email"]
     }
 }
 
