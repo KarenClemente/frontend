@@ -53,8 +53,15 @@
           </nav>
         </div>
         <div class="s-layout__content">
-            <div class="table" id="staffList">
-                  <p>Tabela de funcionários cadastrados</p>  
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                        <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString">
+                    </div>
+                </div>
+            </form>
+            <div class="table" id="staffList">                  <p>Tabela de funcionários cadastrados</p>  
                   <table class="table-bordered" id="staffList">
                     <thead>
                       <tr>
@@ -77,6 +84,7 @@
                     </tbody>
                   </table>
                 </div>
+              </div>
 
 
 </div>
@@ -105,7 +113,6 @@
                 </table>
           </div>
         </div>
-      </div>
       </div>
       <!--Modal box cadastro-->
 <div class="modal" id="cadastro" role="dialog">

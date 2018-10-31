@@ -2,12 +2,13 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable, of, from } from 'rxjs';
 import { User } from '../app/staff/user';
-import { FilterPipe } from '../filter/filter'
 import {catchError} from 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
-
+@Pipe({
+    name: 'filter'
+})
 @Injectable()
-export class ServerProvider {
+export class ServerProvider implements PipeTransform {
     
     USERS = [
         new User('130125288','Mariana Varanda','varandaeng@gmail.com'),
@@ -28,6 +29,19 @@ export class ServerProvider {
       this.hasCusId = false;
       this.user = {};
   }
+
+  transform(users: User[], value: string): any[] {
+    if (!users) {
+        return [];
+    }
+    if (!users || !value) {
+        return users;
+    }
+
+    return users.filter(singleItem =>
+        singleItem[this.user].toLowerCase().includes(value.toLowerCase())
+    );
+}
 
   // Registration
   createUser(user, idToken) {

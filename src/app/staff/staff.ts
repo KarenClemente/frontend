@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ServerProvider } from '../../providers/server';
+import { ServerProvider} from '../../providers/server';
 import { User } from './user';
-import { FilterPipe } from '../../filter/filter';
 import { Router } from '@angular/router'; // Added
 
+@Pipe({
+  name: 'filter'
+})
 
 @Component({
   selector: 'app-staff',
