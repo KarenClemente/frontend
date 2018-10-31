@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin - Dashboard</title>
-    
-  </head>
-
-
-  <body>
+<div class="principal">
 
       <nav class="navbar navbar-default navbar-fixed-top">
           <div class="navbar-header">
@@ -69,12 +54,7 @@
         </div>
         <div class="s-layout__content">
             <div class="table" id="staffList">
-            <button class="btn btn-primary pull-right" style="background: #0066cc;" href="#" role="button" data-toggle="modal" data-target="#cadastro">
-            Novo Funcionário</button>
-          <input type="text" class="form-control" name="searchString" placeholder="'matricula' ou 'nome'" [(ngModel)]="searchString">
-          <label style="font-size:14px;">Procurar Funcionário</label>     
-                  <i class="fa fa-table" style="color:white; margin:10px;"></i>
-                  <b style="color:white;background-color:rgb(64, 65, 66);">Tabela de funcionários cadastrados</b>                
+                  <p>Tabela de funcionários cadastrados</p>  
                   <table class="table-bordered" id="staffList">
                     <thead>
                       <tr>
@@ -89,9 +69,9 @@
                           <td>{{user.registry}}</td>
                           <td>{{user.name}}</td>
                           <td>{{user.email}}</td>
-                          <td><button class="btn btn-green">Editar</button>
+                          <td><i class="fa fa-pencil" style="color:rgb(101,191,91);"></i>
                           <br>
-                          <button class="btn btn-danger" (click)="remove(user)">Deletar</button></td>
+                          <i class="fa fa-ban" style="color:red;"></i>
 
                       </tr>                   
                     </tbody>
@@ -207,6 +187,5 @@
     <!-- Page level plugin JavaScript-->
    
 
-  </body>
+  </div>
   <script src="staff.ts"></script>
-</html>
