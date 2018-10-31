@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServerProvider } from '../../providers/server';
+import { User } from './user';
 import { FilterPipe } from '../../filter/filter';
 import { Router } from '@angular/router'; // Added
 
@@ -12,8 +13,9 @@ import { Router } from '@angular/router'; // Added
 })
 export class StaffComponent implements OnInit {
 
-    characters: Observable<any[]>;
-    columns: string[];
+    user: any = {};
+    allUsers: User[];
+    obsUsers: Observable<User[]>
     public searchString: string;
 
     constructor(private _router: Router, private server: ServerProvider) {
@@ -21,9 +23,21 @@ export class StaffComponent implements OnInit {
     }
 
     ngOnInit(){
-      this.columns = this.server.getColumns();
-      this.characters = this.server.getCharacters();         
-    }  
+      this.server.getAllUsers()
+          .subscribe(users => this.allUsers = users);
+      this.obsUsers = this.server.getAllUsers();  
+         
+    }
+
+    add(){
+      this.server.add(this.user);
+    }
+
+    remove(user){
+      this.server.remove(this.user);
+    }
+
+  
 
     goRanking() {
       // alert('test');

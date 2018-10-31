@@ -1,4 +1,20 @@
-<div class="principal">
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Dashboard</title>
+    
+  </head>
+
+
+  <body>
+
       <nav class="navbar navbar-default navbar-fixed-top">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -60,16 +76,25 @@
                   <i class="fa fa-table" style="color:white; margin:10px;"></i>
                   <b style="color:white;background-color:rgb(64, 65, 66);">Tabela de funcionários cadastrados</b>                
                   <table class="table-bordered" id="staffList">
+                    <thead>
                       <tr>
-                        <th *ngFor="let col of columns" style="text-align:center">
-                        {{col}}
-                        </th>
+                        <th style="text-align:center">Matricula</th>
+                        <th style="text-align:center">Nome</th>
+                        <th style="text-align:center">Email</th>
+                        <th style="text-align:center">Ação</th>
                       </tr>
-                      <tr *ngFor="let char of characters | async">
-                          <td *ngFor="let col of columns; last as isLast">
-                          {{char[col]}}
-                          </td>
+                     </thead>
+                    <tbody>
+                      <tr *ngFor="let user of allUsers">
+                          <td>{{user.registry}}</td>
+                          <td>{{user.name}}</td>
+                          <td>{{user.email}}</td>
+                          <td><button class="btn btn-green">Editar</button>
+                          <br>
+                          <button class="btn btn-danger" (click)="remove(user)">Deletar</button></td>
+
                       </tr>                   
+                    </tbody>
                   </table>
                 </div>
 
@@ -182,5 +207,6 @@
     <!-- Page level plugin JavaScript-->
    
 
-  </div>
+  </body>
   <script src="staff.ts"></script>
+</html>
