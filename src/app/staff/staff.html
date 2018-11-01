@@ -188,7 +188,7 @@
           <div class="modal-content">
             <div class="modal-header ">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="modalLabel">Tem certeza que deseja excluir o funcionário?</h4>
+                <h4 class="modal-title" id="modalLabel" style="font-size: 1em">Tem certeza que deseja excluir o funcionário?</h4>
             </div>
             <div class="modal-body">
                 <button class="btn btn-danger">Cancelar</button>
@@ -200,29 +200,42 @@
     <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
         <div class="modal-dialog  modal-md border-dark" role="document">
             <div class="modal-content ">
-
-              <div class="modal-header bg-info ">
-                <img class="rounded-circle mx-auto d-block" src="../../assets/img/avatar2.png" alt="Responsive image" >
-        <div class="row mr-1">
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    </div>
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
               <div class="modal-body bg-light">
+                  <img class="rounded-circle" src="../../assets/img/avatar2.png" alt="Responsive image" >
                 <div class="container-fluid">
-            <div class="row" >
-              <div class="col-sm-4"><b>Nome:</b></div>
-              <div class="col">Victor Albédio Lopes Costa</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-4"><b>Matricula:</b></div>
-              <div class="col">140032762</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-4"><b>Email:</b></div>
-              <div class="col">Albediovitorioso@gmail.com</div>
-            </div>
+                  <div class="row my-3" >
+                    <div class="col-sm-4"><b>Nome:</b></div>
+                    <div class="col-sm-6">Victor Albédio Lopes Costa</div>
+                    <div class="col">
+                    <button type="submit"><div class="fa fa-wrench" data-toggle="modal" href="#editarNome"></div></button>
+                    </div>
+                  </div>
+                  <div class="row my-3">
+                    <div class="col-sm-4"><b>Matricula:</b></div>
+                    <div class="col-sm-6">140032762</div>
+                    <div class="col">
+<button type="submit"><div class="fa fa-wrench" data-toggle="modal" href="#editarMatricula"></div></button>
+                    </div>
+                  </div>
+                  <div class="row my-3"><p><p>
+                    <div class="col-sm-4"><b>Email:</b></div>
+                    <div class="col-sm-6">Albediovitorioso@gmail.com</div>
+                    <div class="col">
+<button type="submit"><div class="fa fa-wrench" data-toggle="modal" href="#editarEmail"></div></button>
+                    </div>
+                  </div>
+                  <div class="row my-3">
+                    <div class="col-sm-4"><b>Função:</b></div>
+                    <div class="col-sm-6">Coordenador-Geologia</div>
+                    <div class="col">
+<button type="submit"><div class="fa fa-wrench" data-toggle="modal" href="#editarFunção"></div></button>
+                    </div>
+                  </div>
             <div class="row-md-4 mt-3 ">
 
               <a class="btn btn-success btn-xs text-center ">Perfil completo
