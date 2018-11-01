@@ -90,20 +90,20 @@
                <div class="form-group" style="margin-bottom:0rem">
                 <!----- username -------------->
                 <label for="nome" style="font-size: 1.3rem">Nome completo</label>
-                <input class="form-control" onkeyup="validar(this, 'text');" placeholder="Nome completo" id="name" type="text" name="name" required="" [(ngModel)]="user.name" />
+                <input class="form-control" placeholder="Nome completo" id="name" type="text" name="name" required="" [(ngModel)]="user.name" />
                 <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_name"></span>
 
               </div>
               <div class="form-group" style="margin-bottom:0rem">                    <!----- matricula -------------->
                 <label for="matricula" style="font-size: 1.3rem">Matricula</label>
-                <input class="form-control" onkeyup="validar(this, 'num');" placeholder="Ex:12010000" id="matricula" type="text" name="matricula" required="" [(ngModel)]="user.registry"/>
+                <input class="form-control" placeholder="Ex:12010000" id="matricula" type="text" name="matricula" required="" [(ngModel)]="user.registry"/>
                 <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_id"></span>
 
               </div>
 
               <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
                 <label for="rg" style="font-size: 1.3rem">Número RG</label>
-                <input class="form-control" onkeyup="validar(this, 'num');" placeholder="RG" id="rg" type="text" name="rg" required="" [(ngModel)]="user.identity"/>
+                <input class="form-control" placeholder="RG" id="rg" type="text" name="rg" required="" [(ngModel)]="user.identity"/>
                 <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
 
               </div>
@@ -111,7 +111,7 @@
 
             <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
               <label for="campoData" style="font-size: 1.3rem">Data de nascimento</label>
-              <input class="form-control" placeholder="Data de nascimento" id="birthDate" type="text" name="birthDate" required="" [(ngModel)]="user.date_birth"/>
+              <input class="form-control" placeholder="Data de nascimento" id="birthDate" type="text" specialCharacters="['/']" mask="00/00/0000" name="birthDate" required="" [(ngModel)]="user.date_birth"/>
               <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
 
             </div>

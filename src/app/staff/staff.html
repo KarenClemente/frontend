@@ -53,15 +53,11 @@
           </nav>
         </div>
         <div class="s-layout__content">
-            <form>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-                        <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString">
-                    </div>
-                </div>
-            </form>
-            <div class="table" id="staffList">                  <p>Tabela de funcionários cadastrados</p>  
+          <label style="font-size: 13px">Procurar funcionário</label>
+          <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString">
+          <button class="btn btn-primary pull-right" href="#" role="button" data-toggle="modal" data-target="#CadastroModal">Novo Funcionário</button>
+          <br>
+               <p>Tabela de funcionários cadastrados</p>  
                   <table class="table-bordered" id="staffList">
                     <thead>
                       <tr>
@@ -76,14 +72,13 @@
                           <td>{{user.registry}}</td>
                           <td>{{user.name}}</td>
                           <td>{{user.email}}</td>
-                          <td><i class="fa fa-pencil" style="color:rgb(101,191,91);"></i>
+                          <td><i class="fa fa-pencil" style="color:rgb(101,191,91);" href="#" role="button" data-toggle="modal" data-target="#EditModal"></i>
                           <br>
-                          <i class="fa fa-ban" style="color:red;"></i>
+                          <i class="fa fa-ban" style="color:red;" href="#" role="button" data-toggle="modal" data-target="#DeleteModal"></i>
 
                       </tr>                   
                     </tbody>
                   </table>
-                </div>
               </div>
 
 
@@ -91,8 +86,8 @@
 
 
    <!--Modal pendências-->
-   <div class="modal fade" id="SuspectModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-      <div class="modal-dialog modal-sm">
+    <div class="modal fade" id="SuspectModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+      <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header ">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -114,85 +109,134 @@
           </div>
         </div>
       </div>
-      <!--Modal box cadastro-->
-<div class="modal" id="cadastro" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content no 1-->
-    <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
-        <h4 class="modal-title text-center form-title" style="color: #0066cc;">Cadastro</h4>
-      </div>
-      <div class="modal-body">
-
-        <div class="login-box-body">
-          <form action="#" method="post" name="user">
-              <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
-               <div class="form-group" style="margin-bottom:0rem">
-                <!----- username -------------->
-                <label for="nome" style="font-size: 1.3rem">Nome completo</label>
-                <input class="form-control" onkeyup="validar(this, 'text');" placeholder="Nome completo" id="name" type="text" name="name" required="" [(ngModel)]="user.name" />
-                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_name"></span>
-
+    </div>
+    <div class="modal fade" id="CadastroModal" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+    
+        <!-- Modal content no 1-->
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
+            <h4 class="modal-title text-center form-title" style="color: #0066cc;">Cadastro</h4>
+          </div>
+          <div class="modal-body">
+    
+            <div class="login-box-body">
+              <form method="post" name="user">
+                  <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
+                   <div class="form-group" style="margin-bottom:0rem">
+                    <!----- username -------------->
+                    <label for="nome" style="font-size: 1.3rem">Nome completo</label>
+                    <input class="form-control" placeholder="Nome completo" id="name" type="text" name="name" required="" [(ngModel)]="user.name" />
+                    <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_name"></span>
+    
+                  </div>
+                  <div class="form-group" style="margin-bottom:0rem">                    <!----- matricula -------------->
+                    <label for="matricula" style="font-size: 1.3rem">Matricula</label>
+                    <input class="form-control" placeholder="Ex:12010000" id="matricula" type="text" name="matricula" required="" [(ngModel)]="user.registry"/>
+                    <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_id"></span>
+    
+                  </div>
+    
+                  <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
+                    <label for="rg" style="font-size: 1.3rem">Número RG</label>
+                    <input class="form-control" placeholder="RG" id="rg" type="text" name="rg" required="" [(ngModel)]="user.identity"/>
+                    <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
+    
+                  </div>
+    
+    
+                <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
+                  <label for="campoData" style="font-size: 1.3rem">Data de nascimento</label>
+                  <input class="form-control" placeholder="Data de nascimento" type="text" specialCharacters="['/']" mask="00/00/0000" id="birthDate" name="birthDate" required="" [(ngModel)]="user.date_birth"/>
+                  <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
+    
+                </div>
+    
+    
+                  <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
+                    <label for="email" style="font-size: 1.3rem">E-mail</label>
+                    <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="user.email"/>
+                    <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
+    
+                  </div>
+                  <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
+                    <label for="password1" style="font-size: 1.3rem">Senha</label>
+                    <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required="" [(ngModel)]="user.password"/>
+                    <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
+    
+                  </div>
+                  <div class="form-group">                    <!----- password -------------->
+                    <label for="password2" style="font-size: 1.3rem">Confirme a senha</label>
+                    <input class="form-control" placeholder="Repita senha" id="password2" type="password" name="password2" required="" [(ngModel)]="user.passwordconfirm"/>
+                    <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw2"></span>
+    
+                    <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="confirm(user)">Cadastrar</button>
+                  </div>
+                  <div class="col-xs-12">
+    
+                  </div>
+                </form>
+                  </div>
               </div>
-              <div class="form-group" style="margin-bottom:0rem">                    <!----- matricula -------------->
-                <label for="matricula" style="font-size: 1.3rem">Matricula</label>
-                <input class="form-control" onkeyup="validar(this, 'num');" placeholder="Ex:12010000" id="matricula" type="text" name="matricula" required="" [(ngModel)]="user.registry"/>
-                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_id"></span>
+            </div>
+          </div>
+    </div>
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="modalLabel">Tem certeza que deseja excluir o funcionário?</h4>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-danger">Cancelar</button>
+                <button class="btn btn-success pull-right">Excluir</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog  modal-md border-dark" role="document">
+            <div class="modal-content ">
 
+              <div class="modal-header bg-info ">
+                <img class="rounded-circle mx-auto d-block" src="../../assets/img/avatar2.png" alt="Responsive image" >
+        <div class="row mr-1">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    </div>
+              <div class="modal-body bg-light">
+                <div class="container-fluid">
+            <div class="row" >
+              <div class="col-sm-4"><b>Nome:</b></div>
+              <div class="col">Victor Albédio Lopes Costa</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4"><b>Matricula:</b></div>
+              <div class="col">140032762</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4"><b>Email:</b></div>
+              <div class="col">Albediovitorioso@gmail.com</div>
+            </div>
+            <div class="row-md-4 mt-3 ">
+
+              <a class="btn btn-success btn-xs text-center ">Perfil completo
+              </a>
               </div>
-
-              <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-                <label for="rg" style="font-size: 1.3rem">Número RG</label>
-                <input class="form-control" onkeyup="validar(this, 'num');" placeholder="RG" id="rg" type="text" name="rg" required="" [(ngModel)]="user.identity"/>
-                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
-
-              </div>
-
-
-            <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-              <label for="campoData" style="font-size: 1.3rem">Data de nascimento</label>
-              <input class="form-control" placeholder="Data de nascimento" id="birthDate" type="text" name="birthDate" required="" [(ngModel)]="user.date_birth"/>
-              <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
-
+          </div>
             </div>
 
 
-              <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-                <label for="email" style="font-size: 1.3rem">E-mail</label>
-                <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="user.email"/>
-                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
 
-              </div>
-              <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
-                <label for="password1" style="font-size: 1.3rem">Senha</label>
-                <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required="" [(ngModel)]="user.password"/>
-                <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
-
-              </div>
-              <div class="form-group">                    <!----- password -------------->
-                <label for="password2" style="font-size: 1.3rem">Confirme a senha</label>
-                <input class="form-control" placeholder="Repita senha" id="password2" type="password" name="password2" required="" [(ngModel)]="user.passwordconfirm"/>
-                <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw2"></span>
-
-                <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block" (click)="add(user)">Cadastrar</button>
-              </div>
-              <div class="col-xs-12">
-
-              </div>
-            </form>
-              </div>
-          </div>
         </div>
-      </div>
-    </div>
-    
-<!--/ Modal box cadastro-->
-    <!-- Bootstrap core JavaScript-->
-    <!-- Page level plugin JavaScript-->
-   
+        </div>
+        </div>
 
-  </div>
+        <!--/ Modal box cadastro-->
+    
   <script src="staff.ts"></script>

@@ -6,6 +6,8 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import {ServerProvider} from '../providers/server';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {NgxMaskModule} from 'ngx-mask';
+
 
 // Pages
 import { AppComponent } from './app.component';
@@ -18,7 +20,6 @@ import { StaffComponent } from './staff/staff';
 import { DashboardComponent } from './dashboard/dashboard';
 import { PostComponent } from './post/post';
 import { FeedComponent } from './feed/feed';
-
 
 const appRoutes: Routes = [
   // { path: 'home', component: AppComponent },
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [ServerProvider],
   bootstrap: [AppComponent],
