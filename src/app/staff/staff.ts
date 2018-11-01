@@ -19,7 +19,7 @@ export class StaffComponent implements OnInit {
     allUsers: User[];
     obsUsers: Observable<User[]>
     public searchString: string;
-
+   
     constructor(private _router: Router, private server: ServerProvider) {
 
     }
@@ -27,19 +27,17 @@ export class StaffComponent implements OnInit {
     ngOnInit(){
       this.server.getAllUsers()
           .subscribe(users => this.allUsers = users);
-      this.obsUsers = this.server.getAllUsers();  
-         
-    }
+      this.obsUsers = this.server.getAllUsers();
+     
+     }
 
-    add(){
-      this.server.add(this.user);
-    }
-
-    remove(user){
-      this.server.remove(this.user);
-    }
-
-  
+      clearInputFields(e){
+        let all = e.target.querySelectorAll('input');
+         Object.keys(all).forEach(key => {
+             console.log(all[key].value = '');   
+         });    
+       }
+    
 
     goRanking() {
       // alert('test');

@@ -129,7 +129,18 @@ transform: translate(-50%, -50%);
 .btn-primary.pull-right {
   margin-top: 15px;
 }
-
+.row.my-3{
+  width: 100% auto;
+  height: 40px;
+}
+.row.my-3 > .col-sm-2{
+  font-size: 13px;
+  color: black;
+}
+.modal-body > img{
+  width: 9em;
+  height: 9em;
+}
 /* Mobile First */
 @media (min-width: 10em) {
 
@@ -190,7 +201,7 @@ transform: translate(-50%, -50%);
      border-top:none;
     
    } 
-  .s-layout__content > input{
+input{
     color:#0066cc;
     width:100%;
     height: 20px;
@@ -237,7 +248,7 @@ padding: 0;
   table tbody, table thead, .s-layout__content p {
     font-size: 1.2vw;
   }
-  .s-layout__content > input{
+  input{
     color:#0066cc;
     width:250px;
     height: 32px;

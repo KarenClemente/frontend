@@ -11,14 +11,14 @@ import {catchError} from 'rxjs/operators';
 export class ServerProvider implements PipeTransform {
     
     USERS = [
-        new User('130125288','Mariana Varanda','varandaeng@gmail.com'),
-        new User('120048374','Lucas Correa Cerqueira Soares','lcorrea@gmail.com'),
-        new User('10006381637','Josias Martins da Silva','josilva@gmail.com'),
-        new User('1001735266','Manoel Gamalhaes Souza','manoa@gmail.com'),
-        new User('130999920','Marina Gadelha Lima','marinalima@gmail.com'),
-        new User('11725472046','Ana Beatriz Cavalcante do Planalto','anabcp@gmail.com'),
-        new User('09008373622','Roberto Oliveira Soares Martins','betomartins@gmail.com'),
-        new User('1527364826','Ana Galvão','anag@gmail.com')
+        new User('130125288','Mariana Varanda','varandaeng@gmail.com', '7263817','29/12/1929'),
+        new User('120048374','Lucas Correa Cerqueira Soares','lcorrea@gmail.com', '7263817','29/12/1929'),
+        new User('10006381637','Josias Martins da Silva','josilva@gmail.com', '7263817','29/12/1929'),
+        new User('1001735266','Manoel Gamalhaes Souza','manoa@gmail.com', '7263817','29/12/1929'),
+        new User('130999920','Marina Gadelha Lima','marinalima@gmail.com', '7263817','29/12/1929'),
+        new User('11725472046','Ana Beatriz Cavalcante do Planalto','anabcp@gmail.com', '7263817','29/12/1929'),
+        new User('09008373622','Roberto Oliveira Soares Martins','betomartins@gmail.com', '7263817','29/12/1929'),
+        new User('1527364826','Ana Galvão','anag@gmail.com', '7263817','29/12/1929')
     ];    
 
     public cusId: any;
@@ -110,7 +110,7 @@ export class ServerProvider implements PipeTransform {
     add(user){
         let maxIndex = this.USERS.length-1;
         let objWithMaxIndex = this.USERS[maxIndex];
-        this.USERS.push(new User(user.registry, user.name, user.email));
+        this.USERS.push(new User(user.registry, user.name, user.email, user.identity, user.date_birth));
     }
     remove(registry:string){
         let obj = this.USERS.find(ob => ob.registry === registry);

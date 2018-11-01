@@ -68,7 +68,7 @@
                       </tr>
                      </thead>
                     <tbody>
-                      <tr *ngFor="let user of allUsers">
+                      <tr *ngFor="let user of allUsers; let i = index">
                           <td>{{user.registry}}</td>
                           <td>{{user.name}}</td>
                           <td>{{user.email}}</td>
@@ -123,59 +123,47 @@
           <div class="modal-body">
     
             <div class="login-box-body">
-              <form method="post" name="user">
+              <form (ngSubmit)="confirm(user)" #staffForm="ngForm">
                   <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
                    <div class="form-group" style="margin-bottom:0rem">
                     <!----- username -------------->
-                    <label for="nome" style="font-size: 1.3rem">Nome completo</label>
-                    <input class="form-control" placeholder="Nome completo" id="name" type="text" name="name" required="" [(ngModel)]="user.name" />
-                    <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_name"></span>
-    
+                    <label>Nome completo</label>
+                    <input type="text" class="form-control" name="user.name" ngModel #user.name="ngModel" required />
                   </div>
+
                   <div class="form-group" style="margin-bottom:0rem">                    <!----- matricula -------------->
-                    <label for="matricula" style="font-size: 1.3rem">Matricula</label>
-                    <input class="form-control" placeholder="Ex:12010000" id="matricula" type="text" name="matricula" required="" [(ngModel)]="user.registry"/>
-                    <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_id"></span>
-    
+                    <label>Matricula</label>
+                    <input type="text" class="form-control" name="user.registry" ngModel #user.registry="ngModel" required/>
                   </div>
     
                   <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-                    <label for="rg" style="font-size: 1.3rem">Número RG</label>
-                    <input class="form-control" placeholder="RG" id="rg" type="text" name="rg" required="" [(ngModel)]="user.identity"/>
-                    <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
-    
+                    <label>Número RG</label>
+                    <input type="text" class="form-control" name="user.identity" ngModel #user.identity="ngModel" required/>
                   </div>
-    
     
                 <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-                  <label for="campoData" style="font-size: 1.3rem">Data de nascimento</label>
-                  <input class="form-control" placeholder="Data de nascimento" type="text" specialCharacters="['/']" mask="00/00/0000" id="birthDate" name="birthDate" required="" [(ngModel)]="user.date_birth"/>
-                  <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
-    
+                  <label>Data de nascimento</label>
+                  <input specialCharacters="['/']" mask="00/00/0000" type="text" class="form-control" name="user.date_birth" ngModel #user.date_birth="ngModel" required/>
                 </div>
     
-    
                   <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-                    <label for="email" style="font-size: 1.3rem">E-mail</label>
-                    <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="user.email"/>
-                    <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
-    
+                    <label>E-mail</label>
+                    <input type="email" class="form-control" name="user.email" ngModel #user.email="ngModel" required/>
                   </div>
+              
                   <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
-                    <label for="password1" style="font-size: 1.3rem">Senha</label>
-                    <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required="" [(ngModel)]="user.password"/>
-                    <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
-    
+                    <label>Senha</label>
+                    <input type="password" class="form-control" name="user.password" ngModel #user.password="ngModel" required/>
                   </div>
+
                   <div class="form-group">                    <!----- password -------------->
-                    <label for="password2" style="font-size: 1.3rem">Confirme a senha</label>
-                    <input class="form-control" placeholder="Repita senha" id="password2" type="password" name="password2" required="" [(ngModel)]="user.passwordconfirm"/>
-                    <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw2"></span>
-    
-                    <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="confirm(user)">Cadastrar</button>
+                    <label>Confirme a senha</label>
+                    <input type="password" class="form-control" name="user.confirmPassword" ngModel #user.confirmPassword="ngModel" required/>
+                    <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block btn-flat" [disabled]="!staffForm.valid">Cadastrar</button>
+
                   </div>
+
                   <div class="col-xs-12">
-    
                   </div>
                 </form>
                   </div>
@@ -197,7 +185,7 @@
           </div>
         </div>
     </div>
-    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+   <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
         <div class="modal-dialog  modal-md border-dark" role="document">
             <div class="modal-content ">
               <div class="modal-header">
@@ -205,42 +193,53 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body bg-light">
-                  <img class="rounded-circle" src="../../assets/img/avatar2.png" alt="Responsive image" >
+              <div class="modal-body bg-light" style="text-align:center;">
+                  <img src="../../assets/img/avatar.png" style="border-radius: 50%;" >
+                  <br>
+                  <br>
                 <div class="container-fluid">
-                  <div class="row my-3" >
-                    <div class="col-sm-4"><b>Nome:</b></div>
-                    <div class="col-sm-6">Victor Albédio Lopes Costa</div>
-                    <div class="col">
-                    <button type="submit"><div class="fa fa-wrench" data-toggle="modal" href="#editarNome"></div></button>
-                    </div>
-                  </div>
-                  <div class="row my-3">
-                    <div class="col-sm-4"><b>Matricula:</b></div>
-                    <div class="col-sm-6">140032762</div>
-                    <div class="col">
-<button type="submit"><div class="fa fa-wrench" data-toggle="modal" href="#editarMatricula"></div></button>
-                    </div>
-                  </div>
-                  <div class="row my-3"><p><p>
-                    <div class="col-sm-4"><b>Email:</b></div>
-                    <div class="col-sm-6">Albediovitorioso@gmail.com</div>
-                    <div class="col">
-<button type="submit"><div class="fa fa-wrench" data-toggle="modal" href="#editarEmail"></div></button>
-                    </div>
-                  </div>
-                  <div class="row my-3">
-                    <div class="col-sm-4"><b>Função:</b></div>
-                    <div class="col-sm-6">Coordenador-Geologia</div>
-                    <div class="col">
-<button type="submit"><div class="fa fa-wrench" data-toggle="modal" href="#editarFunção"></div></button>
-                    </div>
-                  </div>
-            <div class="row-md-4 mt-3 ">
-
-              <a class="btn btn-success btn-xs text-center ">Perfil completo
-              </a>
+                  <form style="text-align:justify">  
+                    <div class="row my-3" >
+                              <div class="col-sm-2"><b>Nome:</b></div>
+                              <div class="col-sm-6">Victor Albédio Lopes Costa</div>
+                              <div class="col">
+      <button type="submit" class="pull-right"><div class="fa fa-wrench" data-toggle="modal" href="#editarNome"></div></button>
+                              </div>
+                            </div>
+                            <div class="row my-3">
+                              <div class="col-sm-2"><b>Matricula:</b></div>
+                              <div class="col-sm-6">140032762</div>
+                              <div class="col">
+      <button type="submit" class="pull-right"><div class="fa fa-wrench" data-toggle="modal" href="#editarMatricula"></div></button>
+                              </div>
+                            </div>
+                            <div class="row my-3">
+                              <div class="col-sm-2"><b>Email:</b></div>
+                              <div class="col-sm-6">Albediovitorioso@gmail.com</div>
+                              <div class="col">
+      <button type="submit" class="pull-right"><div class="fa fa-wrench" data-toggle="modal" href="#editarEmail"></div></button>
+                              </div>
+                            </div>
+                            <div class="row my-3">
+                              <div class="col-sm-2"><b>RG:</b></div>
+                              <div class="col-sm-6">7891781</div>
+                              <div class="col">
+      <button type="submit" class="pull-right"><div class="fa fa-wrench" data-toggle="modal" href="#editarRg"></div></button>
+                              </div>
+                            </div>
+                            <div class="row my-3">
+                              <div class="col-sm-2"><b>Data de nascimento:</b></div>
+                              <div class="col-sm-6">11/11/1991</div>
+                              <div class="col">
+      <button type="submit" class="pull-right"><div class="fa fa-wrench" data-toggle="modal" href="#editarDate"></div></button>
+                              </div>
+                            </div>
+                            <br>
+            <div class="row-md-4 mt-3" style="text-align:right">
+              <button class="btn btn-success">OK
+              </button>
               </div>
+            </form>
           </div>
             </div>
 
@@ -248,8 +247,156 @@
 
         </div>
         </div>
-        </div>
-
+</div>
         <!--/ Modal box cadastro-->
+        <div class="modal fade" id="editarNome" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-header bg-default">
+                <div class="container">
+                  <div class="row">
+                    <h4 class="modal-title" id="modalLabel" style="font-size: 1em">Editar Nome</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+          </div>
+          </div>
+                </div>
+                <div class="modal-body" >
+                  <form>
+<div class="form-group">
+<label >Insira o nome</label>
+<input type="nome" class="form-control" id="nome"  placeholder="Nome">
+
+</div>
+</form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success">Ok</button>
+           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="editarMatricula" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-header ">
+                <div class="container">
+                  <div class="row">
+                    <h4 class="modal-title" id="modalLabel"style="font-size: 1em">Editar matricula</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+          </div>
+          </div>
+                </div>
+                <div class="modal-body">
+                  <form>
+<div class="form-group">
+<label >Insira a matricula</label>
+<input type="nome" class="form-control" id="nome"  placeholder="140032762">
+
+</div>
+</form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success">Ok</button>
+           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="editarEmail" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-header ">
+                <div class="container">
+                  <div class="row">
+                    <h4 class="modal-title" id="modalLabel" style="font-size: 1em">Editar Email</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+          </div>
+          </div>
+                </div>
+                <div class="modal-body">
+                  <form>
+<div class="form-group">
+<label >Insira o email</label>
+<input type="email" class="form-control" id="email"  placeholder="ubnengenharia@gmail.com">
+
+</div>
+</form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success">Ok</button>
+           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="editarRg" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header ">
+                  <div class="container">
+                    <div class="row">
+                      <h4 class="modal-title" id="modalLabel" style="font-size: 1em">Editar número de identidade</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            </div>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+  <div class="form-group">
+  <label >Insira o RG</label>
+  <input type="text" class="form-control"  placeholder="9829282">
+  
+  </div>
+  </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success">Ok</button>
+             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="editarDate" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header ">
+                    <div class="container">
+                      <div class="row">
+                        <h4 class="modal-title" id="modalLabel" style="font-size: 1em">Editar data de nascimento</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+              </div>
+              </div>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+    <div class="form-group">
+    <label >Insira a data de nascimento</label>
+    <input specialCharacters="['/']" mask="00/00/0000" type="text">
+    
+    </div>
+    </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success">Ok</button>
+               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
     
   <script src="staff.ts"></script>
