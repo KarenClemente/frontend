@@ -53,6 +53,7 @@
           </nav>
         </div>
         <div class="s-layout__content">
+         <!-- <div class="container">-->
           <label style="font-size: 13px">Procurar funcionário</label>
           <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString">
           <button class="btn btn-primary pull-right" href="#" role="button" data-toggle="modal" data-target="#CadastroModal">Novo Funcionário</button>
@@ -64,7 +65,7 @@
                         <th style="text-align:center">Matricula</th>
                         <th style="text-align:center">Nome</th>
                         <th style="text-align:center">Email</th>
-                        <th style="text-align:center">Ação</th>
+                        <th style="text-align:center;width: 10%">Ação</th>
                       </tr>
                      </thead>
                     <tbody>
@@ -72,16 +73,16 @@
                           <td>{{user.registry}}</td>
                           <td>{{user.name}}</td>
                           <td>{{user.email}}</td>
-                          <td><i class="fa fa-pencil" style="color:rgb(101,191,91);" href="#" role="button" data-toggle="modal" data-target="#EditModal"></i>
+                          <td style="width: 10%"><i class="fa fa-pencil" style="color:rgb(101,191,91);" href="#" role="button" data-toggle="modal" data-target="#EditModal"></i>
                           <br>
                           <i class="fa fa-ban" style="color:red;" href="#" role="button" data-toggle="modal" data-target="#DeleteModal"></i>
 
                       </tr>                   
                     </tbody>
                   </table>
-              </div>
+           <!--  </div>--> 
 
-
+</div>
 </div>
 
 
@@ -94,20 +95,217 @@
               <h4 class="modal-title" id="modalLabel">Gerência de demandas</h4>
           </div>
           <div class="modal-body">
-              <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">Nome</th>
-                      <th scope="col">Data</th>
-                      <th scope="col">Publicação</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+             <!--Card1-->
+        <div class="card" >
+            <div class="row" href="#firstcard" data-toggle="collapse">
+              <div class="col-md-2 firstcol column">
+                <div class="cell">
+                <img src="../../assets/img/avatar.png" style="margin-top: 5%">
+              </div>
+              </div>
+              <div class="col-md-4 secndcol column">
+                <div class="cell">
+                <a style="color:#0066cc;"  href="#firstcard" data-toggle="collapse">Janela quebrada</a>
+              </div>
+              </div>
+                <div class="col-md-6 thirdcol column" >
+                  <div class="cell">
+                  <div class="row">
+                  <a> 14/09/2018 às 17:58  </a>
+                  </div>
+                <div class="row">
+                  <a><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>
+                  <a><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                </div>
+              </div>
+            </div>
+
+            </div>
+            <!--Expanded card1-->
+            <div class="card" >
+              <div class="card collapse" id="firstcard">
+                <div class="card-header textleft">
+                  <p><img src="../../assets/img/avatar.png">
+                  <a>   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a>ICC-SUL</a><a> 14/09/2018 as 17:58</a>
+                  </p>
+                  Quebraram a janela do CA de agro....
+                  </div>
+              <div class="card-body">
+                  <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                  <div class="col-sm-12" >
+                    <div class="form-group" >
+                      <div class="col-sm-12">
+                      <ul class="list-inline">
+              <div class="pull-left">
+                  <button class="btn btn-link"><i class="fa fa-thumbs-up"></i> 38 curtidas </button>
+                  </div>
+              <div class="pull-right">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><i class="fa fa-comment-o"></i> 5 comentários</button>
+                </div>
+                      </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              <br>
+              <br>
+              
+
+              <div class="card-footer" >
+                  <div id="post02" class="collapse">
+                <div class="row">    
+                <img src="../../assets/img/avatar.png">
+                  <a style="font-size:1vw">  Mariana Negreiros</a>
+                <p>Sacanagem...Que horror fazer isso com a universidade</p>
+                </div>
+                <hr class="bottom-line">
+                <div class="row">
+                <img src="../../assets/img/avatar.png">
+                <a style="font-size:1vw;">  Romário Ortoni</a>
+                <p>Esses alunos de humanas......pelo amor de Deus!!!!</p>
+                </div>
+                <hr class="bottom-line">
+                <div class="row">    
+                    <img src="../../assets/img/avatar.png">
+                      <a style="font-size:1vw">  Geraldo Amorim</a>
+                    <p>kkkkkkkk claro que tinha que rter um desses</p>
+                    </div>
+                    <hr class="bottom-line">
+                    <div class="row">    
+                        <img src="../../assets/img/avatar.png">
+                          <a style="font-size:1vw">  Matheus Ferreira</a>
+                        <p>hahahahahahah</p>
+                        </div>
+                        <hr class="bottom-line">
+                        <div class="row">    
+                            <img src="../../assets/img/avatar.png">
+                              <a style="font-size:1vw"> Luisa Marinho</a>
+                            <p>Sacanagem..</p>
+                            </div>
+                            <hr class="bottom-line">
+                  <br>
+                  <br>
+                    <div class="row" style="text-align:right; margin-right: 20px;">
+                        <i class="fa fa-check" style="color:rgb(101,191,91);font-size:2vw; margin-right: 10px;"href="#" role="button" data-toggle="modal" data-target="#ClearDemand"></i>
+                        <i class="fa fa-trash" style="color:red;font-size:2vw"href="#" role="button" data-toggle="modal" data-target="#DeleteDemand"></i>
+                    </div>
+                  </div>
+              </div>
+              </div>
+              </div>
+
+
+            </div>
+
+            <!--/Expanded card1-->
+
+            <!--Card2-->
+        <div class="card" >
+            <div class="row" href="#sndcard" data-toggle="collapse">
+              <div class="col-md-2 firstcol column">
+                <div class="cell">
+                <img src="../../assets/img/avatar.png" style="margin-top: 5%">
+              </div>
+              </div>
+              <div class="col-md-4 secndcol column">
+                <div class="cell">
+                <a style="color:#0066cc;"  href="#sndcard" data-toggle="collapse">Lixo no corredor</a>
+              </div>
+              </div>
+                <div class="col-md-6 thirdcol column" >
+                  <div class="cell">
+                  <div class="row">
+                  <a> 11/10/2018 às 11:58  </a>
+                  </div>
+                <div class="row">
+                  <a><i style="color:#0066cc" class="fa fa-thumbs-up"></i>3 Curtidas</a>
+                  <a><i style="color:#0066cc" class="fa fa-comment"></i>13 Comentários</a>
+                </div>
+              </div>
+            </div>
+
+            </div>
+            <!--Expanded card1-->
+            <div class="card" >
+              <div class="card collapse" id="sndcard">
+                <div class="card-header textleft">
+                  <p><img src="../../assets/img/avatar.png">
+                  <a>   Marina Valadares</a> publicou <b> Lixo no corredor</b> em <a>ICC-NORTE</a><a> 11/10/2018 as 11:58</a>
+                  </p>
+                  Alguém vem jogar esse lixo fora...
+                  </div>
+              <div class="card-body">
+                  <p><img src="../../assets/img/samu.jpg" class="img-responsive"></p>
+                  <div class="col-sm-12" >
+                    <div class="form-group" >
+                      <div class="col-sm-12">
+                      <ul class="list-inline">
+              <div class="pull-left">
+                  <button class="btn btn-link"><i class="fa fa-thumbs-up"></i> 3 curtidas </button>
+                  </div>
+              <div class="pull-right">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#post03" aria-expanded="false" aria-controls="post02"><i class="fa fa-comment-o"></i> 13 comentários</button>
+                </div>
+                      </ul>
+              </div>
+              </div>
+              </div>
+              </div>
+              <br>
+              <br>
+              <div class="card-footer" >
+                  <div id="post03" class="collapse">
+                <div class="row">    
+                <img src="../../assets/img/avatar.png">
+                  <a style="font-size:1vw">  Mariana Negreiros</a>
+                <p>Sacanagem...Que horror fazer isso com a universidade</p>
+                </div>
+                <hr class="bottom-line">
+                <div class="row">
+                <img src="../../assets/img/avatar.png">
+                <a style="font-size:1vw;">  Romário Ortoni</a>
+                <p>Esses alunos de humanas......pelo amor de Deus!!!!</p>
+                </div>
+                <hr class="bottom-line">
+                <div class="row">    
+                    <img src="../../assets/img/avatar.png">
+                      <a style="font-size:1vw">  Geraldo Amorim</a>
+                    <p>kkkkkkkk claro que tinha que rter um desses</p>
+                    </div>
+                    <hr class="bottom-line">
+                    <div class="row">    
+                        <img src="../../assets/img/avatar.png">
+                          <a style="font-size:1vw">  Matheus Ferreira</a>
+                        <p>hahahahahahah</p>
+                        </div>
+                        <hr class="bottom-line">
+                        <div class="row">    
+                            <img src="../../assets/img/avatar.png">
+                              <a style="font-size:1vw"> Luisa Marinho</a>
+                            <p>Sacanagem..</p>
+                            </div>
+                            <hr class="bottom-line">
+                            <button class="btn btn-link pull-right" data-toggle="collapse" data-target="#post04" aria-expanded="false" aria-controls="post04">carregar comentários</button>
+                  <br>
+                  <br>
+                    <div class="row" style="text-align:right; margin-right: 20px;">
+                        <i class="fa fa-check" style="color:rgb(101,191,91);font-size:2vw; margin-right: 10px;"href="#" role="button" data-toggle="modal" data-target="#ClearDemand"></i>
+                        <i class="fa fa-trash" style="color:red;font-size:2vw"href="#" role="button" data-toggle="modal" data-target="#DeleteDemand"></i>
+                    </div>
                     
-                  </tbody>
-                </table>
-          </div>
+                  </div>
+              </div>
+              </div>
+              </div>
+
+
+            </div>
+
+            <!--/Expanded card1-->
+
         </div>
+
+          </div>
       </div>
     </div>
     <div class="modal fade" id="CadastroModal" role="dialog" aria-hidden="true">
@@ -185,7 +383,35 @@
           </div>
         </div>
     </div>
-   <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    <div class="modal fade" id="DeleteDemand" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="modalLabel" style="font-size: 1em">Tem certeza que deseja banir a demanda?</h4>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-danger">Cancelar</button>
+                <button class="btn btn-success pull-right">Confirmar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal fade" id="ClearDemand" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="modalLabel" style="font-size: 1em">Tem certeza que deseja liberar a demanda?</h4>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-danger">Cancelar</button>
+                <button class="btn btn-success pull-right">Confirmar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
         <div class="modal-dialog  modal-md border-dark" role="document">
             <div class="modal-content ">
               <div class="modal-header">
@@ -247,9 +473,8 @@
 
         </div>
         </div>
-</div>
-        <!--/ Modal box cadastro-->
-        <div class="modal fade" id="editarNome" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    </div>
+    <div class="modal fade" id="editarNome" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog modal-sm" role="document">
               <div class="modal-content">
                 <div class="modal-header bg-default">
@@ -277,9 +502,8 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="modal fade" id="editarMatricula" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    </div>
+    <div class="modal fade" id="editarMatricula" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog modal-sm" role="document">
               <div class="modal-content">
                 <div class="modal-header ">
@@ -307,9 +531,8 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="modal fade" id="editarEmail" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    </div>
+    <div class="modal fade" id="editarEmail" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog modal-sm" role="document">
               <div class="modal-content">
                 <div class="modal-header ">
@@ -337,9 +560,8 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="modal fade" id="editarRg" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    </div>
+    <div class="modal fade" id="editarRg" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
               <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                   <div class="modal-header ">
@@ -367,9 +589,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="modal fade" id="editarDate" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    </div>
+    <div class="modal fade" id="editarDate" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
                 <div class="modal-dialog modal-sm" role="document">
                   <div class="modal-content">
                     <div class="modal-header ">
@@ -397,6 +618,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
+    </div>
     
   <script src="staff.ts"></script>

@@ -45,14 +45,43 @@ font-weight: 700;
 em:hover {
  color: rgb(101, 191, 91);
 }
+.s-layout__content table * {
+  box-sizing: inherit;
+  -moz-box-sizing: inherit;
+}
 .s-layout__content table.table-bordered
 {
   max-width: 800px !important;
   min-width: 300px !important;   
   width: 100% !important;
-  padding: 0;
   text-align: center;
-  position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+thead {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+tbody {
+  overflow-y: scroll;
+  display: inline-block;
+}
+
+thead > tr, tbody > tr{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+th, tbody td {
+  width: 30%; /* this can vary */
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
 }
 .s-layout__content p{
   color: white;
@@ -64,6 +93,16 @@ em:hover {
   min-width: 300px !important;   
   width: 100% !important;
   padding: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+  width: 1px;
+  background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+  background: #dad7d7;
 }
 
 /* Sidebar */
@@ -144,9 +183,66 @@ transform: translate(-50%, -50%);
 .col > button, .fa.fa-wrench{
   font-size: 10px;
 }
+.card {
+  width: 100%;
+  background-color:  #ffffff;
+}
+.card > .row{
+height: 50px;
+margin: 12px;
+-webkit-box-shadow: 0 0 11px 0 red;
+-moz-box-shadow: 0 0 11px 0 red;
+box-shadow: 0 0 11px 0 red;
+
+
+}
+.cell{
+  margin-top:  2%;
+  text-align: center;
+}
+.card.collapse {
+  border: 3px solid rgb(128,128,128, 0.4);
+  border-radius: 1%;
+  padding: 5px;
+  
+}
+.card .card-header{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 1vw;
+  }
+  .card .card-header img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .card-footer .collapse img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  .card .card-footer{
+    font-size: 12px;
+    }
+  .card-footer > .collapse > .row{
+    margin-left:20px;
+    
+    }
+    .bottom-line{
+      width: 50px;
+      height:3px;
+      background-color: rgb(99, 122, 145);
+      padding: 0;
+      margin: 0;
+      margin-left:50%;
+    }
+
 /* Mobile First */
 @media (min-width: 10em) {
 
+  .card-header, .card-body{
+    font-size: 10px;
+  }
   /*Content*/
   .s-layout__content {
     padding-right: 3em;
@@ -190,9 +286,13 @@ transform: translate(-50%, -50%);
   }
   
   /* Agora vamos definir o elemento tbody, para overflow: auto. Ativando assim as barras de rolagem. */
-  table tbody, table thead {
+  table tbody{
   overflow: auto;
-  height: 250px;
+  height: 250px auto;
+  font-size: 2vw;
+  color: black;
+}
+table thead {
   font-size: 2vw;
   color: black;
 }
@@ -215,21 +315,33 @@ padding: 0;
       .modal-sm{
         width: 320px;
         transition: all 0.3s;
-        padding: 20px
+        padding: 20px;
     }
     .modal-md{
       width: 380px;
       transition: all 0.3s;
-
+      background-color:  rgb(242, 244, 247);
     }
   label{
     font-size: 12px;
   }
     }
+    .column > .cell > .row{
+      font-size: 9px;
+    }
+    .column > .cell > img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      
+    }
 
 
 @media (min-width: 48em) {
 
+  .card-header, .card-body{
+    font-size: 16px;
+  }
   /*Content*/
   .s-layout__content {
     margin-right: 15em;
@@ -259,13 +371,16 @@ padding: 0;
   table tbody, table thead, .s-layout__content p {
     font-size: 1.2vw;
   }
+  table tbody{
+    height: 250px;
+  }
   input{
     color:#0066cc;
     width:250px;
     height: 32px;
       }
       .btn-primary.pull-right {
-        padding: 10px;
+        padding: 5px;
   }
   .modal-dialog {
     width: 600px;
@@ -283,5 +398,8 @@ padding: 0;
   }
   label{
     font-size: 14px;
+  }
+  .column > .cell > .row{
+    font-size: 12px;
   }
 }
