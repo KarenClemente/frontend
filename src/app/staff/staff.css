@@ -141,6 +141,9 @@ transform: translate(-50%, -50%);
   width: 9em;
   height: 9em;
 }
+.col > button, .fa.fa-wrench{
+  font-size: 10px;
+}
 /* Mobile First */
 @media (min-width: 10em) {
 
@@ -214,6 +217,14 @@ padding: 0;
         transition: all 0.3s;
         padding: 20px
     }
+    .modal-md{
+      width: 380px;
+      transition: all 0.3s;
+
+    }
+  label{
+    font-size: 12px;
+  }
     }
 
 
@@ -264,7 +275,13 @@ padding: 0;
     font-size: 1.5em;
     font-weight: 700;
   }
+  .modal-md{
+    width: 600px;
+  }
   .modal-sm {
     width: 400px;
+  }
+  label{
+    font-size: 14px;
   }
 }
