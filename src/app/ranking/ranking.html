@@ -141,6 +141,51 @@
         </nav>
       </div>
 
+      <!--Modal box Alterar Senha-->
+      <div class="modal fade" id="changepsw" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+
+              <!-- Modal content no 1-->
+              <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
+                  <h4 class="modal-title text-center form-title" style="color: #0066cc;">Alterar senha</h4>
+                </div>
+                <div class="modal-body">
+
+                  <div class="login-box-body">
+                    <form action="#" method="post" name="changepsw">
+                        <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
+
+                        <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
+                          <label for="pass" style="font-size: 1.3rem">Senha atual</label>
+                          <input class="form-control" placeholder="Senha atual" id="pass" type="password" name="pass" required=""/>
+                          <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
+
+                        </div>
+                        <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
+                          <label for="password1" style="font-size: 1.3rem">Nova Senha</label>
+                          <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required=""/>
+                          <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
+
+                        </div>
+                        <div class="form-group">                    <!----- password -------------->
+                          <label for="password2" style="font-size: 1.3rem">Confirme a senha</label>
+                          <input class="form-control" placeholder="Repita senha" id="password2" type="password" name="password2" required=""/>
+                          <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw2"></span>
+
+                          <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Cadastrar">
+                        </div>
+                      </form>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          <!--/ Modal box Alterar Senha-->
+
     <!--/ Sidebar-->
 
     <!--Cards-->
@@ -173,18 +218,18 @@
                 <div class="row">
                   <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
                   <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                  <a href="#" style="color:black;">ICC Norte</a>
+                  <a  style="color:black;">ICC Norte</a>
                 </div>
                 <div class="row">
-                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                  <a  class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                  <a  style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
                 </div>
               </div>
 
               <div class="col-md-4 thirdcol column" >
                 <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x icon-background1"></i>
-               <i class="fa fa-circle-thin fa-stack-2x" style="color:#daa520"></i>
+              <i class="fa fa-circle fa-stack-2x icon-background"></i>
+               <i class="fa fa-circle-thin fa-stack-2x" style="color:blue"></i>
               <strong class="fa-stack-1x" style="color:blue">
               1
               </strong>
@@ -195,79 +240,80 @@
             <!--Expanded card1-->
             <div class="card" >
               <div class="card collapse" id="public">
-                <div class="pull-right">
-                  <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                    <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                  </button></div>
-              <div class="card-header textleft">
-                  <p><img src="../../assets/img/avatar.png" class="rounded">
-                  <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                  </p>
-                  Quebraram a janela do CA de agro....
-                  </div>
-              <div class="card-body" style="background-color:#fff">
-                  <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                  <div class="col-sm-12" >
-                    <div class="form-group" >
-                      <div class="col-sm-12">
-                      <ul class="list-inline">
-              <div class="pull-left">
-                  <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i> 38 Curtidas</li>
+                <div class="linha">
                   </div>
               <div class="pull-right">
-                     <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-              </div>
-                      </ul>
-              </div>
-              </div>
-              </div>
-              </div>
-              <div class="card-footer ">
-              <div class="form-group" >
-              <div class="linha">
-              </div>
-              <div class="row">
-              <div class="col-sm-6">
-              <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-              </div>
-              <div class="col-sm-6">
-
-                <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-              </div>
-              </div>
-              <div class="linha2">
-              </div>
-              </div>
-              <div class="row-sm-4 ">
-                  <div id="post02" class="collapse" aria-labelledby="head01">
-                      <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                        <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                          <p class="borda">Sacanagem...Que horror fazer isso com a universidade</p>
-                          <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                            <p class="borda">Esses alunos de humanas......pelo amor de Deus!!!!</p>
-
-                      </div>
-                  </div>
-                    <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-              <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-              </div>
-              </div>
-              </div>
-
+                <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                  <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                </button></div>
+            <div class="card-header textleft">
+                <p><img src="../../assets/img/mentor.jpg" class="rounded">
+                <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
+                </p>
+                Quebraram a janela do CA de agro....
+                </div>
+            <div class="card-body" style="background-color:#fff">
+                <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                <div class="col-sm-12" >
+                  <div class="form-group" >
+                    <div class="col-sm-12">
+                    <ul class="list-inline">
+            <div class="pull-left">
+                <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
+                </div>
+            <div class="pull-right">
+                   <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
 
             </div>
+                    </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="card-footer ">
+            <div class="form-group" >
+            <div class="linha">
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
+            <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
+            </div>
+            <div class="col-sm-6">
 
-            <!--/Expanded card1-->
+              <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
+            </div>
+            </div>
+            <div class="linha2">
+            </div>
+            </div>
 
-        </div>
+            <div class="row-sm-4 ">
+                <div id="post02" class="collapse " aria-labelledby="head01">
+                    <div class="card-body" style="margin-Top:30px;margin-bottom:30px">
 
+<div class="borda" style="margin-bottom:15px;background-color: #007fff;">
+                      <p style=" text-align: left;">  <img src="../../assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p>
+
+
+                        <p style=" text-align: left;color:black"><b>Já esta sendo resolvido.</b></p>
+</div>
+<div class="borda" style="margin-bottom:15px;">
+                        <p style=" text-align: left;">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p>
+
+
+                          <p  style=" text-align: left;">Absurdo o que esses alunos fazem com a própria univerddade.</p>
+
+
+                </div>
+                  <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
+            <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
+            </div>
+            </div>
+            </div>
+</div>
+</div>
+</div>
+</div>
         <div class="card" >
             <div class="row">
 
@@ -278,23 +324,23 @@
               <div class="col-md-4 secndcol column">
 
                 <div class="row " >
-                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public" data-toggle="collapse">Janela quebrada</a>
+                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public2" data-toggle="collapse">Janela quebrada</a>
                 </div>
                 <div class="row">
                   <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
                   <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                  <a href="#" style="color:black;">ICC Norte</a>
+                  <a  style="color:black;">ICC Norte</a>
                 </div>
                 <div class="row">
-                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                  <a  class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                  <a  style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
                 </div>
               </div>
 
               <div class="col-md-4 thirdcol column" >
                 <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x icon-background2"></i>
-               <i class="fa fa-circle-thin fa-stack-2x" style="color:#a9a9a9"></i>
+              <i class="fa fa-circle fa-stack-2x icon-background"></i>
+               <i class="fa fa-circle-thin fa-stack-2x" style="color:blue"></i>
               <strong class="fa-stack-1x" style="color:blue">
               2
               </strong>
@@ -304,80 +350,81 @@
             </div>
             <!--Expanded card1-->
             <div class="card" >
-              <div class="card collapse" id="public">
-                <div class="pull-right">
-                  <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                    <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                  </button></div>
-              <div class="card-header textleft">
-                  <p><img src="../../assets/img/avatar.png" class="rounded">
-                  <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                  </p>
-                  Quebraram a janela do CA de agro....
-                  </div>
-              <div class="card-body" style="background-color:#fff">
-                  <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                  <div class="col-sm-12" >
-                    <div class="form-group" >
-                      <div class="col-sm-12">
-                      <ul class="list-inline">
-              <div class="pull-left">
-                  <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i> 38 Curtidas</li>
+              <div class="card collapse" id="public2">
+                <div class="linha">
                   </div>
               <div class="pull-right">
-                     <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-              </div>
-                      </ul>
-              </div>
-              </div>
-              </div>
-              </div>
-              <div class="card-footer ">
-              <div class="form-group" >
-              <div class="linha">
-              </div>
-              <div class="row">
-              <div class="col-sm-6">
-              <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-              </div>
-              <div class="col-sm-6">
-
-                <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-              </div>
-              </div>
-              <div class="linha2">
-              </div>
-              </div>
-              <div class="row-sm-4 ">
-                  <div id="post02" class="collapse" aria-labelledby="head01">
-                      <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                        <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                          <p class="borda">Sacanagem...Que horror fazer isso com a universidade</p>
-                          <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                            <p class="borda">Esses alunos de humanas......pelo amor de Deus!!!!</p>
-
-                      </div>
-                  </div>
-                    <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-              <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-              </div>
-              </div>
-              </div>
-
+                <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                  <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                </button></div>
+            <div class="card-header textleft">
+                <p><img src="../../assets/img/mentor.jpg" class="rounded">
+                <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
+                </p>
+                Quebraram a janela do CA de agro....
+                </div>
+            <div class="card-body" style="background-color:#fff">
+                <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                <div class="col-sm-12" >
+                  <div class="form-group" >
+                    <div class="col-sm-12">
+                    <ul class="list-inline">
+            <div class="pull-left">
+                <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
+                </div>
+            <div class="pull-right">
+                   <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
 
             </div>
+                    </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="card-footer ">
+            <div class="form-group" >
+            <div class="linha">
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
+            <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
+            </div>
+            <div class="col-sm-6">
 
-            <!--/Expanded card1-->
+              <button class="btn btn-link" data-toggle="collapse" data-target="#post03" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
+            </div>
+            </div>
+            <div class="linha2">
+            </div>
+            </div>
 
-        </div>
+            <div class="row-sm-4 ">
+                <div id="post03" class="collapse " aria-labelledby="head01">
+                    <div class="card-body" style="margin-Top:30px;margin-bottom:30px">
 
+<div class="borda" style="margin-bottom:15px;background-color: #007fff;">
+                      <p style=" text-align: left;">  <img src="../../assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p>
+
+
+                        <p style=" text-align: left;color:black"><b>Já esta sendo resolvido.</b></p>
+</div>
+<div class="borda" style="margin-bottom:15px;">
+                        <p style=" text-align: left;">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p>
+
+
+                          <p  style=" text-align: left;">Absurdo o que esses alunos fazem com a própria univerdddade.</p>
+
+
+                </div>
+                  <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
+            <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
+            </div>
+            </div>
+            </div>
+</div>
+</div>
+</div>
+</div>
 
 
         <div class="card" >
@@ -390,23 +437,23 @@
               <div class="col-md-4 secndcol column">
 
                 <div class="row " >
-                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public" data-toggle="collapse">Janela quebrada</a>
+                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public3" data-toggle="collapse">Janela quebrada</a>
                 </div>
                 <div class="row">
                   <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
                   <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                  <a href="#" style="color:black;">ICC Norte</a>
+                  <a  style="color:black;">ICC Norte</a>
                 </div>
                 <div class="row">
-                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                  <a  class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                  <a  style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
                 </div>
               </div>
 
               <div class="col-md-4 thirdcol column" >
                 <span class="fa-stack fa-lg">
-              <i class="fa fa-circle fa-stack-2x icon-background3"></i>
-               <i class="fa fa-circle-thin fa-stack-2x" style="color:#ebc79e"></i>
+              <i class="fa fa-circle fa-stack-2x icon-background"></i>
+               <i class="fa fa-circle-thin fa-stack-2x" style="color:blue"></i>
               <strong class="fa-stack-1x" style="color:blue">
               3
               </strong>
@@ -416,79 +463,81 @@
             </div>
             <!--Expanded card1-->
             <div class="card" >
-              <div class="card collapse" id="public">
-                <div class="pull-right">
-                  <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                    <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                  </button></div>
-              <div class="card-header textleft">
-                  <p><img src="../../assets/img/avatar.png" class="rounded">
-                  <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                  </p>
-                  Quebraram a janela do CA de agro....
-                  </div>
-              <div class="card-body" style="background-color:#fff">
-                  <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                  <div class="col-sm-12" >
-                    <div class="form-group" >
-                      <div class="col-sm-12">
-                      <ul class="list-inline">
-              <div class="pull-left">
-                  <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i> 38 Curtidas</li>
+              <div class="card collapse" id="public3">
+                <div class="linha">
                   </div>
               <div class="pull-right">
-                     <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-              </div>
-                      </ul>
-              </div>
-              </div>
-              </div>
-              </div>
-              <div class="card-footer ">
-              <div class="form-group" >
-              <div class="linha">
-              </div>
-              <div class="row">
-              <div class="col-sm-6">
-              <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-              </div>
-              <div class="col-sm-6">
-
-                <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-              </div>
-              </div>
-              <div class="linha2">
-              </div>
-              </div>
-              <div class="row-sm-4 ">
-                  <div id="post02" class="collapse" aria-labelledby="head01">
-                      <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                        <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                          <p class="borda">Sacanagem...Que horror fazer isso com a universidade</p>
-                          <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                            <p class="borda">Esses alunos de humanas......pelo amor de Deus!!!!</p>
-
-                      </div>
-                  </div>
-                    <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-              <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-              </div>
-              </div>
-              </div>
-
+                <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                  <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                </button></div>
+            <div class="card-header textleft">
+                <p><img src="../../assets/img/mentor.jpg" class="rounded">
+                <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
+                </p>
+                Quebraram a janela do CA de agro....
+                </div>
+            <div class="card-body" style="background-color:#fff">
+                <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                <div class="col-sm-12" >
+                  <div class="form-group" >
+                    <div class="col-sm-12">
+                    <ul class="list-inline">
+            <div class="pull-left">
+                <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
+                </div>
+            <div class="pull-right">
+                   <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
 
             </div>
+                    </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="card-footer ">
+            <div class="form-group" >
+            <div class="linha">
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
+            <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
+            </div>
+            <div class="col-sm-6">
 
-            <!--/Expanded card1-->
+              <button class="btn btn-link" data-toggle="collapse" data-target="#post3" aria-expanded="false" aria-controls="post3"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
+            </div>
+            </div>
+            <div class="linha2">
+            </div>
+            </div>
 
-        </div>
+            <div class="row-sm-4 ">
+                <div id="post3" class="collapse " aria-labelledby="head01">
+                    <div class="card-body" style="margin-Top:30px;margin-bottom:30px">
+
+<div class="borda" style="margin-bottom:15px;background-color: #007fff;">
+                      <p style=" text-align: left;">  <img src="../../assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p>
+
+
+                        <p style=" text-align: left;color:black"><b>Já esta sendo resolvido.</b></p>
+</div>
+<div class="borda" style="margin-bottom:15px;">
+                        <p style=" text-align: left;">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p>
+
+
+                          <p  style=" text-align: left;">Absurdo o que esses alunos fazem com a própria univerdddade.</p>
+
+
+                </div>
+                  <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
+            <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
+            </div>
+            </div>
+            </div>
+</div>
+</div>
+</div>
+</div>
 
 
 
@@ -502,16 +551,16 @@
               <div class="col-md-4 secndcol column">
 
                 <div class="row " >
-                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public" data-toggle="collapse">Janela quebrada</a>
+                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public4" data-toggle="collapse">Janela quebrada</a>
                 </div>
                 <div class="row">
                   <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
                   <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                  <a href="#" style="color:black;">ICC Norte</a>
+                  <a  style="color:black;">ICC Norte</a>
                 </div>
                 <div class="row">
-                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                  <a  class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                  <a  style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
                 </div>
               </div>
 
@@ -528,79 +577,81 @@
             </div>
             <!--Expanded card1-->
             <div class="card" >
-              <div class="card collapse" id="public">
-                <div class="pull-right">
-                  <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                    <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                  </button></div>
-              <div class="card-header textleft">
-                  <p><img src="../../assets/img/avatar.png" class="rounded">
-                  <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                  </p>
-                  Quebraram a janela do CA de agro....
-                  </div>
-              <div class="card-body" style="background-color:#fff">
-                  <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                  <div class="col-sm-12" >
-                    <div class="form-group" >
-                      <div class="col-sm-12">
-                      <ul class="list-inline">
-              <div class="pull-left">
-                  <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i> 38 Curtidas</li>
+              <div class="card collapse" id="public4">
+                <div class="linha">
                   </div>
               <div class="pull-right">
-                     <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-              </div>
-                      </ul>
-              </div>
-              </div>
-              </div>
-              </div>
-              <div class="card-footer ">
-              <div class="form-group" >
-              <div class="linha">
-              </div>
-              <div class="row">
-              <div class="col-sm-6">
-              <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-              </div>
-              <div class="col-sm-6">
-
-                <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-              </div>
-              </div>
-              <div class="linha2">
-              </div>
-              </div>
-              <div class="row-sm-4 ">
-                  <div id="post02" class="collapse" aria-labelledby="head01">
-                      <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                        <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                          <p class="borda">Sacanagem...Que horror fazer isso com a universidade</p>
-                          <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                            <p class="borda">Esses alunos de humanas......pelo amor de Deus!!!!</p>
-
-                      </div>
-                  </div>
-                    <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-              <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-              </div>
-              </div>
-              </div>
-
+                <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                  <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                </button></div>
+            <div class="card-header textleft">
+                <p><img src="../../assets/img/mentor.jpg" class="rounded">
+                <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
+                </p>
+                Quebraram a janela do CA de agro....
+                </div>
+            <div class="card-body" style="background-color:#fff">
+                <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                <div class="col-sm-12" >
+                  <div class="form-group" >
+                    <div class="col-sm-12">
+                    <ul class="list-inline">
+            <div class="pull-left">
+                <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
+                </div>
+            <div class="pull-right">
+                   <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
 
             </div>
+                    </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="card-footer ">
+            <div class="form-group" >
+            <div class="linha">
+            </div>
+            <div class="row">
+            <div class="col-sm-6">
+            <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
+            </div>
+            <div class="col-sm-6">
 
-            <!--/Expanded card1-->
+              <button class="btn btn-link" data-toggle="collapse" data-target="#post04" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
+            </div>
+            </div>
+            <div class="linha2">
+            </div>
+            </div>
 
-        </div>
+            <div class="row-sm-4 ">
+                <div id="post04" class="collapse " aria-labelledby="head01">
+                    <div class="card-body" style="margin-Top:30px;margin-bottom:30px">
+
+<div class="borda" style="margin-bottom:15px;background-color: #007fff;">
+                      <p style=" text-align: left;">  <img src="../../assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p>
+
+
+                        <p style=" text-align: left;color:black"><b>Já esta sendo resolvido.</b></p>
+</div>
+<div class="borda" style="margin-bottom:15px;">
+                        <p style=" text-align: left;">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p>
+
+
+                          <p  style=" text-align: left;">Absurdo o que esses alunos fazem com a própria univerdddade.</p>
+
+
+                </div>
+                  <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
+            <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
+            </div>
+            </div>
+            </div>
+</div>
+</div>
+</div>
+</div>
 
 
         <!--/Card1-->
@@ -616,16 +667,16 @@
                       <div class="col-md-4 secndcol column">
 
                         <div class="row " >
-                        <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public" data-toggle="collapse">Janela quebrada</a>
+                        <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public5" data-toggle="collapse">Janela quebrada</a>
                         </div>
                         <div class="row">
                           <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
                           <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                          <a href="#" style="color:black;">ICC Norte</a>
+                          <a  style="color:black;">ICC Norte</a>
                         </div>
                         <div class="row">
-                          <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                          <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                          <a  class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                          <a  style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
                         </div>
                       </div>
 
@@ -642,80 +693,81 @@
                     </div>
                     <!--Expanded card1-->
                     <div class="card" >
-                      <div class="card collapse" id="public">
-                        <div class="pull-right">
-                          <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                            <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                          </button></div>
-                      <div class="card-header textleft">
-                          <p><img src="../../assets/img/avatar.png" class="rounded">
-                          <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                          </p>
-                          Quebraram a janela do CA de agro....
-                          </div>
-                      <div class="card-body" style="background-color:#fff">
-                          <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                          <div class="col-sm-12" >
-                            <div class="form-group" >
-                              <div class="col-sm-12">
-                              <ul class="list-inline">
-                      <div class="pull-left">
-                          <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i> <i style="color:red" class="fa fa-heart"></i>38 Curtidas</li>
+                      <div class="card collapse" id="public5">
+                        <div class="linha">
                           </div>
                       <div class="pull-right">
-                             <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-                      </div>
-                              </ul>
-                      </div>
-                      </div>
-                      </div>
-                      </div>
-                      <div class="card-footer ">
-                      <div class="form-group" >
-                      <div class="linha">
-                      </div>
-                      <div class="row">
-                      <div class="col-sm-6">
-                      <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-                      </div>
-                      <div class="col-sm-6">
-
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-                      </div>
-                      </div>
-                      <div class="linha2">
-                      </div>
-                      </div>
-                      <div class="row-sm-4 ">
-                          <div id="post02" class="collapse" aria-labelledby="head01">
-                              <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                                <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                  <p class="borda">Sacanagem...Que horror fazer isso com a universidade</p>
-                                  <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                    <p class="borda">Esses alunos de humanas......pelo amor de Deus!!!!</p>
-
-                              </div>
-                          </div>
-                            <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-                      <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-                      </div>
-                      </div>
-                      </div>
-
+                        <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                          <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                        </button></div>
+                    <div class="card-header textleft">
+                        <p><img src="../../assets/img/mentor.jpg" class="rounded">
+                        <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
+                        </p>
+                        Quebraram a janela do CA de agro....
+                        </div>
+                    <div class="card-body" style="background-color:#fff">
+                        <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                        <div class="col-sm-12" >
+                          <div class="form-group" >
+                            <div class="col-sm-12">
+                            <ul class="list-inline">
+                    <div class="pull-left">
+                        <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
+                        </div>
+                    <div class="pull-right">
+                           <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
 
                     </div>
+                            </ul>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="card-footer ">
+                    <div class="form-group" >
+                    <div class="linha">
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-6">
+                    <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
+                    </div>
+                    <div class="col-sm-6">
 
-                    <!--/Expanded card1-->
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#post05" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
+                    </div>
+                    </div>
+                    <div class="linha2">
+                    </div>
+                    </div>
 
-                </div>
+                    <div class="row-sm-4 ">
+                        <div id="post05" class="collapse " aria-labelledby="head01">
+                            <div class="card-body" style="margin-Top:30px;margin-bottom:30px">
 
+        <div class="borda" style="margin-bottom:15px;background-color: #007fff;">
+                              <p style=" text-align: left;">  <img src="../../assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p>
+
+
+                                <p style=" text-align: left;color:black"><b>Já esta sendo resolvido.</b></p>
+        </div>
+        <div class="borda" style="margin-bottom:15px;">
+                                <p style=" text-align: left;">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p>
+
+
+                                  <p  style=" text-align: left;">Absurdo o que esses alunos fazem com a própria univerdddade.</p>
+
+
+                        </div>
+                          <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
+                    <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
+                    </div>
+                    </div>
+                    </div>
+        </div>
+        </div>
+        </div>
+        </div>
 
 
                         <div class="card" >
@@ -728,16 +780,16 @@
                               <div class="col-md-4 secndcol column">
 
                                 <div class="row " >
-                                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public" data-toggle="collapse">Janela quebrada</a>
+                                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public6" data-toggle="collapse">Janela quebrada</a>
                                 </div>
                                 <div class="row">
                                   <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
                                   <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                                  <a href="#" style="color:black;">ICC Norte</a>
+                                  <a  style="color:black;">ICC Norte</a>
                                 </div>
                                 <div class="row">
-                                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                                  <a  class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                                  <a  style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
                                 </div>
                               </div>
 
@@ -754,81 +806,81 @@
                             </div>
                             <!--Expanded card1-->
                             <div class="card" >
-                              <div class="card collapse" id="public">
-                                <div class="pull-right">
-                                  <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                                    <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                                  </button></div>
-                              <div class="card-header textleft">
-                                  <p><img src="../../assets/img/avatar.png" class="rounded">
-                                  <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                                  </p>
-                                  Quebraram a janela do CA de agro....
-                                  </div>
-                              <div class="card-body" style="background-color:#fff">
-                                  <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                                  <div class="col-sm-12" >
-                                    <div class="form-group" >
-                                      <div class="col-sm-12">
-                                      <ul class="list-inline">
-                              <div class="pull-left">
-                                  <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i> <i style="color:red" class="fa fa-heart"></i>38 Curtidas</li>
+                              <div class="card collapse" id="public6">
+                                <div class="linha">
                                   </div>
                               <div class="pull-right">
-                                     <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-                              </div>
-                                      </ul>
-                              </div>
-                              </div>
-                              </div>
-                              </div>
-                              <div class="card-footer ">
-                              <div class="form-group" >
-                              <div class="linha">
-                              </div>
-                              <div class="row">
-                              <div class="col-sm-6">
-                              <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-                              </div>
-                              <div class="col-sm-6">
-
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-                              </div>
-                              </div>
-                              <div class="linha2">
-                              </div>
-                              </div>
-                              <div class="row-sm-4 ">
-                                  <div id="post02" class="collapse" aria-labelledby="head01">
-                                      <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                                        <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                          <p class="borda">Sacanagem...Que horror fazer isso com a universidade</p>
-                                          <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                            <p class="borda">Esses alunos de humanas......pelo amor de Deus!!!!</p>
-
-                                      </div>
-                                  </div>
-                                    <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-                              <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-                              </div>
-                              </div>
-                              </div>
-
+                                <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                                  <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                                </button></div>
+                            <div class="card-header textleft">
+                                <p><img src="../../assets/img/mentor.jpg" class="rounded">
+                                <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
+                                </p>
+                                Quebraram a janela do CA de agro....
+                                </div>
+                            <div class="card-body" style="background-color:#fff">
+                                <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                                <div class="col-sm-12" >
+                                  <div class="form-group" >
+                                    <div class="col-sm-12">
+                                    <ul class="list-inline">
+                            <div class="pull-left">
+                                <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
+                                </div>
+                            <div class="pull-right">
+                                   <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
 
                             </div>
+                                    </ul>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="card-footer ">
+                            <div class="form-group" >
+                            <div class="linha">
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-6">
+                            <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
+                            </div>
+                            <div class="col-sm-6">
 
-                            <!--/Expanded card1-->
+                              <button class="btn btn-link" data-toggle="collapse" data-target="#post06" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
+                            </div>
+                            </div>
+                            <div class="linha2">
+                            </div>
+                            </div>
 
-                        </div>
+                            <div class="row-sm-4 ">
+                                <div id="post06" class="collapse " aria-labelledby="head01">
+                                    <div class="card-body" style="margin-Top:30px;margin-bottom:30px">
+
+                <div class="borda" style="margin-bottom:15px;background-color: #007fff;">
+                                      <p style=" text-align: left;">  <img src="../../assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p>
 
 
+                                        <p style=" text-align: left;color:black"><b>Já esta sendo resolvido.</b></p>
+                </div>
+                <div class="borda" style="margin-bottom:15px;">
+                                        <p style=" text-align: left;">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p>
+
+
+                                          <p  style=" text-align: left;">Absurdo o que esses alunos fazem com a própria univerdddade.</p>
+
+
+                                </div>
+                                  <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
+                            <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
+                            </div>
+                            </div>
+                            </div>
+                </div>
+                </div>
+                </div>
+                </div>
 
                                 <div class="card" >
                                     <div class="row">
@@ -840,16 +892,16 @@
                                       <div class="col-md-4 secndcol column">
 
                                         <div class="row " >
-                                        <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public" data-toggle="collapse">Janela quebrada</a>
+                                        <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public7" data-toggle="collapse">Janela quebrada</a>
                                         </div>
                                         <div class="row">
                                           <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
                                           <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                                          <a href="#" style="color:black;">ICC Norte</a>
+                                          <a  style="color:black;">ICC Norte</a>
                                         </div>
                                         <div class="row">
-                                          <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                                          <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                                          <a  class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                                          <a  style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
                                         </div>
                                       </div>
 
@@ -866,79 +918,81 @@
                                     </div>
                                     <!--Expanded card1-->
                                     <div class="card" >
-                                      <div class="card collapse" id="public">
-                                        <div class="pull-right">
-                                          <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                                            <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                                          </button></div>
-                                      <div class="card-header textleft">
-                                          <p><img src="../../assets/img/avatar.png" class="rounded">
-                                          <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                                          </p>
-                                          Quebraram a janela do CA de agro....
-                                          </div>
-                                      <div class="card-body" style="background-color:#fff">
-                                          <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                                          <div class="col-sm-12" >
-                                            <div class="form-group" >
-                                              <div class="col-sm-12">
-                                              <ul class="list-inline">
-                                      <div class="pull-left">
-                                          <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i> <i style="color:red" class="fa fa-heart"></i>38 Curtidas</li>
+                                      <div class="card collapse" id="public7">
+                                        <div class="linha">
                                           </div>
                                       <div class="pull-right">
-                                             <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-                                      </div>
-                                              </ul>
-                                      </div>
-                                      </div>
-                                      </div>
-                                      </div>
-                                      <div class="card-footer ">
-                                      <div class="form-group" >
-                                      <div class="linha">
-                                      </div>
-                                      <div class="row">
-                                      <div class="col-sm-6">
-                                      <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-                                      </div>
-                                      <div class="col-sm-6">
-
-                                        <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-                                      </div>
-                                      </div>
-                                      <div class="linha2">
-                                      </div>
-                                      </div>
-                                      <div class="row-sm-4 ">
-                                          <div id="post02" class="collapse" aria-labelledby="head01">
-                                              <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                                                <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                                  <p class="borda">Sacanagem...Que horror fazer isso com a universidade</p>
-                                                  <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                                    <p class="borda">Esses alunos de humanas......pelo amor de Deus!!!!</p>
-
-                                              </div>
-                                          </div>
-                                            <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-                                      <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-                                      </div>
-                                      </div>
-                                      </div>
-
+                                        <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                                          <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                                        </button></div>
+                                    <div class="card-header textleft">
+                                        <p><img src="../../assets/img/mentor.jpg" class="rounded">
+                                        <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
+                                        </p>
+                                        Quebraram a janela do CA de agro....
+                                        </div>
+                                    <div class="card-body" style="background-color:#fff">
+                                        <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                                        <div class="col-sm-12" >
+                                          <div class="form-group" >
+                                            <div class="col-sm-12">
+                                            <ul class="list-inline">
+                                    <div class="pull-left">
+                                        <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
+                                        </div>
+                                    <div class="pull-right">
+                                           <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
 
                                     </div>
+                                            </ul>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="card-footer ">
+                                    <div class="form-group" >
+                                    <div class="linha">
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-sm-6">
+                                    <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
+                                    </div>
+                                    <div class="col-sm-6">
 
-                                    <!--/Expanded card1-->
+                                      <button class="btn btn-link" data-toggle="collapse" data-target="#post07" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
+                                    </div>
+                                    </div>
+                                    <div class="linha2">
+                                    </div>
+                                    </div>
 
-                                </div>
+                                    <div class="row-sm-4 ">
+                                        <div id="post07" class="collapse " aria-labelledby="head01">
+                                            <div class="card-body" style="margin-Top:30px;margin-bottom:30px">
+
+                        <div class="borda" style="margin-bottom:15px;background-color: #007fff;">
+                                              <p style=" text-align: left;">  <img src="../../assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p>
+
+
+                                                <p style=" text-align: left;color:black"><b>Já esta sendo resolvido.</b></p>
+                        </div>
+                        <div class="borda" style="margin-bottom:15px;">
+                                                <p style=" text-align: left;">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p>
+
+
+                                                  <p  style=" text-align: left;">Absurdo o que esses alunos fazem com a própria univerdddade.</p>
+
+
+                                        </div>
+                                          <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
+                                    <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
+                                    </div>
+                                    </div>
+                                    </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
 
 
                                         <div class="card" >
@@ -951,16 +1005,16 @@
                                               <div class="col-md-4 secndcol column">
 
                                                 <div class="row " >
-                                                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public" data-toggle="collapse">Janela quebrada</a>
+                                                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public8" data-toggle="collapse">Janela quebrada</a>
                                                 </div>
                                                 <div class="row">
                                                   <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
                                                   <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                                                  <a href="#" style="color:black;">ICC Norte</a>
+                                                  <a  style="color:black;">ICC Norte</a>
                                                 </div>
                                                 <div class="row">
-                                                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                                                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                                                  <a  class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                                                  <a  style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
                                                 </div>
                                               </div>
 
@@ -977,80 +1031,81 @@
                                             </div>
                                             <!--Expanded card1-->
                                             <div class="card" >
-                                              <div class="card collapse" id="public">
-                                                <div class="pull-right">
-                                                  <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                                                    <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                                                  </button></div>
-                                              <div class="card-header textleft">
-                                                  <p><img src="../../assets/img/avatar.png" class="rounded">
-                                                  <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                                                  </p>
-                                                  Quebraram a janela do CA de agro....
-                                                  </div>
-                                              <div class="card-body" style="background-color:#fff">
-                                                  <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                                                  <div class="col-sm-12" >
-                                                    <div class="form-group" >
-                                                      <div class="col-sm-12">
-                                                      <ul class="list-inline">
-                                              <div class="pull-left">
-                                                  <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i> <i style="color:red" class="fa fa-heart"></i>38 Curtidas</li>
+                                              <div class="card collapse" id="public8">
+                                                <div class="linha">
                                                   </div>
                                               <div class="pull-right">
-                                                     <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-                                              </div>
-                                                      </ul>
-                                              </div>
-                                              </div>
-                                              </div>
-                                              </div>
-                                              <div class="card-footer ">
-                                              <div class="form-group" >
-                                              <div class="linha">
-                                              </div>
-                                              <div class="row">
-                                              <div class="col-sm-6">
-                                              <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-                                              </div>
-                                              <div class="col-sm-6">
-
-                                                <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-                                              </div>
-                                              </div>
-                                              <div class="linha2">
-                                              </div>
-                                              </div>
-                                              <div class="row-sm-4 ">
-                                                  <div id="post02" class="collapse" aria-labelledby="head01">
-                                                      <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                                                        <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                                          <p class="borda">Sacanagem...Que horror fazer isso com a universidade</p>
-                                                          <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                                            <p class="borda">Esses alunos de humanas......pelo amor de Deus!!!!</p>
-
-                                                      </div>
-                                                  </div>
-                                                    <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-                                              <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-                                              </div>
-                                              </div>
-                                              </div>
-
+                                                <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                                                  <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                                                </button></div>
+                                            <div class="card-header textleft">
+                                                <p><img src="../../assets/img/mentor.jpg" class="rounded">
+                                                <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
+                                                </p>
+                                                Quebraram a janela do CA de agro....
+                                                </div>
+                                            <div class="card-body" style="background-color:#fff">
+                                                <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                                                <div class="col-sm-12" >
+                                                  <div class="form-group" >
+                                                    <div class="col-sm-12">
+                                                    <ul class="list-inline">
+                                            <div class="pull-left">
+                                                <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
+                                                </div>
+                                            <div class="pull-right">
+                                                   <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
 
                                             </div>
+                                                    </ul>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <div class="card-footer ">
+                                            <div class="form-group" >
+                                            <div class="linha">
+                                            </div>
+                                            <div class="row">
+                                            <div class="col-sm-6">
+                                            <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
+                                            </div>
+                                            <div class="col-sm-6">
 
-                                            <!--/Expanded card1-->
+                                              <button class="btn btn-link" data-toggle="collapse" data-target="#post08" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
+                                            </div>
+                                            </div>
+                                            <div class="linha2">
+                                            </div>
+                                            </div>
 
-                                        </div>
+                                            <div class="row-sm-4 ">
+                                                <div id="post08" class="collapse " aria-labelledby="head01">
+                                                    <div class="card-body" style="margin-Top:30px;margin-bottom:30px">
 
+                                <div class="borda" style="margin-bottom:15px;background-color: #007fff;">
+                                                      <p style=" text-align: left;">  <img src="../../assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p>
+
+
+                                                        <p style=" text-align: left;color:black"><b>Já esta sendo resolvido.</b></p>
+                                </div>
+                                <div class="borda" style="margin-bottom:15px;">
+                                                        <p style=" text-align: left;">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p>
+
+
+                                                          <p  style=" text-align: left;">Absurdo o que esses alunos fazem com a própria univerdddade.</p>
+
+
+                                                </div>
+                                                  <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
+                                            <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
+                                            </div>
+                                            </div>
+                                            </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
 
 
                                                 <div class="card" >
@@ -1063,16 +1118,16 @@
                                                       <div class="col-md-4 secndcol column">
 
                                                         <div class="row " >
-                                                        <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public" data-toggle="collapse">Janela quebrada</a>
+                                                        <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public9" data-toggle="collapse">Janela quebrada</a>
                                                         </div>
                                                         <div class="row">
                                                           <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
                                                           <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                                                          <a href="#" style="color:black;">ICC Norte</a>
+                                                          <a  style="color:black;">ICC Norte</a>
                                                         </div>
                                                         <div class="row">
-                                                          <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                                                          <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                                                          <a  class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                                                          <a  style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
                                                         </div>
                                                       </div>
 
@@ -1089,83 +1144,85 @@
                                                     </div>
                                                     <!--Expanded card1-->
                                                     <div class="card" >
-                                                      <div class="card collapse" id="public">
-                                                        <div class="pull-right">
-                                                          <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                                                            <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                                                          </button></div>
-                                                      <div class="card-header textleft">
-                                                          <p><img src="../../assets/img/avatar.png" class="rounded">
-                                                          <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                                                          </p>
-                                                          Quebraram a janela do CA de agro....
-                                                          </div>
-                                                      <div class="card-body" style="background-color:#fff">
-                                                          <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                                                          <div class="col-sm-12" >
-                                                            <div class="form-group" >
-                                                              <div class="col-sm-12">
-                                                              <ul class="list-inline">
-                                                      <div class="pull-left">
-                                                          <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i> <i style="color:red" class="fa fa-heart"></i>38 Curtidas</li>
+                                                      <div class="card collapse" id="public9">
+                                                        <div class="linha">
                                                           </div>
                                                       <div class="pull-right">
-                                                             <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-                                                      </div>
-                                                              </ul>
-                                                      </div>
-                                                      </div>
-                                                      </div>
-                                                      </div>
-                                                      <div class="card-footer ">
-                                                      <div class="form-group" >
-                                                      <div class="linha">
-                                                      </div>
-                                                      <div class="row">
-                                                      <div class="col-sm-6">
-                                                      <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-                                                      </div>
-                                                      <div class="col-sm-6">
-
-                                                        <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-                                                      </div>
-                                                      </div>
-                                                      <div class="linha2">
-                                                      </div>
-                                                      </div>
-                                                      <div class="row-sm-4 ">
-                                                          <div id="post02" class="collapse" aria-labelledby="head01">
-                                                              <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                                                                <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                                                  <p class="borda">Sacanagem...Que horror fazer isso com a universidade</p>
-                                                                  <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                                                    <p class="borda">Esses alunos de humanas......pelo amor de Deus!!!!</p>
-
-                                                              </div>
-                                                          </div>
-                                                            <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-                                                      <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-                                                      </div>
-                                                      </div>
-                                                      </div>
-
+                                                        <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                                                          <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                                                        </button></div>
+                                                    <div class="card-header textleft">
+                                                        <p><img src="../../assets/img/mentor.jpg" class="rounded">
+                                                        <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
+                                                        </p>
+                                                        Quebraram a janela do CA de agro....
+                                                        </div>
+                                                    <div class="card-body" style="background-color:#fff">
+                                                        <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                                                        <div class="col-sm-12" >
+                                                          <div class="form-group" >
+                                                            <div class="col-sm-12">
+                                                            <ul class="list-inline">
+                                                    <div class="pull-left">
+                                                        <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
+                                                        </div>
+                                                    <div class="pull-right">
+                                                           <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
 
                                                     </div>
+                                                            </ul>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="card-footer ">
+                                                    <div class="form-group" >
+                                                    <div class="linha">
+                                                    </div>
+                                                    <div class="row">
+                                                    <div class="col-sm-6">
+                                                    <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
+                                                    </div>
+                                                    <div class="col-sm-6">
 
-                                                    <!--/Expanded card1-->
+                                                      <button class="btn btn-link" data-toggle="collapse" data-target="#post09" aria-expanded="false" aria-controls="post09"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
+                                                    </div>
+                                                    </div>
+                                                    <div class="linha2">
+                                                    </div>
+                                                    </div>
 
-                                                </div>
+                                                    <div class="row-sm-4 ">
+                                                        <div id="post09" class="collapse " aria-labelledby="head01">
+                                                            <div class="card-body" style="margin-Top:30px;margin-bottom:30px">
+
+                                        <div class="borda" style="margin-bottom:15px;background-color: #007fff;">
+                                                              <p style=" text-align: left;">  <img src="../../assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p>
+
+
+                                                                <p style=" text-align: left;color:black"><b>Já esta sendo resolvido.</b></p>
+                                        </div>
+                                        <div class="borda" style="margin-bottom:15px;">
+                                                                <p style=" text-align: left;">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p>
+
+
+                                                                  <p  style=" text-align: left;">Absurdo o que esses alunos fazem com a própria univerdddade.</p>
+
+
+                                                        </div>
+                                                          <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
+                                                    <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
 
 
 
-                                                        <div class="card" >
+                                                        <div class="card"style="margin-bottom:20px;" >
                                                             <div class="row">
 
                                                               <div class="col-md-4 firstcol column">
@@ -1175,16 +1232,16 @@
                                                               <div class="col-md-4 secndcol column">
 
                                                                 <div class="row " >
-                                                                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public" data-toggle="collapse">Janela quebrada</a>
+                                                                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#public10" data-toggle="collapse">Janela quebrada</a>
                                                                 </div>
                                                                 <div class="row">
                                                                   <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
                                                                   <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                                                                  <a href="#" style="color:black;">ICC Norte</a>
+                                                                  <a  style="color:black;">ICC Norte</a>
                                                                 </div>
                                                                 <div class="row">
-                                                                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                                                                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
+                                                                  <a  class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
+                                                                  <a  style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
                                                                 </div>
                                                               </div>
 
@@ -1201,89 +1258,109 @@
                                                             </div>
                                                             <!--Expanded card1-->
                                                             <div class="card" >
-                                                              <div class="card collapse" id="public">
-                                                                <div class="pull-right">
-                                                                  <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                                                                    <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                                                                  </button></div>
-                                                              <div class="card-header textleft">
-                                                                  <p><img src="../../assets/img/avatar.png" class="rounded">
-                                                                  <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                                                                  </p>
-                                                                  Quebraram a janela do CA de agro....
-                                                                  </div>
-                                                              <div class="card-body" style="background-color:#fff">
-                                                                  <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                                                                  <div class="col-sm-12" >
-                                                                    <div class="form-group" >
-                                                                      <div class="col-sm-12">
-                                                                      <ul class="list-inline">
-                                                              <div class="pull-left">
-                                                                  <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i> <i style="color:red" class="fa fa-heart"></i>38 Curtidas</li>
+                                                              <div class="card collapse" id="public10">
+                                                                <div class="linha">
                                                                   </div>
                                                               <div class="pull-right">
-                                                                     <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-                                                              </div>
-                                                                      </ul>
-                                                              </div>
-                                                              </div>
-                                                              </div>
-                                                              </div>
-                                                              <div class="card-footer ">
-                                                              <div class="form-group" >
-                                                              <div class="linha">
-                                                              </div>
-                                                              <div class="row">
-                                                              <div class="col-sm-6">
-                                                              <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-                                                              </div>
-                                                              <div class="col-sm-6">
-
-                                                                <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-                                                              </div>
-                                                              </div>
-                                                              <div class="linha2">
-                                                              </div>
-                                                              </div>
-                                                              <div class="row-sm-4 ">
-                                                                  <div id="post02" class="collapse" aria-labelledby="head01">
-                                                                      <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                                                                        <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                                                          <p class="borda">Sacanagem...Que horror fazer isso com a universidade</p>
-                                                                          <p class="pull-left">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a>  Romário Ortoni</a></p>
-
-
-                                                                            <p class="borda">Esses alunos de humanas......pelo amor de Deus!!!!</p>
-
-                                                                      </div>
-                                                                  </div>
-                                                                    <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-                                                              <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-                                                              </div>
-                                                              </div>
-                                                              </div>
-
+                                                                <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                                                                  <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                                                                </button></div>
+                                                            <div class="card-header textleft">
+                                                                <p><img src="../../assets/img/mentor.jpg" class="rounded">
+                                                                <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
+                                                                </p>
+                                                                Quebraram a janela do CA de agro....
+                                                                </div>
+                                                            <div class="card-body" style="background-color:#fff">
+                                                                <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
+                                                                <div class="col-sm-12" >
+                                                                  <div class="form-group" >
+                                                                    <div class="col-sm-12">
+                                                                    <ul class="list-inline">
+                                                            <div class="pull-left">
+                                                                <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
+                                                                </div>
+                                                            <div class="pull-right">
+                                                                   <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
 
                                                             </div>
+                                                                    </ul>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="card-footer ">
+                                                            <div class="form-group" >
+                                                            <div class="linha">
+                                                            </div>
+                                                            <div class="row">
+                                                            <div class="col-sm-6">
+                                                            <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
+                                                            </div>
+                                                            <div class="col-sm-6">
 
-                                                            <!--/Expanded card1-->
+                                                              <button class="btn btn-link" data-toggle="collapse" data-target="#post10" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
+                                                            </div>
+                                                            </div>
+                                                            <div class="linha2">
+                                                            </div>
+                                                            </div>
 
-                                                        </div>
+                                                            <div class="row-sm-4 ">
+                                                                <div id="post10" class="collapse " aria-labelledby="head01">
+                                                                    <div class="card-body" style="margin-Top:30px;margin-bottom:30px">
+
+                                                <div class="borda" style="margin-bottom:15px;background-color: #007fff;">
+                                                                      <p style=" text-align: left;">  <img src="../../assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p>
 
 
-      </div>
-    </div>
+                                                                        <p style=" text-align: left;color:black"><b>Já esta sendo resolvido.</b></p>
+                                                </div>
+                                                <div class="borda" style="margin-bottom:15px;">
+                                                                        <p style=" text-align: left;">  <img src="../../assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p>
+
+
+                                                                          <p  style=" text-align: left;">Absurdo o que esses alunos fazem com a própria univerdddade.</p>
+
+
+                                                                </div>
+                                                                  <p class="pull-left">  <img src="../../assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
+                                                            <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                </div>
 
 <!--/Cards-->
 
 
 
+<div class="modal fade " id="post01" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content  modal-sm" >
+      <div class="modal-header" >
 
+        <div class="row">
+          <h4 style="color:red;text-align: center;" class="modal-title" id="modalLabel">Denunciar publicação</h4>
+</div>
+
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <p style="color:black;font-size:20px;">Esta publicação será denunciada. Deseja continuar?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger">Sim</button>
+ <button type="button" class="btn btn-primary" data-dismiss="modal">N&atilde;o</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="feed.ts"></script>
+
+</div>
 </div>
 
   <!--/ wrapper-->
