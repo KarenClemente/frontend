@@ -57,6 +57,7 @@
           <label style="font-size: 13px; ">Procurar funcionário</label>
           <div class="row" style="margin:0">
           <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString">
+          <br>
           <button class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#CadastroModal" style="padding:0; width:auto;">
           Novo Funcionário</button>
           </div>          
@@ -323,7 +324,7 @@
           <div class="modal-body">
     
             <div class="login-box-body">
-              <form (ngSubmit)="confirm(user)" #staffForm="ngForm">
+              <form #staffForm="ngForm">
                   <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
                    <div class="form-group" style="margin-bottom:0rem">
                     <!----- username -------------->

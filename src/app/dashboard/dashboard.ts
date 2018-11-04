@@ -10,7 +10,7 @@ export class DashboardComponent {
 
     constructor(private _router: Router) {}
 
-    goPerfi() {
+    goPerfil() {
       // alert('test');
       // window.location.href = '../pages/test.html';
       this._router.navigate(['/solved']);
@@ -26,5 +26,8 @@ export class DashboardComponent {
     }
     goStaff(){
       this._router.navigate(['/staff']);
+    }
+    goRanking(){
+      this._router.navigate(['/ranking']);
     }
 }

@@ -54,7 +54,7 @@ const appRoutes: Routes = [
     HttpModule,
     NgxMaskModule.forRoot(),
   ],
-  providers: [ServerProvider],
+  providers: [ ServerProvider ],
   bootstrap: [AppComponent],
   exports: [ RouterModule ]
 })

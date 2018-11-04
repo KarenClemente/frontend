@@ -338,6 +338,9 @@ input{
       border-radius: 50%;
       
     }
+    .s-layout__content > .row > button{
+      height: auto;
+    }
 
 
 @media (min-width: 48em) {
@@ -402,5 +405,8 @@ input{
   }
   .column > .cell > .row{
     font-size: 12px;
+  }
+  .s-layout__content > .row > button{
+    height: 30px;
   }
 }

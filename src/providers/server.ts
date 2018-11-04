@@ -4,9 +4,7 @@ import { Observable, of, from } from 'rxjs';
 import { User } from '../app/staff/user';
 import {catchError} from 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
-@Pipe({
-    name: 'filter'
-})
+
 @Injectable()
 export class ServerProvider implements PipeTransform {
     
