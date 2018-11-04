@@ -54,11 +54,13 @@
         </div>
         <div class="s-layout__content">
          <!-- <div class="container">-->
-          <label style="font-size: 13px">Procurar funcionário</label>
+          <label style="font-size: 13px; ">Procurar funcionário</label>
+          <div class="row" style="margin:0">
           <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString">
-          <button class="btn btn-primary pull-right" href="#" role="button" data-toggle="modal" data-target="#CadastroModal">Novo Funcionário</button>
-          <br>
-               <p>Tabela de funcionários cadastrados</p>  
+          <button class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#CadastroModal" style="padding:0; width:auto;">
+          Novo Funcionário</button>
+          </div>          
+               <p style="  background-color: #212529;  color: white;  text-align: center;">Tabela de funcionários cadastrados</p>  
                   <table class="table-bordered" id="staffList">
                     <thead>
                       <tr>
