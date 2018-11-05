@@ -69,9 +69,6 @@
               </div>
             </div>
           </div>
-
-      <!--/ Modal box-->
-        <!--Modal box-->
   <div class="modal fade" id="changeimg" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm">
 
@@ -96,11 +93,6 @@
               </div>
             </div>
             </div>
-
-      <!--/ Modal alterar imagem-->
-
-  <!--/ Navigation bar-->
-
 
     <!-- Sidebar-->
     <div class="s-layout__sidebar">
@@ -140,88 +132,59 @@
            </ul>
         </nav>
       </div>
-
-      <!--Modal box Alterar Senha-->
-      <div class="modal fade" id="changepsw" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-
-              <!-- Modal content no 1-->
-              <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
-                  <h4 class="modal-title text-center form-title" style="color: #0066cc;">Alterar senha</h4>
-                </div>
-                <div class="modal-body">
-
-                  <div class="login-box-body">
-                    <form action="#" method="post" name="changepsw">
-                        <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
-
-                        <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-                          <label for="pass" style="font-size: 1.3rem">Senha atual</label>
-                          <input class="form-control" placeholder="Senha atual" id="pass" type="password" name="pass" required=""/>
-                          <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
-
-                        </div>
-                        <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
-                          <label for="password1" style="font-size: 1.3rem">Nova Senha</label>
-                          <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required=""/>
-                          <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
-
-                        </div>
-                        <div class="form-group">                    <!----- password -------------->
-                          <label for="password2" style="font-size: 1.3rem">Confirme a senha</label>
-                          <input class="form-control" placeholder="Repita senha" id="password2" type="password" name="password2" required=""/>
-                          <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw2"></span>
-
-                          <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Cadastrar">
-                        </div>
-                      </form>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-          <!--/ Modal box Alterar Senha-->
-
     <!--/ Sidebar-->
 
         <div class="s-layout__content">
                 <!-- post //-->
                     <div class="mar">
 
-                        <!-- post //-->
-                        <div class="card" >
-                          <div class="pull-right">
-                            <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                              <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                            </button></div>
-                        <div class="card-header textleft">
-                            <p><img src="../../assets/img/mentor.jpg" class="rounded">
-                            <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                            </p>
-                            Quebraram a janela do CA de agro....
-                            </div>
-                        <div class="card-body" style="background-color:#fff">
-                            <p><img src="../../assets/img/janela.jpg" class="img-responsive"></p>
-                            <div class="col-sm-12" >
-                              <div class="form-group" >
-                                <div class="col-sm-12">
-                                <ul class="list-inline">
-                        <div class="pull-left">
-                            <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
-                            </div>
+                      <div class="card" *ngFor="let post of posts">
                         <div class="pull-right">
-                               <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-                        </div>
+                            <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+                                <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+                              </button></div>
+                          <div class="card-header textleft">
+                              <div class="col-xs-2" style="width:auto; padding:1;">
+                              <img [src]="post?.user.profilePicture" style="object-fit:cover;">
+                              </div>
+                              <p style="padding-top:5px;">
+                              <a>  {{post?.user.name}}</a>
+                              publicou
+                              <b>{{post?.title}}</b>
+                              {{post?.date}} às {{post?.hour}}
+                            </p>
+                            </div>
+                            <div class="row">
+                              <div class="col text-center" style="text-align:center;">
+                              <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
+                              <p>
+                                {{post?.location}}
+                              </p>
+                              </div>
+                            </div>
+                            <div class="card-body" style="background-color:#fff; text-align: justify;">
+                              <img [src]="post?.image">
+                              <p>
+                                {{post?.description}}
+                              </p>
+                              <div class="row">
+                              <div class="col-sm-12">
+                                <ul class="list-inline">
+                                  <div class="textleft">
+                                    <p>
+                                      <i class="fa fa-thumbs-up"></i>
+                                      {{post?.likes}}
+                                      <i class="fa fa-comments"></i>
+                                      {{post?.comments}}
+                                    </p>
+                                    </div>
                                 </ul>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
+                              </div>
+                              </div>
+                          </div>
+                          
+                     </div>
+                        <!-- 
                         <div class="card-footer ">
                         <div class="form-group" >
                         <div class="linha">
@@ -336,11 +299,10 @@
 
 
                         </div>
-                        </div>
+                        </div>-->
 
 
 
-                        <!-- post //-->
 
 <!--
                       <div class="container pull-right">

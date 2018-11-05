@@ -281,13 +281,15 @@ left: 0;
    .s-layout__content {
       margin-left: 4em;
    }
-
-
    /* Sidebar */
 
    .s-sidebar__nav {
       width: 4em;
       left: 0;
+   }
+
+   .col-sm-12 > .list-inline > .textleft > p{
+    font-size:2vw;
    }
 
    .s-sidebar__nav:hover em,
@@ -388,6 +390,10 @@ Feed
   .card .card-header img{
     width: 40px;
     height: 40px;
+    border-radius: 50%;
+  }
+  .card .card-body img{
+    width:100%;
   }
   .card .card-footer{
     padding-top: 10px;
@@ -621,6 +627,11 @@ em:hover,
       margin-right: -50px;
 
 }
+.card .card-header img{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
 .list-inline{
 
   font-size: 12px;
@@ -694,10 +705,13 @@ color: transparent;
 {
 color: rgb(101, 191, 91);
 }
+.col-sm-12 > .list-inline > .textleft > p{
+  font-size:2vw;
+ }
 }
 
 
-@media (min-width: 58em) {
+@media (min-width: 48em) {
   .s-layout__content {
      margin-left: 15em;
      margin-right: 15em;
@@ -706,6 +720,14 @@ color: rgb(101, 191, 91);
   .mar{
     min-width: 500px;
 
+}
+.col-sm-12 > .list-inline > .textleft > p{
+  font-size:1vw;
+ }
+.card .card-header img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
   .card{
     width: 550px;
