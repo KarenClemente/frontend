@@ -190,7 +190,10 @@
 
         <div class="s-layout__content">
                 <!-- post //-->
-                    <div class="mar">
+                    <div class="mar" infinite-scroll
+                    [infiniteScrollDistance]="2"
+                    [infiniteScrollThrottle]="1"
+                    (scrolled)="onScroll()">
 
                         <!-- post //-->
                         <div class="card" >

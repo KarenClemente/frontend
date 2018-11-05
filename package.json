@@ -22,6 +22,8 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "angular-infinite-scroll": "^3.1.1",
+    "angular2-infinite-scroll": "^0.3.5",
     "bootstrap": "^3.3.7",
     "brmasker": "^1.0.19",
     "core-js": "^2.5.4",
