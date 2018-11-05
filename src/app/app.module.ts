@@ -7,8 +7,6 @@ import {ServerProvider} from '../providers/server';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {NgxMaskModule} from 'ngx-mask';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
-
 
 
 // Pages
@@ -55,7 +53,6 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     NgxMaskModule.forRoot(),
-    InfiniteScrollModule
   ],
   providers: [ ServerProvider ],
   bootstrap: [AppComponent],
