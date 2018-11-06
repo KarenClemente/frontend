@@ -2,7 +2,8 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable, of, from } from 'rxjs';
 import { User } from '../app/staff/user';
-import { Post } from '../app/feed/post'
+import { Post } from '../app/feed/post';
+import { Comment } from '../app/feed/comment'
 import {catchError} from 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
 
@@ -311,10 +312,15 @@ export class ServerProvider implements PipeTransform {
         new User('1527364826','Ana Galvão','anag@gmail.com', '7263817','29/12/1929')
     ];    
 
+    COMMENTS = [
+        new Comment(0,'eita vish maria',{name:'Fumaloj shshhs', profilePicture:'../../assets/img/avatar.png'}),
+        new Comment(1,'eita vish maria',{name:'Fumaloj shshhs', profilePicture:'../../assets/img/avatar.png'}),
+        new Comment(2,'eita vish maria',{name:'Fumaloj shshhs', profilePicture:'../../assets/img/avatar.png'}),
+        new Comment(3,'eita vish maria',{name:'Fumaloj shshhs', profilePicture:'../../assets/img/avatar.png'})
+    ]
     public cusId: any;
     public hasCusId: boolean;
     public user: any;
-    public Posts = [];
     
     constructor(public http: Http) {
       this.hasCusId = false;
@@ -400,6 +406,9 @@ export class ServerProvider implements PipeTransform {
     }
     getAllPosts(): Observable<Post[]>{
         return of(this.POSTS);
+    }
+    getAllComments(): Observable<Comment[]>{
+        return of(this.COMMENTS);
     }
     add(user){
         let maxIndex = this.USERS.length-1;
