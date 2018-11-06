@@ -18,6 +18,7 @@ export class FeedComponent implements OnInit {
   scrollDistance = 2;
   post: any = {};
   allPosts: Post[];
+  originalPosts: Post[];
   obsPosts: Observable<Post[]>;
   comment: any = {};
   allComments: Comment[];
@@ -29,11 +30,25 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(){
     this.server.getAllPosts()
-      .subscribe(posts => this.allPosts = posts);
-    this.obsPosts = this.server.getAllPosts();
+      .subscribe((response) => {
+        this.originalPosts = response;
+        this.allPosts = this.allPosts.slice(0,5);
+      });
     this.server.getAllComments()
-      .subscribe(comments => this.allComments = comments);
-    this.obsComments = this.server.getAllComments();
+      .subscribe((comments) => {
+        this.allComments = comments;
+        this.comment = comments.slice(0,2);
+  });
+}
+
+  onScrollDown(){
+    if(this.allPosts.length < this.originalPosts.length){
+      let len = this.allPosts.length;
+
+      for(let i = len; i <= len+5; i++){
+        this.allPosts.push(this.originalPosts[i]);
+      }
+    }
   }
 }
     

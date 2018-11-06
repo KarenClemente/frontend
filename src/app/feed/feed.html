@@ -136,13 +136,8 @@
 
         <div class="s-layout__content">
                 <!-- post //-->
-                    <div class="mar">
-                      <div class="search-results"
-                        infinite-scroll
-                        [infiniteScrollDistance] = "scrollDistance"
-                        [infiniteScrollThrottle] = "throttle"
-                        (scrolled) = "onScrollDown()">
-                      <div class="card" *ngFor="let post of allPosts">
+                    <div *ngIf="allPosts?.length" > 0;else noPosts" class="search-results" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollUpDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScrollDown()" [scrollWindow]="false">
+                      <div class="card" *ngFor="let post of allPosts | async ">
                         <div class="pull-right">
                             <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
                                 <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
@@ -195,7 +190,6 @@
                               </div>
                      </div>
                       </div>
-                    </div>
                     </div>
         </div>
                         <!-- 
