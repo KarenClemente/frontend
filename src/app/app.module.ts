@@ -16,8 +16,6 @@ import { MadeByMeComponent } from './madeByme/madeByme';
 import { SolvedComponent } from './solved/solved';
 import { LikedComponent } from './liked/liked';
 import { RankingComponent } from './ranking/ranking';
-import { StaffComponent } from './staff/staff';
-import { DashboardComponent } from './dashboard/dashboard';
 import { PostComponent } from './post/post';
 import { FeedComponent } from './feed/feed';
 
@@ -28,8 +26,6 @@ const appRoutes: Routes = [
   { path: 'solved', component: SolvedComponent },
   { path: 'liked', component: LikedComponent },
   { path: 'ranking', component: RankingComponent },
-  { path: 'staff', component: StaffComponent },
-  { path: 'dashboard', component: DashboardComponent },
   { path: 'post', component: PostComponent },
   { path: 'feed', component: FeedComponent }
 ];
@@ -41,9 +37,7 @@ const appRoutes: Routes = [
     MadeByMeComponent,
     SolvedComponent,
     RankingComponent,
-    StaffComponent,
     LikedComponent,
-    DashboardComponent,
     PostComponent,
     FeedComponent
   ],

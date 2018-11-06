@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Added
 import { ServerProvider} from '../../providers/server';
-import { Post } from './post';
-import { Comment } from './comment'
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,44 +9,36 @@ import { Observable } from 'rxjs';
   styleUrls: ['./feed.css']
 })
 
-export class FeedComponent implements OnInit {
+export class FeedComponent {
 
-  sum = 10;
-  throttle = 50;
-  scrollDistance = 2;
-  post: any = {};
-  allPosts: Post[];
-  originalPosts: Post[];
-  obsPosts: Observable<Post[]>;
-  comment: any = {};
-  allComments: Comment[];
-  obsComments: Observable<Comment[]>;
   
+  public posts: Array<any>;
+  public likedPosts: Array<any>;
+
     constructor(private _router: Router, private server: ServerProvider) {
-    
+      
+      this.posts = [];
+      this.likedPosts = [];  
+
+      this.posts.push(
+        {
+         id:1,
+         title:'hushsuhus', 
+         image:'./assets/img/poste.jpeg',
+         location:'./assets/img/poste.jpeg',
+         description:'./assets/img/poste.jpeg',
+         likes:11,
+         commentnum:2,
+         ranking:1,
+         liked:true,
+         date:'11/11/2018',
+         hour:'16:11',
+         user:{
+           name:'Funaaa',
+           profilePicture:'./assets/img/avatar.png',
+         }
+        })      
   }
 
-  ngOnInit(){
-    this.server.getAllPosts()
-      .subscribe((response) => {
-        this.originalPosts = response;
-        this.allPosts = this.allPosts.slice(0,5);
-      });
-    this.server.getAllComments()
-      .subscribe((comments) => {
-        this.allComments = comments;
-        this.comment = comments.slice(0,2);
-  });
-}
-
-  onScrollDown(){
-    if(this.allPosts.length < this.originalPosts.length){
-      let len = this.allPosts.length;
-
-      for(let i = len; i <= len+5; i++){
-        this.allPosts.push(this.originalPosts[i]);
-      }
-    }
-  }
 }
     
