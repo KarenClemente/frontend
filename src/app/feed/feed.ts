@@ -9,9 +9,10 @@ import { Router } from '@angular/router'; // Added
 export class FeedComponent {
 
   public posts = []; 
+  public comments = [];
 
     constructor(private _router: Router) {
-
+    
     this.posts= [];
     this.posts.push({
     
@@ -21,7 +22,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -57,7 +58,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -75,7 +76,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -93,7 +94,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -111,7 +112,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -129,7 +130,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -147,7 +148,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -165,7 +166,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -183,7 +184,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -201,7 +202,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -219,7 +220,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -237,7 +238,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -255,7 +256,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -273,7 +274,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -291,7 +292,7 @@ export class FeedComponent {
       location: "Estacionamento",
       description: "Poste com defeito no estacionamento da FT blablaabla",
       likes: 123,
-      comments: 4,
+      commentnum: 4,
       ranking: 1,
       liked: true,
       date: "28/09/2018",
@@ -300,8 +301,54 @@ export class FeedComponent {
         name: "Fulano de tal",
         profilePicture: "../../assets/img/avatar.png"
       }
+    }
+    );
+
+    this.comments = [];
+    this.comments.push({
+
+      id:0,
+      com:"isso ai ta ai nao sei uanto tempo agaygaysahkjshjha ha jhsjksjkjd snkjsn dkjs ndk jnjksndkjsnkjsdndkn,m",
+      user: {
+        name: "Fulano de tal",
+        profilePicture: "../../assets/img/avatar.png"
+      }
     },
-    )};
+    {
+    id:1,
+    com:"isso ai ta ai nao sei uanto tempo agaygaysahkjshjha ha jhsjksjkjd snkjsn dkjs ndk jnjksndkjsnkjsdndkn,m",
+    user: {
+      name: "Fulano de tal",
+      profilePicture: "../../assets/img/avatar.png",
+    }
+    },
+    {
+    id:2,
+    com:"isso ai ta ai nao sei uanto tempo agaygaysahkjshjha ha jhsjksjkjd snkjsn dkjs ndk jnjksndkjsnkjsdndkn,m",
+    user: {
+      name: "Fulano de tal",
+      profilePicture: "../../assets/img/avatar.png"
+    }
+    },
+    {
+      id:3,
+      com:"isso ai ta ai nao sei uanto tempo agaygaysahkjshjha ha jhsjksjkjd snkjsn dkjs ndk jnjksndkjsnkjsdndkn,m",
+      user: {
+        name: "Fulano de tal",
+        profilePicture: "../../assets/img/avatar.png"
+      }
+      },
+      {
+        id:4,
+        com:"isso ai ta ai nao sei uanto tempo agaygaysahkjshjha ha jhsjksjkjd snkjsn dkjs ndk jnjksndkjsnkjsdndkn,m",
+        user: {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+        },
+    );
+  
+  };
 
     doInfinite(infiniteScroll){
       console.log('Begin async operation');
