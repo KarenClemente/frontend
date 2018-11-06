@@ -2,12 +2,304 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable, of, from } from 'rxjs';
 import { User } from '../app/staff/user';
+import { Post } from '../app/feed/post'
 import {catchError} from 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ServerProvider implements PipeTransform {
+
+    POSTS = [
+        new Post(
     
+            0,
+            'Poste com defeito',
+            '../../assets/img/poste.jpeg',
+            'Estacionamento',
+            'Poste com defeito no estacionamento da FT blablaabla',
+            123,
+            4,
+            1,
+            true,
+            '28/09/2018',
+            '16:30',
+            {
+              name: "Fulano de tal",
+              profilePicture: "../../assets/img/avatar.png"
+            }
+    ),
+      new Post(
+      
+        1,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        2,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        3,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        4,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        5,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        6,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        7,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        8,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        9,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        10,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        11,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        12,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        13,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        14,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    new Post(
+      
+        15,
+        'Poste com defeito',
+        '../../assets/img/poste.jpeg',
+        'Estacionamento',
+        'Poste com defeito no estacionamento da FT blablaabla',
+        123,
+        4,
+        1,
+        true,
+        '28/09/2018',
+        '16:30',
+        {
+          name: "Fulano de tal",
+          profilePicture: "../../assets/img/avatar.png"
+        }
+    ),
+    ];
+
     USERS = [
         new User('130125288','Mariana Varanda','varandaeng@gmail.com', '7263817','29/12/1929'),
         new User('120048374','Lucas Correa Cerqueira Soares','lcorrea@gmail.com', '7263817','29/12/1929'),
@@ -21,7 +313,8 @@ export class ServerProvider implements PipeTransform {
 
     public cusId: any;
     public hasCusId: boolean;
-	public user: any;
+    public user: any;
+    public Posts = [];
     
     constructor(public http: Http) {
       this.hasCusId = false;
@@ -104,6 +397,9 @@ export class ServerProvider implements PipeTransform {
 
     getAllUsers(): Observable<User[]>{
         return of(this.USERS);
+    }
+    getAllPosts(): Observable<Post[]>{
+        return of(this.POSTS);
     }
     add(user){
         let maxIndex = this.USERS.length-1;
