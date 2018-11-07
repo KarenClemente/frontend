@@ -181,7 +181,7 @@
           </div>
         </div>
             <div class="linha2"></div>
-      </div>
+    </div>
       <div class="card-footer" *ngIf="collapsedFooter">
         <div class="card-header textleft">
           <div class="col-xs-2" style="width:auto;">
@@ -195,7 +195,20 @@
             {{post?.comment.com}}
           </p>
       </div>
+
     </div>
+    <div class="textleft">
+                  <div class="col-xs-2" style="width:auto;">
+                    <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;width:30px;height:30px">
+                  </div>
+                  <p class="borda">
+
+                    <a>  {{post?.comment.user.name}}</a>
+                    <br>
+                  <input type="text" class="form-control"  style="border-radius: 10px;">
+                  </p>
+
+            </div>
   </div>
   </div>
  </div>
