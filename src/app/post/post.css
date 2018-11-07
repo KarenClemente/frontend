@@ -50,6 +50,10 @@ div.center {
         width:300px;
         line-height: 30px;
         }
+  
+  .modal-body{
+
+  }
 /***********************************
 Navigation bar
 ************************************/
@@ -180,7 +184,7 @@ top: 90%;
 left: 50%;
 transform: translate(-50%, -50%);
 }
-.card{
+.s-layout__content > .mar > .group >.card{
   background-color:#fff;
   margin-top:20px;
   margin-bottom:15px;
@@ -192,6 +196,12 @@ transform: translate(-50%, -50%);
     -moz-box-shadow: 10px 3px 81px 2px rgba(101,191,91,1);
     box-shadow: 10px 3px 81px 2px rgba(101,191,91,1);
    }
+   .modal-body > .mar >.card{
+    background-color:#fff;
+    margin-top:20px;
+    margin-bottom:15px;
+    border-radius: 10px;
+    }
 
     .card .card-header{
       padding-top: 10px;
@@ -212,7 +222,8 @@ transform: translate(-50%, -50%);
         padding-bottom: 10px;
     
       }
-    select {
+    
+     select {
       width: 17em;
       text-align: center;
     }
@@ -284,6 +295,11 @@ margin-left: 8px;
 }
 .card{
   max-width: 550px;
+  height: auto;
+  min-width: 260px;
+}
+.modal-dialog{
+  max-width: 100%;
   height: auto;
   min-width: 260px;
 }
