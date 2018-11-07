@@ -114,6 +114,9 @@ export class ServerProvider {
     return this.http.put('https://sosunb.000webhostapp.com/api/api/user/', obj, options).toPromise();
     };
 
-    
+    //demands
+    getAllDemands(page:number){
+        
+    }
 }
 
