@@ -28,6 +28,7 @@
         </ul>
       </div>
   </nav>
+  <!--/Navigation bar-->
   <!--Modal box-->
   <div class="modal fade" id="changepsw" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm">
@@ -69,81 +70,8 @@
                 </div>
               </div>
             </div>
-          </div>
-
-      <!--/ Modal box-->
-        <!--Modal box-->
-  <div class="modal fade" id="changeimg" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-
-          <!-- Modal alterar imagem-->
-          <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title text-center form-title" style="color: #0066cc;">Alterar foto de perfil</h4>
-            </div>
-            <div class="modal-body">
-
-              <div class="login-box-body">
-
-                    <p class="login-box-msg" style="color: grey;">Insira uma foto</p>
-                    <form action="#" method="post" name="changeimg" style="width: 350px; margin-left:-20px;" >
-                     <input class="form-control" id="perfilImg" type="file" name="perfilImg" accept="image/*"/>
-
-                      <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Alterar">
-                      </form>
-                    </div>
-                </div>
-              </div>
-            </div>
-            </div>
-
-      <!--/ Modal alterar imagem-->
-
-  <!--/ Navigation bar-->
-
-
-    <!-- Sidebar-->
-    <div class="s-layout__sidebar">
-        <nav class="s-sidebar__nav" style="margin-top: 60px;">
-
-
-           <ul>
-                <img src="./assets/img/avatar.png">
-            <li>
-                 <a class="s-sidebar__nav-link" href="#" data-target="#changeimg" data-toggle="modal" >
-                    <i class="fa fa-camera"></i><em>Editar Foto</em>
-                 </a>
-
-            </li>
-              <li>
-                 <a class="s-sidebar__nav-link" routerLink="/post">
-                   <i class="fa fa-newspaper-o"></i><em>Publicar</em>
-                 </a>
-              </li>
-              <li>
-                 <a class="s-sidebar__nav-link" href="#demo" data-toggle="collapse">
-                    <i class="fa fa-pencil-square-o"></i><em>Demandas</em>
-                 </a>
-              </li>
-              <div id="demo" class="collapse in">
-                <div style="margin-left: 60px; margin-top: 8px; padding-top: 40px;"><a  style="text-decoration: none;" routerLink="/madeByme" >Criadas</a></div>
-                <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;"routerLink="/liked" >Curtidas/<br>Comentadas</a></div>
-                <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;" routerLink="/solved">Solucionadas</a></div>
-
-              </div>
-
-              <li>
-                 <a class="s-sidebar__nav-link"  href="#" data-target="#changepsw" data-toggle="modal">
-                    <i class="fa fa-unlock-alt"></i><em>Alterar Senha</em>
-                 </a>
-              </li>
-           </ul>
-        </nav>
-      </div>
-
-      <!--Modal box Alterar Senha-->
-      <div class="modal fade" id="changepsw" role="dialog" aria-hidden="true">
+  </div>
+  <div class="modal fade" id="changepsw" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-sm">
 
               <!-- Modal content no 1-->
@@ -183,378 +111,166 @@
                     </div>
                   </div>
                 </div>
-              </div>
+  </div>
+  <div class="modal fade" id="changeimg" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
 
-          <!--/ Modal box Alterar Senha-->
-
-    <!--/ Sidebar-->
-
-    <!--Cards-->
-    <div class="s-layout__content">
-      <div class="mar">
-
-        <!--Título-->
-        <div class="card" >
-        <div class="card-header textcenter">
-            <h2 style="color:#0066cc;">Demandas Curtidas/Comentadas</h2>
+          <!-- Modal alterar imagem-->
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title text-center form-title" style="color: #0066cc;">Alterar foto de perfil</h4>
             </div>
-        </div>
-        <!--/Título-->
+            <div class="modal-body">
 
+              <div class="login-box-body">
 
+                    <p class="login-box-msg" style="color: grey;">Insira uma foto</p>
+                    <form action="#" method="post" name="changeimg" style="width: 350px; margin-left:-20px;" >
+                     <input class="form-control" id="perfilImg" type="file" name="perfilImg" accept="image/*"/>
 
-
-        <!--Card1-->
-        <div class="card" >
-            <div class="row">
-
-              <div class="col-md-4 firstcol column">
-                <img src="./assets/img/AC.jpg" class="rounded" style="width: 70px; height:70px;"  vspace="5">
-              </div>
-
-              <div class="col-md-4 secndcol column">
-
-                <div class="row " >
-                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#liked" data-toggle="collapse">Ar Condicionado Quebrado</a>
-                </div>
-                <div class="row">
-                  <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
-                  <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                  <a href="#" style="color:black;">ICC Sul</a>
-                </div>
-                <div class="row">
-                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>55 Curtidas</a>&nbsp;
-                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>10 Comentários</a>
-                </div>
-              </div>
-
-              <div class="col-md-4 thirdcol column" >
-                <i class="fa fa-check-circle" style="font-size:24px; color:rgb(101, 191, 91);" title="Solucionado!"></i>
-              </div>
-            </div>
-            <!--Expanded card1-->
-            <div class="card" >
-              <div class="card collapse" id="liked">
-                <div class="linha">
-                </div>
-              <div class="pull-right">
-                <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                  <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                </button></div>
-            <div class="card-header textleft">
-                <p><img src="./assets/img/mentor.jpg" class="rounded">
-                <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                </p>
-                Quebraram a janela do CA de agro....
-                </div>
-            <div class="card-body" style="background-color:#fff">
-                <p><img src="./assets/img/AC.jpg" class="img-responsive"></p>
-                <div class="col-sm-12" >
-                  <div class="form-group" >
-                    <div class="col-sm-12">
-                    <ul class="list-inline">
-            <div class="pull-left">
-                <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
-                </div>
-            <div class="pull-right">
-                   <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-            </div>
-                    </ul>
-            </div>
-            </div>
-            </div>
-            </div>
-            <div class="card-footer ">
-            <div class="form-group" >
-            <div class="linha">
-            </div>
-            <div class="row">
-            <div class="col-sm-6">
-            <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-            </div>
-            <div class="col-sm-6">
-
-              <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-            </div>
-            </div>
-            <div class="linha2">
-            </div>
-            </div>
-            <div class="row-sm-4 ">
-                <div id="post02" class="collapse" aria-labelledby="head01">
-                    <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                      <p class="pull-left">  <img src="./assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p><br>
-
-
-                        <p class="borda pull-left">A prefeitura já tomou ciencia e tomará as devidas providencias</p><br>
-                        <p class="pull-left">  <img src="./assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p><br>
-
-
-                          <p class="borda pull-left">Absurdo o que esses alunos fazem com a própria universidade.</p><br>
-
+                      <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Alterar">
+                      </form>
                     </div>
                 </div>
-                  <p class="pull-left">  <img src="./assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-            <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-            </div>
-            </div>
-            </div>
-            </div>
-            <!--/Expanded card1-->
-        </div>
-        <!--/Card1-->
-
-        <!--Card2-->
-        <div class="card" >
-            <div class="row">
-
-              <div class="col-md-4 firstcol column">
-                <img src="./assets/img/janela.jpg" class="rounded" style="width: 70px; height:70px;"  vspace="5">
-              </div>
-
-              <div class="col-md-4 secndcol column">
-
-                <div class="row " >
-                <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#liked2" data-toggle="collapse">Janela quebrada</a>
-                </div>
-                <div class="row">
-                  <a class="text-muted"> 14/09/2018 às 17:58</a>&nbsp;
-                  <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                  <a href="#" style="color:black;">ICC Norte</a>
-                </div>
-                <div class="row">
-                  <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>38 Curtidas</a>&nbsp;
-                  <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>5 Comentários</a>
-                </div>
-              </div>
-
-              <div class="col-md-4 thirdcol column" >
-                <i class="fa fa-check-circle" style="font-size:24px; color:rgb(101, 191, 91);" title="Solucionado!"></i>
               </div>
             </div>
-            <!--Expanded card2-->
-            <div class="card" >
-              <div class="card collapse" id="liked2">
-                <div class="linha">
-                </div>
-              <div class="pull-right">
-                <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                  <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-                </button></div>
-            <div class="card-header textleft">
-                <p><img src="./assets/img/mentor.jpg" class="rounded">
-                <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-                </p>
-                Quebraram a janela do CA de agro....
-                </div>
-            <div class="card-body" style="background-color:#fff">
-                <p><img src="./assets/img/janela.jpg" class="img-responsive"></p>
-                <div class="col-sm-12" >
-                  <div class="form-group" >
-                    <div class="col-sm-12">
-                    <ul class="list-inline">
-            <div class="pull-left">
-                <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
-                </div>
-            <div class="pull-right">
-                   <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-            </div>
-                    </ul>
-            </div>
-            </div>
-            </div>
-            </div>
-            <div class="card-footer ">
-            <div class="form-group" >
-            <div class="linha">
-            </div>
-            <div class="row">
-            <div class="col-sm-6">
-            <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-            </div>
-            <div class="col-sm-6">
-
-              <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-            </div>
-            </div>
-            <div class="linha2">
-            </div>
-            </div>
-            <div class="row-sm-4 ">
-                <div id="post02" class="collapse" aria-labelledby="head01">
-                    <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
+  </div>
+  <!--/ Modal box-->
+  <!-- Sidebar-->
+  <div class="s-layout__sidebar">
+        <nav class="s-sidebar__nav" style="margin-top: 60px;">
 
 
-                      <p class="pull-left">  <img src="./assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p><br>
+           <ul>
+                <img src="./assets/img/avatar.png">
+            <li>
+                 <a class="s-sidebar__nav-link" href="#" data-target="#changeimg" data-toggle="modal" >
+                    <i class="fa fa-camera"></i><em>Editar Foto</em>
+                 </a>
 
+            </li>
+              <li>
+                 <a class="s-sidebar__nav-link" routerLink="/post">
+                   <i class="fa fa-newspaper-o"></i><em>Publicar</em>
+                 </a>
+              </li>
+              <li>
+                 <a class="s-sidebar__nav-link" href="#demo" data-toggle="collapse">
+                    <i class="fa fa-pencil-square-o"></i><em>Demandas</em>
+                 </a>
+              </li>
+              <div id="demo" class="collapse in">
+                <div style="margin-left: 60px; margin-top: 8px; padding-top: 40px;"><a  style="text-decoration: none;" routerLink="/madeByme" >Criadas</a></div>
+                <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;"routerLink="/liked" >Curtidas/<br>Comentadas</a></div>
+                <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;" routerLink="/solved">Solucionadas</a></div>
 
-                        <p class="borda pull-left">A prefeitura já tomou ciencia e tomará as devidas providencias</p><br>
-                        <p class="pull-left">  <img src="./assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p><br>
+              </div>
 
-
-                          <p class="borda pull-left">Absurdo o que esses alunos fazem com a própria universidade.</p><br>
-
-                    </div>
-                </div>
-                  <p class="pull-left">  <img src="./assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-            <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-            </div>
-            </div>
-            </div>
-            </div>
-            <!--/Expanded card2-->
-        </div>
-      <!--/Card2-->
-
-      <!--Card3-->
+              <li>
+                 <a class="s-sidebar__nav-link"  href="#" data-target="#changepsw" data-toggle="modal">
+                    <i class="fa fa-unlock-alt"></i><em>Alterar Senha</em>
+                 </a>
+              </li>
+           </ul>
+        </nav>
+  </div>
+  <!--/ Sidebar-->
+  <!--Cabeçalho-->
+  <div class="s-layout__content">
+    <div class="mar">
       <div class="card" >
-          <div class="row">
-
-            <div class="col-md-4 firstcol column">
-              <img src="./assets/img/pc.jpg" class="rounded" style="width: 70px; height:70px;"  vspace="5">
-            </div>
-
-            <div class="col-md-4 secndcol column">
-
-              <div class="row " >
-              <a style="font-size: 20px; text-decoration: none; color:#0066cc;"  href="#liked3" data-toggle="collapse">Computador Quebrado</a>
-              </div>
-              <div class="row">
-                <a class="text-muted"> 17/05/2001 às 17:58</a>&nbsp;
-                <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-                <a href="#" style="color:black;">Faculdade de Tecnologia</a>
-              </div>
-              <div class="row">
-                <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>55 Curtidas</a>&nbsp;
-                <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>10 Comentários</a>
-              </div>
-            </div>
-
-            <div class="col-md-4 thirdcol column" >
-              
-            </div>
-          </div>
-          <!--Expanded card3-->
-          <div class="card" >
-            <div class="card collapse" id="liked3">
-              <div class="linha">
-              </div>
-            <div class="pull-right">
-              <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
-                <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-              </button></div>
-          <div class="card-header textleft">
-              <p><img src="./assets/img/mentor.jpg" class="rounded">
-              <a href="url">   Michael Gomes</a> publicou <b> Janela quebrada</b> em <a href="url">ICC-SUL</a><a class="text-muted"> 14/09/2018 as 17:58</a>
-              </p>
-              Quebraram a janela do CA de agro....
-              </div>
-          <div class="card-body" style="background-color:#fff">
-              <p><img src="./assets/img/pc.jpg" class="img-responsive"></p>
-              <div class="col-sm-12" >
-                <div class="form-group" >
-                  <div class="col-sm-12">
-                  <ul class="list-inline">
-          <div class="pull-left">
-              <li style="font-family:Arial" class="text-muted"><i style="color:blue" class="fa fa-thumbs-up"></i>      38 Curtidas</li>
-              </div>
-          <div class="pull-right">
-                 <li style="font-family:Arial" class="text-muted"> 25 Comentários</li>
-
-          </div>
-                  </ul>
-          </div>
-          </div>
-          </div>
-          </div>
-          <div class="card-footer ">
-          <div class="form-group" >
-          <div class="linha">
-          </div>
-          <div class="row">
-          <div class="col-sm-6">
-          <button class="btn btn-link" aria-expanded="false">  <a style="font-size:18px" href="#" id="plus-btn"><i class="fa fa-thumbs-o-up"></i> Like</a></button>
-          </div>
-          <div class="col-sm-6">
-
-            <button class="btn btn-link" data-toggle="collapse" data-target="#post02" aria-expanded="false" aria-controls="post02"><p  style="font-size:18px" href="#"><i class="fa fa-comment-o"></i> Comentarios</p></button>
-          </div>
-          </div>
-          <div class="linha2">
-          </div>
-          </div>
-          <div class="row-sm-4 ">
-              <div id="post02" class="collapse" aria-labelledby="head01">
-                  <div class="card-body " style="margin-Top:30px;margin-bottom:30px">
-
-
-                    <p class="pull-left">  <img src="./assets/img/UnB.png" class="rounded2"><a> <b style="color:black"> Prefeitura-Unb</b></a></p><br>
-
-
-                      <p class="borda pull-left">A prefeitura já tomou ciencia e tomará as devidas providencias</p><br>
-                      <p class="pull-left">  <img src="./assets/img/avatar.jpg" class="rounded2"><a> Nelson Freitas</a></p><br>
-
-
-                        <p class="borda pull-left">Absurdo o que esses alunos fazem com a própria universidade.</p><br>
-
-                  </div>
-              </div>
-                <p class="pull-left">  <img src="./assets/img/avatar2.png" class="rounded2"><a>  Karen Clemente</a></p>
-          <input  style="background-color:rgb(242,244,247);   border-radius: 18px;" type="text" class="form-control " id="comentarios" placeholder="Escreva um comentario...." >
-          </div>
-          </div>
-          </div>
-          </div>
-          <!--/Expanded card3-->
+        <div class="card-header textcenter">
+          <h2 style="color:#0066cc;">Demandas Curtidas/Comentadas</h2>
+        </div>
       </div>
-      <!--/Card3-->
-
-
-
-
-
+  <!--Cabeçalho-->
+  <!--Card-->
+  <div class="card" *ngFor="let post of posts">
+    <div class="row" (click)="collapsed=!collapsed">
+      <div class="col-md-4 firstcol column">
+        <img [src]="post?.image" class="rounded" style="width: 70px; height:70px;"  vspace="5">
+      </div>
+      <div class="col-md-4 secndcol column">
+        <div class="row " >
+          <a style="font-size: 20px; text-decoration: none; color:#0066cc;"   (click)="collapsed=!collapsed">{{post?.title}}</a>
+        </div>
+        <div class="row">
+          <a class="text-muted"> {{post?.date}} às {{post?.hour}}</a>&nbsp;
+          <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
+          <a href="#" style="color:black;">{{post?.location}}</a>
+        </div>
+        <div class="row">
+          <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>{{post?.likes}}</a>&nbsp;
+          <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>{{post?.commentnum}} comentários</a>
+        </div>
+      </div>
+      <div class="col-md-4 thirdcol column" >
+        <i class="fa fa-check-circle" style="font-size:24px; color:rgb(101, 191, 91);" title="Solucionado!"></i>
       </div>
     </div>
-
-<!--/Cards-->
-
-
-
-
+  <!--Expanded card1-->
+    <div class="card" *ngIf="collapsed">
+      <div class="pull-right">
+        <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+          <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+        </button>
+      </div>
+      <div class="card-header textleft">
+        <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
+          <img [src]="post?.user.profilePicture" style="object-fit:cover; border-radius: 50%;">
+        </div>
+        <p style="padding-top:5px;">
+          <a>  {{post?.user.name}}</a>
+          publicou
+          <b>{{post?.title}}</b>
+          em<br>
+          <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
+          {{post?.location}} {{post?.date}} às {{post?.hour}}
+        </p>
+      </div>
+      <div class="card-body" style="background-color:#fff; text-align: justify;">
+        <img [src]="post?.image" style="width:100%">
+        <p>
+        {{post?.description}}
+        </p>
+        <div class="row">
+          <div class="col-sm-12">
+            <ul class="list-inline">
+              <div class="textleft">
+                <p>
+                  <i class="fa fa-thumbs-up"></i>
+                  {{post?.likes}}
+                  <i class="fa fa-comments btn btn-link" style="padding-right:0;"></i>
+                    <a class="btn btn-link" style="padding:0;" (click)="collapsedFooter=!collapsedFooter">
+                    {{post?.commentnum}} comentários
+                    </a>
+                </p>
+              </div>
+            </ul>
+          </div>
+        </div>
+       </div>
+        <div class="card-footer" *ngIf="collapsedFooter">
+          <div class="card-header textleft">
+            <div class="col-xs-2" style="width:auto;">
+              <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
+            </div>
+            <p>
+            <a>  {{post?.comment.user.name}}</a>
+            <br>
+            {{post?.comment.com}}
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+ </div>
+
+<!--/Card-->
 
   <!--/ wrapper-->
-  <script src="solved.ts"></script>
-  <script>
-        window.onload = function () {
-          document.getElementById("password1").onchange = validatePassword;
-          document.getElementById("password2").onchange = validatePassword;
-        }
-
-        function validatePassword() {
-          var pass2 = document.getElementById("password2").value;
-          var pass1 = document.getElementById("password1").value;
-          if (pass1 != pass2)
-            document.getElementById("password2").setCustomValidity("Senhas não compatíveis");
-          else
-            document.getElementById("password2").setCustomValidity('');
-          //empty string means no validation error
-        }
-      </script>
-
-      <script>
-      document.getElementById("demo").onmouseover = function() {mouseOver()};
-      document.getElementById("demo").onmouseout = function() {mouseOut()};
-
-      function mouseOver() {
-          document.getElementById("demo").style.color = "red";
-      }
-
-      function mouseOut() {
-          document.getElementById("demo").style.color = "black";
-      }
-    </script>
+  <script src="liked.ts"></script>
+ 

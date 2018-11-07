@@ -14,7 +14,7 @@ export class FeedComponent {
   public posts: Array<any>;
   public likedPosts: Array<any>;
 
-    constructor(private _router: Router, private server: ServerProvider) {
+    constructor(private _router: Router) {
       
       this.posts = [];
       this.likedPosts = [];  
