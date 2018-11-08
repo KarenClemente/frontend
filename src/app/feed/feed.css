@@ -434,7 +434,14 @@ Feed
     background-color:rgb(242,244,247);
     border-radius: 18px;
 }
-
+.borda2{
+  border-width: 1px 1px 1px 1px; /* aqui, cada lado possui uma borda de largura diferente */
+   /* estilos de borda diferentes para cima-baixo e esquerda-direita */
+    border-color: #000 #090 #900 #009; /* uma cor de borda para cada lado */
+    padding: 0px;
+    background-color:#fff;
+    border-radius: 18px;
+}
   .btn-search{
 color:#28a745;
 float:right;

@@ -14,7 +14,7 @@
         <li><a routerLink="/feed">Feed</a></li>
         <li><a routerLink="/ranking">Ranking</a></li>
         <li><a routerLink="/home">Logout</a></li>
-    
+
       </ul>
     </div>
   </nav>
@@ -155,10 +155,13 @@
           <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>{{post?.likes}}</a>&nbsp;
           <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>{{post?.commentnum}} comentários</a>
         </div>
+
       </div>
+
     </div>
   <!--Expanded card1-->
     <div class="card" *ngIf="post.collapsed">
+        <div class="linha2"></div>
       <div class="pull-right">
         <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
           <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>

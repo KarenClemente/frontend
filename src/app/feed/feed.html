@@ -15,10 +15,13 @@
         <li><a routerLink="/ranking">Ranking</a></li>
         <li><a routerLink="/home">Logout</a></li>
         <li>
+  <div class="borda2">
           <form class="navbar-form">
+
             <input type="text" class= "search-txt " placeholder="Pesquisar no Feed">
             <a type="submit"  class="btn-search"><i class="fa fa-search"></i></a>
           </form>
+          </div>
         </li>
       </ul>
     </div>
@@ -156,7 +159,7 @@
       </div>
       <div class="card-body" style="background-color:#fff; ;">
         <img [src]="post?.image" style="width:100%">
-        <p>
+        <p  style="text-align:left;">
         {{post?.description}}
         </p>
         <div class="row">
