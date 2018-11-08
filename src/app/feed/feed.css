@@ -3,7 +3,12 @@
 .principal {background-color:  rgb(242, 244, 247);}
 .search-results{
   height: 100%;
+  overflow: scroll;
 }
+
+
+
+
 /* Create two equal columns that floats next to each other */
 .firstcol{
     text-align: right;
@@ -243,13 +248,13 @@ left: 0;
   width: 15em;
   top: 4em;
   }
-  
+
   .s-sidebar__nav ul li {
-  width: 100%; 
+  width: 100%;
   margin: 10px;
-  
+
   }
-  
+
   .s-sidebar__nav-link {
   position: relative;
   display: inline-block;
@@ -264,14 +269,14 @@ left: 0;
     left: 3.5em;
     transform: translateY(-50%);
     }
-    
-    
+
+
     .s-sidebar__nav-link > i , .s-sidebar__nav-link a{
     position: absolute;
     top: 0;
     width: 4em;
     }
-    
+
     .s-sidebar__nav-link > i::before {
     position: absolute;
     top: 90%;
@@ -312,7 +317,7 @@ left: 0;
 }
 
 .s-sidebar__nav-link em,
-.s-sidebar__nav .collapse.in a 
+.s-sidebar__nav .collapse.in a
 {
  color: transparent;
 }
@@ -337,7 +342,7 @@ left: 0;
       top: 1.3em;
    }
    .s-sidebar__nav-link em,
-   .s-sidebar__nav .collapse.in a 
+   .s-sidebar__nav .collapse.in a
    {
     color: white;
     }
@@ -708,13 +713,13 @@ top: 1.3em;
 }
 
 .s-sidebar__nav-link em,
-.s-sidebar__nav .collapse.in a 
+.s-sidebar__nav .collapse.in a
 {
 color: transparent;
 }
 .s-sidebar__nav-link em:hover,
 .s-sidebar__nav-link a:hover,
-.s-sidebar__nav .collapse.in a:hover 
+.s-sidebar__nav .collapse.in a:hover
 {
 color: rgb(101, 191, 91);
 }
@@ -760,7 +765,7 @@ color: rgb(101, 191, 91);
     width: 11em;
  }
  .list-inline{
- 
+
    font-size: 14px;
  }
  .s-sidebar__nav ul {
@@ -772,7 +777,7 @@ color: rgb(101, 191, 91);
   }
   .s-sidebar__nav-link em:hover,
   .s-sidebar__nav-link li:hover,
-  .s-sidebar__nav .collapse.in a:hover 
+  .s-sidebar__nav .collapse.in a:hover
 {
       color: rgb(101, 191, 91);
   }
