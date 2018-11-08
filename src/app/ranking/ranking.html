@@ -141,7 +141,7 @@
   <!--/Cabeçalho-->
   <!--Card-->
   <div class="card" *ngFor="let post of posts">
-    <div class="row" (click)="collapsed=!collapsed">
+    <div class="row" (click)="post.collapsed=!post.collapsed">
       <div class="col-md-4 firstcol column">
         <img [src]="post?.image" class="rounded" style="width: 70px; height:70px;"  vspace="5">
       </div>
@@ -156,7 +156,7 @@
         </div>
         <div class="row">
           <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>{{post?.likes}}</a>&nbsp;
-          <a href="#" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>{{post?.commentnum}} comentários</a>
+          <a href="#" style="font-family:Arial;" class="text-muted" (click)="post.collapsed=!post.collapsed; post.showcomment=!post.showcomment"><i style="color:#0066cc" class="fa fa-comment"></i>{{post?.commentnum}} comentários</a>
         </div>
         </div>
         <div class="col-md-4 thirdcol column" >
@@ -170,7 +170,7 @@
         </div>
     </div>
   <!--Expanded card1-->
-  <div class="card" *ngIf="collapsed">
+  <div class="card" *ngIf="post.collapsed">
     <div class="linha"></div>
     <div class="pull-right">
       <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
@@ -208,7 +208,7 @@
 </div>
   <div class="textl pull-right">
                 <i class="fa fa-comments btn btn-link " style="padding-right:0;"></i>
-                <a class="btn btn-link " style="padding:0;" (click)="collapsedFooter=!collapsedFooter">
+                <a class="btn btn-link " style="padding:0;" (click)="post.showcomment=!post.showcomment">
                 {{post?.commentnum}} comentários
                 </a>
 </div>
@@ -220,7 +220,7 @@
       </div>
           <div class="linha2"></div>
     </div>
-    <div class="card-footer" *ngIf="collapsedFooter">
+    <div class="card-footer" *ngIf="post.showcomment">
       <div class="card-header textleft">
         <div class="col-xs-2" style="width:auto;">
           <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">

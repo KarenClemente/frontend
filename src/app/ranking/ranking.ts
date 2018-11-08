@@ -29,6 +29,8 @@ export class RankingComponent {
          liked:true,
          date:'11/11/2018',
          hour:'16:11',
+         collapsed: false,
+         showcomment: false,
          user:{
            name:'Funaaa',
            profilePicture:'./assets/img/avatar.png',
@@ -49,6 +51,8 @@ export class RankingComponent {
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed: false,
+          showcomment: false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -71,6 +75,8 @@ export class RankingComponent {
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed: false,
+          showcomment: false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -80,7 +86,8 @@ export class RankingComponent {
            profilePicture:'./assets/img/avatar.png',
           }, 
            com:'hahahaha vish que coisa!',
-         }},{
+         }},
+         {
           id:4,
           title:'Janela Quebrada', 
           image:'./assets/img/janela.jpg',
@@ -92,6 +99,8 @@ export class RankingComponent {
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed: false,
+          showcomment: false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -114,6 +123,8 @@ export class RankingComponent {
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed: false,
+          showcomment: false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -136,6 +147,8 @@ export class RankingComponent {
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed: false,
+          showcomment: false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -158,6 +171,8 @@ export class RankingComponent {
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed: false,
+          showcomment: false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -179,6 +194,8 @@ export class RankingComponent {
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed: false,
+          showcomment: false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -201,6 +218,8 @@ export class RankingComponent {
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed: false,
+          showcomment: false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -223,6 +242,8 @@ export class RankingComponent {
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed: false,
+          showcomment: false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
