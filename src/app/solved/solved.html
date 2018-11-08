@@ -190,36 +190,45 @@
         </p>
         <div class="row">
           <div class="col-sm-12">
+        <div class="linha"></div>
             <ul class="list-inline">
-              <div class="textleft">
-                <p>
-                  <i class="fa fa-thumbs-up"></i>
+
+              <div class="pull-left">
+
+                  <i class="fa fa-thumbs-up" style="  margin-left: 20px;margin-top:7px;
+                  font-size: 15px;color:#3366BB"></i>
                   {{post?.likes}}
-                  <i class="fa fa-comments btn btn-link" style="padding-right:0;"></i>
-                    <a class="btn btn-link" style="padding:0;" (click)="collapsedFooter=!collapsedFooter">
-                    {{post?.commentnum}} comentários
-                    </a>
-                </p>
-              </div>
+</div>
+    <div class="textl pull-right">
+                  <i class="fa fa-comments btn btn-link " style="padding-right:0;"></i>
+                  <a class="btn btn-link " style="padding:0;" (click)="collapsedFooter=!collapsedFooter">
+                  {{post?.commentnum}} comentários
+                  </a>
+</div>
+
+
             </ul>
+
           </div>
         </div>
-       </div>
-        <div class="card-footer" *ngIf="collapsedFooter">
-          <div class="card-header textleft">
-            <div class="col-xs-2" style="width:auto;">
-              <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
-            </div>
-            <p>
+            <div class="linha2"></div>
+      </div>
+      <div class="card-footer" *ngIf="collapsedFooter">
+        <div class="card-header textleft">
+          <div class="col-xs-2" style="width:auto;">
+            <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
+          </div>
+
+          <p class="borda">
+
             <a>  {{post?.comment.user.name}}</a>
             <br>
             {{post?.comment.com}}
-            </p>
-          </div>
+          </p>
       </div>
     </div>
   </div>
-</div>
+  </div>
 </div>
 </div>
 
@@ -227,4 +236,3 @@
 
   <!--/ wrapper-->
   <script src="solved.ts"></script>
- 

@@ -13,16 +13,17 @@ export class HomeComponent {
   user: any = {};
 
     constructor(private _router: Router, public server: ServerProvider) {}
-      goFeed() {
-        // alert('test');
-        // window.location.href = '../pages/test.html';
-        this._router.navigate(['/feed']);
-        // console.log('test');
-        // this._router.navigateByUrl('src/app/teste/test.html');
+      
+      confirm(user){
+        this.server.createUser(this.user).then(response => {
+          console.log(response);
+        }).catch(error => {
+          console.log(error);
+        });
       }
 
-      confirm(user){
-        this.server.createUser(this.user, "xxxxx").then(response => {
+      signin(user){
+        this.server.loginUser(this.user).then(response => {
           console.log(response);
         }).catch(error => {
           console.log(error);

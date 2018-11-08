@@ -22,12 +22,12 @@ div.center {
     display: inline-block;
     vertical-align: middle;
     margin-right: 10px;
-    width: 0; 
-    height: 0; 
-  
+    width: 0;
+    height: 0;
+
     border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent; 
-    border-right: 5px solid blue; 
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid blue;
   }
   .btn-search{
     color:#28a745;
@@ -50,6 +50,10 @@ div.center {
         width:300px;
         line-height: 30px;
         }
+
+  .modal-body{
+
+  }
 /***********************************
 Navigation bar
 ************************************/
@@ -86,7 +90,7 @@ Sidebar
 *, *::before, *::after {
     box-sizing: border-box;
     }
-    
+
     em {
     font-style: normal;
     color: white;
@@ -100,7 +104,7 @@ Sidebar
     a:hover {
      color: rgb(101, 191, 91);
     }
-    
+
     /* Layout */
 .s-layout {
   display: flex;
@@ -117,6 +121,26 @@ Sidebar
 
     .mar{
       margin-top:80px;
+    }
+    .linha {
+      margin-top: 2px;
+      width: 100%;
+      border-bottom: 1.3px solid #ced4da;
+    }
+    .linha2 {
+      margin-bottom: 12px;
+      width: 100%;
+      border-bottom: 1.3px solid #ced4da;
+    }
+
+
+    .borda{
+      border-width: 1px 1px 1px 1px; /* aqui, cada lado possui uma borda de largura diferente */
+       /* estilos de borda diferentes para cima-baixo e esquerda-direita */
+        border-color: #000 #090 #900 #009; /* uma cor de borda para cada lado */
+        padding: 5px;
+        background-color:rgb(242,244,247);
+        border-radius: 18px;
     }
 
 /* Sidebar */
@@ -148,7 +172,7 @@ top: 4em;
 }
 
 .s-sidebar__nav ul li {
-width: 100%; 
+width: 100%;
 margin: 10px;
 
 }
@@ -180,7 +204,7 @@ top: 90%;
 left: 50%;
 transform: translate(-50%, -50%);
 }
-.card{
+.s-layout__content > .mar > .group >.card{
   background-color:#fff;
   margin-top:20px;
   margin-bottom:15px;
@@ -192,6 +216,12 @@ transform: translate(-50%, -50%);
     -moz-box-shadow: 10px 3px 81px 2px rgba(101,191,91,1);
     box-shadow: 10px 3px 81px 2px rgba(101,191,91,1);
    }
+   .modal-body > .mar >.card{
+    background-color:#fff;
+    margin-top:10px;
+    margin-bottom:15px;
+    border-radius: 10px;
+    }
 
     .card .card-header{
       padding-top: 10px;
@@ -204,15 +234,17 @@ transform: translate(-50%, -50%);
       .card .card-footer{
         padding-top: 10px;
         padding-bottom: 20px;
+          border-radius: 10px;
         }
       .card-info{
         margin-top:30px;
         border-radius: 10%;
         padding-top: 10px;
         padding-bottom: 10px;
-    
+
       }
-    select {
+
+     select {
       width: 17em;
       text-align: center;
     }
@@ -287,6 +319,11 @@ margin-left: 8px;
   height: auto;
   min-width: 260px;
 }
+.modal-dialog{
+  max-width: 100%;
+  height: auto;
+  min-width: 260px;
+}
 .card-header, .card-body{
   font-size: 10px;
 }
@@ -294,14 +331,14 @@ margin-left: 8px;
       width: 7em;
     }*/
 }
- 
+
 
 @media (min-width: 48em) {
 .s-layout__content {
    padding-left: 15em;
    padding-right: 15em;
    margin-left: 15em;
-  
+
 
 }
 .mar{

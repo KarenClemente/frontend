@@ -415,7 +415,7 @@ Feed
 
   }
 .linha {
-  margin-top: 18px;
+  margin-top: 2px;
   width: 100%;
   border-bottom: 1.3px solid #ced4da;
 }
@@ -475,11 +475,18 @@ padding-bottom: 10px;
     font-size: 15px;
   }
   .textleft{
-    text-align: left;
+  text-align: left;
     margin-left: 20px;
     margin-right: 20px;
     font-family: arial;
-    font-size: 20px;
+    font-size: 15px;
+  }
+  .textl{
+
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: arial;
+  font-size: 15px;
   }
   .textleft2{
     text-align: left;
@@ -616,10 +623,7 @@ em:hover,
   align-items: center;
   flex: 1;
 }
-.card-footer > .card-header{
-  border: gray double;
-  padding: 2px;
-}
+
 .card-footer{
   padding: 2px;
 }

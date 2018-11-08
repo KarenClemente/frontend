@@ -152,46 +152,70 @@
           {{post?.location}} {{post?.date}} às {{post?.hour}}
         </p>
       </div>
-      <div class="card-body" style="background-color:#fff; text-align: justify;">
+      <div class="card-body" style="background-color:#fff; ;">
         <img [src]="post?.image" style="width:100%">
         <p>
         {{post?.description}}
         </p>
         <div class="row">
           <div class="col-sm-12">
+        <div class="linha"></div>
             <ul class="list-inline">
-              <div class="textleft">
-                <p>
-                  <i class="fa fa-thumbs-up"></i>
+
+              <div class="pull-left">
+
+                  <i class="fa fa-thumbs-up" style="  margin-left: 20px;margin-top:7px;
+                  font-size: 15px;color:#3366BB"></i>
                   {{post?.likes}}
-                  <i class="fa fa-comments btn btn-link" style="padding-right:0;"></i>
-                  <a class="btn btn-link" style="padding:0;" (click)="collapsedFooter=!collapsedFooter">
+                </div>
+                <div class="textl pull-right">
+                  <i class="fa fa-comments btn btn-link " style="padding-right:0;"></i>
+                  <a class="btn btn-link " style="padding:0;" (click)="collapsedFooter=!collapsedFooter">
                   {{post?.commentnum}} comentários
                   </a>
-                </p>
-              </div>
+                </div>
+
+
             </ul>
+
           </div>
         </div>
-      </div>
+            <div class="linha2"></div>
+    </div>
       <div class="card-footer" *ngIf="collapsedFooter">
         <div class="card-header textleft">
           <div class="col-xs-2" style="width:auto;">
             <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
           </div>
-          <p>
+
+          <p class="borda">
+
             <a>  {{post?.comment.user.name}}</a>
             <br>
             {{post?.comment.com}}
           </p>
       </div>
+
     </div>
+    <div class="textleft">
+                  <div class="col-xs-2" style="width:auto;">
+                    <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;width:30px;height:30px">
+                  </div>
+                  <p class="borda">
+
+                    <a>  {{post?.comment.user.name}}</a>
+                    <br>
+                  <input type="text" class="form-control"  style="border-radius: 10px;">
+                  </p>
+
+            </div>
   </div>
   </div>
  </div>
 </div>
   <!--/Card-->
   <script src="feed.ts"></script>
+<<<<<<< HEAD
 
   
   <div class="search-results"
@@ -200,3 +224,5 @@
           [infiniteScrollThrottle]="300"
           (scrolled)="onScroll()">
       </div>
+=======
+>>>>>>> c481c1334d8306a58e1de6c9eb5424c8743f76b4
