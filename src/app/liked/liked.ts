@@ -29,6 +29,8 @@ export class LikedComponent{
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed:false,
+          showcomment:false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -50,6 +52,8 @@ export class LikedComponent{
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed:false,
+          showcomment:false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -71,6 +75,8 @@ export class LikedComponent{
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed:false,
+          showcomment:false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -92,6 +98,8 @@ export class LikedComponent{
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed:false,
+          showcomment:false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',
@@ -114,6 +122,8 @@ export class LikedComponent{
           liked:true,
           date:'11/11/2018',
           hour:'16:11',
+          collapsed:false,
+          showcomment:false,
           user:{
             name:'Funaaa',
             profilePicture:'./assets/img/avatar.png',

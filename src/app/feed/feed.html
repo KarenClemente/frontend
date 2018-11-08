@@ -101,6 +101,8 @@
     <nav class="s-sidebar__nav" style="margin-top: 60px;">
       <ul>
         <img src="./assets/img/avatar.png">
+        <br>
+        <em style="padding-left:10%;">Felipe Dias Pinheiro</em>
         <li>
           <a class="s-sidebar__nav-link" href="#" data-target="#changeimg" data-toggle="modal" >
           <i class="fa fa-camera"></i><em>Editar Foto</em>
@@ -170,7 +172,7 @@
                 </div>
                 <div class="textl pull-right">
                   <i class="fa fa-comments btn btn-link " style="padding-right:0;"></i>
-                  <a class="btn btn-link " style="padding:0;" (click)="collapsedFooter=!collapsedFooter">
+                  <a class="btn btn-link " style="padding:0;" (click)="post.showcomments=!post.showcomments">
                   {{post?.commentnum}} comentários
                   </a>
                 </div>
@@ -182,7 +184,7 @@
         </div>
             <div class="linha2"></div>
     </div>
-      <div class="card-footer" *ngIf="collapsedFooter">
+      <div class="card-footer" *ngIf="post.showcomments">
         <div class="card-header textleft">
           <div class="col-xs-2" style="width:auto;">
             <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
@@ -199,15 +201,9 @@
     </div>
     <div class="textleft">
                   <div class="col-xs-2" style="width:auto;">
-                    <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;width:30px;height:30px">
+                    <p>Comentário:</p>
                   </div>
-                  <p class="borda">
-
-                    <a>  {{post?.comment.user.name}}</a>
-                    <br>
-                  <input type="text" class="form-control"  style="border-radius: 10px;">
-                  </p>
-
+                  <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
             </div>
   </div>
   </div>
@@ -215,7 +211,6 @@
 </div>
   <!--/Card-->
   <script src="feed.ts"></script>
-<<<<<<< HEAD
 
   
   <div class="search-results"
@@ -224,5 +219,3 @@
           [infiniteScrollThrottle]="300"
           (scrolled)="onScroll()">
       </div>
-=======
->>>>>>> c481c1334d8306a58e1de6c9eb5424c8743f76b4

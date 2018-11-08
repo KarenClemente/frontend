@@ -101,6 +101,8 @@
     <nav class="s-sidebar__nav" style="margin-top: 60px;">
       <ul>
         <img src="./assets/img/avatar.png">
+        <br>
+        <em style="padding-left:10%;">Felipe Dias Pinheiro</em>
         <li>
           <a class="s-sidebar__nav-link" href="#" data-target="#changeimg" data-toggle="modal" >
           <i class="fa fa-camera"></i><em>Editar Foto</em>
@@ -141,13 +143,13 @@
   <!--/Cabeçalho-->
   <!--Card-->
   <div class="card" *ngFor="let post of posts">
-    <div class="row" (click)="collapsed=!collapsed">
+    <div class="row" (click)="post.collapsed=!post.collapsed">
       <div class="col-md-4 firstcol column">
         <img [src]="post?.image" class="rounded" style="width: 70px; height:70px;"  vspace="5">
       </div>
       <div class="col-md-4 secndcol column">
         <div class="row " >
-          <a style="font-size: 20px; text-decoration: none; color:#0066cc;"   (click)="collapsed=!collapsed">{{post?.title}}</a>
+          <a style="font-size: 20px; text-decoration: none; color:#0066cc;" (click)="post.collapsed=!post.collapsed">{{post?.title}}</a>
         </div>
         <div class="row">
           <a class="text-muted"> {{post?.date}} às {{post?.hour}}</a>&nbsp;
@@ -198,7 +200,7 @@
 </div>
     <div class="textl pull-right">
                   <i class="fa fa-comments btn btn-link " style="padding-right:0;"></i>
-                  <a class="btn btn-link " style="padding:0;" (click)="collapsedFooter=!collapsedFooter">
+                  <a class="btn btn-link " style="padding:0;" (click)="post.showcomment=!post.showcomment">
                   {{post?.commentnum}} comentários
                   </a>
 </div>
@@ -210,7 +212,7 @@
         </div>
             <div class="linha2"></div>
       </div>
-      <div class="card-footer" *ngIf="collapsedFooter">
+      <div class="card-footer" *ngIf="post.showcomment">
         <div class="card-header textleft">
           <div class="col-xs-2" style="width:auto;">
             <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
