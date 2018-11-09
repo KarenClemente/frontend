@@ -51,9 +51,8 @@ div.center {
         line-height: 30px;
         }
 
-  .modal-content{
+  .modal {
     display: block;
-    position: fixed;
   }
   .modal-body{
     display: block;
