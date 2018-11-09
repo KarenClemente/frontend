@@ -51,7 +51,7 @@ div.center {
         line-height: 30px;
         }
 
-  .modal {
+  .modal-content {
     display: block;
   }
   .modal-body{
@@ -388,7 +388,7 @@ p.borda{
  .s-sidebar__nav .collapse.in a{
   color: white;
   }
- 
+
  .s-sidebar__nav-link em:hover,
  .s-sidebar__nav-link li:hover{
      color: rgb(101, 191, 91);
