@@ -312,7 +312,7 @@
                               </div>
                               <div class=" pull-right"  >
                                 <i class="fa fa-comments btn btn-link " style="padding-right:0; "></i>
-                                <a class="btn btn-link " style="padding:0;color: #0066cc; margin-right: 20px;" (click)="collapsedFooter=!collapsedFooter">
+                                <a class="btn btn-link " style="padding:0;color: #0066cc; margin-right: 20px;" (click)="post.showcomment=!post.showcomment">
                                 {{post?.commentnum}} comentários
                                 </a>
                               </div>
@@ -324,13 +324,13 @@
                       </div>
 
                     </div>
-                    <div class="card-footer"  style="background-color:#fff;" *ngIf="collapsedFooter">
+                    <div class="card-footer"  style="background-color:#fff;" *ngIf="post.showcomment">
                         <div class="linha2"></div>
                       <div class="card-header textleft">
                         <div class="col-xs-2" style="width:auto;">
                           <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
                         </div>
-                        <p class="borda"style="  font-size: 1vw;">
+                        <p class="borda">
                           <a style="color:#3366BB">  {{post?.comment.user.name}}</a>
                           <br>
                           {{post?.comment.com}}

@@ -318,7 +318,7 @@ left: 0;
  top: 1.3em;
 }
 
-.s-sidebar__nav-link em,
+.s-sidebar__nav em,
 .s-sidebar__nav .collapse.in a {
  color: transparent;
 }
@@ -342,7 +342,7 @@ left: 0;
  .s-sidebar__nav ul {
     top: 1.3em;
  }
- .s-sidebar__nav-link em,
+ .s-sidebar__nav em,
  .s-sidebar__nav .collapse.in a{
   color: white;
   }
@@ -676,7 +676,7 @@ em:hover,
    top: 1.3em;
 }
 
-.s-sidebar__nav-link em,
+.s-sidebar__nav em,
 .s-sidebar__nav .collapse.in a{
 color: transparent;
 }
@@ -733,7 +733,7 @@ margin-left: 8px;
   .s-sidebar__nav ul {
      top: 1.3em;
   }
-  .s-sidebar__nav-link em,
+  .s-sidebar__nav em,
   .s-sidebar__nav .collapse.in a{
    color: white;
    }

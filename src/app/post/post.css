@@ -51,8 +51,13 @@ div.center {
         line-height: 30px;
         }
 
+  .modal-content{
+    display: block;
+    position: fixed;
+  }
   .modal-body{
-
+    display: block;
+    overflow-y: scroll;
   }
 /***********************************
 Navigation bar
@@ -291,6 +296,10 @@ font-size: 12px;
  height: 9em;
  margin-left: 15px;
 }
+.s-sidebar__nav em,
+.s-sidebar__nav .collapse.in a {
+ color: transparent;
+}
 .s-sidebar__nav:hover ul,
 .s-sidebar__nav:focus ul
 {
@@ -323,9 +332,13 @@ margin-left: 8px;
   max-width: 100%;
   height: auto;
   min-width: 260px;
+  margin-top: 15px;
 }
 .card-header, .card-body{
   font-size: 10px;
+}
+p.borda{
+  font-size: 2vw;
 }
     /*select {
       width: 7em;
@@ -372,6 +385,11 @@ margin-left: 8px;
 .s-sidebar__nav-link em{
  color: white;
  }
+ .s-sidebar__nav em,
+ .s-sidebar__nav .collapse.in a{
+  color: white;
+  }
+ 
  .s-sidebar__nav-link em:hover,
  .s-sidebar__nav-link li:hover{
      color: rgb(101, 191, 91);
@@ -382,4 +400,7 @@ margin-left: 8px;
      border-radius: 50%;
      margin-left: 15px;
      }
+     p.borda{
+      font-size: 1vw;
+    }
 }
