@@ -234,6 +234,7 @@ em {
   overflow: hidden;
   transition: all .3s ease-in;
   height: 100%;
+  z-index: 1;
   background:linear-gradient(#0066cc 30%, rgb(101,191,91));;
 
 }

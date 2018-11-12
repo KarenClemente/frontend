@@ -229,6 +229,7 @@ em {
   overflow: hidden;
   transition: all .3s ease-in;
   height: 100%;
+  z-index: 1;
   background:linear-gradient(#0066cc 30%, rgb(101,191,91));;
 
 }
@@ -309,6 +310,7 @@ left: 0;
 {
    width: 11em;
    color: white;
+   z-index: 1;
 }
 .s-sidebar__nav:hover ul,
 .s-sidebar__nav:focus ul
@@ -336,6 +338,8 @@ left: 0;
 
    .s-sidebar__nav {
       width: 11em;
+      z-index: 1;
+
    }
 
    .s-sidebar__nav ul {
@@ -705,6 +709,8 @@ top: 2.3em;
 {
   width: 11em;
   color: white;
+  z-index: 1;
+
 
 }
 .s-sidebar__nav:hover .collapse.in a,
@@ -773,7 +779,9 @@ color: rgb(101, 191, 91);
     font-size: 16px;
   }
   .s-sidebar__nav {
-    width: 11em;
+    width: 11em; 
+      z-index: 1;
+
  }
  .list-inline{
 
