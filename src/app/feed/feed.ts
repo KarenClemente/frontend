@@ -19,10 +19,10 @@ export class FeedComponent {
       console.log('scrolled!!')
       this.getPosts();
   }
-
+public searchText : string;
   public posts: Array<any>;
   public likedPosts: Array<any>;
-  page: number = 1;  
+  page: number = 1;
 
   getPosts(){
       this.posts.push(
@@ -60,7 +60,7 @@ export class FeedComponent {
       this.posts.push(
         {
          id:0,
-         title:'Poste perigoso',
+         title:'Toste perigoso',
          image:'./assets/img/poste.jpeg',
          location:'./assets/img/poste.jpeg',
          description:'./assets/img/poste.jpeg',

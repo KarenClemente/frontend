@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,Injectable } from '@angular/core';
 import { Router } from '@angular/router'; // Added
+
 
 @Component({
   selector: 'app-ranking',
@@ -7,19 +8,19 @@ import { Router } from '@angular/router'; // Added
   styleUrls: ['./ranking.css']
 })
 export class RankingComponent {
-
+public searchText : string;
   public posts: Array<any>;
   public likedPosts: Array<any>;
 
     constructor(private _router: Router) {
 
       this.posts = [];
-      this.likedPosts = [];  
+      this.likedPosts = [];
 
       this.posts.push(
         {
          id:1,
-         title:'Janela Quebrada', 
+         title:'danela Quebrada',
          image:'./assets/img/janela.jpg',
          location:'ICC Norte',
          description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -36,12 +37,12 @@ export class RankingComponent {
            profilePicture:'./assets/img/avatar.png',
          },
          comment:{
-          user:{name:'Gabriela'}, 
+          user:{name:'Gabriela'},
           com:'hahahaha vish que coisa!',
         }},
         {
           id:2,
-          title:'Janela Quebrada', 
+          title:'Janela Quebrada',
           image:'./assets/img/janela.jpg',
           location:'ICC Norte',
           description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -60,12 +61,12 @@ export class RankingComponent {
           comment:{
            user:{name:'Gabriela',
            profilePicture:'./assets/img/avatar.png',
-          }, 
+          },
            com:'hahahaha vish que coisa!',
          }},
          {
           id:3,
-          title:'Janela Quebrada', 
+          title:'Janela Quebrada',
           image:'./assets/img/janela.jpg',
           location:'ICC Norte',
           description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -84,12 +85,12 @@ export class RankingComponent {
           comment:{
            user:{name:'Gabriela',
            profilePicture:'./assets/img/avatar.png',
-          }, 
+          },
            com:'hahahaha vish que coisa!',
          }},
          {
           id:4,
-          title:'Janela Quebrada', 
+          title:'Janela Quebrada',
           image:'./assets/img/janela.jpg',
           location:'ICC Norte',
           description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -108,12 +109,12 @@ export class RankingComponent {
           comment:{
            user:{name:'Gabriela',
            profilePicture:'./assets/img/avatar.png',
-          }, 
+          },
            com:'hahahaha vish que coisa!',
          }},
          {
           id:5,
-          title:'Janela Quebrada', 
+          title:'Janela Quebrada',
           image:'./assets/img/janela.jpg',
           location:'ICC Norte',
           description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -132,12 +133,12 @@ export class RankingComponent {
           comment:{
            user:{name:'Gabriela',
            profilePicture:'./assets/img/avatar.png',
-          }, 
+          },
            com:'hahahaha vish que coisa!',
          }},
          {
           id:6,
-          title:'Janela Quebrada', 
+          title:'Janela Quebrada',
           image:'./assets/img/janela.jpg',
           location:'ICC Norte',
           description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -156,12 +157,12 @@ export class RankingComponent {
           comment:{
            user:{name:'Gabriela',
            profilePicture:'./assets/img/avatar.png',
-          }, 
+          },
            com:'hahahaha vish que coisa!',
          }},
          {
           id:7,
-          title:'Janela Quebrada', 
+          title:'Janela Quebrada',
           image:'./assets/img/janela.jpg',
           location:'ICC Norte',
           description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -180,11 +181,11 @@ export class RankingComponent {
           comment:{
            user:{name:'Gabriela',
            profilePicture:'./assets/img/avatar.png',
-          }, 
+          },
            com:'hahahaha vish que coisa!',
          }},{
           id:8,
-          title:'Janela Quebrada', 
+          title:'Janela Quebrada',
           image:'./assets/img/janela.jpg',
           location:'ICC Norte',
           description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -203,12 +204,12 @@ export class RankingComponent {
           comment:{
            user:{name:'Gabriela',
            profilePicture:'./assets/img/avatar.png',
-          }, 
+          },
            com:'hahahaha vish que coisa!',
          }},
          {
           id:9,
-          title:'Janela Quebrada', 
+          title:'Janela Quebrada',
           image:'./assets/img/janela.jpg',
           location:'ICC Norte',
           description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -227,12 +228,12 @@ export class RankingComponent {
           comment:{
            user:{name:'Gabriela',
            profilePicture:'./assets/img/avatar.png',
-          }, 
+          },
            com:'hahahaha vish que coisa!',
          }},
          {
           id:10,
-          title:'Janela Quebrada', 
+          title:'Janela Quebrada',
           image:'./assets/img/janela.jpg',
           location:'ICC Norte',
           description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -251,10 +252,10 @@ export class RankingComponent {
           comment:{
            user:{name:'Gabriela',
            profilePicture:'./assets/img/avatar.png',
-          }, 
+          },
            com:'hahahaha vish que coisa!',
          }},
         )
     }
-   
+
 }

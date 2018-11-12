@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import{Pipe,PipeTransform} from '@angular/core';
+
  // import { Router } from '@angular/router'; // Added
 // import { RouterModule } from '@angular/router';
 import { RouterModule, Routes, Router } from '@angular/router';
@@ -18,6 +20,8 @@ import { LikedComponent } from './liked/liked';
 import { RankingComponent } from './ranking/ranking';
 import { PostComponent } from './post/post';
 import { FeedComponent } from './feed/feed';
+import { GrdFilterPipe } from './ranking/grd-filter.pipe';
+import { GrdFilterPipes } from './feed/grd-filter.pipe';
 
 const appRoutes: Routes = [
   // { path: 'home', component: AppComponent },
@@ -32,6 +36,8 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
+
+     GrdFilterPipe,
     AppComponent,
     HomeComponent,
     MadeByMeComponent,
