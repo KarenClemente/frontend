@@ -3,15 +3,11 @@ import { Router } from '@angular/router'; // Added
 import { ServerProvider} from '../../providers/server';
 import { Observable } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.html',
   styleUrls: ['./feed.css']
 })
-
-
 
 export class FeedComponent {
 
@@ -19,7 +15,7 @@ export class FeedComponent {
       console.log('scrolled!!')
       this.getPosts();
   }
-public searchText : string;
+  public searchText : string;
   public posts: Array<any>;
   public likedPosts: Array<any>;
   page: number = 1;
