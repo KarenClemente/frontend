@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./feed.css']
 })
 
-export class FeedComponent {
+export class FeedComponent{
 
   onScroll () {
       console.log('scrolled!!')
