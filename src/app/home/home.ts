@@ -79,5 +79,11 @@ export class HomeComponent {
           }
         });
       }
+
+      clearInputs() {
+        this.user = {};
+        this.email ="";
+        this.password ="";
+       }
       
 }
