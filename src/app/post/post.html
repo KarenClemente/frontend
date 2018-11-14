@@ -19,46 +19,12 @@
     </div>
   </nav>
   <!--/Navigation bar-->
-  <!--Modal box-->
-  <div class="modal fade" id="changepsw" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title text-center form-title" style="color: #0066cc;">Alterar senha</h4>
-        </div>
-        <div class="modal-body">
-          <div class="login-box-body">
-            <form action="#" method="post" name="changepsw">
-              <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
-                <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-                  <label for="pass" style="font-size: 1.3rem">Senha atual</label>
-                  <input class="form-control" placeholder="Senha atual" id="pass" type="password" name="pass" required=""/>
-                  <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
-                </div>
-                <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
-                  <label for="password1" style="font-size: 1.3rem">Nova Senha</label>
-                  <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required=""/>
-                  <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
-                </div>
-                <div class="form-group">                    <!----- password -------------->
-                  <label for="password2" style="font-size: 1.3rem">Confirme a senha</label>
-                  <input class="form-control" placeholder="Repita senha" id="password2" type="password" name="password2" required=""/>
-                  <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw2"></span>
-                  <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Cadastrar">
-                </div>
-             </form>
-        </div>
-      </div>
-    </div>
-  </div>
- </div>
- <!--modal editar perfil-->
+  <!--modal editar perfil-->
   <div class="modal fade" id="changeimg" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button #closeModalChangeButton type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title text-center form-title" style="color: #0066cc;">Editar Perfil</h4>
         </div>
         <div class="modal-body">
@@ -107,17 +73,23 @@
              <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
 
            </div>
-           <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
-             <label for="password1" style="font-size: 1.3rem">Nova senha</label>
-             <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required="" />
-             <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
+           <div class="form-group" style="margin-bottom:0rem" [class.has-error]="password1.touched && password1.invalid">                    <!----- password -------------->
+            <label style="font-size: 1.3rem">Nova Senha</label>
+            <input class="form-control" placeholder="Senha" type="password" name="password" required [(ngModel)]="user.password" #password1="ngModel">
+            <span style="color: red; font-size: 11px;" *ngIf="password1.touched && password1.errors?.required">
+            Digite uma senha
+            </span>
 
-           </div>
-           <div class="form-group">                    <!----- password -------------->
-             <label for="password2" style="font-size: 1.3rem">Confirme a nova senha</label>
-             <input class="form-control" placeholder="Repita senha" id="password2" type="password" name="password2" required="" />
-             <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw2"></span>
-
+          </div>
+          <div class="form-group" [class.has-error]="password2.touched && password2.invalid">                    <!----- password -------------->
+            <label style="font-size: 1.3rem">Confirme a senha</label>
+            <input class="form-control" placeholder="Repita senha" type="password" name="passwordconfirm" signUpConfirmEqualValidator="password" required [(ngModel)]="user.passwordconfirm" #password2="ngModel">
+            <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.required">
+            Confirme sua senha
+            </span>
+            <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
+            As senhas devem ser iguais
+            </span>
              <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Alterar">
 
            </div>
@@ -128,10 +100,12 @@
     </div>
   </div>
   <!--/modal editar perfil-->
+  <!--modal denuncia-->
   <div class="modal fade " id="post01" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content  modal-sm" >
         <div class="modal-header" >
+            <button #closeModalDangerButton type="button" class="close" data-dismiss="modal">&times;</button>
           <div class="row">
             <h4 style="color:red;text-align: center;" class="modal-title" id="modalLabel">Denunciar publicação</h4>
           </div>
@@ -146,7 +120,85 @@
       </div>
     </div>
   </div>
-  <!--/ Modal box-->
+  <!--/modal denuncia-->
+  <!--Modal demandas similares-->
+  <div class="modal fade" id="Posts" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+          <div class="modal-dialog" >
+            <div class="modal-content" style="background-color:rgb(242,244,247)">
+              <div class="modal-header ">
+                  <button #closeModalDemandsButton type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title" id="modalLabel">Verifique se existe alguma demanda similar a sua!</h3>
+                  <h5>Caso não exista, continue criando sua demanda para que todos possam ter acesso!</h5>
+              </div>
+              <div class="modal-body">
+                <div class="mar rolavel" style="margin-top:0px">
+                  <div class="card" *ngFor="let post of postsSimilar ">
+
+                    <div class="card-header textleft">
+                      <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
+                        <img [src]="post?.user.profilePicture" style="object-fit:cover; border-radius: 50%;">
+                      </div>
+                      <p style="padding-top:5px;">
+                        <a style="color:#0066cc">  {{post?.user.name}}</a>
+                        publicou
+                        <b>{{post?.title}}</b>
+                        em<br>
+                        <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
+                        {{post?.location}} {{post?.date}} às {{post?.hour}}
+                      </p>
+                    </div>
+                    <div class="card-body" style="background-color:#fff;         border-radius: 10px;">
+                      <img [src]="post?.image" style="width:100%">
+                      <p>
+                      {{post?.description}}
+                      </p>
+                      <div class="row">
+                        <div class="col-sm-12">
+                      <div class="linha"></div>
+                          <ul class="list-inline">
+
+                            <div class="pull-left" style="color:#0066cc">
+                                <a>
+                                <i class="fa fa-thumbs-up" style="  margin-left: 20px;margin-top:7px;
+                                font-size: 15px;color:#3366BB"></i></a>
+                                {{post?.likes}}
+                              </div>
+                              <div class=" pull-right"  >
+                                <i class="fa fa-comments btn btn-link " style="padding-right:0; "></i>
+                                <a class="btn btn-link " style="padding:0;color: #0066cc; margin-right: 20px;" (click)="post.showcomment=!post.showcomment">
+                                {{post?.commentnum}} comentários
+                                </a>
+                              </div>
+
+
+                          </ul>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="card-footer"  style="background-color:#fff;" *ngIf="post.showcomment">
+                        <div class="linha2"></div>
+                      <div class="card-header textleft">
+                        <div class="col-xs-2" style="width:auto;">
+                          <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
+                        </div>
+                        <p class="borda">
+                          <a style="color:#3366BB">  {{post?.comment.user.name}}</a>
+                          <br>
+                          {{post?.comment.com}}
+                        </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <button style="margin-top: 20px;" type="button" class="btn btn-green" data-dismiss="modal" (click)="demand()">Continuar demanda</button>
+            </div>
+          </div>
+                <!--/Card-->
+    </div>
+  </div>
+  <!--/Modal demandas similares-->
   <!-- Sidebar-->
   <div class="s-layout__sidebar">
     <nav class="s-sidebar__nav" style="margin-top: 60px;">
@@ -320,12 +372,12 @@
         </div>
       </div>
     </div>
-
+      <!--Modal demandas similares-->
       <div class="modal fade" id="Posts" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
           <div class="modal-dialog" >
             <div class="modal-content" style="background-color:rgb(242,244,247)">
               <div class="modal-header ">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <button #closeModalDemandsButton type="button" class="close" data-dismiss="modal">&times;</button>
                   <h3 class="modal-title" id="modalLabel">Verifique se existe alguma demanda similar a sua!</h3>
                   <h5>Caso não exista, continue criando sua demanda para que todos possam ter acesso!</h5>
               </div>
@@ -397,5 +449,6 @@
                 <!--/Card-->
     </div>
   </div>
+        <!--/Modal demandas similares-->
 </div>
 <script src="post.ts"></script>

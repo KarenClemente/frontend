@@ -23,7 +23,7 @@
 </nav>
 <!--/ Navigation bar-->
 <!--Modal box-->
-<div #myModal class="modal fade" id="login" role="dialog" aria-hidden="true">
+<div class="modal fade" id="login" role="dialog" aria-hidden="true">
 <div class="modal-dialog modal-sm">
 
   <!-- Modal content no 1-->
@@ -36,30 +36,30 @@
     <div class="modal-body">
       <div class="login-box-body">
         <p class="login-box-msg" style="color: grey;">Entre na sua conta.</p>
-          <form method="post">
+          <form #loginForm="ngForm" novalidate>
             <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-              <label for="email" style="font-size: 1.3rem">E-mail</label>
-              <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="email"/>
+              <label style="font-size: 1.3rem">E-mail</label>
+              <input class="form-control" placeholder="E-mail" type="email" name="email" required [(ngModel)]="email"/>
               <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
 
             </div>
             <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
-              <label for="password1" style="font-size: 1.3rem">Senha</label>
-              <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required="" [(ngModel)]="password"/>
+              <label style="font-size: 1.3rem">Senha</label>
+              <input class="form-control" placeholder="Senha" type="password" name="password" required [(ngModel)]="password"/>
               <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
 
             </div>
             <div class="row">
               <div class="col-xs-12">
                 <div>
-                  <p style="text-align: center;"><a href="#" style="color: grey;"data-target="#senha" data-toggle="modal" data-dismiss="modal">Esqueci minha senha.</a></p>
+                  <p style="text-align: center;"><a style="color: grey;"data-target="#senha" data-toggle="modal" data-dismiss="modal">Esqueci minha senha.</a></p>
 
                 </div>
 
 
               </div>
               <div class="col-xs-12">
-                  <button style="margin-top: 20px;" type="button" class="btn btn-green btn-block btn-flat" (click)="signin(email,password)">Entrar</button>
+                  <button style="margin-top: 20px;" type="button" [disabled]="loginForm.invalid || loginForm.pending" class="btn btn-green btn-block btn-flat" (click)="signin(email,password); loginForm.control.markAsTouched();">Entrar</button>
                 </div>
             </div>
           </form>
@@ -84,56 +84,58 @@
       <div class="modal-body">
 
         <div class="login-box-body">
-          <form method="post" name="user">
+          <form #cadastroForm="ngForm" novalidate>
               <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
                <div class="form-group" style="margin-bottom:0rem">
                 <!----- username -------------->
-                <label for="nome" style="font-size: 1.3rem">Nome completo</label>
-                <input class="form-control" placeholder="Nome completo" id="name" type="text" name="name" required="" [(ngModel)]="user.name" />
-                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_name"></span>
+                <label style="font-size: 1.3rem">Nome completo</label>
+                <input class="form-control" placeholder="Nome completo" type="text" name="name" required [(ngModel)]="user.name" />
 
               </div>
               <div class="form-group" style="margin-bottom:0rem">                    <!----- matricula -------------->
-                <label for="matricula" style="font-size: 1.3rem">Matricula</label>
-                <input class="form-control" placeholder="Ex:12010000" id="matricula" type="text" name="matricula" required="" [(ngModel)]="user.registry"/>
-                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_id"></span>
+                <label style="font-size: 1.3rem">Matricula</label>
+                <input class="form-control" placeholder="Ex:12010000" type="text" name="registry" required [(ngModel)]="user.registry"/>
 
               </div>
 
               <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-                <label for="rg" style="font-size: 1.3rem">Número RG</label>
-                <input class="form-control" placeholder="RG" id="rg" type="text" name="rg" required="" [(ngModel)]="user.identity"/>
-                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
+                <label style="font-size: 1.3rem">Número RG</label>
+                <input class="form-control" placeholder="RG" type="text" name="identity" required [(ngModel)]="user.identity"/>
 
               </div>
 
 
             <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-              <label for="campoData" style="font-size: 1.3rem">Data de nascimento</label>
-              <input class="form-control" placeholder="Data de nascimento" id="birthDate" type="text" specialCharacters="['/']" mask="00/00/0000" name="birthDate" required="" [(ngModel)]="user.date_birth"/>
-              <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
+              <label style="font-size: 1.3rem">Data de nascimento</label>
+              <input class="form-control" placeholder="Data de nascimento" type="text" specialCharacters="['/']" mask="00/00/0000" name="date_birth" required [(ngModel)]="user.date_birth"/>
 
             </div>
 
 
               <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
-                <label for="email" style="font-size: 1.3rem">E-mail</label>
-                <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="user.email"/>
-                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
+                <label style="font-size: 1.3rem">E-mail</label>
+                <input class="form-control" placeholder="E-mail" type="email" name="email" required [(ngModel)]="user.email"/>
 
               </div>
-              <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
-                <label for="password1" style="font-size: 1.3rem">Senha</label>
-                <input class="form-control" placeholder="Senha" id="password1" type="password" name="password1" required="" [(ngModel)]="user.password"/>
-                <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw1"></span>
+              <div class="form-group" style="margin-bottom:0rem" [class.has-error]="password1.touched && password1.invalid">                    <!----- password -------------->
+                <label style="font-size: 1.3rem">Senha</label>
+                <input class="form-control" placeholder="Senha" type="password" name="password" required [(ngModel)]="user.password" #password1="ngModel">
+                <span style="color: red; font-size: 11px;" *ngIf="password1.touched && password1.errors?.required">
+                Digite uma senha
+                </span>
 
               </div>
-              <div class="form-group">                    <!----- password -------------->
-                <label for="password2" style="font-size: 1.3rem">Confirme a senha</label>
-                <input class="form-control" placeholder="Repita senha" id="password2" type="password" name="password2" required="" [(ngModel)]="user.passwordconfirm"/>
-                <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw2"></span>
+              <div class="form-group" [class.has-error]="password2.touched && password2.invalid">                    <!----- password -------------->
+                <label style="font-size: 1.3rem">Confirme a senha</label>
+                <input class="form-control" placeholder="Repita senha" type="password" name="passwordconfirm" signUpConfirmEqualValidator="password" required [(ngModel)]="user.passwordconfirm" #password2="ngModel">
+                <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.required">
+                Confirme sua senha
+                </span>
+                <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
+                As senhas devem ser iguais
+                </span>
 
-                <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="confirm(user)">Cadastrar</button>
+                <button style="margin-top: 20px;" type="button" [disabled]="cadastroForm.invalid || cadastroForm.pending" class="btn btn-green btn-block btn-flat" (click)="confirm(user); cadastroForm.control.markAsTouched();">Cadastrar</button>
               </div>
               <div class="col-xs-12">
 
@@ -143,14 +145,14 @@
           </div>
         </div>
       </div>
-    </div>
+</div>
 <!--/ Modal box cadastro-->
 <!--Modal esqueci senha-->
 <div class="modal fade" id="senha" role="dialog" aria-hidden="true">
 <div class="modal-dialog modal-sm">
   <div class="modal-content">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button #closeModalPswButton type="button" class="close" data-dismiss="modal">&times;</button>
     <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
       <h4 class="modal-title text-center form-title" style="color: #0066cc;">Esqueci minha senha</h4>
     </div>
@@ -269,7 +271,6 @@
 </div>
 </section>
 <!--/Organisations-->
-
 <!--Courses-->
 <section id="courses" class="section-padding">
 <div class="container">
@@ -340,7 +341,6 @@
   </div>
 </div>
 </section>
-
 <!--Footer-->
 <footer style="margin-bottom: 0px;" id="footer" class="footer">
     <div class="container text-center">
@@ -372,5 +372,5 @@
   </div>
 
 </footer>
-<script src="home.ts"></script>
 <!--/ Footer-->
+<script src="home.ts"></script>

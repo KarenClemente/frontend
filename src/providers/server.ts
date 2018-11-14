@@ -1,6 +1,5 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import { Observable, of, from } from 'rxjs';
 import {catchError} from 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
 
@@ -22,7 +21,6 @@ export class ServerProvider {
     let headers = new Headers(
     {
         'Content-Type' : 'application/x-www-form-urlencoded',
-        // 'Authorization':  'Bearer ' + idToken
     });
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
@@ -35,7 +33,7 @@ export class ServerProvider {
     body.set('date_birth', user.date_birth);
 
     console.log(body.toString());
-    return this.http.post('http://homol.redes.unb.br/sos-unb/api/user/', body.toString(), options).toPromise();
+    return this.http.post('https://homol.redes.unb.br/sos-unb/api/user/', body.toString(), options).toPromise();
     }
 
   // Login
@@ -50,7 +48,7 @@ export class ServerProvider {
     body.set('password', password);
     
     console.log(body.toString());
-    return this.http.post('http://homol.redes.unb.br/sos-unb/api/session/', body.toString(), options).toPromise();
+    return this.http.post('https://homol.redes.unb.br/sos-unb/api/session/', body.toString(), options).toPromise();
    // return this.http.post('http://sosunb.000webhostapp.com/api/api/session/', body.toString(), options).toPromise();
   }
 
@@ -116,8 +114,8 @@ export class ServerProvider {
     return this.http.put('https://sosunb.000webhostapp.com/api/api/user/', obj, options).toPromise();
     };
 
-    //Feed demands
-    getFeedDemands(params,token){
+  //Feed demands
+  getFeedDemands(params,token){
     let headers = new Headers(
         {
             'Content-Type' : 'application/x-www-form-urlencoded',
@@ -130,15 +128,15 @@ export class ServerProvider {
 
     console.log(body.toString());
     return this.http.post('http://homol.redes.unb.br/sos-unb/api/feed_demands', body.toString(), options).toPromise();
-    }
+    };
 
-    //Ranking demands
-    getRankingDemands(params,token){
-        let headers = new Headers(
-            {
-                'Content-Type' : 'application/x-www-form-urlencoded', 
-                'Authorization': token,  
-            });
+  //Ranking demands
+  getRankingDemands(params,token){
+    let headers = new Headers(
+    {
+        'Content-Type' : 'application/x-www-form-urlencoded', 
+        'Authorization': token,  
+    });
     
         let options = new RequestOptions({ headers: headers});
         let body = new URLSearchParams();
@@ -146,10 +144,10 @@ export class ServerProvider {
     
         console.log(body.toString());
         return this.http.post('http://homol.redes.unb.br/sos-unb/api/ranking_demands', body.toString(), options).toPromise();
-        }
+    };
 
-     //Profile demands
-    getProfileDemands(params,token){
+  //Profile demands
+  getProfileDemands(params,token){
         let headers = new Headers(
             {
                 'Content-Type' : 'application/x-www-form-urlencoded', 
@@ -163,6 +161,6 @@ export class ServerProvider {
     
         console.log(body.toString());
         return this.http.post('http://homol.redes.unb.br/sos-unb/api/user_demands', body.toString(), options).toPromise();
-        }   
+    };   
 }
 

@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router'; // Added
-import {ServerProvider} from '../../providers/server';
+import { ServerProvider } from '../../providers/server';
 import { $ } from 'protractor';
 
 @Component({
@@ -19,6 +19,7 @@ export class HomeComponent {
   password: any;
 
     constructor(private _router: Router, public server: ServerProvider) {
+     
     }
       
       confirm(user){
@@ -78,4 +79,5 @@ export class HomeComponent {
           }
         });
       }
+      
 }

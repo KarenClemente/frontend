@@ -22,6 +22,7 @@ import { PostComponent } from './post/post';
 import { FeedComponent } from './feed/feed';
 import { GrdFilterPipe } from './ranking/grd-filter.pipe';
 import { GrdFilterPipes } from './feed/grd-filter.pipe';
+import { ConfirmEqualValidatorDirective } from '../shared/confirm-equal-validator.directive';
 
 const appRoutes: Routes = [
   // { path: 'home', component: AppComponent },
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     RankingComponent,
     LikedComponent,
     PostComponent,
-    FeedComponent
+    FeedComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
