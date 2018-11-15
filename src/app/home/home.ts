@@ -85,10 +85,10 @@ export class HomeComponent {
         });
       }
 
-     /* clearInputs() {
+      clearInputs() {
         this.user = {};
         this.email ="";
         this.password ="";
-       }*/
+       }
       
 }

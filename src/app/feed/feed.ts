@@ -48,7 +48,7 @@ export class FeedComponent{
       );
   }
 
-    constructor(private _router: Router) {
+    constructor(private _router: Router, public server: ServerProvider) {
 
       this.posts = [];
       this.likedPosts = [];
@@ -264,5 +264,23 @@ export class FeedComponent{
         )
   }
 
+  like(post){
+   //Remove like
+   if (this.likedPosts.indexOf(post.id)>-1){
+     this.likedPosts.splice(this.likedPosts.indexOf(post.id),1);
+     post.likes -= 1;
+   }
+   //Add like
+   else{
+     this.likedPosts.push(post.id);
+     post.liked += 1;
+
+     this.server.likeDemand(1,this.server.token).then(response => {
+       console.log(response);
+     }).catch(error => {
+       console.log(error);
+     });
+   }
+  }
 
 }

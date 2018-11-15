@@ -186,11 +186,9 @@
           <div class="col-sm-12">
         <div class="linha"></div>
             <ul class="list-inline">
-
               <div class="pull-left">
-
-                  <i class="fa fa-thumbs-up" style="  margin-left: 20px;margin-top:7px;
-                  font-size: 15px;color:#3366BB"></i>
+                  <a (click)="like(post)"><i class="fa fa-thumbs-up" style="  margin-left: 20px;margin-top:7px;
+                  font-size: 15px;color:#3366BB"></i></a>
                   {{post?.likes}}
                 </div>
                 <div class="textl pull-right">
@@ -199,10 +197,7 @@
                   {{post?.commentnum}} comentários
                   </a>
                 </div>
-
-
             </ul>
-
           </div>
         </div>
             <div class="linha2"></div>
@@ -212,28 +207,22 @@
           <div class="col-xs-2" style="width:auto;">
             <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
           </div>
-
           <p class="borda">
-
             <a>  {{post?.comment.user.name}}</a>
             <br>
             {{post?.comment.com}}
           </p>
       </div>
-
     </div>
     <div class="textleft">
-
-                <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
-            </div>
-  </div>
+      <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
+    </div>
   </div>
  </div>
 </div>
+</div>
   <!--/Card-->
   <script src="feed.ts"></script>
-
-
   <div class="search-results"
           infinite-scroll
           [infiniteScrollDistance]="2"
