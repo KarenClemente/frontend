@@ -23,7 +23,11 @@ export class HomeComponent {
     }
       
       confirm(user){
-        console.log(user.bith_date);
+        console.log(user.date_birth);
+        console.log(user.name);
+        console.log(user.registry);
+        console.log(user.identity);
+
         
         this.server.createUser(this.user).then(response => {
           console.log(response);
@@ -58,6 +62,7 @@ export class HomeComponent {
           console.log(response["_body"]);
           let body = JSON.parse(response['_body']);
           console.log(body.token);
+          this.server.token = body.token;
           this.closeModalLoginButton.nativeElement.click();
           this._router.navigate(['/feed']);
 
@@ -80,10 +85,10 @@ export class HomeComponent {
         });
       }
 
-      clearInputs() {
+     /* clearInputs() {
         this.user = {};
         this.email ="";
         this.password ="";
-       }
+       }*/
       
 }

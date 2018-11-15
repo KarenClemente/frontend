@@ -3,7 +3,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import {catchError} from 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
 
-const BASE_URL = "http://sosunb.000webhostapp.com/api/api";
+const BASE_URL = "http://sosunb.000webhostapp.com/api";
 //const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
 
 @Injectable()
@@ -13,7 +13,8 @@ export class ServerProvider {
     public cusId: any;
     public hasCusId: boolean;
     public user: any;
-    
+    public token: any;
+
     constructor(public http: Http) {
       this.hasCusId = false;
       this.user = {};
@@ -52,11 +53,12 @@ export class ServerProvider {
     body.set('password', password);
     
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/session', body.toString(), options).toPromise();
+    return this.http.post(BASE_URL + '/sessions', body.toString(), options).toPromise();
     //return this.http.post('https://homol.redes.unb.br/sos-unb/api/session/', body.toString(), options).toPromise();
    // return this.http.post('http://sosunb.000webhostapp.com/api/api/session/', body.toString(), options).toPromise();
   }
 
+  
   // Related demands
   getRelatedDemands(demand, idToken) {
     let headers = new Headers(
@@ -93,17 +95,21 @@ export class ServerProvider {
     return this.http.post('https://sosunb.000webhostapp.com/api/api/type-problem/', obj, options).toPromise();
   };
   
-  // type problem
-  likeDemand(demand, idToken) {
+  // like demand
+  likeDemand(demandId, accessToken) {
     let headers = new Headers(
     {
-        'Content-Type' : 'application/json'
+        'Content-Type' : 'application/x-www-form-urlencoded',
+        'Authorization': accessToken,
     });
     let options = new RequestOptions({ headers: headers });
-    let obj = {
-        "demands_id": demand.id,
-    };   
-    return this.http.post('https://sosunb.000webhostapp.com/api/api/type-problem/', obj, options).toPromise();
+    let body = new URLSearchParams();
+    body.set('id',demandId);
+    
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/like', body.toString(), options).toPromise();
+    //return this.http.post('https://homol.redes.unb.br/sos-unb/api/like/', body.toString(), options).toPromise();
+   // return this.http.post('http://sosunb.000webhostapp.com/api/api/like/', body.toString(), options).toPromise();
   };
 
   //change password
