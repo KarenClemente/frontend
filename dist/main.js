@@ -1648,6 +1648,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 //import 'rxjs/add/operator/toPromise';
+var BASE_URL = "http://sosunb.000webhostapp.com/api/api";
+//const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
 var ServerProvider = /** @class */ (function () {
     function ServerProvider(http) {
         this.http = http;
@@ -1669,7 +1671,8 @@ var ServerProvider = /** @class */ (function () {
         body.set('conf_password', user.password);
         body.set('date_birth', user.date_birth);
         console.log(body.toString());
-        return this.http.post('https://homol.redes.unb.br/sos-unb/api/user/', body.toString(), options).toPromise();
+        return this.http.post(BASE_URL + '/user', body.toString(), options).toPromise();
+        //return this.http.post('http://homol.redes.unb.br/sos-unb/api/user', body.toString(), options).toPromise();
     };
     // Login
     ServerProvider.prototype.loginUser = function (email, password) {
@@ -1681,7 +1684,8 @@ var ServerProvider = /** @class */ (function () {
         body.set('email', email);
         body.set('password', password);
         console.log(body.toString());
-        return this.http.post('https://homol.redes.unb.br/sos-unb/api/session/', body.toString(), options).toPromise();
+        return this.http.post(BASE_URL + '/session', body.toString(), options).toPromise();
+        //return this.http.post('https://homol.redes.unb.br/sos-unb/api/session/', body.toString(), options).toPromise();
         // return this.http.post('http://sosunb.000webhostapp.com/api/api/session/', body.toString(), options).toPromise();
     };
     // Related demands

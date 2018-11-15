@@ -3,6 +3,9 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import {catchError} from 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
 
+const BASE_URL = "http://sosunb.000webhostapp.com/api/api";
+//const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
+
 @Injectable()
 export class ServerProvider {
  
@@ -33,8 +36,9 @@ export class ServerProvider {
     body.set('date_birth', user.date_birth);
 
     console.log(body.toString());
-    return this.http.post('https://homol.redes.unb.br/sos-unb/api/user/', body.toString(), options).toPromise();
-    }
+    return this.http.post(BASE_URL + '/user', body.toString(), options).toPromise();
+    //return this.http.post('http://homol.redes.unb.br/sos-unb/api/user', body.toString(), options).toPromise();
+}
 
   // Login
   loginUser(email, password){
@@ -48,7 +52,8 @@ export class ServerProvider {
     body.set('password', password);
     
     console.log(body.toString());
-    return this.http.post('https://homol.redes.unb.br/sos-unb/api/session/', body.toString(), options).toPromise();
+    return this.http.post(BASE_URL + '/session', body.toString(), options).toPromise();
+    //return this.http.post('https://homol.redes.unb.br/sos-unb/api/session/', body.toString(), options).toPromise();
    // return this.http.post('http://sosunb.000webhostapp.com/api/api/session/', body.toString(), options).toPromise();
   }
 
