@@ -11,14 +11,16 @@ import { Observable } from 'rxjs';
 
 export class FeedComponent{
 
+  public searchText : string;
+  public posts: Array<any>;
+  public likedPosts: Array<any>;
+  public commentedPosts: Array<any>;
+  page: number = 1;
+
   onScroll () {
       console.log('scrolled!!')
       this.getPosts();
   }
-  public searchText : string;
-  public posts: Array<any>;
-  public likedPosts: Array<any>;
-  page: number = 1;
 
   getPosts(){
       this.posts.push(
@@ -269,13 +271,19 @@ export class FeedComponent{
    if (this.likedPosts.indexOf(post.id)>-1){
      this.likedPosts.splice(this.likedPosts.indexOf(post.id),1);
      post.likes -= 1;
+
+     this.server.unlikeDemand(this.server.token, 1).then(response => {
+       console.log(response);
+     }).catch(error => {
+       console.log(error);
+     });
    }
    //Add like
    else{
      this.likedPosts.push(post.id);
-     post.liked += 1;
+     post.likes += 1;
 
-     this.server.likeDemand(1,this.server.token).then(response => {
+     this.server.likeDemand(this.server.token,1).then(response => {
        console.log(response);
      }).catch(error => {
        console.log(error);
@@ -283,4 +291,61 @@ export class FeedComponent{
    }
   }
 
+  newComment(post){
+    //Add comment
+      this.commentedPosts.push(post.id);
+      post.commentnum += 1;
+ 
+      this.server.commentDemand(this.server.token,1,'comentário').then(response => {
+        console.log(response);
+      }).catch(error => {
+        console.log(error);
+      });
+  }
+
+  editComment(post){
+    //Edit comment
+      this.server.editComment(this.server.token,1,'comentário editado').then(response => {
+          console.log(response);
+        }).catch(error => {
+          console.log(error);
+        });
+  }
+    
+  delComment(post){
+    //Delete comment
+      this.commentedPosts.push(post.id); //como tira?
+      post.commentnum -= 1;
+ 
+      this.server.deleteComment(this.server.token,1).then(response => {
+        console.log(response);
+      }).catch(error => {
+        console.log(error);
+      });
+  }
+  
+  report(post){
+    this.server.reportDemand(this.server.token,1).then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  comments(post){
+    this.server.viewComments(this.server.token,1).then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  changeInfo(accessToken, image, mail, pass){
+    this.server.updateInfo(this.server.token, image, mail, pass).then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 }
+  

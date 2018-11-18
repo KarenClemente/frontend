@@ -21,12 +21,9 @@ export class PostComponent {
   ambienteOut: boolean = false;
   private selectedLink: string=" ";
   public postsSimilar: Array<any>;
-  public likedPosts: Array<any>;
-
   
     constructor(private _router: Router) {
       this.postsSimilar = [];
-      this.likedPosts = [];  
 
       this.postsSimilar.push(
         {

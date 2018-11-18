@@ -3,8 +3,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import {catchError} from 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
 
-const BASE_URL = "http://sosunb.000webhostapp.com/api";
-//const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
+//const BASE_URL = "http://sosunb.000webhostapp.com/api";
+const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
 const MY_TOKEN = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9zb3N1bmIuMDAwd2ViaG9zdGFwcC5jb21cL2FwaVwvIiwic3ViIjoiMSIsImV4cCI6MTU0MjM5MjgwNCwiaWF0IjoxNTQyMzA2NDA0LCJ1c2VyIjoiVXNlciAxIiwicHJvZmlsZV90eXBlX2lkIjoiMiJ9.4N6pBZEKl-YIF0kU4TjF3tZaLmz9m3poC62cS1JoR5w";
 
 
@@ -21,6 +21,7 @@ export class ServerProvider {
       this.hasCusId = false;
       this.user = {};
   }
+//HOME PAGE
 
   // Registration
   createUser(user) {
@@ -40,7 +41,6 @@ export class ServerProvider {
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/user', body.toString(), options).toPromise();
-    //return this.http.post('http://homol.redes.unb.br/sos-unb/api/user', body.toString(), options).toPromise();
 }
 
   // Login
@@ -56,49 +56,25 @@ export class ServerProvider {
     
     console.log(body.toString());
     return this.http.post(BASE_URL + '/sessions', body.toString(), options).toPromise();
-    //return this.http.post('https://homol.redes.unb.br/sos-unb/api/session/', body.toString(), options).toPromise();
-   // return this.http.post('http://sosunb.000webhostapp.com/api/api/session/', body.toString(), options).toPromise();
   }
 
-  
-  // Related demands
-  getRelatedDemands(demand, idToken) {
-    let headers = new Headers(
-    {
-        'Content-Type' : 'application/json'
-    });
+  // Forgot password
+  newPsw(email){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+     
     let options = new RequestOptions({ headers: headers });
-    return this.http.post('https://www.sosunb/demands', demand, options).toPromise();
-  };
+    let body = new URLSearchParams();
+    body.set('email', email);
+ 
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+  }
 
-  // type demands
-  typeDemands(demand) {
-    let headers = new Headers(
-    {
-        'Content-Type' : 'application/json'
-    });
-    let options = new RequestOptions({ headers: headers });
-    let obj = {
-        "demand": demand.type,
-    };   
-    return this.http.post('https://sosunb.000webhostapp.com/api/api/type-demand/', obj, options).toPromise();
-  };
+//POSTS FUNCTIONS
 
-  // type problem
-  typeProblem(demand) {
-    let headers = new Headers(
-    {
-        'Content-Type' : 'application/json'
-    });
-    let options = new RequestOptions({ headers: headers });
-    let obj = {
-        "type": demand.category,
-    };   
-    return this.http.post('https://sosunb.000webhostapp.com/api/api/type-problem/', obj, options).toPromise();
-  };
-  
   // like demand
-  likeDemand(demandId, accessToken) {
+  likeDemand(accessToken, demandId) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
@@ -109,70 +85,112 @@ export class ServerProvider {
     
     console.log(body.toString());
     return this.http.post(BASE_URL + '/like', body.toString(), options).toPromise();
-    //return this.http.post('https://homol.redes.unb.br/sos-unb/api/like/', body.toString(), options).toPromise();
-   // return this.http.post('http://sosunb.000webhostapp.com/api/api/like/', body.toString(), options).toPromise();
   };
 
-  //change password
-  changePsw(user, idToken){
-    let headers = new Headers(
-    {
-       'Content-Type' : 'application/json'
-    });
-    let options = new RequestOptions({ headers: headers});
-    let obj = {
-        "email": user.email,
-    }    
-    return this.http.put('https://sosunb.000webhostapp.com/api/api/user/', obj, options).toPromise();
-    };
+  // Unlike demand
+  unlikeDemand(accessToken, demandId) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
-  //Feed demands
-  getFeedDemands(params,token){
-    let headers = new Headers(
-        {
-            'Content-Type' : 'application/x-www-form-urlencoded',
-            'Authorization': token,   
-        });
-
-    let options = new RequestOptions({ headers: headers});
+    let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
-    body.set('solved', params.solved);
+    body.set('Authorization', MY_TOKEN);
+    body.set('demands_id','1');
+    
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/like/delete', body.toString(), options).toPromise();
+  };
+
+  // View comments
+  viewComments(accessToken, demandId){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded')
+
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', MY_TOKEN);
+    body.set('demands_id','1');
+    
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '?', body.toString(), options).toPromise(); 
+  };
+
+  // New comment
+  commentDemand(accessToken, demandId, comment){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+    
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', MY_TOKEN);
+    body.set('demands_id','1');
+    body.set('comments','Comentário teste');
 
     console.log(body.toString());
-    return this.http.post('http://homol.redes.unb.br/sos-unb/api/feed_demands', body.toString(), options).toPromise();
-    };
+    return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+  }
 
-  //Ranking demands
-  getRankingDemands(params,token){
-    let headers = new Headers(
-    {
-        'Content-Type' : 'application/x-www-form-urlencoded', 
-        'Authorization': token,  
-    });
-    
-        let options = new RequestOptions({ headers: headers});
-        let body = new URLSearchParams();
-        body.set('campus', params.campus);
-    
-        console.log(body.toString());
-        return this.http.post('http://homol.redes.unb.br/sos-unb/api/ranking_demands', body.toString(), options).toPromise();
-    };
+  // Edit comment
+  editComment(accessToken, commentId, comment){
+     let headers = new Headers();
+     headers.append('Content-Type','application/x-www-form-urlencoded')
+      
+     let options = new RequestOptions({ headers: headers });
+     let body = new URLSearchParams();
+     body.set('Authorization', MY_TOKEN);
+     body.set('comment_id','1');
+     body.set('comments','Comentário editado teste');
+  
+     console.log(body.toString());
+     return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+  }
 
-  //Profile demands
-  getProfileDemands(params,token){
-        let headers = new Headers(
-            {
-                'Content-Type' : 'application/x-www-form-urlencoded', 
-                'Authorization': token,  
-            });
-    
-        let options = new RequestOptions({ headers: headers});
-        let body = new URLSearchParams();
-        body.set('madeByMe', params.madeByMe);
-        body.set('liked', params.liked);
-    
-        console.log(body.toString());
-        return this.http.post('http://homol.redes.unb.br/sos-unb/api/user_demands', body.toString(), options).toPromise();
-    };   
+  // Delete comment
+  deleteComment(accessToken, commentId){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+     
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', MY_TOKEN);
+    body.set('comment_id','1');
+ 
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/comments/delete', body.toString(),options).toPromise();
+  }
+
+  // Report demand
+  reportDemand(accessToken, demandId){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+     
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', MY_TOKEN);
+    body.set('demands_id','1');
+ 
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+  }
+
+//POST PAGE
+
+//PROFILE FUNCTION
+  
+  // Change infos
+  updateInfo(accessToken, photo, email, newPass){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+     
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', MY_TOKEN);
+    body.set('image',photo);
+    body.set('email', email);
+    body.set('newPass', newPass);
+ 
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+  }
 }
 

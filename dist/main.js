@@ -496,17 +496,71 @@ var FeedComponent = /** @class */ (function () {
         if (this.likedPosts.indexOf(post.id) > -1) {
             this.likedPosts.splice(this.likedPosts.indexOf(post.id), 1);
             post.likes -= 1;
-        }
-        //Add like
-        else {
-            this.likedPosts.push(post.id);
-            post.liked += 1;
-            this.server.likeDemand(1, this.server.token).then(function (response) {
+            this.server.unlikeDemand(this.server.token, 1).then(function (response) {
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);
             });
         }
+        //Add like
+        else {
+            this.likedPosts.push(post.id);
+            post.likes += 1;
+            this.server.likeDemand(this.server.token, 1).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    };
+    FeedComponent.prototype.newComment = function (post) {
+        //Add comment
+        this.commentedPosts.push(post.id);
+        post.commentnum += 1;
+        this.server.commentDemand(this.server.token, 1, 'comentário').then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    FeedComponent.prototype.editComment = function (post) {
+        //Edit comment
+        this.server.editComment(this.server.token, 1, 'comentário editado').then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    FeedComponent.prototype.delComment = function (post) {
+        //Delete comment
+        this.commentedPosts.push(post.id); //como tira?
+        post.commentnum -= 1;
+        this.server.deleteComment(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    FeedComponent.prototype.report = function (post) {
+        this.server.reportDemand(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    FeedComponent.prototype.comments = function (post) {
+        this.server.viewComments(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    FeedComponent.prototype.changeInfo = function (accessToken, image, mail, pass) {
+        this.server.updateInfo(this.server.token, image, mail, pass).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
     };
     FeedComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -691,6 +745,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LikedComponent", function() { return LikedComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _providers_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../providers/server */ "./src/providers/server.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -702,9 +757,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
  // Added
+
 var LikedComponent = /** @class */ (function () {
-    function LikedComponent(_router) {
+    function LikedComponent(_router, server) {
         this._router = _router;
+        this.server = server;
         this.posts = [];
         this.likedPosts = [];
         this.posts.push({
@@ -829,13 +886,84 @@ var LikedComponent = /** @class */ (function () {
             }
         });
     }
+    LikedComponent.prototype.like = function (post) {
+        //Remove like
+        if (this.likedPosts.indexOf(post.id) > -1) {
+            this.likedPosts.splice(this.likedPosts.indexOf(post.id), 1);
+            post.likes -= 1;
+            this.server.unlikeDemand(this.server.token, 1).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        //Add like
+        else {
+            this.likedPosts.push(post.id);
+            post.likes += 1;
+            this.server.likeDemand(this.server.token, 1).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    };
+    LikedComponent.prototype.newComment = function (post) {
+        //Add comment
+        this.commentedPosts.push(post.id);
+        post.commentnum += 1;
+        this.server.commentDemand(this.server.token, 1, 'comentário').then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    LikedComponent.prototype.editComment = function (post) {
+        //Edit comment
+        this.server.editComment(this.server.token, 1, 'comentário editado').then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    LikedComponent.prototype.delComment = function (post) {
+        //Delete comment
+        this.commentedPosts.push(post.id); //como tira?
+        post.commentnum -= 1;
+        this.server.deleteComment(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    LikedComponent.prototype.report = function (post) {
+        this.server.reportDemand(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    LikedComponent.prototype.comments = function (post) {
+        this.server.viewComments(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    LikedComponent.prototype.changeInfo = function (accessToken, image, mail, pass) {
+        this.server.updateInfo(this.server.token, image, mail, pass).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
     LikedComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-liked',
             template: __webpack_require__(/*! ./liked.html */ "./src/app/liked/liked.html"),
             styles: [__webpack_require__(/*! ./liked.css */ "./src/app/liked/liked.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _providers_server__WEBPACK_IMPORTED_MODULE_2__["ServerProvider"]])
     ], LikedComponent);
     return LikedComponent;
 }());
@@ -878,6 +1006,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MadeByMeComponent", function() { return MadeByMeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _providers_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../providers/server */ "./src/providers/server.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -889,13 +1018,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
  // Added
+
 var MadeByMeComponent = /** @class */ (function () {
-    function MadeByMeComponent(_router) {
+    function MadeByMeComponent(_router, server) {
         this._router = _router;
+        this.server = server;
         this.posts = [];
         this.likedPosts = [];
         this.posts.push({
-            id: 0,
+            id: 1,
             title: 'Poste perigoso',
             image: './assets/img/poste.jpeg',
             location: 'ICC Norte',
@@ -919,7 +1050,79 @@ var MadeByMeComponent = /** @class */ (function () {
                 com: 'hahahaha vish que coisa!',
             }
         }, {
-            id: 1,
+            id: 2,
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
+            location: 'ICC Norte',
+            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+            likes: 11,
+            commentnum: 2,
+            ranking: 1,
+            liked: true,
+            date: '11/11/2018',
+            hour: '16:11',
+            collapsed: false,
+            showcomment: false,
+            user: {
+                name: 'Funaaa',
+                profilePicture: './assets/img/avatar.png',
+            },
+            comment: {
+                user: { name: 'Gabriela',
+                    profilePicture: './assets/img/avatar.png',
+                },
+                com: 'hahahaha vish que coisa!',
+            }
+        }, {
+            id: 3,
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
+            location: 'ICC Norte',
+            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+            likes: 11,
+            commentnum: 2,
+            ranking: 1,
+            liked: true,
+            date: '11/11/2018',
+            hour: '16:11',
+            collapsed: false,
+            showcomment: false,
+            user: {
+                name: 'Funaaa',
+                profilePicture: './assets/img/avatar.png',
+            },
+            comment: {
+                user: { name: 'Gabriela',
+                    profilePicture: './assets/img/avatar.png',
+                },
+                com: 'hahahaha vish que coisa!',
+            }
+        }, {
+            id: 4,
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
+            location: 'ICC Norte',
+            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+            likes: 11,
+            commentnum: 2,
+            ranking: 1,
+            liked: true,
+            date: '11/11/2018',
+            hour: '16:11',
+            collapsed: false,
+            showcomment: false,
+            user: {
+                name: 'Funaaa',
+                profilePicture: './assets/img/avatar.png',
+            },
+            comment: {
+                user: { name: 'Gabriela',
+                    profilePicture: './assets/img/avatar.png',
+                },
+                com: 'hahahaha vish que coisa!',
+            }
+        }, {
+            id: 5,
             title: 'Poste perigoso',
             image: './assets/img/poste.jpeg',
             location: 'ICC Norte',
@@ -944,13 +1147,84 @@ var MadeByMeComponent = /** @class */ (function () {
             }
         });
     }
+    MadeByMeComponent.prototype.like = function (post) {
+        //Remove like
+        if (this.likedPosts.indexOf(post.id) > -1) {
+            this.likedPosts.splice(this.likedPosts.indexOf(post.id), 1);
+            post.likes -= 1;
+            this.server.unlikeDemand(this.server.token, 1).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        //Add like
+        else {
+            this.likedPosts.push(post.id);
+            post.likes += 1;
+            this.server.likeDemand(this.server.token, 1).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    };
+    MadeByMeComponent.prototype.newComment = function (post) {
+        //Add comment
+        this.commentedPosts.push(post.id);
+        post.commentnum += 1;
+        this.server.commentDemand(this.server.token, 1, 'comentário').then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    MadeByMeComponent.prototype.editComment = function (post) {
+        //Edit comment
+        this.server.editComment(this.server.token, 1, 'comentário editado').then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    MadeByMeComponent.prototype.delComment = function (post) {
+        //Delete comment
+        this.commentedPosts.push(post.id); //como tira?
+        post.commentnum -= 1;
+        this.server.deleteComment(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    MadeByMeComponent.prototype.report = function (post) {
+        this.server.reportDemand(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    MadeByMeComponent.prototype.comments = function (post) {
+        this.server.viewComments(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    MadeByMeComponent.prototype.changeInfo = function (accessToken, image, mail, pass) {
+        this.server.updateInfo(this.server.token, image, mail, pass).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
     MadeByMeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-madeByme',
             template: __webpack_require__(/*! ./madeByme.html */ "./src/app/madeByme/madeByme.html"),
             styles: [__webpack_require__(/*! ./madeByme.css */ "./src/app/madeByme/madeByme.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _providers_server__WEBPACK_IMPORTED_MODULE_2__["ServerProvider"]])
     ], MadeByMeComponent);
     return MadeByMeComponent;
 }());
@@ -1017,7 +1291,6 @@ var PostComponent = /** @class */ (function () {
         this.ambienteOut = false;
         this.selectedLink = " ";
         this.postsSimilar = [];
-        this.likedPosts = [];
         this.postsSimilar.push({
             id: 0,
             title: 'Poste perigoso',
@@ -1208,6 +1481,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RankingComponent", function() { return RankingComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _providers_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../providers/server */ "./src/providers/server.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1219,15 +1493,17 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
  // Added
+
 var RankingComponent = /** @class */ (function () {
-    function RankingComponent(_router) {
+    function RankingComponent(_router, server) {
         this._router = _router;
+        this.server = server;
         this.posts = [];
         this.likedPosts = [];
         this.posts.push({
             id: 1,
-            title: 'danela Quebrada',
-            image: './assets/img/janela.jpg',
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
             location: 'ICC Norte',
             description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
             likes: 11,
@@ -1243,13 +1519,15 @@ var RankingComponent = /** @class */ (function () {
                 profilePicture: './assets/img/avatar.png',
             },
             comment: {
-                user: { name: 'Gabriela' },
+                user: { name: 'Gabriela',
+                    profilePicture: './assets/img/avatar.png',
+                },
                 com: 'hahahaha vish que coisa!',
             }
         }, {
             id: 2,
-            title: 'Janela Quebrada',
-            image: './assets/img/janela.jpg',
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
             location: 'ICC Norte',
             description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
             likes: 11,
@@ -1272,8 +1550,8 @@ var RankingComponent = /** @class */ (function () {
             }
         }, {
             id: 3,
-            title: 'Janela Quebrada',
-            image: './assets/img/janela.jpg',
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
             location: 'ICC Norte',
             description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
             likes: 11,
@@ -1296,8 +1574,8 @@ var RankingComponent = /** @class */ (function () {
             }
         }, {
             id: 4,
-            title: 'Janela Quebrada',
-            image: './assets/img/janela.jpg',
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
             location: 'ICC Norte',
             description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
             likes: 11,
@@ -1320,128 +1598,8 @@ var RankingComponent = /** @class */ (function () {
             }
         }, {
             id: 5,
-            title: 'Janela Quebrada',
-            image: './assets/img/janela.jpg',
-            location: 'ICC Norte',
-            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
-            likes: 11,
-            commentnum: 2,
-            ranking: 1,
-            liked: true,
-            date: '11/11/2018',
-            hour: '16:11',
-            collapsed: false,
-            showcomment: false,
-            user: {
-                name: 'Funaaa',
-                profilePicture: './assets/img/avatar.png',
-            },
-            comment: {
-                user: { name: 'Gabriela',
-                    profilePicture: './assets/img/avatar.png',
-                },
-                com: 'hahahaha vish que coisa!',
-            }
-        }, {
-            id: 6,
-            title: 'Janela Quebrada',
-            image: './assets/img/janela.jpg',
-            location: 'ICC Norte',
-            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
-            likes: 11,
-            commentnum: 2,
-            ranking: 1,
-            liked: true,
-            date: '11/11/2018',
-            hour: '16:11',
-            collapsed: false,
-            showcomment: false,
-            user: {
-                name: 'Funaaa',
-                profilePicture: './assets/img/avatar.png',
-            },
-            comment: {
-                user: { name: 'Gabriela',
-                    profilePicture: './assets/img/avatar.png',
-                },
-                com: 'hahahaha vish que coisa!',
-            }
-        }, {
-            id: 7,
-            title: 'Janela Quebrada',
-            image: './assets/img/janela.jpg',
-            location: 'ICC Norte',
-            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
-            likes: 11,
-            commentnum: 2,
-            ranking: 1,
-            liked: true,
-            date: '11/11/2018',
-            hour: '16:11',
-            collapsed: false,
-            showcomment: false,
-            user: {
-                name: 'Funaaa',
-                profilePicture: './assets/img/avatar.png',
-            },
-            comment: {
-                user: { name: 'Gabriela',
-                    profilePicture: './assets/img/avatar.png',
-                },
-                com: 'hahahaha vish que coisa!',
-            }
-        }, {
-            id: 8,
-            title: 'Janela Quebrada',
-            image: './assets/img/janela.jpg',
-            location: 'ICC Norte',
-            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
-            likes: 11,
-            commentnum: 2,
-            ranking: 1,
-            liked: true,
-            date: '11/11/2018',
-            hour: '16:11',
-            collapsed: false,
-            showcomment: false,
-            user: {
-                name: 'Funaaa',
-                profilePicture: './assets/img/avatar.png',
-            },
-            comment: {
-                user: { name: 'Gabriela',
-                    profilePicture: './assets/img/avatar.png',
-                },
-                com: 'hahahaha vish que coisa!',
-            }
-        }, {
-            id: 9,
-            title: 'Janela Quebrada',
-            image: './assets/img/janela.jpg',
-            location: 'ICC Norte',
-            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
-            likes: 11,
-            commentnum: 2,
-            ranking: 1,
-            liked: true,
-            date: '11/11/2018',
-            hour: '16:11',
-            collapsed: false,
-            showcomment: false,
-            user: {
-                name: 'Funaaa',
-                profilePicture: './assets/img/avatar.png',
-            },
-            comment: {
-                user: { name: 'Gabriela',
-                    profilePicture: './assets/img/avatar.png',
-                },
-                com: 'hahahaha vish que coisa!',
-            }
-        }, {
-            id: 10,
-            title: 'Janela Quebrada',
-            image: './assets/img/janela.jpg',
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
             location: 'ICC Norte',
             description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
             likes: 11,
@@ -1464,13 +1622,84 @@ var RankingComponent = /** @class */ (function () {
             }
         });
     }
+    RankingComponent.prototype.like = function (post) {
+        //Remove like
+        if (this.likedPosts.indexOf(post.id) > -1) {
+            this.likedPosts.splice(this.likedPosts.indexOf(post.id), 1);
+            post.likes -= 1;
+            this.server.unlikeDemand(this.server.token, 1).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        //Add like
+        else {
+            this.likedPosts.push(post.id);
+            post.likes += 1;
+            this.server.likeDemand(this.server.token, 1).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    };
+    RankingComponent.prototype.newComment = function (post) {
+        //Add comment
+        this.commentedPosts.push(post.id);
+        post.commentnum += 1;
+        this.server.commentDemand(this.server.token, 1, 'comentário').then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    RankingComponent.prototype.editComment = function (post) {
+        //Edit comment
+        this.server.editComment(this.server.token, 1, 'comentário editado').then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    RankingComponent.prototype.delComment = function (post) {
+        //Delete comment
+        this.commentedPosts.push(post.id); //como tira?
+        post.commentnum -= 1;
+        this.server.deleteComment(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    RankingComponent.prototype.report = function (post) {
+        this.server.reportDemand(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    RankingComponent.prototype.comments = function (post) {
+        this.server.viewComments(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    RankingComponent.prototype.changeInfo = function (accessToken, image, mail, pass) {
+        this.server.updateInfo(this.server.token, image, mail, pass).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
     RankingComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-ranking',
             template: __webpack_require__(/*! ./ranking.html */ "./src/app/ranking/ranking.html"),
             styles: [__webpack_require__(/*! ./ranking.css */ "./src/app/ranking/ranking.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _providers_server__WEBPACK_IMPORTED_MODULE_2__["ServerProvider"]])
     ], RankingComponent);
     return RankingComponent;
 }());
@@ -1513,6 +1742,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SolvedComponent", function() { return SolvedComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _providers_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../providers/server */ "./src/providers/server.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1524,13 +1754,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
  // Added
+
 var SolvedComponent = /** @class */ (function () {
-    function SolvedComponent(_router) {
+    function SolvedComponent(_router, server) {
         this._router = _router;
+        this.server = server;
         this.posts = [];
         this.likedPosts = [];
         this.posts.push({
-            id: 0,
+            id: 1,
             title: 'Poste perigoso',
             image: './assets/img/poste.jpeg',
             location: 'ICC Norte',
@@ -1554,11 +1786,83 @@ var SolvedComponent = /** @class */ (function () {
                 com: 'hahahaha vish que coisa!',
             }
         }, {
-            id: 1,
+            id: 2,
             title: 'Poste perigoso',
             image: './assets/img/poste.jpeg',
             location: 'ICC Norte',
-            description: 'hsjshkjsksk ushbdjn dshd ihas has ias ih ash hsa siah ihs hs aih is is is i is ',
+            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+            likes: 11,
+            commentnum: 2,
+            ranking: 1,
+            liked: true,
+            date: '11/11/2018',
+            hour: '16:11',
+            collapsed: false,
+            showcomment: false,
+            user: {
+                name: 'Funaaa',
+                profilePicture: './assets/img/avatar.png',
+            },
+            comment: {
+                user: { name: 'Gabriela',
+                    profilePicture: './assets/img/avatar.png',
+                },
+                com: 'hahahaha vish que coisa!',
+            }
+        }, {
+            id: 3,
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
+            location: 'ICC Norte',
+            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+            likes: 11,
+            commentnum: 2,
+            ranking: 1,
+            liked: true,
+            date: '11/11/2018',
+            hour: '16:11',
+            collapsed: false,
+            showcomment: false,
+            user: {
+                name: 'Funaaa',
+                profilePicture: './assets/img/avatar.png',
+            },
+            comment: {
+                user: { name: 'Gabriela',
+                    profilePicture: './assets/img/avatar.png',
+                },
+                com: 'hahahaha vish que coisa!',
+            }
+        }, {
+            id: 4,
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
+            location: 'ICC Norte',
+            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+            likes: 11,
+            commentnum: 2,
+            ranking: 1,
+            liked: true,
+            date: '11/11/2018',
+            hour: '16:11',
+            collapsed: false,
+            showcomment: false,
+            user: {
+                name: 'Funaaa',
+                profilePicture: './assets/img/avatar.png',
+            },
+            comment: {
+                user: { name: 'Gabriela',
+                    profilePicture: './assets/img/avatar.png',
+                },
+                com: 'hahahaha vish que coisa!',
+            }
+        }, {
+            id: 5,
+            title: 'Poste perigoso',
+            image: './assets/img/poste.jpeg',
+            location: 'ICC Norte',
+            description: 'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
             likes: 11,
             commentnum: 2,
             ranking: 1,
@@ -1579,13 +1883,84 @@ var SolvedComponent = /** @class */ (function () {
             }
         });
     }
+    SolvedComponent.prototype.like = function (post) {
+        //Remove like
+        if (this.likedPosts.indexOf(post.id) > -1) {
+            this.likedPosts.splice(this.likedPosts.indexOf(post.id), 1);
+            post.likes -= 1;
+            this.server.unlikeDemand(this.server.token, 1).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        //Add like
+        else {
+            this.likedPosts.push(post.id);
+            post.likes += 1;
+            this.server.likeDemand(this.server.token, 1).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    };
+    SolvedComponent.prototype.newComment = function (post) {
+        //Add comment
+        this.commentedPosts.push(post.id);
+        post.commentnum += 1;
+        this.server.commentDemand(this.server.token, 1, 'comentário').then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    SolvedComponent.prototype.editComment = function (post) {
+        //Edit comment
+        this.server.editComment(this.server.token, 1, 'comentário editado').then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    SolvedComponent.prototype.delComment = function (post) {
+        //Delete comment
+        this.commentedPosts.push(post.id); //como tira?
+        post.commentnum -= 1;
+        this.server.deleteComment(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    SolvedComponent.prototype.report = function (post) {
+        this.server.reportDemand(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    SolvedComponent.prototype.comments = function (post) {
+        this.server.viewComments(this.server.token, 1).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    SolvedComponent.prototype.changeInfo = function (accessToken, image, mail, pass) {
+        this.server.updateInfo(this.server.token, image, mail, pass).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
     SolvedComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-solved',
             template: __webpack_require__(/*! ./solved.html */ "./src/app/solved/solved.html"),
             styles: [__webpack_require__(/*! ./solved.css */ "./src/app/solved/solved.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _providers_server__WEBPACK_IMPORTED_MODULE_2__["ServerProvider"]])
     ], SolvedComponent);
     return SolvedComponent;
 }());
@@ -1672,8 +2047,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 //import 'rxjs/add/operator/toPromise';
-var BASE_URL = "http://sosunb.000webhostapp.com/api";
-//const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
+//const BASE_URL = "http://sosunb.000webhostapp.com/api";
+var BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
 var MY_TOKEN = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9zb3N1bmIuMDAwd2ViaG9zdGFwcC5jb21cL2FwaVwvIiwic3ViIjoiMSIsImV4cCI6MTU0MjM5MjgwNCwiaWF0IjoxNTQyMzA2NDA0LCJ1c2VyIjoiVXNlciAxIiwicHJvZmlsZV90eXBlX2lkIjoiMiJ9.4N6pBZEKl-YIF0kU4TjF3tZaLmz9m3poC62cS1JoR5w";
 var ServerProvider = /** @class */ (function () {
     function ServerProvider(http) {
@@ -1681,6 +2056,7 @@ var ServerProvider = /** @class */ (function () {
         this.hasCusId = false;
         this.user = {};
     }
+    //HOME PAGE
     // Registration
     ServerProvider.prototype.createUser = function (user) {
         var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]({
@@ -1697,7 +2073,6 @@ var ServerProvider = /** @class */ (function () {
         body.set('date_birth', user.date_birth);
         console.log(body.toString());
         return this.http.post(BASE_URL + '/user', body.toString(), options).toPromise();
-        //return this.http.post('http://homol.redes.unb.br/sos-unb/api/user', body.toString(), options).toPromise();
     };
     // Login
     ServerProvider.prototype.loginUser = function (email, password) {
@@ -1710,44 +2085,20 @@ var ServerProvider = /** @class */ (function () {
         body.set('password', password);
         console.log(body.toString());
         return this.http.post(BASE_URL + '/sessions', body.toString(), options).toPromise();
-        //return this.http.post('https://homol.redes.unb.br/sos-unb/api/session/', body.toString(), options).toPromise();
-        // return this.http.post('http://sosunb.000webhostapp.com/api/api/session/', body.toString(), options).toPromise();
     };
-    // Related demands
-    ServerProvider.prototype.getRelatedDemands = function (demand, idToken) {
-        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]({
-            'Content-Type': 'application/json'
-        });
+    // Forgot password
+    ServerProvider.prototype.newPsw = function (email) {
+        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
-        return this.http.post('https://www.sosunb/demands', demand, options).toPromise();
+        var body = new URLSearchParams();
+        body.set('email', email);
+        console.log(body.toString());
+        return this.http.post(BASE_URL + '/?', body.toString(), options).toPromise();
     };
-    ;
-    // type demands
-    ServerProvider.prototype.typeDemands = function (demand) {
-        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]({
-            'Content-Type': 'application/json'
-        });
-        var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
-        var obj = {
-            "demand": demand.type,
-        };
-        return this.http.post('https://sosunb.000webhostapp.com/api/api/type-demand/', obj, options).toPromise();
-    };
-    ;
-    // type problem
-    ServerProvider.prototype.typeProblem = function (demand) {
-        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]({
-            'Content-Type': 'application/json'
-        });
-        var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
-        var obj = {
-            "type": demand.category,
-        };
-        return this.http.post('https://sosunb.000webhostapp.com/api/api/type-problem/', obj, options).toPromise();
-    };
-    ;
+    //POSTS FUNCTIONS
     // like demand
-    ServerProvider.prototype.likeDemand = function (demandId, accessToken) {
+    ServerProvider.prototype.likeDemand = function (accessToken, demandId) {
         var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
@@ -1756,62 +2107,93 @@ var ServerProvider = /** @class */ (function () {
         body.set('demands_id', '1');
         console.log(body.toString());
         return this.http.post(BASE_URL + '/like', body.toString(), options).toPromise();
-        //return this.http.post('https://homol.redes.unb.br/sos-unb/api/like/', body.toString(), options).toPromise();
-        // return this.http.post('http://sosunb.000webhostapp.com/api/api/like/', body.toString(), options).toPromise();
     };
     ;
-    //change password
-    ServerProvider.prototype.changePsw = function (user, idToken) {
-        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]({
-            'Content-Type': 'application/json'
-        });
-        var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
-        var obj = {
-            "email": user.email,
-        };
-        return this.http.put('https://sosunb.000webhostapp.com/api/api/user/', obj, options).toPromise();
-    };
-    ;
-    //Feed demands
-    ServerProvider.prototype.getFeedDemands = function (params, token) {
-        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]({
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': token,
-        });
+    // Unlike demand
+    ServerProvider.prototype.unlikeDemand = function (accessToken, demandId) {
+        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
         var body = new URLSearchParams();
-        body.set('solved', params.solved);
+        body.set('Authorization', MY_TOKEN);
+        body.set('demands_id', '1');
         console.log(body.toString());
-        return this.http.post('http://homol.redes.unb.br/sos-unb/api/feed_demands', body.toString(), options).toPromise();
+        return this.http.post(BASE_URL + '/like/delete', body.toString(), options).toPromise();
     };
     ;
-    //Ranking demands
-    ServerProvider.prototype.getRankingDemands = function (params, token) {
-        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]({
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': token,
-        });
+    // View comments
+    ServerProvider.prototype.viewComments = function (accessToken, demandId) {
+        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
         var body = new URLSearchParams();
-        body.set('campus', params.campus);
+        body.set('Authorization', MY_TOKEN);
+        body.set('demands_id', '1');
         console.log(body.toString());
-        return this.http.post('http://homol.redes.unb.br/sos-unb/api/ranking_demands', body.toString(), options).toPromise();
+        return this.http.post(BASE_URL + '?', body.toString(), options).toPromise();
     };
     ;
-    //Profile demands
-    ServerProvider.prototype.getProfileDemands = function (params, token) {
-        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]({
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': token,
-        });
+    // New comment
+    ServerProvider.prototype.commentDemand = function (accessToken, demandId, comment) {
+        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
         var body = new URLSearchParams();
-        body.set('madeByMe', params.madeByMe);
-        body.set('liked', params.liked);
+        body.set('Authorization', MY_TOKEN);
+        body.set('demands_id', '1');
+        body.set('comments', 'Comentário teste');
         console.log(body.toString());
-        return this.http.post('http://homol.redes.unb.br/sos-unb/api/user_demands', body.toString(), options).toPromise();
+        return this.http.post(BASE_URL + '/?', body.toString(), options).toPromise();
     };
-    ;
+    // Edit comment
+    ServerProvider.prototype.editComment = function (accessToken, commentId, comment) {
+        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
+        var body = new URLSearchParams();
+        body.set('Authorization', MY_TOKEN);
+        body.set('comment_id', '1');
+        body.set('comments', 'Comentário editado teste');
+        console.log(body.toString());
+        return this.http.post(BASE_URL + '/?', body.toString(), options).toPromise();
+    };
+    // Delete comment
+    ServerProvider.prototype.deleteComment = function (accessToken, commentId) {
+        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
+        var body = new URLSearchParams();
+        body.set('Authorization', MY_TOKEN);
+        body.set('comment_id', '1');
+        console.log(body.toString());
+        return this.http.post(BASE_URL + '/comments/delete', body.toString(), options).toPromise();
+    };
+    // Report demand
+    ServerProvider.prototype.reportDemand = function (accessToken, demandId) {
+        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
+        var body = new URLSearchParams();
+        body.set('Authorization', MY_TOKEN);
+        body.set('demands_id', '1');
+        console.log(body.toString());
+        return this.http.post(BASE_URL + '/?', body.toString(), options).toPromise();
+    };
+    //POST PAGE
+    //PROFILE FUNCTION
+    // Change infos
+    ServerProvider.prototype.updateInfo = function (accessToken, photo, email, newPass) {
+        var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        var options = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["RequestOptions"]({ headers: headers });
+        var body = new URLSearchParams();
+        body.set('Authorization', MY_TOKEN);
+        body.set('image', photo);
+        body.set('email', email);
+        body.set('newPass', newPass);
+        console.log(body.toString());
+        return this.http.post(BASE_URL + '/?', body.toString(), options).toPromise();
+    };
     ServerProvider = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_1__["Http"]])
