@@ -92,7 +92,7 @@
             <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
             As senhas devem ser iguais
             </span>
-            
+
              <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Alterar">
 
            </div>
@@ -150,7 +150,7 @@
             <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;"routerLink="/liked" >Curtidas/<br>Comentadas</a></div>
              <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;" routerLink="/solved">Solucionadas</a></div>
              </div>
-             
+
       </ul>
     </nav>
   </div>
@@ -158,7 +158,7 @@
   <!--Card-->
  <div class="s-layout__content">
   <div class="mar">
-    <div class="card" *ngFor="let post of posts ">
+    <div class="card" style="padding-bottom:15px;" *ngFor="let post of posts ">
       <div class="pull-right">
         <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
           <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
@@ -187,16 +187,18 @@
         <div class="linha"></div>
             <ul class="list-inline">
               <div class="pull-left">
-                  <a (click)="like(post)"><i class="fa fa-thumbs-up" style="  margin-left: 20px;margin-top:7px;
+                  <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 20px;
                   font-size: 15px;color:#3366BB"></i></a>
-                  {{post?.likes}}
+                <a style="
+                font-size: 14px;color:#3366BB">  {{post?.likes}}</a>
                 </div>
                 <div class="textl pull-right">
-                  <i class="fa fa-comments btn btn-link " style="padding-right:0;"></i>
+                  <i class="fa fa-comments btn btn-link " style="padding-right:13px;"></i>
                   <a class="btn btn-link " style="padding:0;" (click)="post.showcomments=!post.showcomments">
                   {{post?.commentnum}} comentários
                   </a>
                 </div>
+
             </ul>
           </div>
         </div>
@@ -209,13 +211,20 @@
           </div>
           <p class="borda">
             <a>  {{post?.comment.user.name}}</a>
+
+            <a class="btn btn-link fa fa-trash pull-right" style="padding:0;"></a>
             <br>
             {{post?.comment.com}}
+
+
+
+
           </p>
       </div>
     </div>
-    <div class="textleft">
+    <div class="textleft inputWithIcon" >
       <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
+      <i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i>
     </div>
   </div>
  </div>

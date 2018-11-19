@@ -132,7 +132,7 @@
               </div>
               <div class="modal-body">
                 <div class="mar rolavel" style="margin-top:0px">
-                  <div class="card" *ngFor="let post of postsSimilar ">
+                  <div class="card" style="padding-bottom:15px" *ngFor="let post of postsSimilar ">
 
                     <div class="card-header textleft">
                       <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
@@ -155,14 +155,13 @@
                       <div class="row">
                         <div class="col-sm-12">
                       <div class="linha"></div>
-                          <ul class="list-inline">
-
-                            <div class="pull-left" style="color:#0066cc">
-                                <a>
-                                <i class="fa fa-thumbs-up" style="  margin-left: 20px;margin-top:7px;
-                                font-size: 15px;color:#3366BB"></i></a>
-                                {{post?.likes}}
-                              </div>
+                      <ul class="list-inline">
+                        <div class="pull-left">
+                            <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 0px;
+                            font-size: 15px;color:#3366BB"></i></a>
+                          <a style="
+                          font-size: 14px;color:#3366BB">  {{post?.likes}}</a>
+                          </div>
                               <div class=" pull-right"  >
                                 <i class="fa fa-comments btn btn-link " style="padding-right:0; "></i>
                                 <a class="btn btn-link " style="padding:0;color: #0066cc; margin-right: 20px;" (click)="post.showcomment=!post.showcomment">
@@ -189,6 +188,10 @@
                           {{post?.comment.com}}
                         </p>
                     </div>
+                  </div>
+                  <div class="textleft inputWithIcon" >
+                    <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
+                    <i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -406,23 +409,21 @@
                       <div class="row">
                         <div class="col-sm-12">
                       <div class="linha"></div>
-                          <ul class="list-inline">
+                      <ul class="list-inline">
+                        <div class="pull-left">
+                            <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 0px;
+                            font-size: 15px;color:#3366BB"></i></a>
+                          <a style="
+                          font-size: 14px;color:#3366BB">  {{post?.likes}}</a>
+                          </div>
+                          <div class="textl pull-right">
+                            <i class="fa fa-comments btn btn-link " style="padding-right:13px;"></i>
+                            <a class="btn btn-link " style="padding:0;" (click)="post.showcomments=!post.showcomments">
+                            {{post?.commentnum}} comentários
+                            </a>
+                          </div>
 
-                            <div class="pull-left" style="color:#0066cc">
-                                <a>
-                                <i class="fa fa-thumbs-up" style="  margin-left: 20px;margin-top:7px;
-                                font-size: 15px;color:#3366BB"></i></a>
-                                {{post?.likes}}
-                              </div>
-                              <div class=" pull-right"  >
-                                <i class="fa fa-comments btn btn-link " style="padding-right:0; "></i>
-                                <a class="btn btn-link " style="padding:0;color: #0066cc; margin-right: 20px;" (click)="post.showcomment=!post.showcomment">
-                                {{post?.commentnum}} comentários
-                                </a>
-                              </div>
-
-
-                          </ul>
+                      </ul>
 
                         </div>
                       </div>

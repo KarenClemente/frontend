@@ -25,7 +25,6 @@
   width: 10%;
 }
 
-
 div.center {
     display: block;
     margin-left: auto;
@@ -429,6 +428,33 @@ Feed
   border-bottom: 1.3px solid #ced4da;
 }
 
+input[type="text"]:focus {
+  border-color: dodgerBlue;
+  box-shadow: 0 0 8px 0 dodgerBlue;
+}
+
+.inputWithIcon input[type="text"] {
+  padding-left: 40px;
+}
+
+.inputWithIcon {
+  position: relative;
+}
+
+.inputWithIcon i {
+  text-align: right;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  padding: 9px 8px;
+  color: #3366BB;
+  transition: 0.3s;
+  border-radius: 50px;
+}
+
+.inputWithIcon input[type="text"]:focus + i {
+  color: dodgerBlue;
+}
 
 .borda{
   border-width: 1px 1px 1px 1px; /* aqui, cada lado possui uma borda de largura diferente */
@@ -779,7 +805,7 @@ color: rgb(101, 191, 91);
     font-size: 16px;
   }
   .s-sidebar__nav {
-    width: 11em; 
+    width: 11em;
       z-index: 1;
 
  }

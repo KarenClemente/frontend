@@ -35,43 +35,43 @@
               <p class="login-box-msg" style="color: grey;">Insira uma foto</p>
               <form action="#" method="post" name="changeimg" style="width: 350px; margin-left:-20px;" >
               <input class="form-control" id="perfilImg" type="file" name="perfilImg" accept="image/*"/>
-  
-  
+
+
               <div class="form-group" style="margin-bottom:0rem">
                <!----- username -------------->
                <label for="nome" style="font-size: 1.3rem">Nome completo:</label><br>
                <p style="font-size: 1.3rem">Felipe Dias Pinheiro</p>
                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_name"></span>
-  
+
              </div>
              <div class="form-group" style="margin-bottom:0rem">                    <!----- matricula -------------->
                <label for="matricula" style="font-size: 1.3rem">Matrícula:</label>
                <p style="font-size: 1.3rem">12/1234567</p>
                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_id"></span>
-  
+
              </div>
-  
+
              <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
               <label for="rg" style="font-size: 1.3rem;">Número RG:</label><br>
               <p style="font-size: 1.3rem"> 1234567</p>
                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
-  
+
              </div>
-  
-  
+
+
            <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
              <label for="campoData" style="font-size: 1.3rem">Data de nascimento:</label>
              <p style="font-size: 1.3rem"> 11/12/1994</p>
              <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_rg"></span>
-  
+
            </div>
-  
-  
+
+
              <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
                <label for="email" style="font-size: 1.3rem">E-mail</label>
                <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" />
                <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
-  
+
              </div>
              <div class="form-group" style="margin-bottom:0rem" [class.has-error]="password1.touched && password1.invalid">                    <!----- password -------------->
               <label style="font-size: 1.3rem">Nova Senha</label>
@@ -79,7 +79,7 @@
               <span style="color: red; font-size: 11px;" *ngIf="password1.touched && password1.errors?.required">
               Digite uma senha
               </span>
-  
+
             </div>
             <div class="form-group" [class.has-error]="password2.touched && password2.invalid">                    <!----- password -------------->
               <label style="font-size: 1.3rem">Confirme a senha</label>
@@ -91,7 +91,7 @@
               As senhas devem ser iguais
               </span>
                <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Alterar">
-  
+
              </div>
               </form>
             </div>
@@ -186,7 +186,7 @@
 
     </div>
   <!--Expanded card1-->
-    <div class="card" *ngIf="post.collapsed">
+    <div class="card"style="padding-bottom:15px;" *ngIf="post.collapsed">
         <div class="linha2"></div>
       <div class="pull-right">
         <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
@@ -214,49 +214,51 @@
         <div class="row">
           <div class="col-sm-12">
         <div class="linha"></div>
-            <ul class="list-inline">
+        <ul class="list-inline">
+          <div class="pull-left">
+              <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 0px;
+              font-size: 15px;color:#3366BB"></i></a>
+            <a style="
+            font-size: 14px;color:#3366BB">  {{post?.likes}}</a>
+            </div>
+            <div class="textl pull-right">
+              <i class="fa fa-comments btn btn-link " style="padding-right:13px;"></i>
+              <a class="btn btn-link " style="padding:0;" (click)="post.showcomments=!post.showcomments">
+              {{post?.commentnum}} comentários
+              </a>
+            </div>
 
-              <div class="pull-left">
-
-                  <i class="fa fa-thumbs-up" style="  margin-left: 20px;margin-top:7px;
-                  font-size: 15px;color:#3366BB"></i>
-                  {{post?.likes}}
-</div>
-    <div class="textl pull-right">
-                  <i class="fa fa-comments btn btn-link " style="padding-right:0;"></i>
-                  <a class="btn btn-link " style="padding:0;" (click)="post.showcomment=!post.showcomment">
-                  {{post?.commentnum}} comentários
-                  </a>
-</div>
-
-
-            </ul>
+        </ul>
 
           </div>
         </div>
             <div class="linha2"></div>
       </div>
-      <div class="card-footer" *ngIf="post.showcomment">
+      <div class="card-footer" *ngIf="post.showcomments">
         <div class="card-header textleft">
           <div class="col-xs-2" style="width:auto;">
             <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
           </div>
-
           <p class="borda">
-
             <a>  {{post?.comment.user.name}}</a>
+
+            <a class="btn btn-link fa fa-trash pull-right" style="padding:0;"></a>
             <br>
             {{post?.comment.com}}
+
+
+
+
           </p>
       </div>
     </div>
-    <div class="textleft">
-
-                <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
-            </div>
+    <div class="textleft inputWithIcon" >
+      <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
+      <i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i>
+    </div>
   </div>
   </div>
-</div>
-</div>
+  </div>
+  </div>
 <!--/Card-->
 <script src="liked.ts"></script>

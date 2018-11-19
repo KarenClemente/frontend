@@ -29,6 +29,33 @@
 .icon-background3 {
     color: #cd7f32;
 }
+input[type="text"]:focus {
+  border-color: dodgerBlue;
+  box-shadow: 0 0 8px 0 dodgerBlue;
+}
+
+.inputWithIcon input[type="text"] {
+  padding-left: 40px;
+}
+
+.inputWithIcon {
+  position: relative;
+}
+
+.inputWithIcon i {
+  text-align: right;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  padding: 9px 8px;
+  color:#3366BB;
+  transition: 0.3s;
+  border-radius: 50px;
+}
+
+.inputWithIcon input[type="text"]:focus + i {
+  color: dodgerBlue;
+}
 
 div.center {
     display: block;
@@ -710,7 +737,7 @@ margin-left: 8px;
   .s-layout__content {
      margin-left: 15em;
      margin-right: 15em;
-    
+
 
   }
   .mar{
