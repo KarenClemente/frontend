@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router'; // Added
 import { ServerProvider} from '../../providers/server';
 import { Observable } from 'rxjs';
@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
 })
 
 export class FeedComponent{
+
+  @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
+  @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
   public searchText : string;
   public posts: Array<any>;
@@ -327,6 +330,7 @@ export class FeedComponent{
   report(post){
     this.server.reportDemand(this.server.token,1).then(response => {
       console.log(response);
+      this.closeModalDangerButton.nativeElement.click();
     }).catch(error => {
       console.log(error);
     });
@@ -340,9 +344,10 @@ export class FeedComponent{
     });
   }
 
-  changeInfo(accessToken, image, mail, pass){
-    this.server.updateInfo(this.server.token, image, mail, pass).then(response => {
+  changeInfo(accessToken, image, email, password, pswconfirm){
+    this.server.updateInfo(this.server.token, image, email, password, pswconfirm).then(response => {
       console.log(response);
+      this.closeModalChangeButton.nativeElement.click();
     }).catch(error => {
       console.log(error);
     });

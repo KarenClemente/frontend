@@ -178,7 +178,7 @@ export class ServerProvider {
 //PROFILE FUNCTION
   
   // Change infos
-  updateInfo(accessToken, photo, email, newPass){
+  updateInfo(accessToken, photo, email, newPass, newPassConf){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
      
@@ -188,6 +188,7 @@ export class ServerProvider {
     body.set('image',photo);
     body.set('email', email);
     body.set('newPass', newPass);
+    body.set('newPassConf', newPassConf);
  
     console.log(body.toString());
     return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();

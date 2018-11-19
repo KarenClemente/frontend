@@ -1,7 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router'; // Added
 import { ServerProvider } from '../../providers/server';
-import { $ } from 'protractor';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +12,7 @@ export class HomeComponent {
 
   @ViewChild('closeModalLoginButton') closeModalLoginButton: ElementRef;
   @ViewChild('closeModalCadastroButton') closeModalCadastroButton: ElementRef;
+  @ViewChild('closeModalPswButton') closeModalPswButton: ElementRef;
 
   user: any = {};
   email: any;
@@ -23,12 +23,7 @@ export class HomeComponent {
     }
       
       confirm(user){
-        console.log(user.date_birth);
-        console.log(user.name);
-        console.log(user.registry);
-        console.log(user.identity);
 
-        
         this.server.createUser(this.user).then(response => {
           console.log(response);
           console.log(response["_body"]);
@@ -82,6 +77,18 @@ export class HomeComponent {
               break;
             }
           }
+        });
+      }
+
+      passForgot(email){
+        this.server.newPsw(this.email).then(response => {
+          console.log(response);
+          console.log(response["_body"]);
+          this.closeModalPswButton.nativeElement.click();
+          alert("Nova senha enviada.");
+        }).catch(error => {
+          console.log(error);
+          alert("Erro de dados.");
         });
       }
 

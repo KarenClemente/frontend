@@ -213,8 +213,8 @@ comments(post){
    });
 }
 
-changeInfo(accessToken, image, mail, pass){
-   this.server.updateInfo(this.server.token, image, mail, pass).then(response => {
+changeInfo(accessToken, image, email, password, pswconfirm){
+   this.server.updateInfo(this.server.token, image, email, password, pswconfirm).then(response => {
      console.log(response);
    }).catch(error => {
      console.log(error);

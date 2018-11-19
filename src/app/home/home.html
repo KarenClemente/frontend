@@ -162,11 +162,11 @@
           <form method="post" action="#" id="formsenha">
             <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
               <label for="email" style="font-size: 1.3rem">E-mail</label>
-              <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="user.email"/>
-              <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
+              <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="email"/>
             </div>
                 <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat">Enviar</button>
-          </form>
+              <!--  <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="passForgot(email)">Enviar</button>-->
+              </form>
           </div>
                   </div>
                   </div>
