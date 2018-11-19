@@ -201,7 +201,7 @@ Banner
 .modal-sm{
         width: 320px;
         transition: all 0.3s;
-        padding: 20px
+        padding-left: 0px;
     }
   }
 

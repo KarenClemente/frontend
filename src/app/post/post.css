@@ -1,6 +1,13 @@
 /*CSS PERFIL*/
 .principal {background-color:  rgb(242, 244, 247);}
 
+.rounded{
+
+  border-radius: 50%;
+ width:70px;
+height:70px;
+}
+
 div.center {
     display: block;
     margin-left: auto;
@@ -43,6 +50,18 @@ div.center {
 
     }
   }
+
+
+
+  @media (max-width: 568px) {
+  .modal-sm{
+          width: 355px;
+          transition: all 0.3s;
+          padding-left: 0px;
+      }
+    }
+
+
   .seta-esquerda:before {
     content: "";
     display: inline-block;
@@ -82,8 +101,9 @@ div.center {
   }
   .modal-body{
     display: block;
-    overflow-y: scroll;
+    overflow-y: hidden;
   }
+
 /***********************************
 Navigation bar
 ************************************/
