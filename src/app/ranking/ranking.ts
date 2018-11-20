@@ -1,4 +1,4 @@
-import { Component,Injectable } from '@angular/core';
+import { Component,Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Added
 import { ServerProvider} from '../../providers/server';
 
@@ -7,7 +7,7 @@ import { ServerProvider} from '../../providers/server';
   templateUrl: './ranking.html',
   styleUrls: ['./ranking.css']
 })
-export class RankingComponent {
+export class RankingComponent implements OnInit {
 public searchText : string;
   public posts: Array<any>;
   public likedPosts: Array<any>;
@@ -17,6 +17,27 @@ public searchText : string;
     
     this.posts = [];
     this.likedPosts = [];  
+
+    /*
+    
+    image_demand:"",
+    image_profile:"",
+    total_likes:"",
+    demand_id:"",
+    title:"",
+    description:"",
+    created_date:"",
+    name:"",
+    local:"",
+    status:"",
+    campus:"",
+    type_demand:"",
+    owner_demands:"",
+    gave_like: "",
+    comments: [],
+    answers: []
+
+    */
 
     this.posts.push(
       {
@@ -136,7 +157,131 @@ public searchText : string;
         }, 
          com:'hahahaha vish que coisa!',
        }},
+       {
+        id:6,
+        title:'Poste perigoso', 
+        image:'./assets/img/poste.jpeg',
+        location:'ICC Norte',
+        description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+        likes:11,
+        commentnum:2,
+        ranking:1,
+        liked:true,
+        date:'11/11/2018',
+        hour:'16:11',
+        collapsed:false,
+        showcomment:false,
+        user:{
+          name:'Funaaa',
+          profilePicture:'./assets/img/avatar.png',
+        },
+        comment:{
+         user:{name:'Gabriela',
+         profilePicture:'./assets/img/avatar.png',
+        }, 
+         com:'hahahaha vish que coisa!',
+       }},{
+        id:7,
+        title:'Poste perigoso', 
+        image:'./assets/img/poste.jpeg',
+        location:'ICC Norte',
+        description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+        likes:11,
+        commentnum:2,
+        ranking:1,
+        liked:true,
+        date:'11/11/2018',
+        hour:'16:11',
+        collapsed:false,
+        showcomment:false,
+        user:{
+          name:'Funaaa',
+          profilePicture:'./assets/img/avatar.png',
+        },
+        comment:{
+         user:{name:'Gabriela',
+         profilePicture:'./assets/img/avatar.png',
+        }, 
+         com:'hahahaha vish que coisa!',
+       }},{
+        id:8,
+        title:'Poste perigoso', 
+        image:'./assets/img/poste.jpeg',
+        location:'ICC Norte',
+        description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+        likes:11,
+        commentnum:2,
+        ranking:1,
+        liked:true,
+        date:'11/11/2018',
+        hour:'16:11',
+        collapsed:false,
+        showcomment:false,
+        user:{
+          name:'Funaaa',
+          profilePicture:'./assets/img/avatar.png',
+        },
+        comment:{
+         user:{name:'Gabriela',
+         profilePicture:'./assets/img/avatar.png',
+        }, 
+         com:'hahahaha vish que coisa!',
+       }},{
+        id:9,
+        title:'Poste perigoso', 
+        image:'./assets/img/poste.jpeg',
+        location:'ICC Norte',
+        description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+        likes:11,
+        commentnum:2,
+        ranking:1,
+        liked:true,
+        date:'11/11/2018',
+        hour:'16:11',
+        collapsed:false,
+        showcomment:false,
+        user:{
+          name:'Funaaa',
+          profilePicture:'./assets/img/avatar.png',
+        },
+        comment:{
+         user:{name:'Gabriela',
+         profilePicture:'./assets/img/avatar.png',
+        }, 
+         com:'hahahaha vish que coisa!',
+       }},
+       {
+        id:10,
+        title:'Poste perigoso', 
+        image:'./assets/img/poste.jpeg',
+        location:'ICC Norte',
+        description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
+        likes:11,
+        commentnum:2,
+        ranking:1,
+        liked:true,
+        date:'11/11/2018',
+        hour:'16:11',
+        collapsed:false,
+        showcomment:false,
+        user:{
+          name:'Funaaa',
+          profilePicture:'./assets/img/avatar.png',
+        },
+        comment:{
+         user:{name:'Gabriela',
+         profilePicture:'./assets/img/avatar.png',
+        }, 
+         com:'hahahaha vish que coisa!',
+       }},
       )      
+}
+ngOnInit(){
+  this.server.getRankingDemands({},'').then(response => {
+    console.log(response);
+  }).catch(error => {
+    console.log(error);
+  });
 }
 
 like(post){
@@ -175,16 +320,7 @@ newComment(post){
        console.log(error);
      });
 }
-
-editComment(post){
-   //Edit comment
-     this.server.editComment(this.server.token,1,'comentário editado').then(response => {
-         console.log(response);
-       }).catch(error => {
-         console.log(error);
-       });
-}
-   
+ 
 delComment(post){
    //Delete comment
      this.commentedPosts.push(post.id); //como tira?

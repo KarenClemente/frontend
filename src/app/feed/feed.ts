@@ -305,16 +305,7 @@ export class FeedComponent{
         console.log(error);
       });
   }
-
-  editComment(post){
-    //Edit comment
-      this.server.editComment(this.server.token,1,'comentário editado').then(response => {
-          console.log(response);
-        }).catch(error => {
-          console.log(error);
-        });
-  }
-    
+   
   delComment(post){
     //Delete comment
       this.commentedPosts.push(post.id); //como tira?

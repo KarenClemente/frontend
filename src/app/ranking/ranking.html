@@ -158,7 +158,7 @@
   <!--/Cabeçalho-->
   <!--Card-->
 
-  <div class="card"  *ngFor="let post of posts| grdFilter: {title: searchText}; let i=index">
+  <div class="card"  *ngFor="let post of posts">
     <div class="row" (click)="post.collapsed=!post.collapsed">
       <div class="col-md-4 firstcol column">
         <img [src]="post?.image" class="rounded" style="width: 70px; height:70px;"  vspace="5">

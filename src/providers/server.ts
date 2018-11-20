@@ -3,8 +3,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import {catchError} from 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
 
-//const BASE_URL = "http://sosunb.000webhostapp.com/api";
-const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
+const BASE_URL = "http://sosunb.000webhostapp.com/api";
+//const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
 const MY_TOKEN = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9zb3N1bmIuMDAwd2ViaG9zdGFwcC5jb21cL2FwaVwvIiwic3ViIjoiMSIsImV4cCI6MTU0MjM5MjgwNCwiaWF0IjoxNTQyMzA2NDA0LCJ1c2VyIjoiVXNlciAxIiwicHJvZmlsZV90eXBlX2lkIjoiMiJ9.4N6pBZEKl-YIF0kU4TjF3tZaLmz9m3poC62cS1JoR5w";
 
 
@@ -21,6 +21,35 @@ export class ServerProvider {
       this.hasCusId = false;
       this.user = {};
   }
+
+//FEED
+  getFeedDemands(accessToken, params){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded')
+
+    let options = new RequestOptions({ headers: headers });  
+    let body = new URLSearchParams();
+    body.set('Authorization', MY_TOKEN);
+    body.set('solved', params.solved);
+
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/feed_demands', body.toString(), options).toPromise();
+  }
+  
+//RANKING
+  getRankingDemands(accessToken, params){
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/x-www-form-urlencoded')
+
+  let options = new RequestOptions({ headers: headers });  
+  let body = new URLSearchParams();
+  body.set('Authorization', MY_TOKEN);
+  body.set('campus', params.hasOwnProperty('campus')? params.campus: 1);
+
+  console.log(body.toString());
+  return this.http.post(BASE_URL + '/get-demands/ranking', body.toString(), options).toPromise();
+  }  
+
 //HOME PAGE
 
   // Registration
@@ -128,21 +157,6 @@ export class ServerProvider {
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
-  }
-
-  // Edit comment
-  editComment(accessToken, commentId, comment){
-     let headers = new Headers();
-     headers.append('Content-Type','application/x-www-form-urlencoded')
-      
-     let options = new RequestOptions({ headers: headers });
-     let body = new URLSearchParams();
-     body.set('Authorization', MY_TOKEN);
-     body.set('comment_id','1');
-     body.set('comments','Comentário editado teste');
-  
-     console.log(body.toString());
-     return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
   }
 
   // Delete comment
