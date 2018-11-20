@@ -1,4 +1,6 @@
+a {text-decoration: none;}
 
+.pointer {cursor: pointer;}
 /*CSS PERFIL*/
 .principal {background-color:  rgb(242, 244, 247);}
 /* Create two equal columns that floats next to each other */

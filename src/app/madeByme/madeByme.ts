@@ -13,15 +13,16 @@ export class MadeByMeComponent{
   public likedPosts: Array<any>;
   public commentedPosts: Array<any>;
   
+
   constructor(private _router: Router, private server: ServerProvider) {
-    
+
     this.posts = [];
-    this.likedPosts = [];  
+    this.likedPosts = [];
 
     this.posts.push(
       {
         id:1,
-        title:'Poste perigoso', 
+        title:'Poste perigoso',
         image:'./assets/img/poste.jpeg',
         location:'ICC Norte',
         description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -40,11 +41,11 @@ export class MadeByMeComponent{
         comment:{
          user:{name:'Gabriela',
          profilePicture:'./assets/img/avatar.png',
-        }, 
+        },
          com:'hahahaha vish que coisa!',
        }},{
         id:2,
-        title:'Poste perigoso', 
+        title:'Poste perigoso',
         image:'./assets/img/poste.jpeg',
         location:'ICC Norte',
         description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -63,11 +64,11 @@ export class MadeByMeComponent{
         comment:{
          user:{name:'Gabriela',
          profilePicture:'./assets/img/avatar.png',
-        }, 
+        },
          com:'hahahaha vish que coisa!',
        }},{
         id:3,
-        title:'Poste perigoso', 
+        title:'Poste perigoso',
         image:'./assets/img/poste.jpeg',
         location:'ICC Norte',
         description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -86,11 +87,11 @@ export class MadeByMeComponent{
         comment:{
          user:{name:'Gabriela',
          profilePicture:'./assets/img/avatar.png',
-        }, 
+        },
          com:'hahahaha vish que coisa!',
        }},{
         id:4,
-        title:'Poste perigoso', 
+        title:'Poste perigoso',
         image:'./assets/img/poste.jpeg',
         location:'ICC Norte',
         description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -109,12 +110,12 @@ export class MadeByMeComponent{
         comment:{
          user:{name:'Gabriela',
          profilePicture:'./assets/img/avatar.png',
-        }, 
+        },
          com:'hahahaha vish que coisa!',
        }},
        {
         id:5,
-        title:'Poste perigoso', 
+        title:'Poste perigoso',
         image:'./assets/img/poste.jpeg',
         location:'ICC Norte',
         description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
@@ -133,10 +134,10 @@ export class MadeByMeComponent{
         comment:{
          user:{name:'Gabriela',
          profilePicture:'./assets/img/avatar.png',
-        }, 
+        },
          com:'hahahaha vish que coisa!',
        }},
-      )      
+      )
 }
 
 like(post){
@@ -184,7 +185,7 @@ editComment(post){
          console.log(error);
        });
 }
-   
+
 delComment(post){
    //Delete comment
      this.commentedPosts.push(post.id); //como tira?
@@ -196,7 +197,7 @@ delComment(post){
        console.log(error);
      });
 }
- 
+
 report(post){
    this.server.reportDemand(this.server.token,1).then(response => {
      console.log(response);
