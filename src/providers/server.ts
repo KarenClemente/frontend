@@ -207,5 +207,19 @@ export class ServerProvider {
     console.log(body.toString());
     return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
   }
+
+  // Delete account
+  deleteAccount(accessToken, email){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+     
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', MY_TOKEN);
+    body.set('email', email);
+ 
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+  }
 }
 
