@@ -69,7 +69,7 @@ export class ServerProvider {
     body.set('date_birth', user.date_birth);
 
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/user', body.toString(), options).toPromise();
+    return this.http.post(BASE_URL + '/user/register', body.toString(), options).toPromise();
 }
 
   // Login
@@ -84,7 +84,7 @@ export class ServerProvider {
     body.set('password', password);
     
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/sessions', body.toString(), options).toPromise();
+    return this.http.post(BASE_URL + '/sessions/login', body.toString(), options).toPromise();
   }
 
   // Forgot password
