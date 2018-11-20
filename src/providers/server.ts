@@ -44,7 +44,7 @@ export class ServerProvider {
   let options = new RequestOptions({ headers: headers });  
   let body = new URLSearchParams();
   body.set('Authorization', MY_TOKEN);
-  body.set('campus', params.hasOwnProperty('campus')? params.campus: 1);
+  body.set('campus', params.hasOwnProperty('campus')? params.campus: '');
 
   console.log(body.toString());
   return this.http.post(BASE_URL + '/get-demands/ranking', body.toString(), options).toPromise();

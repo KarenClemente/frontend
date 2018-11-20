@@ -158,23 +158,23 @@
   <!--/Cabeçalho-->
   <!--Card-->
 
-  <div class="card"  *ngFor="let post of posts">
+  <div class="card"  *ngFor="let post of posts; index as i">
     <div class="row" (click)="post.collapsed=!post.collapsed">
       <div class="col-md-4 firstcol column">
-        <img [src]="post?.image" class="rounded" style="width: 70px; height:70px;"  vspace="5">
+        <img [src]="post?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
       </div>
       <div class="col-md-4 secndcol column">
         <div class="row " >
          <a style="font-size: 20px; text-decoration: none; color:#0066cc;"   (click)="collapsed=!collapsed">{{post?.title}}</a>
         </div>
         <div class="row">
-          <a class="text-muted"> {{post?.date}} às {{post?.hour}}</a>&nbsp;
+          <a class="text-muted"> {{post?.created_date}}</a>&nbsp;
           <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-          <a href="#" style="color:black;">{{post?.location}}</a>
+          <a href="#" style="color:black;">{{post?.local}}</a>
         </div>
         <div class="row">
-          <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>{{post?.likes}}</a>&nbsp;
-          <a href="#" style="font-family:Arial;" class="text-muted" (click)="post.collapsed=!post.collapsed; post.showcomment=!post.showcomment"><i style="color:#0066cc;" class="fa fa-comment"></i>{{post?.commentnum}} comentários</a>
+          <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>{{post?.total_likes}}</a>&nbsp;
+          <a href="#" style="font-family:Arial;" class="text-muted" (click)="post.collapsed=!post.collapsed; post.showcomment=!post.showcomment"><i style="color:#0066cc;" class="fa fa-comment"></i>{{post?.comments?.length}} comentários</a>
         </div>
         </div>
         <div class="col-md-4 thirdcol column" >
@@ -182,7 +182,7 @@
             <i class="fa fa-circle fa-stack-2x icon-background"></i>
             <i class="fa fa-circle-thin fa-stack-2x" style="color:blue"></i>
               <strong class="fa-stack-1x" style="color:blue">
-              {{post?.id}}
+              {{i+1}}
               </strong>
           </span>
         </div>
@@ -197,19 +197,19 @@
     </div>
     <div class="card-header textleft">
       <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
-        <img [src]="post?.user.profilePicture" style="object-fit:cover; border-radius: 50%;">
+        <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%;">
       </div>
       <p style="padding-top:5px;">
-        <a>  {{post?.user.name}}</a>
+        <a>  {{post?.name}}</a>
         publicou
         <b>{{post?.title}}</b>
         em<br>
         <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
-        {{post?.location}} {{post?.date}} às {{post?.hour}}
+        {{post?.local}}
       </p>
     </div>
     <div class="card-body" style="background-color:#fff; text-align: justify;">
-      <img [src]="post?.image" style="width:100%">
+      <img [src]="post?.image_demand" style="width:100%">
       <p>
       {{post?.description}}
       </p>
@@ -221,12 +221,12 @@
             <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 0px;
             font-size: 15px;color:#3366BB"></i></a>
           <a style="
-          font-size: 14px;color:#3366BB">  {{post?.likes}}</a>
+          font-size: 14px;color:#3366BB">  {{post?.total_likes}}</a>
           </div>
           <div class="textl pull-right">
             <i class="fa fa-comments btn btn-link " style="padding-right:13px;"></i>
             <a class="btn btn-link " style="padding:0;" (click)="post.showcomments=!post.showcomments">
-            {{post?.commentnum}} comentários
+            {{post?.comments?.length}} comentários
             </a>
           </div>
 
@@ -236,17 +236,17 @@
       </div>
           <div class="linha2"></div>
     </div>
-    <div class="card-footer" *ngIf="post.showcomments">
+    <div class="card-footer" *ngFor="let comment of post.comments;">
       <div class="card-header textleft">
         <div class="col-xs-2" style="width:auto;">
-          <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
+          <img [src]="post?.comments?.image_picture" style="object-fit:cover;border-radius: 50%;">
         </div>
         <p class="borda">
-          <a>  {{post?.comment.user.name}}</a>
+          <a>  {{post?.comments}}</a>
 
           <a class="btn btn-link fa fa-trash pull-right" style="padding:0;"></a>
           <br>
-          {{post?.comment.com}}
+          {{post?.comments}}
 
 
 

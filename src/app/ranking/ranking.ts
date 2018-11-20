@@ -39,7 +39,7 @@ public searchText : string;
 
     */
 
-    this.posts.push(
+   /* this.posts.push(
       {
         id:1,
         title:'Poste perigoso', 
@@ -274,11 +274,19 @@ public searchText : string;
         }, 
          com:'hahahaha vish que coisa!',
        }},
-      )      
+    )      */
 }
 ngOnInit(){
   this.server.getRankingDemands({},'').then(response => {
     console.log(response);
+    console.log(response.json());
+
+    response = response.json();
+   // this.posts = response['dados'];
+   for (var i = 0; i < response.dados.length; i++){
+    response.dados[i].collapsed = false;
+    this.posts.push(response.dados[i]);
+   }
   }).catch(error => {
     console.log(error);
   });
