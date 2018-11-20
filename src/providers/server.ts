@@ -23,17 +23,18 @@ export class ServerProvider {
   }
 
 //FEED
-  getFeedDemands(accessToken){
+  getFeedDemands(accessToken, params, limit){
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
     let options = new RequestOptions({ headers: headers });  
     let body = new URLSearchParams();
     body.set('Authorization', MY_TOKEN);
-    //body.set('status', params.hasOwnProperty('status')? params.status: 'aberta');
+    body.set('status', params.hasOwnProperty('status')? params.status: '');
+    body.set('limit', '10');
 
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/feed_demands', body.toString(), options).toPromise();
+    return this.http.post(BASE_URL + '/get-demands/feed', body.toString(), options).toPromise();
   }
   
 //RANKING

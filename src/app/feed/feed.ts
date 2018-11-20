@@ -17,7 +17,7 @@ export class FeedComponent implements OnInit{
   public searchText : string;
   public posts: Array<any>;
   public likedPosts: Array<any>;
-  public cont: number = 1;
+  public cont: number = 0;
 
       constructor(private _router: Router, public server: ServerProvider) {
 
@@ -236,7 +236,7 @@ export class FeedComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.server.getFeedDemands({}).then(response => {
+    this.server.getFeedDemands({},'','').then(response => {
       console.log(response);
       console.log(response.json());
   
@@ -255,12 +255,12 @@ export class FeedComponent implements OnInit{
 }
 
 getPosts(){
-  this.server.getFeedDemands({}).then(response => {
+  this.server.getFeedDemands({},'','').then(response => {
     console.log(response);
     console.log(response.json());
 
     response = response.json();
-  for (this.cont; this.cont < 5; this.cont++){
+  for (this.cont; this.cont < this.cont + 5; this.cont++){
     this.posts.push(response['dados'][this.cont]);
    }
 });

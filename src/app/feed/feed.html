@@ -22,8 +22,6 @@
     </div>
   </nav>
   <!--/Navigation bar-->
-
-
   <!--modal editar perfil-->
    <div class="modal fade" id="changeInfo" role="dialog" aria-hidden="true">
      <div class="modal-dialog modal-sm">
@@ -96,14 +94,6 @@
      </div>
    </div>
    <!--/modal editar perfil-->
-
-
-
-
-
-
-
-
   <div class="modal fade " id="post01" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content  modal-sm" >
@@ -168,19 +158,19 @@
       </div>
       <div class="card-header textleft">
         <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
-          <img [src]="post?.user.profilePicture" style="object-fit:cover; border-radius: 50%;">
+          <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%;">
         </div>
         <p style="padding-top:5px;">
-          <a>  {{post?.user.name}}</a>
+          <a>  {{post?.name}}</a>
           publicou
           <b>{{post?.title}}</b>
           em<br>
           <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
-          {{post?.location}} {{post?.date}} às {{post?.hour}}
+          {{post?.local}}
         </p>
       </div>
       <div class="card-body" style="background-color:#fff; ;">
-        <img [src]="post?.image" style="width:100%">
+        <img [src]="post?.image_demand" style="width:100%">
         <p  style="text-align:left;">
         {{post?.description}}
         </p>
@@ -192,12 +182,12 @@
                   <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 20px;
                   font-size: 15px;color:#3366BB"></i></a>
                 <a style="
-                font-size: 14px;color:#3366BB">  {{post?.likes}}</a>
+                font-size: 14px;color:#3366BB">  {{post?.total_likes}}</a>
                 </div>
                 <div class="textl pull-right">
                   <i class="fa fa-comments btn btn-link " style="padding-right:13px;"></i>
                   <a class="btn btn-link " style="padding:0;" (click)="post.showcomments=!post.showcomments; comment(post)">
-                  {{post?.commentnum}} comentários
+                  {{post?.comments?.length}} comentários
                   </a>
                 </div>
 
@@ -209,14 +199,14 @@
       <div class="card-footer" *ngIf="post.showcomments">
         <div class="card-header textleft">
           <div class="col-xs-2" style="width:auto;">
-            <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
+            <img [src]="post?.comments?.image_profile" style="object-fit:cover;border-radius: 50%;">
           </div>
           <p class="borda">
-            <a>  {{post?.comment.user.name}}</a>
+            <a>  {{post?.comments?.name}}</a>
 
             <a class="btn btn-link fa fa-trash pull-right" style="padding:0;" (click)="delComment(post)"></a>
             <br>
-            {{post?.comment.com}}
+            {{post?.comments?.comment}}
           </p>
       </div>
     </div>
