@@ -176,20 +176,7 @@ newComment(post){
        console.log(error);
      });
 }
-<<<<<<< HEAD
-   
-=======
 
-editComment(post){
-   //Edit comment
-     this.server.editComment(this.server.token,1,'comentário editado').then(response => {
-         console.log(response);
-       }).catch(error => {
-         console.log(error);
-       });
-}
-
->>>>>>> cc9bf96df16dd695e6d9a3bcc8e9299df801256e
 delComment(post){
    //Delete comment
      this.commentedPosts.push(post.id); //como tira?
