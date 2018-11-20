@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./feed.css']
 })
 
-export class FeedComponent{
+export class FeedComponent implements OnInit{
 
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
@@ -17,47 +17,13 @@ export class FeedComponent{
   public searchText : string;
   public posts: Array<any>;
   public likedPosts: Array<any>;
-  public commentedPosts: Array<any>;
-  page: number = 1;
+  public cont: number = 1;
 
-  onScroll () {
-      console.log('scrolled!!')
-      this.getPosts();
-  }
-
-  getPosts(){
-      this.posts.push(
-        {
-         id:0,
-         title:'Poste perigoso',
-         image:'./assets/img/poste.jpeg',
-         location:'./assets/img/poste.jpeg',
-         description:'./assets/img/poste.jpeg',
-         likes:11,
-         commentnum:2,
-         ranking:1,
-         liked:true,
-         date:'11/11/2018',
-         hour:'16:11',
-         showcomments:false,
-         user:{
-           name:'Funaaa',
-           profilePicture:'./assets/img/avatar.png',
-         },
-         comment:{
-          user:{name:'Gabriela',
-          profilePicture:'./assets/img/avatar.png',
-        },
-          com:'hahahaha vish que coisa!',
-        }},
-      );
-  }
-
-    constructor(private _router: Router, public server: ServerProvider) {
+      constructor(private _router: Router, public server: ServerProvider) {
 
       this.posts = [];
       this.likedPosts = [];
-
+/*
       this.posts.push(
         {
          id:0,
@@ -266,8 +232,39 @@ export class FeedComponent{
           },
            com:'hahahaha vish que coisa!',
          }},
-        )
+      )*/
   }
+
+  ngOnInit(){
+    this.server.getFeedDemands({}).then(response => {
+      console.log(response);
+      console.log(response.json());
+  
+      response = response.json();
+     // this.posts = response['dados'];
+     for (this.cont; this.cont < 5; this.cont++){
+      this.posts.push(response['dados'][this.cont]);
+     }
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+  onScroll () {
+    console.log('scrolled!!')
+    this.getPosts();
+}
+
+getPosts(){
+  this.server.getFeedDemands({}).then(response => {
+    console.log(response);
+    console.log(response.json());
+
+    response = response.json();
+  for (this.cont; this.cont < 5; this.cont++){
+    this.posts.push(response['dados'][this.cont]);
+   }
+});
+}
 
   like(post){
    //Remove like
@@ -296,9 +293,6 @@ export class FeedComponent{
 
   newComment(post){
     //Add comment
-      this.commentedPosts.push(post.id);
-      post.commentnum += 1;
- 
       this.server.commentDemand(this.server.token,1,'comentário').then(response => {
         console.log(response);
       }).catch(error => {
@@ -308,9 +302,6 @@ export class FeedComponent{
    
   delComment(post){
     //Delete comment
-      this.commentedPosts.push(post.id); //como tira?
-      post.commentnum -= 1;
- 
       this.server.deleteComment(this.server.token,1).then(response => {
         console.log(response);
       }).catch(error => {

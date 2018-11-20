@@ -23,14 +23,14 @@ export class ServerProvider {
   }
 
 //FEED
-  getFeedDemands(accessToken, params){
+  getFeedDemands(accessToken){
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
     let options = new RequestOptions({ headers: headers });  
     let body = new URLSearchParams();
     body.set('Authorization', MY_TOKEN);
-    body.set('solved', params.solved);
+    //body.set('status', params.hasOwnProperty('status')? params.status: 'aberta');
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/feed_demands', body.toString(), options).toPromise();
