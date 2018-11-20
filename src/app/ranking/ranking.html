@@ -11,7 +11,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
-      <li>  <a><select class="search-txt " style="border:none; font-weight: 400;maegin-left:10px" name="campus">
+      <li>  <a><select class="search-txt " style="border:none; font-weight: 400;margin-left:10px" name="campus">
       <<option value="Geral">Geral</option>>
       <option value="Darcy Ribeiro">Darcy Ribeiro</option>
       <option value="Ceilandia">Ceilandia</option>
@@ -241,17 +241,17 @@
       </div>
           <div class="linha2"></div>
     </div>
-    <div class="card-footer" *ngFor="let comment of post.comments;">
-      <div class="card-header textleft">
+    <div class="card-footer" *ngIf = "post.showcomments">
+      <div class="card-header textleft" *ngFor="let comment of post.comments;">
         <div class="col-xs-2" style="width:auto;">
-          <img [src]="post?.comments?.image_picture" style="object-fit:cover;border-radius: 50%;">
+          <img [src]="post?.comments?.image_profile" style="object-fit:cover;border-radius: 50%;">
         </div>
         <p class="borda">
-          <a>  {{post?.comments}}</a>
+          <a>  {{post?.comments?.name}}</a>
 
           <a class="btn btn-link fa fa-trash pull-right" style="padding:0;"></a>
           <br>
-          {{post?.comments}}
+          {{post?.comments?.comment}}
 
 
 
