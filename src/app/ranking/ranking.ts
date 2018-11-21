@@ -56,7 +56,6 @@ ngOnInit(){
 }
 
 like(post){
-  parseInt(post.total_likes);
   //Remove like
   if (post.gave_like == "true"){
     this.server.unlikeDemand(this.server.token, post.demand_id).then(response => {
