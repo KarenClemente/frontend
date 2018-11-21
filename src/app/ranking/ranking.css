@@ -1,4 +1,4 @@
-
+.pointer {cursor: pointer;}
 /*CSS PERFIL*/
 .principal {background-color:  rgb(242, 244, 247);}
 /* Create two equal columns that floats next to each other */
@@ -64,7 +64,21 @@ div.center {
     width: 65%;
   }
 
-  /********ALBEDIO!!!!!!***************************************/
+  .btncolumn1 {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  text-align: right;
+  }
+
+  .btncolumn2 {
+  float: left;
+  width: 80%;
+  padding: 10px;
+  text-align: left;
+  }
+
+
   @media screen and (max-width: 991px) {
 
     .column {

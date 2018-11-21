@@ -1,4 +1,4 @@
-
+.pointer {cursor: pointer;}
 /*CSS PERFIL*/
 .principal {background-color:  rgb(242, 244, 247);}
 .search-results{
@@ -9,6 +9,7 @@
 a:link {
     text-decoration: none;
 }
+
 
 
 /* Create two equal columns that floats next to each other */
@@ -34,6 +35,19 @@ div.center {
     width: 65%;
   }
 
+  .btncolumn1 {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  text-align: right;
+  }
+
+  .btncolumn2 {
+  float: left;
+  width: 80%;
+  padding: 10px;
+  text-align: left;
+  }
 
   @media screen and (max-width: 991px) {
 
@@ -43,6 +57,9 @@ div.center {
     padding: 10px;
 
     }
+
+
+
     .row:after {
     content: "";
     display: table;
@@ -193,6 +210,8 @@ Banner
     background-color:rgb(101, 191, 91);
     color: #fff;
 }
+
+
 
 
 /******************
@@ -544,7 +563,7 @@ padding-bottom: 10px;
   }
 
 .rolavel {
-  height: 50px;
+  height: 1000px;
 
   overflow-y: scroll;
   background-color: rgb(242,244,247);

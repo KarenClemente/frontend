@@ -1,3 +1,5 @@
+.pointer {cursor: pointer;}
+
 /*CSS PERFIL*/
 .principal {background-color:  rgb(242, 244, 247);}
 
@@ -36,6 +38,20 @@ div.center {
     color: #3366BB;
     transition: 0.3s;
     border-radius: 50px;
+  }
+
+  .btncolumn1 {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  text-align: right;
+  }
+
+  .btncolumn2 {
+  float: left;
+  width: 80%;
+  padding: 10px;
+  text-align: left;
   }
 
   .inputWithIcon input[type="text"]:focus + i {

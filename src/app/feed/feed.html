@@ -67,7 +67,7 @@
 
             </div>
             <div class="form-group" style="margin-bottom:0rem" [class.has-error]="password1.touched && password1.invalid">                    <!----- password -------------->
-             <label style="font-size: 1.3rem">Nova Senha</label>
+             <label style="font-size: 1.3rem">Nova senha</label>
              <input class="form-control" placeholder="Senha" type="password" name="password" required [(ngModel)]="password" #password1="ngModel">
              <span style="color: red; font-size: 11px;" *ngIf="password1.touched && password1.errors?.required">
              Digite uma senha
@@ -83,6 +83,27 @@
              <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
              As senhas devem ser iguais
              </span>
+
+             <a  href="#excluir" data-toggle="collapse">
+             <label style="font-size: 1.3rem; color:#717f86; margin-top: 4px;" class="pointer">Excluir conta</label></a>
+
+             <div id="excluir" class="collapse">
+
+               <label style="font-size: 1.3rem;">Tem certeza que deseja excluir sua conta?</label><br>
+
+               <div class="row">
+
+               <div class="btncolumn1" style="color:white;">
+               <input style="margin-top: 0px;background-color: #cccccc"type="submit" class="btn   btn-flat" value="Sim">
+               </div>
+
+               <div class="btncolumn2" style="color:white;">
+               <input style="margin-top: 0px; background-color: #cccccc"type="submit" class="btn btn-flat" value="Não">
+
+               </div>
+               </div>
+
+             </div>
 
               <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Alterar">
 
