@@ -56,24 +56,27 @@ ngOnInit(){
 }
 
 like(post){
+  parseInt(post.total_likes);
   //Remove like
-  if (this.likedPosts.indexOf(post.id)>-1){
-    this.likedPosts.splice(this.likedPosts.indexOf(post.id),1);
-    post.likes -= 1;
-
-    this.server.unlikeDemand(this.server.token, 1).then(response => {
-      console.log(response);
+  if (post.gave_like == "true"){
+    this.server.unlikeDemand(this.server.token, post.demand_id).then(response => {
+    console.log(response);
+    post.total_likes -= 1;
+    post.gave_like = "false";
+    console.log(post.gave_like);
+    console.log(post.total_likes);
     }).catch(error => {
       console.log(error);
     });
   }
   //Add like
   else{
-    this.likedPosts.push(post.id);
-    post.likes += 1;
-
-    this.server.likeDemand(this.server.token,1).then(response => {
+    this.server.likeDemand(this.server.token,post.demand_id).then(response => {
       console.log(response);
+      post.total_likes += 1;
+      post.gave_like = "true";
+      console.log(post.gave_like);
+      console.log(post.total_likes);
     }).catch(error => {
       console.log(error);
     });

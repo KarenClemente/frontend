@@ -104,28 +104,28 @@ export class ServerProvider {
 //POSTS FUNCTIONS
 
   // like demand
-  likeDemand(accessToken, demandId) {
+  likeDemand(accessToken, params) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', MY_TOKEN);
-    body.set('demands_id','1');
+    body.set('demands_id', params);
     
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/like', body.toString(), options).toPromise();
+    return this.http.post(BASE_URL + '/like/add', body.toString(), options).toPromise();
   };
 
   // Unlike demand
-  unlikeDemand(accessToken, demandId) {
+  unlikeDemand(accessToken, params) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', MY_TOKEN);
-    body.set('demands_id','1');
+    body.set('demands_id', params);
     
     console.log(body.toString());
     return this.http.post(BASE_URL + '/like/delete', body.toString(), options).toPromise();
