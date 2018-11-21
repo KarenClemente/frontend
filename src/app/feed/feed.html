@@ -197,7 +197,7 @@
             <div class="linha2"></div>
     </div>
       <div class="card-footer" *ngIf="post.showcomments">
-        <div class="card-header textleft">
+        <div class="card-header textleft" *ngFor="let comment of post.comments;">
           <div class="col-xs-2" style="width:auto;">
             <img [src]="post?.comments?.image_profile" style="object-fit:cover;border-radius: 50%;">
           </div>

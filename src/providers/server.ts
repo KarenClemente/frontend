@@ -31,7 +31,7 @@ export class ServerProvider {
     let body = new URLSearchParams();
     body.set('Authorization', MY_TOKEN);
     body.set('status', params.hasOwnProperty('status')? params.status: '');
-    body.set('limit', '10');
+    body.set('limit', limit);
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/get-demands/feed', body.toString(), options).toPromise();
