@@ -11,7 +11,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
-      <li> 
+      <li>
       <a style="margin-bottom:0px"><select class="search-txt " [(ngModel)]="campus" style="border:none; font-weight: 400;margin-left:10px" name="campus">
       <option value="Geral">Geral</option>>
       <option value="Darcy Ribeiro" value="1">Darcy Ribeiro</option>
@@ -171,16 +171,17 @@
       </div>
       <div class="col-md-4 secndcol column">
         <div class="row " >
-         <a style="font-size: 20px; text-decoration: none; color:#0066cc;"   (click)="post.collapsed=!post.collapsed">{{post?.title}}</a>
+         <a style="font-size:16px; text-decoration: none; color:#0066cc;"   (click)="collapsed=!collapsed">{{post?.title}}</a>
         </div>
         <div class="row">
-          <a class="text-muted"> {{post?.created_date}}</a>&nbsp;
-          <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-          <a href="#" style="color:black;">{{post?.local}}</a>
+          <a class="text-muted" style="font-size:13px;"> {{post?.created_date}}</a>&nbsp;
+          <br>
+          <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;"></i>
+          <a href="#" style="color:black;font-size:15px;">{{post?.local}}</a>
         </div>
         <div class="row">
-          <a href="#" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>{{post?.total_likes}}</a>&nbsp;
-          <a href="#" style="font-family:Arial;" class="text-muted" (click)="post.collapsed=!post.collapsed; post.showcomment=!post.showcomment"><i style="color:#0066cc;" class="fa fa-comment"></i>{{post?.comments?.length}} comentários</a>
+          <a href="#" class="text-muted" style="font-family:Arial;font-size:13px;"><i style="color:#0066cc;font-size:13px" class="fa fa-thumbs-up"></i>{{post?.total_likes}}</a>&nbsp;
+          <a href="#" style="font-family:Arial;font-size:13px;" class="text-muted" (click)="post.collapsed=!post.collapsed; post.showcomment=!post.showcomment"><i style="color:#0066cc;font-size:13px" class="fa fa-comment"></i>{{post?.comments?.length}} comentários</a>
         </div>
         </div>
         <div class="col-md-4 thirdcol column" >
@@ -224,14 +225,14 @@
       <div class="linha"></div>
       <ul class="list-inline">
         <div class="pull-left">
-            <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 0px;
+            <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 20px;
             font-size: 15px;color:#3366BB"></i></a>
           <a style="
           font-size: 14px;color:#3366BB">  {{post?.total_likes}}</a>
           </div>
           <div class="textl pull-right">
-            <i class="fa fa-comments btn btn-link " style="padding-right:13px;"></i>
-            <a class="btn btn-link " style="padding:0;" (click)="post.showcomments=!post.showcomments">
+            <a><i class="fa fa-comments btn btn-link " style="padding-right:5px;font-size: 15px;color:#3366BB"></i></a>
+            <a class="btn btn-link " style="margin-right:20px;" (click)="post.showcomments=!post.showcomments; comment(post)">
             {{post?.comments?.length}} comentários
             </a>
           </div>

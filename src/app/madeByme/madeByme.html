@@ -163,17 +163,17 @@
       </div>
       <div class="col-md-4 secndcol column">
         <div class="row " >
-          <a style="font-size: 20px; text-decoration: none; color:#0066cc;" class="pointer">
-          {{created?.title}}</a>
+          <a style="font-size: 16px; text-decoration: none; color:#0066cc;" (click)="post.collapsed=!post.collapsed">{{post?.title}}</a>
         </div>
         <div class="row">
-          <a class="text-muted"> {{created?.created_date}}</a>&nbsp;
-          <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:20px;"></i>
-          <a href="" style="color:black;">{{created?.local}}</a>
+          <a class="text-muted"style="font-size:13px;"> {{post?.date}} às {{post?.hour}}</a>&nbsp;
+            <br>
+          <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;"></i>
+          <a href="#" style="color:black;font-size:15px">{{post?.location}}</a>
         </div>
         <div class="row">
-          <a href="" class="text-muted" style="font-family:Arial;"><i style="color:#0066cc" class="fa fa-thumbs-up"></i>{{created?.total_likes}}</a>&nbsp;
-          <a href="" style="font-family:Arial;" class="text-muted"><i style="color:#0066cc" class="fa fa-comment"></i>&nbsp;{{created?.comments?.length}} comentários</a>
+          <a href="#" class="text-muted" style="font-family:Arial;font-size:13px"><i style="color:#0066cc;font-size:13px;" class="fa fa-thumbs-up" style="font-size:13px;color:#0066cc"></i>{{post?.likes}}</a>&nbsp;
+          <a href="#" style="font-family:Arial;font-size:13px" class="text-muted"><i style="color:#0066cc;font-size:13px;" class="fa fa-comment"style="font-size:13px;color:#0066cc"></i>{{post?.commentnum}} comentários</a>
         </div>
       </div>
     </div>
