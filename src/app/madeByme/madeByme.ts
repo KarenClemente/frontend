@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Added
 import { ServerProvider} from '../../providers/server';
 
@@ -7,169 +7,59 @@ import { ServerProvider} from '../../providers/server';
   templateUrl: './madeByme.html',
   styleUrls: ['./madeByme.css']
 })
-export class MadeByMeComponent{
+export class MadeByMeComponent implements OnInit{
 
   public posts: Array<any>;
-  public likedPosts: Array<any>;
-  public commentedPosts: Array<any>;
   
 
   constructor(private _router: Router, private server: ServerProvider) {
 
     this.posts = [];
-    this.likedPosts = [];
-
-    this.posts.push(
-      {
-        id:1,
-        title:'Poste perigoso',
-        image:'./assets/img/poste.jpeg',
-        location:'ICC Norte',
-        description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
-        likes:11,
-        commentnum:2,
-        ranking:1,
-        liked:true,
-        date:'11/11/2018',
-        hour:'16:11',
-        collapsed:false,
-        showcomment:false,
-        user:{
-          name:'Funaaa',
-          profilePicture:'./assets/img/avatar.png',
-        },
-        comment:{
-         user:{name:'Gabriela',
-         profilePicture:'./assets/img/avatar.png',
-        },
-         com:'hahahaha vish que coisa!',
-       }},{
-        id:2,
-        title:'Poste perigoso',
-        image:'./assets/img/poste.jpeg',
-        location:'ICC Norte',
-        description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
-        likes:11,
-        commentnum:2,
-        ranking:1,
-        liked:true,
-        date:'11/11/2018',
-        hour:'16:11',
-        collapsed:false,
-        showcomment:false,
-        user:{
-          name:'Funaaa',
-          profilePicture:'./assets/img/avatar.png',
-        },
-        comment:{
-         user:{name:'Gabriela',
-         profilePicture:'./assets/img/avatar.png',
-        },
-         com:'hahahaha vish que coisa!',
-       }},{
-        id:3,
-        title:'Poste perigoso',
-        image:'./assets/img/poste.jpeg',
-        location:'ICC Norte',
-        description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
-        likes:11,
-        commentnum:2,
-        ranking:1,
-        liked:true,
-        date:'11/11/2018',
-        hour:'16:11',
-        collapsed:false,
-        showcomment:false,
-        user:{
-          name:'Funaaa',
-          profilePicture:'./assets/img/avatar.png',
-        },
-        comment:{
-         user:{name:'Gabriela',
-         profilePicture:'./assets/img/avatar.png',
-        },
-         com:'hahahaha vish que coisa!',
-       }},{
-        id:4,
-        title:'Poste perigoso',
-        image:'./assets/img/poste.jpeg',
-        location:'ICC Norte',
-        description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
-        likes:11,
-        commentnum:2,
-        ranking:1,
-        liked:true,
-        date:'11/11/2018',
-        hour:'16:11',
-        collapsed:false,
-        showcomment:false,
-        user:{
-          name:'Funaaa',
-          profilePicture:'./assets/img/avatar.png',
-        },
-        comment:{
-         user:{name:'Gabriela',
-         profilePicture:'./assets/img/avatar.png',
-        },
-         com:'hahahaha vish que coisa!',
-       }},
-       {
-        id:5,
-        title:'Poste perigoso',
-        image:'./assets/img/poste.jpeg',
-        location:'ICC Norte',
-        description:'dsnj si dk dshbh sh h js dsbshubsuhbsdhisijsn ihsbhbsh sih ihs iha sihabihs ish s su sa hdsha sia d si',
-        likes:11,
-        commentnum:2,
-        ranking:1,
-        liked:true,
-        date:'11/11/2018',
-        hour:'16:11',
-        collapsed:false,
-        showcomment:false,
-        user:{
-          name:'Funaaa',
-          profilePicture:'./assets/img/avatar.png',
-        },
-        comment:{
-         user:{name:'Gabriela',
-         profilePicture:'./assets/img/avatar.png',
-        },
-         com:'hahahaha vish que coisa!',
-       }},
-      )
 }
 
-like(post){
-  //Remove like
-  if (this.likedPosts.indexOf(post.id)>-1){
-    this.likedPosts.splice(this.likedPosts.indexOf(post.id),1);
-    post.likes -= 1;
+ngOnInit(){
+  this.server.getSelectedDemands({}).then(response => {
+    console.log(response);
+    console.log(response.json());
 
-    this.server.unlikeDemand(this.server.token, 1).then(response => {
-      console.log(response);
+    response = response.json();
+    for (var i = 0; i < response['dados'].length; i++){
+      response['dados'][i].collapsed = false;
+      this.posts.push(response['dados'][i]);
+     }
     }).catch(error => {
-      console.log(error);
-    });
-  }
-  //Add like
-  else{
-    this.likedPosts.push(post.id);
-    post.likes += 1;
+    console.log(error);
+  });
+}
 
-    this.server.likeDemand(this.server.token,1).then(response => {
-      console.log(response);
-    }).catch(error => {
-      console.log(error);
-    });
-  }
- }
+like(post){  
+//Remove like
+if (post.gave_like == "true"){
+  this.server.unlikeDemand(this.server.token, post.demand_id).then(response => {
+  console.log(response);
+  post.total_likes -= 1;
+  post.gave_like = "false";
+  console.log(post.gave_like);
+  }).catch(error => {
+    console.log(error);
+  });
+}
+//Add like
+else{
+  this.server.likeDemand(this.server.token,post.demand_id).then(response => {
+    console.log(response);
+    post.total_likes += 1;
+    post.gave_like = "true";
+    console.log(post.gave_like);
+    console.log(post.total_likes);
+  }).catch(error => {
+    console.log(error);
+  });
+}
+}
 
 newComment(post){
    //Add comment
-     this.commentedPosts.push(post.id);
-     post.commentnum += 1;
-
      this.server.commentDemand(this.server.token,1,'comentário').then(response => {
        console.log(response);
      }).catch(error => {
@@ -179,9 +69,6 @@ newComment(post){
 
 delComment(post){
    //Delete comment
-     this.commentedPosts.push(post.id); //como tira?
-     post.commentnum -= 1;
-
      this.server.deleteComment(this.server.token,1).then(response => {
        console.log(response);
      }).catch(error => {

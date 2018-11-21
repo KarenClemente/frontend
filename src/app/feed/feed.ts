@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router'; // Added
 import { ServerProvider} from '../../providers/server';
 import { Observable } from 'rxjs';
+import { parse } from 'url';
 
 @Component({
   selector: 'app-feed',
@@ -29,12 +30,13 @@ export class FeedComponent implements OnInit{
   ngOnInit(){
     this.getPosts();
   }
-  onScroll () {
+  
+  onScroll (){
     console.log('scrolled!!')
     this.getPosts();
-}
+  }
 
-getPosts(){
+  getPosts(){
   this.server.getFeedDemands({},'',this.cont).then(response => {
     console.log(response);
     console.log(response.json());
@@ -45,10 +47,11 @@ getPosts(){
    }
    this.cont += 5;
 });
-}
+  }
 
-like(post){  
+  like(post){  
   //Remove like
+  parseInt("post.total_likes", 10);
   if (post.gave_like == "true"){
     this.server.unlikeDemand(this.server.token, post.demand_id).then(response => {
     console.log(response);
@@ -71,7 +74,7 @@ like(post){
       console.log(error);
     });
   }
- }
+  }
 
   newComment(post){
     //Add comment

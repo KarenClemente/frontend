@@ -10,13 +10,10 @@ import { ServerProvider} from '../../providers/server';
 export class RankingComponent implements OnInit {
 public searchText : string;
   public posts: Array<any>;
-  public likedPosts: Array<any>;
-  public commentedPosts: Array<any>;
-  
+
   constructor(private _router: Router, private server: ServerProvider) {
     
     this.posts = [];
-    this.likedPosts = [];  
 
     /*
     
@@ -84,9 +81,6 @@ like(post){
 
 newComment(post){
    //Add comment
-     this.commentedPosts.push(post.id);
-     post.commentnum += 1;
-
      this.server.commentDemand(this.server.token,1,'comentário').then(response => {
        console.log(response);
      }).catch(error => {
@@ -96,9 +90,6 @@ newComment(post){
  
 delComment(post){
    //Delete comment
-     this.commentedPosts.push(post.id); //como tira?
-     post.commentnum -= 1;
-
      this.server.deleteComment(this.server.token,1).then(response => {
        console.log(response);
      }).catch(error => {

@@ -51,6 +51,20 @@ export class ServerProvider {
   return this.http.post(BASE_URL + '/get-demands/ranking', body.toString(), options).toPromise();
   }  
 
+//DEMANDS
+  getSelectedDemands(accessToken){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded')
+  
+    let options = new RequestOptions({ headers: headers });  
+    let body = new URLSearchParams();
+    body.set('Authorization', MY_TOKEN);
+  
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/get-demands/profile', body.toString(), options).toPromise();
+  }
+  
+
 //HOME PAGE
 
   // Registration
@@ -190,9 +204,9 @@ export class ServerProvider {
 
 //POST PAGE
 
-//PROFILE FUNCTION
-  
-  // Change infos
+//PROFILE FUNCTIONS
+
+// Change infos
   updateInfo(accessToken, photo, email, newPass, newPassConf){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
