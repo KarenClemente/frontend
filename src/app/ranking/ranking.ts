@@ -10,7 +10,16 @@ import { ServerProvider} from '../../providers/server';
 export class RankingComponent implements OnInit {
 public searchText : string;
   public posts: Array<any>;
+  email: any;
+  password: any;
+  pswconfirm: any;
 
+  clearInputs() {
+    this.email ="";
+    this.password ="";
+    this.pswconfirm = "";
+   }
+   
   constructor(private _router: Router, private server: ServerProvider) {
     
     this.posts = [];

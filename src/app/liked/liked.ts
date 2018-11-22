@@ -11,6 +11,15 @@ export class LikedComponent implements OnInit{
 
   public posts: Array<any>;
   public demands: Array<any>;
+  email: any;
+  password: any;
+  pswconfirm: any;
+
+  clearInputs() {
+    this.email ="";
+    this.password ="";
+    this.pswconfirm = "";
+   }
 
     constructor(private _router: Router, private server: ServerProvider) {
       

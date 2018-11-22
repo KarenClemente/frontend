@@ -20,6 +20,17 @@ export class FeedComponent implements OnInit{
   public likedPosts: Array<any>;
   public cont: number = 0;
 
+  email: any;
+  password: any;
+  pswconfirm: any;
+
+  clearInputs() {
+    this.email ="";
+    this.password ="";
+    this.pswconfirm = "";
+   }
+
+
       constructor(private _router: Router, public server: ServerProvider) {
 
       this.posts = [];

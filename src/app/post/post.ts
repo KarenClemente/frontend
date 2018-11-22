@@ -21,6 +21,15 @@ export class PostComponent {
   ambienteOut: boolean = false;
   private selectedLink: string=" ";
   public postsSimilar: Array<any>;
+  email: any;
+  password: any;
+  pswconfirm: any;
+
+  clearInputs() {
+    this.email ="";
+    this.password ="";
+    this.pswconfirm = "";
+   }
   
     constructor(private _router: Router) {
       this.postsSimilar = [];
