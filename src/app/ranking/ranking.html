@@ -120,7 +120,7 @@
      </div>
    </div>
    <!--/modal editar perfil-->
-  <div class="modal fade " id="post01" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal fade"  id="post01" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content  modal-sm" >
           <div class="modal-header" >
@@ -185,21 +185,21 @@
   <!--Card-->
 
   <div class="card pointer"  *ngFor="let post of posts; index as i">
-    <div class="row" (click)="post.collapsed=!post.collapsed">
-      <div class="col-md-4 firstcol column">
+    <div class="row" >
+      <div class="col-md-4 firstcol column" (click)="post.collapsed=!post.collapsed">
         <img [src]="post?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
       </div>
-      <div class="col-md-4 secndcol column">
+      <div class="col-md-4 secndcol column" (click)="post.collapsed=!post.collapsed">
         <div class="row " >
          <a style="font-size:16px; text-decoration: none; color:#0066cc;">{{post?.title}}</a>
         </div>
-        <div class="row">
+        <div class="row" >
           <a class="text-muted" style="font-size:13px; text-decoration: none;"> {{post?.created_date}}</a>&nbsp;
           <br>
           <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;">&nbsp;</i>
           <a style="color:black;font-size:15px; text-decoration: none;">{{post?.local}}</a>
         </div>
-        <div class="row">
+        <div class="row" (click)="post.collapsed=!post.collapsed">
           <ul class="list-inline">
 
                 <a (click)="like(post)" class="pointer" style="text-decoration: none; padding-right:20px; margin-left:5px;"><i class="fa fa-thumbs-up" style="font-size: 15px;"></i>
