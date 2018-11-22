@@ -170,36 +170,35 @@
     <div class="mar">
       <div class="card" >
         <div class="card-header textcenter">
-          <h2 style="color:#0066cc;">Demandas Criadas</h2>
+          <h2 style="color:#0066cc;">Demandas/Sugestões Criadas</h2>
         </div>
       </div>
   <!--/Cabeçalho-->
   <!--Card-->
-  <div *ngFor="let post of posts">
-  <div class="card" *ngFor="let created of post">
-      <div class="row" (click)="created.collapsed=!created.collapsed">
-      <div class="col-md-4 firstcol column">
-        <img [src]="created?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
-      </div>
-      <div class="col-md-4 secndcol column">
-        <div class="row " >
-          <a style="font-size: 16px; text-decoration: none; color:#0066cc;" (click)="post.collapsed=!post.collapsed">{{post?.title}}</a>
+  <div class="card"  *ngFor="let post of posts;">
+      <div class="row" (click)="post.collapsed=!post.collapsed">
+        <div class="col-md-4 firstcol column">
+          <img [src]="post?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
         </div>
-        <div class="row">
-          <a class="text-muted"style="font-size:13px;"> {{post?.date}} às {{post?.hour}}</a>&nbsp;
+        <div class="col-md-4 secndcol column">
+          <div class="row " >
+           <a style="font-size:16px; text-decoration: none; color:#0066cc;"   (click)="post.collapsed=!post.collapsed">{{post?.title}}</a>
+          </div>
+          <div class="row">
+            <a class="text-muted" style="font-size:13px;"> {{post?.created_date}}</a>&nbsp;
             <br>
-          <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;"></i>
-          <a href="#" style="color:black;font-size:15px">{{post?.location}}</a>
-        </div>
-        <div class="row">
-          <a href="#" class="text-muted" style="font-family:Arial;font-size:13px"><i style="color:#0066cc;font-size:13px;" class="fa fa-thumbs-up" style="font-size:13px;color:#0066cc"></i>{{post?.likes}}</a>&nbsp;
-          <a href="#" style="font-family:Arial;font-size:13px" class="text-muted"><i style="color:#0066cc;font-size:13px;" class="fa fa-comment"style="font-size:13px;color:#0066cc"></i>{{post?.commentnum}} comentários</a>
-        </div>
+            <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;"></i>
+            <a href="#" style="color:black;font-size:15px;">{{post?.local}}</a>
+          </div>
+          <div class="row">
+            <a href="#" class="text-muted" style="font-family:Arial;font-size:13px;"><i style="color:#0066cc;font-size:13px" class="fa fa-thumbs-up"></i>{{post?.total_likes}}</a>&nbsp;
+            <a href="#" style="font-family:Arial;font-size:13px;" class="text-muted" (click)="post.collapsed=!post.collapsed; post.showcomment=!post.showcomment"><i style="color:#0066cc;font-size:13px" class="fa fa-comment"></i>{{post?.comments?.length}} comentários</a>
+          </div>
+          </div>
       </div>
-    </div>
-  <!--Expanded card1-->
-    <div class="card" style="padding-bottom:15px;" *ngIf="created.collapsed">
-        <div class="linha2"></div>
+    <!--Expanded card1-->
+    <div class="card" style="padding-bottom:15px;" *ngIf="post.collapsed">
+      <div class="linha"></div>
       <div class="pull-right">
         <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
           <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
@@ -207,71 +206,170 @@
       </div>
       <div class="card-header textleft">
         <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
-          <img [src]="created?.image_profile" style="object-fit:cover; border-radius: 50%;">
+          <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%;">
         </div>
         <p style="padding-top:5px;">
-          <a>{{created?.name}}</a>
+          <a>  {{post?.name}}</a>
           publicou
-          <b>{{created?.title}}</b>
+          <b>{{post?.title}}</b>
           em<br>
           <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
-          {{created?.local}}
+          {{post?.local}}
         </p>
       </div>
       <div class="card-body" style="background-color:#fff; text-align: justify;">
-        <img [src]="created.image_demand" style="width:100%">
+        <img [src]="post?.image_demand" style="width:100%">
         <p>
-        {{created?.description}}
+        {{post?.description}}
         </p>
         <div class="row">
           <div class="col-sm-12">
         <div class="linha"></div>
         <ul class="list-inline">
           <div class="pull-left">
-              <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 0px;
+              <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 20px;
               font-size: 15px;color:#3366BB"></i></a>
             <a style="
-            font-size: 14px;color:#3366BB">  {{created?.total_likes}}</a>
+            font-size: 14px;color:#3366BB">  {{post?.total_likes}}</a>
             </div>
             <div class="textl pull-right">
-              <i class="fa fa-comments btn btn-link " style="padding-right:13px;"></i>
-              <a class="btn btn-link " style="padding:0;" (click)="created.showcomments=!created.showcomments">
-              {{created?.comments?.length}} comentários
+              <a><i class="fa fa-comments btn btn-link " style="padding-right:5px;font-size: 15px;color:#3366BB"></i></a>
+              <a class="btn btn-link " style="margin-right:20px;" (click)="post.showcomments=!post.showcomments;">
+              {{post?.comments?.length}} comentários
               </a>
             </div>
-
+  
         </ul>
-
+  
           </div>
         </div>
             <div class="linha2"></div>
       </div>
-      <div class="card-footer" *ngIf="created.showcomments">
-        <div class="card-header textleft">
+      <div class="card-footer" *ngIf = "post.showcomments">
+        <div class="card-header textleft" *ngFor="let comment of post.comments;">
           <div class="col-xs-2" style="width:auto;">
-            <img [src]="created.comments.image_profile" style="object-fit:cover;border-radius: 50%;">
+            <img [src]="comment.image_profile" style="object-fit:cover;border-radius: 50%;">
           </div>
           <p class="borda">
-            <a>  {{created?.comments?.name}}</a>
-
+            <a>  {{comment.name}}</a>
+  
             <a class="btn btn-link fa fa-trash pull-right" style="padding:0;"></a>
             <br>
-            {{created?.comments?.comment}}
-
-
-
-
+            {{comment.comment}}
+  
+  
+  
+  
           </p>
       </div>
     </div>
-    <div class="textleft inputWithIcon" >
-      <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
-      <i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i>
+    <div class="textleft inputWithIcon">
+        <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
+        <a (click)="newComment(post, comment)"><i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i></a>
     </div>
   </div>
   </div>
-  </div>
-  </div>
-  </div>
-<!--/Card-->
+  <!--/Card-->
+
+      <!--Card-->
+      <div class="card"  *ngFor="let sugestions of demands;">
+          <div class="row" (click)="sugestions.collapsed=!sugestions.collapsed">
+            <div class="col-md-4 firstcol column">
+              <img [src]="sugestions?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
+            </div>
+            <div class="col-md-4 secndcol column">
+              <div class="row " >
+               <a style="font-size:16px; text-decoration: none; color:#0066cc;"   (click)="sugestions.collapsed=!sugestions.collapsed">{{sugestions?.title}}</a>
+              </div>
+              <div class="row">
+                <a class="text-muted" style="font-size:13px;"> {{sugestions?.created_date}}</a>&nbsp;
+                <br>
+                <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;"></i>
+                <a href="#" style="color:black;font-size:15px;">{{sugestions?.local}}</a>
+              </div>
+              <div class="row">
+                <a href="#" class="text-muted" style="font-family:Arial;font-size:13px;"><i style="color:#0066cc;font-size:13px" class="fa fa-thumbs-up"></i>{{sugestions?.total_likes}}</a>&nbsp;
+                <a href="#" style="font-family:Arial;font-size:13px;" class="text-muted" (click)="sugestions.collapsed=!sugestions.collapsed; sugestions.showcomment=!sugestions.showcomment"><i style="color:#0066cc;font-size:13px" class="fa fa-comment"></i>{{sugestions?.comments?.length}} comentários</a>
+              </div>
+              </div>
+          </div>
+        <!--Expanded card1-->
+        <div class="card" style="padding-bottom:15px;" *ngIf="sugestions.collapsed">
+          <div class="linha"></div>
+          <div class="pull-right">
+            <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+              <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+            </button>
+          </div>
+          <div class="card-header textleft">
+            <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
+              <img [src]="sugestions?.image_profile" style="object-fit:cover; border-radius: 50%;">
+            </div>
+            <p style="padding-top:5px;">
+              <a>  {{sugestions?.name}}</a>
+              publicou
+              <b>{{sugestions?.title}}</b>
+              em<br>
+              <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
+              {{sugestions?.local}}
+            </p>
+          </div>
+          <div class="card-body" style="background-color:#fff; text-align: justify;">
+            <img [src]="sugestions?.image_demand" style="width:100%">
+            <p>
+            {{sugestions?.description}}
+            </p>
+            <div class="row">
+              <div class="col-sm-12">
+            <div class="linha"></div>
+            <ul class="list-inline">
+              <div class="pull-left">
+                  <a (click)="like(sugestions)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 20px;
+                  font-size: 15px;color:#3366BB"></i></a>
+                <a style="
+                font-size: 14px;color:#3366BB">  {{sugestions?.total_likes}}</a>
+                </div>
+                <div class="textl pull-right">
+                  <a><i class="fa fa-comments btn btn-link " style="padding-right:5px;font-size: 15px;color:#3366BB"></i></a>
+                  <a class="btn btn-link " style="margin-right:20px;" (click)="sugestions.showcomments=!sugestions.showcomments; comment(sugestions)">
+                  {{sugestions?.comments?.length}} comentários
+                  </a>
+                </div>
+      
+            </ul>
+      
+              </div>
+            </div>
+                <div class="linha2"></div>
+          </div>
+          <div class="card-footer" *ngIf = "sugestions.showcomments">
+            <div class="card-header textleft" *ngFor="let comment of sugestions.comments;">
+              <div class="col-xs-2" style="width:auto;">
+                <img [src]="sugestions?.comments?.image_profile" style="object-fit:cover;border-radius: 50%;">
+              </div>
+              <p class="borda">
+                <a>  {{sugestions?.comments?.name}}</a>
+      
+                <a class="btn btn-link fa fa-trash pull-right" style="padding:0;"></a>
+                <br>
+                {{sugestions?.comments?.comment}}
+      
+      
+      
+      
+              </p>
+          </div>
+        </div>
+        <div class="textleft inputWithIcon">
+          <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
+          <i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i>
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      <!--/Card-->
+    
+
+  
 <script src="madeByme.ts"></script>

@@ -79,13 +79,13 @@ like(post){
   }
  }
 
-newComment(post){
-   //Add comment
-     this.server.commentDemand(this.server.token,1,'comentário').then(response => {
-       console.log(response);
-     }).catch(error => {
-       console.log(error);
-     });
+ newComment(post, comment){
+  //Add comment
+    this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    });
 }
  
 delComment(post){
@@ -99,14 +99,6 @@ delComment(post){
  
 report(post){
    this.server.reportDemand(this.server.token,1).then(response => {
-     console.log(response);
-   }).catch(error => {
-     console.log(error);
-   });
-}
-
-comments(post){
-   this.server.viewComments(this.server.token,1).then(response => {
      console.log(response);
    }).catch(error => {
      console.log(error);

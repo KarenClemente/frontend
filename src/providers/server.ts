@@ -145,33 +145,19 @@ export class ServerProvider {
     return this.http.post(BASE_URL + '/like/delete', body.toString(), options).toPromise();
   };
 
-  // View comments
-  viewComments(accessToken, demandId){
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded')
-
-    let options = new RequestOptions({ headers: headers });
-    let body = new URLSearchParams();
-    body.set('Authorization', MY_TOKEN);
-    body.set('demands_id','1');
-    
-    console.log(body.toString());
-    return this.http.post(BASE_URL + '?', body.toString(), options).toPromise(); 
-  };
-
   // New comment
-  commentDemand(accessToken, demandId, comment){
+  commentDemand(accessToken, params, comment){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
     
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', MY_TOKEN);
-    body.set('demands_id','1');
-    body.set('comments','Comentário teste');
+    body.set('demands_id',params);
+    body.set('comment',comment);
 
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+    return this.http.post(BASE_URL + '/coments/add', body.toString(),options).toPromise();
   }
 
   // Delete comment

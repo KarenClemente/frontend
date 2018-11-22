@@ -207,7 +207,7 @@
                 </div>
                 <div class="textl pull-right">
                   <i class="fa fa-comments btn btn-link " style="padding-right:13px;"></i>
-                  <a class="btn btn-link " style="padding:0;" (click)="post.showcomments=!post.showcomments; comment(post)">
+                  <a class="btn btn-link " style="padding:0;" (click)="post.showcomments=!post.showcomments;">
                   {{post?.comments?.length}} comentários
                   </a>
                 </div>
@@ -220,20 +220,20 @@
       <div class="card-footer" *ngIf="post.showcomments">
         <div class="card-header textleft" *ngFor="let comment of post.comments;">
           <div class="col-xs-2" style="width:auto;">
-            <img [src]="post?.comments?.image_profile" style="object-fit:cover;border-radius: 50%;">
+            <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%;">
           </div>
           <p class="borda">
-            <a>  {{post?.comments?.name}}</a>
+            <a>  {{comment?.name}}</a>
 
             <a class="btn btn-link fa fa-trash pull-right" style="padding:0;" (click)="delComment(post)"></a>
             <br>
-            {{post?.comments?.comment}}
+            {{comment?.comment}}
           </p>
       </div>
     </div>
     <div class="textleft inputWithIcon" >
-      <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
-      <a (click)="newComment(post)"><i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i></a>
+      <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
+      <a (click)="newComment(post, comment)"><i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i></a>
     </div>
   </div>
  </div>

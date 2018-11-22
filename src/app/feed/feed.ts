@@ -76,9 +76,9 @@ export class FeedComponent implements OnInit{
   }
   }
 
-  newComment(post){
+  newComment(post, comment){
     //Add comment
-      this.server.commentDemand(this.server.token,1,'comentário').then(response => {
+      this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
         console.log(response);
       }).catch(error => {
         console.log(error);
@@ -98,14 +98,6 @@ export class FeedComponent implements OnInit{
     this.server.reportDemand(this.server.token,1).then(response => {
       console.log(response);
       this.closeModalDangerButton.nativeElement.click();
-    }).catch(error => {
-      console.log(error);
-    });
-  }
-
-  comments(post){
-    this.server.viewComments(this.server.token,1).then(response => {
-      console.log(response);
     }).catch(error => {
       console.log(error);
     });

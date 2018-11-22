@@ -10,27 +10,35 @@ import { ServerProvider} from '../../providers/server';
 export class LikedComponent implements OnInit{
 
   public posts: Array<any>;
-  
+  public demands: Array<any>;
+
     constructor(private _router: Router, private server: ServerProvider) {
       
       this.posts = [];
+      this.demands = [];
 
   }
 
-ngOnInit(){
-  this.server.getSelectedDemands({}).then(response => {
-    console.log(response);
-    console.log(response.json());
-
-    response = response.json();
-    for (var i = 0; i < response['dados'].length; i++){
-      response['dados'][i].collapsed = false;
-      this.posts.push(response['dados'][i]);
+  ngOnInit(){
+    this.server.getSelectedDemands({}).then(response => {
+      console.log(response);
+      console.log(response.json());
+  
+      response = response.json();
+     // this.posts = response['dados'];
+     for (var i = 0; i < response['dados'].likes.length; i++){
+      response['dados'].likes[i].collapsed = false;
+      this.posts.push(response['dados'].likes[i]);
      }
-    }).catch(error => {
-    console.log(error);
-  });
-}
+     for (var i = 0; i < response['dados'].comentarios.length; i++){
+      response['dados'].comentarios[i].collapsed = false;
+      this.demands.push(response['dados'].comentarios[i]);
+     }
+  
+      }).catch(error => {
+      console.log(error);
+    });
+  }
 
   like(post){  
   //Remove like
@@ -58,14 +66,14 @@ ngOnInit(){
   }
   }
 
-  newComment(post){
-     //Add comment
-       this.server.commentDemand(this.server.token,1,'comentário').then(response => {
-         console.log(response);
-       }).catch(error => {
-         console.log(error);
-       });
-  }
+  newComment(post, comment){
+    //Add comment
+      this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
+        console.log(response);
+      }).catch(error => {
+        console.log(error);
+      });
+    }
       
   delComment(post){
      //Delete comment
@@ -78,14 +86,6 @@ ngOnInit(){
    
   report(post){
      this.server.reportDemand(this.server.token,1).then(response => {
-       console.log(response);
-     }).catch(error => {
-       console.log(error);
-     });
-  }
- 
-  comments(post){
-     this.server.viewComments(this.server.token,1).then(response => {
        console.log(response);
      }).catch(error => {
        console.log(error);
