@@ -48,7 +48,6 @@ input[type="text"]:focus {
   left: 0;
   top: 0px;
   padding: 9px 8px;
-  color:#3366BB;
   transition: 0.3s;
   border-radius: 50px;
 }
