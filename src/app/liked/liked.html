@@ -75,10 +75,10 @@
              <label style="font-size: 1.3rem">Confirme a senha</label>
              <input class="form-control" placeholder="Repita senha" type="password" name="pswconfirm" signUpConfirmEqualValidator="password" required [(ngModel)]="pswconfirm" #password2="ngModel">
              <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.required">
-             Confirme sua senha
+             Confirme sua senha<br>
              </span>
              <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
-             As senhas devem ser iguais
+             As senhas devem ser iguais<br>
              </span>
 
              <a  href="#excluir" data-toggle="collapse">
@@ -238,9 +238,9 @@
               {{post?.comments?.length}} comentários
               </a>
             </div>
-  
+
         </ul>
-  
+
           </div>
         </div>
             <div class="linha2"></div>
@@ -252,14 +252,14 @@
           </div>
           <p class="borda">
             <a>  {{comment.name}}</a>
-  
+
             <a class="btn btn-link fa fa-trash pull-right" style="padding:0;"></a>
             <br>
             {{comment.comment}}
-  
-  
-  
-  
+
+
+
+
           </p>
       </div>
     </div>
@@ -335,9 +335,9 @@
                   {{sugestions?.comments?.length}} comentários
                   </a>
                 </div>
-      
+
             </ul>
-      
+
               </div>
             </div>
                 <div class="linha2"></div>
@@ -349,20 +349,20 @@
               </div>
               <p class="borda">
                 <a>  {{comment.name}}</a>
-      
+
                 <a class="btn btn-link fa fa-trash pull-right" style="padding:0;"></a>
                 <br>
                 {{comment.comment}}
-      
-      
-      
-      
+
+
+
+
               </p>
           </div>
         </div>
         <div class="textleft inputWithIcon">
             <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
-            <a (click)="newComment(post, comment)"><i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i></a>      
+            <a (click)="newComment(post, comment)"><i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i></a>
         </div>
       </div>
       </div>

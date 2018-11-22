@@ -78,10 +78,10 @@
              <label style="font-size: 1.3rem">Confirme a senha</label>
              <input class="form-control" placeholder="Repita senha" type="password" name="pswconfirm" signUpConfirmEqualValidator="password" required [(ngModel)]="pswconfirm" #password2="ngModel">
              <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.required">
-             Confirme sua senha
+             Confirme sua senha<br>
              </span>
              <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
-             As senhas devem ser iguais
+             As senhas devem ser iguais<br>
              </span>
 
              <a  href="#excluir" data-toggle="collapse">
