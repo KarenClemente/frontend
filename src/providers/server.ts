@@ -64,6 +64,18 @@ export class ServerProvider {
     return this.http.post(BASE_URL + '/get-demands/profile', body.toString(), options).toPromise();
   }
   
+//SOLVED
+  getSolvedDemands(){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded')
+  
+    let options = new RequestOptions({ headers: headers });  
+    let body = new URLSearchParams();
+  
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/get-demands/resolved', body.toString(), options).toPromise();
+  }
+
 
 //HOME PAGE
 
@@ -158,34 +170,34 @@ export class ServerProvider {
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/coments/add', body.toString(),options).toPromise();
-  }
+    }
 
   // Delete comment
-  deleteComment(accessToken, commentId){
+  deleteComment(accessToken, params){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
      
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', MY_TOKEN);
-    body.set('comment_id','1');
+    body.set('comment_id', params);
  
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/comments/delete', body.toString(),options).toPromise();
+    return this.http.post(BASE_URL + '/coments/delete', body.toString(),options).toPromise();
   }
 
   // Report demand
-  reportDemand(accessToken, demandId){
+  reportDemand(accessToken, params){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
      
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', MY_TOKEN);
-    body.set('demands_id','1');
+    body.set('demands_id',params);
  
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+    return this.http.post(BASE_URL + '/demands/report', body.toString(),options).toPromise();
   }
 
 //POST PAGE

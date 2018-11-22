@@ -17,8 +17,8 @@ export class FeedComponent implements OnInit{
 
   public searchText : string;
   public posts: Array<any>;
-  public likedPosts: Array<any>;
   public cont: number = 0;
+  public id;
 
   email: any;
   password: any;
@@ -34,7 +34,6 @@ export class FeedComponent implements OnInit{
       constructor(private _router: Router, public server: ServerProvider) {
 
       this.posts = [];
-      this.likedPosts = [];
 
   }
 
@@ -62,7 +61,8 @@ export class FeedComponent implements OnInit{
 
   like(post){  
   //Remove like
-  parseInt("post.total_likes", 10);
+  //parseInt(post.total_likes, 10);
+  post.total_likes = Number(post.total_likes);
   if (post.gave_like == "true"){
     this.server.unlikeDemand(this.server.token, post.demand_id).then(response => {
     console.log(response);
@@ -91,6 +91,7 @@ export class FeedComponent implements OnInit{
     //Add comment
       this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
         console.log(response);
+        post.comments.length += 1;
       }).catch(error => {
         console.log(error);
       });
@@ -98,7 +99,7 @@ export class FeedComponent implements OnInit{
    
   delComment(post){
     //Delete comment
-      this.server.deleteComment(this.server.token,1).then(response => {
+      this.server.deleteComment(this.server.token,post.comment_id).then(response => {
         console.log(response);
       }).catch(error => {
         console.log(error);
@@ -106,12 +107,17 @@ export class FeedComponent implements OnInit{
   }
   
   report(post){
-    this.server.reportDemand(this.server.token,1).then(response => {
+    this.server.reportDemand(this.server.token,this.id).then(response => {
       console.log(response);
       this.closeModalDangerButton.nativeElement.click();
     }).catch(error => {
       console.log(error);
     });
+  }
+
+  reportId(post){
+    this.id = post.demand_id;
+    console.log(this.id);
   }
 
   changeInfo(accessToken, image, email, password, pswconfirm){

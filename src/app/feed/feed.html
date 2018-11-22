@@ -128,8 +128,8 @@
           <p style="color:black;font-size:20px;">Esta publicação será denunciada. Deseja continuar?</p>
         </div>
         <div class="modal-footer">
-          <!--<button type="button" class="btn btn-danger" (click)="report(post)">Sim</button>-->
-          <button type="button" class="btn btn-danger">Sim</button>
+          <button type="button" class="btn btn-danger" (click)="report(id)">Sim</button>
+          <!--<button type="button" class="btn btn-danger">Sim</button>-->
           <button type="button" class="btn btn-primary" data-dismiss="modal">N&atilde;o</button>
         </div>
       </div>
@@ -173,7 +173,7 @@
   <div class="mar">
     <div class="card" style="padding-bottom:15px;" *ngFor="let post of posts ">
       <div class="pull-right">
-        <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+        <button class="btn btn-link" data-toggle="modal" data-target="#post01" (click)="reportId(post)" aria-controls="post01">
           <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
         </button>
       </div>
@@ -200,7 +200,7 @@
         <div class="linha"></div>
             <ul class="list-inline">
               <div class="pull-left">
-                  <a (click)="like(post)" class="pointer" style="text-decoration: none;"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
+                  <a (click)="like(post)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
                   font-size: 15px;"></i>
                   {{post?.total_likes}}</a>
                 </div>
@@ -223,11 +223,23 @@
           <p class="borda">
             <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
 
-            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(post)"></a>
+            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)"></a>
             <br>
             {{comment?.comment}}
           </p>
       </div>
+      <div class="card-header textleft" *ngFor="let comment of post.answers;">
+        <div class="col-xs-2" style="width:auto; background: #0066cc;">
+          <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
+        </div>
+        <p class="borda">
+          <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
+
+          <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)"></a>
+          <br>
+          {{comment?.comment}}
+        </p>
+    </div>
     </div>
     <div class="textleft inputWithIcon" >
       <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">

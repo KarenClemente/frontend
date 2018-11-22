@@ -126,7 +126,7 @@
             </div>
             <div class="modal-footer">
 
-              <button type="button" class="btn btn-danger">Sim</button>
+              <button type="button" class="btn btn-danger" (click)="report(id)">Sim</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal">N&atilde;o</button>
             </div>
           </div>
@@ -210,7 +210,7 @@
     <div class="card" style="padding-bottom:15px;" *ngIf="post.collapsed">
       <div class="linha"></div>
       <div class="pull-right">
-        <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+        <button class="btn btn-link" data-toggle="modal" data-target="#post01" (click)="reportId(post)" aria-controls="post01">
           <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
         </button>
       </div>
@@ -261,7 +261,7 @@
           <p class="borda">
             <a class="pointer" style="text-decoration: none;">  {{comment.name}}</a>
 
-            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(post)"></a>
+            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)"></a>
             <br>
             {{comment.comment}}
 
@@ -296,7 +296,7 @@
                 <a href="#" style="color:black;font-size:15px;">{{sugestions?.local}}</a>
               </div>
               <div class="row">
-                <a href="#" class="text-muted" style="font-family:Arial;font-size:13px;"><i style="color:#0066cc;font-size:13px" class="fa fa-thumbs-up"></i>{{sugestions?.total_likes}}</a>&nbsp;
+                <a href="#" class="text-muted" style="font-family:Arial;font-size:13px;"[ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i style="font-size:13px" class="fa fa-thumbs-up"></i>{{sugestions?.total_likes}}</a>&nbsp;
                 <a href="#" style="font-family:Arial;font-size:13px;" class="text-muted" (click)="sugestions.collapsed=!sugestions.collapsed; sugestions.showcomment=!sugestions.showcomment"><i style="color:#0066cc;font-size:13px" class="fa fa-comment"></i>{{sugestions?.comments?.length}} comentários</a>
               </div>
               </div>
@@ -332,17 +332,15 @@
             <div class="linha"></div>
             <ul class="list-inline">
               <div class="pull-left">
-                  <a (click)="like(sugestions)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 20px;
-                  font-size: 15px;color:#3366BB"></i></a>
-                <a style="
-                font-size: 14px;color:#3366BB">  {{sugestions?.total_likes}}</a>
-                </div>
-                <div class="textl pull-right">
-                  <a><i class="fa fa-comments btn btn-link " style="padding-right:5px;font-size: 15px;color:#3366BB"></i></a>
-                  <a class="btn btn-link " style="margin-right:20px;" (click)="sugestions.showcomments=!sugestions.showcomments; comment(sugestions)">
-                  {{sugestions?.comments?.length}} comentários
-                  </a>
-                </div>
+                <a (click)="like(sugestions)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
+                font-size: 15px;"></i>
+                {{sugestions?.total_likes}}</a>
+              </div>
+              <div class="textl pull-right">
+                <a class="pointer" style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments"></i>
+                {{sugestions?.comments?.length}} comentários
+                </a>
+              </div>
 
             </ul>
 

@@ -2,6 +2,14 @@
 
 /*CSS PERFIL*/
 .principal {background-color:  rgb(242, 244, 247);}
+.liked{
+  color: #0066cc;
+}
+
+.notLiked{
+  color:gray;
+}
+
 
 .rounded{
 
