@@ -3,8 +3,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import {catchError} from 'rxjs/operators';
 //import 'rxjs/add/operator/toPromise';
 
-const BASE_URL = "http://sosunb.000webhostapp.com/api";
-//const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
+//const BASE_URL = "http://sosunb.000webhostapp.com/api";
+const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
 const MY_TOKEN = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9zb3N1bmIuMDAwd2ViaG9zdGFwcC5jb21cL2FwaVwvIiwic3ViIjoiMSIsImV4cCI6MTU0MjM5MjgwNCwiaWF0IjoxNTQyMzA2NDA0LCJ1c2VyIjoiVXNlciAxIiwicHJvZmlsZV90eXBlX2lkIjoiMiJ9.4N6pBZEKl-YIF0kU4TjF3tZaLmz9m3poC62cS1JoR5w";
 
 
