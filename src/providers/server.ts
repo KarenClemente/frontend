@@ -14,12 +14,6 @@ export class ServerProvider {
     public user: any ={};
     //public token: any;
     public token: any = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ob21vbC5yZWRlcy51bmIuYnJcL3Nvcy11bmJcL2FwaVwvIiwic3ViIjoiMjIiLCJleHAiOjE1NDMwNTcwNjIsImlhdCI6MTU0Mjk3MDY2MiwidXNlciI6Ik1hcmlhbmEgZGUgQXNzdW5jYW8gVmFyYW5kYSJ9.1D-L76Uso99aA9RVtob3y-4fHBAezdBOYGBCRAxxIvQ"; 
-    public name: string;
-    public registry: string;
-    public identity: string;
-    public date_birth: string;
-    public email: string;
-    public image_profile: string;
 
     constructor(public http: Http) {
   }
@@ -126,7 +120,7 @@ export class ServerProvider {
     body.set('email', email);
  
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+    return this.http.post(BASE_URL + '/sessions/recover', body.toString(),options).toPromise();
   }
 
   // Info data

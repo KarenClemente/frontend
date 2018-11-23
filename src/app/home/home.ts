@@ -63,14 +63,19 @@ export class HomeComponent {
 
           this.server.infoUser(this.server.token).then(response => {
           console.log(response);
-          console.log(response["_body"]);
-          let body = JSON.parse(response['_body']);
-          this.server.name = body.name;
-          this.server.registry = body.registry;
-          this.server.identity = body.identity;
-          this.server.date_birth = body.date_birth;
-          this.server.email = body.email;
-          this.server.image_profile = body.image_profile;
+          let body = JSON.parse(response['dados']);
+          this.server.user.name = body.name;
+          this.server.user.registry = body.registry;
+          this.server.user.identity = body.identity;
+          this.server.user.date_birth = body.date_birth;
+          this.server.user.email = body.email;
+          this.server.user.image_profile = body.image_profile;
+          console.log(this.server.user.name);
+          console.log(this.server.user.registry);
+          console.log(this.server.user.identity);
+          console.log(this.server.user.date_birth);
+          console.log(this.server.user.email);
+          console.log(this.server.user.image_profile);
 
         })
         }).catch(error => {
@@ -92,12 +97,12 @@ export class HomeComponent {
         });
       }
 
-      passForgot(email){
+      newPass(email){
         this.server.newPsw(this.email).then(response => {
           console.log(response);
           console.log(response["_body"]);
           this.closeModalPswButton.nativeElement.click();
-          alert("Nova senha enviada.");
+          alert("Email enviado.");
         }).catch(error => {
           console.log(error);
           alert("Erro de dados.");

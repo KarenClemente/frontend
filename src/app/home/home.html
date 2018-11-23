@@ -164,7 +164,7 @@
               <label for="email" style="font-size: 1.3rem">E-mail</label>
               <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="email"/>
             </div>
-                <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat">Enviar</button>
+                <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="newPass(email)">Enviar</button>
               <!--  <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="passForgot(email)">Enviar</button>-->
               </form>
           </div>

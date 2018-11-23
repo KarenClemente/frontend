@@ -107,9 +107,9 @@ export class FeedComponent implements OnInit{
     //Delete comment
       this.server.deleteComment(this.server.token,comment.comment_id).then(response => {
         console.log(response);
-        this.users = this.users.filter(obj => {
-          return obj.comment_id !== comment.comment_id
-        })
+        this.posts.comments = this.posts.comments.filter(obj => {
+          return obj.comment_id !== comment.comment_id;
+        });
       }).catch(error => {
         console.log(error);
       });
