@@ -71,6 +71,13 @@ div.center {
     width: 65%;
   }
 
+  .btncolumn {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  text-align: right;
+  }
+
   .btncolumn1 {
   float: left;
   width: 20%;

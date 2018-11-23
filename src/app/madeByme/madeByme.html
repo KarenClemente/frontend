@@ -112,26 +112,46 @@
      </div>
    </div>
    <!--/modal editar perfil-->
-    <div class="modal fade " id="post01" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content  modal-sm" >
-            <div class="modal-header" >
-                <button #closeModalDangerButton type="button" class="close" data-dismiss="modal">&times;</button>
-              <div class="row">
-                <h4 style="color:red;text-align: center;" class="modal-title" id="modalLabel">Denunciar publicação</h4>
-              </div>
-            </div>
-            <div class="modal-body" style="text-align: center;">
-              <p style="color:black;font-size:20px;">Esta publicação será denunciada. Deseja continuar?</p>
-            </div>
-            <div class="modal-footer">
 
-              <button type="button" class="btn btn-danger" (click)="report(id)">Sim</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">N&atilde;o</button>
-            </div>
+
+
+
+
+
+  <div class="modal fade" id="modalLabel" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+
+    <!-- Modal content no 1-->
+     <div class="modal-content">
+       <div class="modal-header">
+          <button #closeModalLoginButton type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h4 class="modal-title text-center form-title" style="color: #0066cc;">Denunciar Publicação</h4>
+       </div>
+      <div class="modal-body">
+        <div class="login-box-body">
+          <p class="login-box-msg" style="color: grey;">Esta publicação será denunciada.<br>
+          Deseja continuar?</p>
+
+
+          <div class="row" style="padding-left: 30%;" >
+
+          <div class="btncolumn" style="color:white;">
+          <input style="margin-top: 0px;background-color: #cccccc"type="submit" class="btn   btn-flat" value="Sim">
+          </div>
+
+          <div class="btncolumn" style="color:white;">
+          <input style="margin-top: 0px; background-color: #cccccc; margin-left:20px;"type="submit" class="btn btn-flat" value="Não">
+
+          </div>
+          </div>
+
           </div>
         </div>
+      </div>
     </div>
+
+  </div>
     <!--/ Modal box-->
   <!-- Sidebar-->
   <div class="s-layout__sidebar">
@@ -210,9 +230,9 @@
     <div class="card" style="padding-bottom:15px;" *ngIf="post.collapsed">
       <div class="linha"></div>
       <div class="pull-right">
-        <button class="btn btn-link" data-toggle="modal" data-target="#post01" (click)="reportId(post)" aria-controls="post01">
-          <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
-        </button>
+        <a data-toggle="modal" data-target="#modalLabel">
+          <i class="fa fa-exclamation pointer" style="font-size:30px; color:#dc3545; padding: 10px;"></i>
+        </a>
       </div>
       <div class="card-header textleft">
         <div class="col-xs-2" style="width:auto; padding:1; height: 90%;">
@@ -367,7 +387,7 @@
               </div>
               <p class="borda">
                 <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
-      
+
                 <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
                 <br>
                 {{comment?.comment}}
@@ -379,7 +399,7 @@
             </div>
             <p class="borda">
               <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
-    
+
               <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
               <br>
               {{comment?.comment}}
