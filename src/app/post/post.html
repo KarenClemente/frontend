@@ -7,13 +7,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a routerLink="/home" style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
+      <a routerLink="/feed" style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
         <li><a routerLink="/feed">Feed</a></li>
         <li><a routerLink="/ranking">Ranking</a></li>
-        <li><a routerLink="/home">Logout</a></li>
+        <li><a (click)="logout()">Logout</a></li>
 
       </ul>
     </div>

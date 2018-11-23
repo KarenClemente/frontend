@@ -121,4 +121,8 @@ export class LikedComponent implements OnInit{
      });
   }
 
+  logout(){
+    this.server.token = "";
+    this._router.navigate(['/home']);
+  }
 }

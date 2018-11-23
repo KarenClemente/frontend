@@ -113,4 +113,9 @@ reportId(post){
   this.id = post.demand_id;
   console.log(this.id);
 }
+logout(){
+  this.server.token = "";
+  this._router.navigate(['/home']);
+}
+
 }

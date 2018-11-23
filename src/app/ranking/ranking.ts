@@ -135,5 +135,8 @@ changeInfo(accessToken, image, email, password, pswconfirm){
      console.log(error);
    });
 }
-
+logout(){
+  this.server.token = "";
+  this._router.navigate(['/home']);
+}
 }

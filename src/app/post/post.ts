@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Added
-import { $ } from 'protractor';
+import { ServerProvider } from '../../providers/server';
 import { RadioControlValueAccessor } from '@angular/forms';
 import { CombineLatestOperator } from 'rxjs/internal/observable/combineLatest';
 
@@ -31,7 +31,7 @@ export class PostComponent {
     this.pswconfirm = "";
    }
   
-    constructor(private _router: Router) {
+    constructor(private _router: Router, private server: ServerProvider) {
       this.postsSimilar = [];
 
       this.postsSimilar.push(
@@ -123,5 +123,10 @@ export class PostComponent {
       this.card4 = !this.card4;
       this.posts = !this.posts;
 
+    }
+   
+    logout(){
+      this.server.token = "";
+      this._router.navigate(['/home']);
     }
 }

@@ -15,7 +15,7 @@ export class ServerProvider {
     public hasCusId: boolean;
     public user: any;
     public token: any;
-
+     
     constructor(public http: Http) {
       this.hasCusId = false;
       this.user = {};

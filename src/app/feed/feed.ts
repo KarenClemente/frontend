@@ -128,5 +128,11 @@ export class FeedComponent implements OnInit{
       console.log(error);
     });
   }
+
+  logout(){
+    this.server.token = "";
+    this._router.navigate(['/home']);
+    console.log(this.server.token)
+  }
 }
   
