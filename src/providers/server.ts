@@ -5,7 +5,6 @@ import {catchError} from 'rxjs/operators';
 
 //const BASE_URL = "http://sosunb.000webhostapp.com/api";
 const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
-const MY_TOKEN = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9zb3N1bmIuMDAwd2ViaG9zdGFwcC5jb21cL2FwaVwvIiwic3ViIjoiMSIsImV4cCI6MTU0MjM5MjgwNCwiaWF0IjoxNTQyMzA2NDA0LCJ1c2VyIjoiVXNlciAxIiwicHJvZmlsZV90eXBlX2lkIjoiMiJ9.4N6pBZEKl-YIF0kU4TjF3tZaLmz9m3poC62cS1JoR5w";
 
 
 @Injectable()
@@ -29,7 +28,7 @@ export class ServerProvider {
 
     let options = new RequestOptions({ headers: headers });  
     let body = new URLSearchParams();
-    body.set('Authorization', MY_TOKEN);
+    body.set('Authorization', this.token);
     body.set('status', params.hasOwnProperty('status')? params.status: '');
     body.set('limit', limit);
 
@@ -44,7 +43,7 @@ export class ServerProvider {
 
   let options = new RequestOptions({ headers: headers });  
   let body = new URLSearchParams();
-  body.set('Authorization', MY_TOKEN);
+  body.set('Authorization', this.token);
   body.set('campus', params.hasOwnProperty('campus')? params.campus: '');
 
   console.log(body.toString());
@@ -58,7 +57,7 @@ export class ServerProvider {
   
     let options = new RequestOptions({ headers: headers });  
     let body = new URLSearchParams();
-    body.set('Authorization', MY_TOKEN);
+    body.set('Authorization', this.token);
   
     console.log(body.toString());
     return this.http.post(BASE_URL + '/get-demands/profile', body.toString(), options).toPromise();
@@ -136,7 +135,7 @@ export class ServerProvider {
 
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
-    body.set('Authorization', MY_TOKEN);
+    body.set('Authorization', this.token);
     body.set('demands_id', params);
     
     console.log(body.toString());
@@ -150,7 +149,7 @@ export class ServerProvider {
 
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
-    body.set('Authorization', MY_TOKEN);
+    body.set('Authorization', this.token);
     body.set('demands_id', params);
     
     console.log(body.toString());
@@ -164,7 +163,7 @@ export class ServerProvider {
     
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
-    body.set('Authorization', MY_TOKEN);
+    body.set('Authorization', this.token);
     body.set('demands_id',params);
     body.set('comment',comment);
 
@@ -179,7 +178,7 @@ export class ServerProvider {
      
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
-    body.set('Authorization', MY_TOKEN);
+    body.set('Authorization', this.token);
     body.set('comment_id', params);
  
     console.log(body.toString());
@@ -193,7 +192,7 @@ export class ServerProvider {
      
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
-    body.set('Authorization', MY_TOKEN);
+    body.set('Authorization', this.token);
     body.set('demands_id',params);
  
     console.log(body.toString());
@@ -211,7 +210,7 @@ export class ServerProvider {
      
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
-    body.set('Authorization', MY_TOKEN);
+    body.set('Authorization', this.token);
     body.set('image',photo);
     body.set('email', email);
     body.set('newPass', newPass);
@@ -228,7 +227,7 @@ export class ServerProvider {
      
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
-    body.set('Authorization', MY_TOKEN);
+    body.set('Authorization', this.token);
     body.set('email', email);
  
     console.log(body.toString());
