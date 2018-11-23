@@ -11,14 +11,17 @@ const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
 export class ServerProvider {
  
 
-    public cusId: any;
-    public hasCusId: boolean;
-    public user: any;
-    public token: any;
-     
+    public user: any ={};
+    //public token: any;
+    public token: any = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ob21vbC5yZWRlcy51bmIuYnJcL3Nvcy11bmJcL2FwaVwvIiwic3ViIjoiMjIiLCJleHAiOjE1NDMwNTcwNjIsImlhdCI6MTU0Mjk3MDY2MiwidXNlciI6Ik1hcmlhbmEgZGUgQXNzdW5jYW8gVmFyYW5kYSJ9.1D-L76Uso99aA9RVtob3y-4fHBAezdBOYGBCRAxxIvQ"; 
+    public name: string;
+    public registry: string;
+    public identity: string;
+    public date_birth: string;
+    public email: string;
+    public image_profile: string;
+
     constructor(public http: Http) {
-      this.hasCusId = false;
-      this.user = {};
   }
 
 //FEED
@@ -124,6 +127,20 @@ export class ServerProvider {
  
     console.log(body.toString());
     return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+  }
+
+  // Info data
+  infoUser(accessToken){
+    let headers = new Headers(
+    {
+        'Content-Type' : 'application/x-www-form-urlencoded',
+    });
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams ();
+    body.set('Authorization', this.token);
+    
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/user/get', body.toString(), options).toPromise();
   }
 
 //POSTS FUNCTIONS

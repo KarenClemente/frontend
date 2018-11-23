@@ -33,36 +33,36 @@
          <div class="modal-body">
            <div class="login-box-body">
              <div>
-               <img src="./assets/img/avatar.png" class="rounded" style="width: 80px; height:80px; margin-left: 38%;">
+               <img [src]="server.image_profile" class="rounded" style="width: 80px; height:80px; margin-left: 38%;">
              </div>
              <p class="login-box-msg" style="color: grey;">Insira uma foto</p>
              <form action="#" method="post" name="changeInfo" style="width: 350px; margin-left:-20px;" >
-             <input class="form-control" id="perfilImg" type="file" name="perfilImg" accept="image/*" [(ngModel)]="image"/>
+             <input class="form-control" id="perfilImg" type="file" name="perfilImg" accept="image/*" [(ngModel)]="image_profile"/>
 
 
              <div class="form-group" style="margin-bottom:0rem">
               <!----- username -------------->
               <label for="nome" style="font-size: 1.3rem">Nome completo:</label><br>
-              <p style="font-size: 1.3rem">Felipe Dias Pinheiro</p>
+              <p style="font-size: 1.3rem">{{server.name}}</p>
             </div>
             <div class="form-group" style="margin-bottom:0rem">                    <!----- matricula -------------->
               <label for="matricula" style="font-size: 1.3rem">Matrícula:</label>
-              <p style="font-size: 1.3rem">12/1234567</p>
+              <p style="font-size: 1.3rem">{{server.registry}}</p>
             </div>
             <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
              <label for="rg" style="font-size: 1.3rem;">Número RG:</label><br>
-             <p style="font-size: 1.3rem"> 1234567</p>
+             <p style="font-size: 1.3rem">{{server.identity}}</p>
             </div>
 
 
           <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
             <label for="campoData" style="font-size: 1.3rem">Data de nascimento:</label>
-            <p style="font-size: 1.3rem"> 11/12/1994</p>
+            <p style="font-size: 1.3rem">{{server.date_birth}}</p>
           </div>
 
             <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
               <label for="email" style="font-size: 1.3rem">E-mail</label>
-              <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="email" />
+              <input class="form-control" placeholder="server.email" id="email" type="email" name="email" required="" [(ngModel)]="email" />
               <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
 
             </div>
@@ -140,9 +140,9 @@
   <div class="s-layout__sidebar">
     <nav class="s-sidebar__nav" style="margin-top: 60px;">
       <ul>
-        <img src="./assets/img/avatar.png">
+        <img [src]="server.image_profile">
         <br>
-        <em style="padding-left:10%;">Felipe Dias Pinheiro</em>
+        <em style="padding-left:10%;">{{server.name}}</em>
         <li>
           <a class="s-sidebar__nav-link" href="#" data-target="#changeInfo" data-toggle="modal" (click)="clearInputs()" >
           <i class="fa fa-user"></i><em>Editar Perfil</em>
@@ -223,7 +223,7 @@
           <p class="borda">
             <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
 
-            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)"></a>
+            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
             <br>
             {{comment?.comment}}
           </p>
@@ -235,7 +235,7 @@
         <p class="borda">
           <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
 
-          <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)"></a>
+          <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
           <br>
           {{comment?.comment}}
         </p>

@@ -61,6 +61,18 @@ export class HomeComponent {
           this.closeModalLoginButton.nativeElement.click();
           this._router.navigate(['/feed']);
 
+          this.server.infoUser(this.server.token).then(response => {
+          console.log(response);
+          console.log(response["_body"]);
+          let body = JSON.parse(response['_body']);
+          this.server.name = body.name;
+          this.server.registry = body.registry;
+          this.server.identity = body.identity;
+          this.server.date_birth = body.date_birth;
+          this.server.email = body.email;
+          this.server.image_profile = body.image_profile;
+
+        })
         }).catch(error => {
           console.log(error);
           let body = JSON.parse(error['_body']);

@@ -18,6 +18,7 @@ export class LikedComponent implements OnInit{
   password: any;
   pswconfirm: any;
   public id;
+  public comment;
 
   clearInputs() {
     this.email ="";
@@ -84,10 +85,13 @@ export class LikedComponent implements OnInit{
     //Add comment
       this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
         console.log(response);
-        post.comments.length += 1;
+       // post.comments.length += 1;
+       post.comments.push({name: 'Mari', image_profile: '../../assets/img/avatar.png', comment: comment});
       }).catch(error => {
         console.log(error);
       });
+
+      this.comment = "";
   }
    
   delComment(post){

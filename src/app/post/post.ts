@@ -24,6 +24,7 @@ export class PostComponent {
   email: any;
   password: any;
   pswconfirm: any;
+  public comment;
 
   clearInputs() {
     this.email ="";
@@ -124,7 +125,7 @@ export class PostComponent {
       this.posts = !this.posts;
 
     }
-   
+    
     logout(){
       this.server.token = "";
       this._router.navigate(['/home']);

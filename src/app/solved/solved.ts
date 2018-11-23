@@ -14,6 +14,7 @@ export class SolvedComponent implements OnInit{
 
   public posts: Array<any>;
   public id;
+  public comment;
 
   email: any;
   password: any;
@@ -73,10 +74,13 @@ newComment(post, comment){
   //Add comment
     this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
       console.log(response);
-      post.comments.length += 1;
+     // post.comments.length += 1;
+     post.comments.push({name: 'Mari', image_profile: '../../assets/img/avatar.png', comment: comment});
     }).catch(error => {
       console.log(error);
     });
+
+    this.comment = "";
 }
  
 delComment(post){

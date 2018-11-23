@@ -19,6 +19,7 @@ export class FeedComponent implements OnInit{
   public posts: Array<any>;
   public cont: number = 0;
   public id;
+  public comment;
 
   email: any;
   password: any;
@@ -91,10 +92,13 @@ export class FeedComponent implements OnInit{
     //Add comment
       this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
         console.log(response);
-        post.comments.length += 1;
+       // post.comments.length += 1;
+       post.comments.push({name: 'Mari', image_profile: '../../assets/img/avatar.png', comment: comment});
       }).catch(error => {
         console.log(error);
       });
+
+      this.comment = "";
   }
    
   delComment(post){
