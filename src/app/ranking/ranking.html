@@ -279,7 +279,7 @@
         <p class="borda">
           <a  class="pointer" style="text-decoration: none;">  {{comment?.name}}</a>
 
-          <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)"></a>
+          <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
           <br>
           {{comment?.comment}}
 
@@ -292,7 +292,7 @@
       <p class="borda">
         <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
 
-        <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)"></a>
+        <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
         <br>
         {{comment?.comment}}
       </p>

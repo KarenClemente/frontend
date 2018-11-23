@@ -261,7 +261,7 @@
           <p class="borda">
             <a class="pointer" style="text-decoration: none;">  {{comment.name}}</a>
 
-            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)"></a>
+            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
             <br>
             {{comment.comment}}
 
@@ -277,7 +277,7 @@
         <p class="borda">
           <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
 
-          <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)"></a>
+          <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
           <br>
           {{comment?.comment}}
         </p>
@@ -366,15 +366,11 @@
                 <img [src]="sugestions?.comments?.image_profile" style="object-fit:cover;border-radius: 50%;">
               </div>
               <p class="borda">
-                <a>  {{comment.name}}</a>
-
-                <a class="btn btn-link fa fa-trash pull-right" style="padding:0;"></a>
+                <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
+      
+                <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
                 <br>
-                {{comment.comment}}
-
-
-
-
+                {{comment?.comment}}
               </p>
           </div>
           <div class="card-header textleft" *ngFor="let comment of sugestions.answers;">
@@ -384,7 +380,7 @@
             <p class="borda">
               <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
     
-              <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)"></a>
+              <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
               <br>
               {{comment?.comment}}
             </p>

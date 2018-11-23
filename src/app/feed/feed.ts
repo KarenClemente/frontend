@@ -16,7 +16,9 @@ export class FeedComponent implements OnInit{
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
   public searchText : string;
-  public posts: Array<any>;
+  public posts: any = [];
+  public users: Array<any>;
+  public admin: Array<any>;
   public cont: number = 0;
   public id;
   public comment;
@@ -33,8 +35,6 @@ export class FeedComponent implements OnInit{
 
 
       constructor(private _router: Router, public server: ServerProvider) {
-
-      this.posts = [];
 
   }
 
@@ -57,6 +57,8 @@ export class FeedComponent implements OnInit{
     this.posts.push(response['dados'][i]);
    }
    this.cont += 5;
+   this.users = this.posts.comments;
+
 });
   }
 
@@ -101,10 +103,13 @@ export class FeedComponent implements OnInit{
       this.comment = "";
   }
    
-  delComment(post){
+  delComment(comment){
     //Delete comment
-      this.server.deleteComment(this.server.token,post.comment_id).then(response => {
+      this.server.deleteComment(this.server.token,comment.comment_id).then(response => {
         console.log(response);
+        this.users = this.users.filter(obj => {
+          return obj.comment_id !== comment.comment_id
+        })
       }).catch(error => {
         console.log(error);
       });
