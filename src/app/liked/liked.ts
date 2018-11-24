@@ -86,7 +86,7 @@ export class LikedComponent implements OnInit{
       this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
         console.log(response);
        // post.comments.length += 1;
-       post.comments.push({name: 'Mari', image_profile: '../../assets/img/avatar.png', comment: comment});
+       post.comments.push({name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment});
       }).catch(error => {
         console.log(error);
       });
