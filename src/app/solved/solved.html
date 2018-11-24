@@ -269,8 +269,8 @@
     </div>
         <div class="linha2"></div>
   </div>
-  <div class="card-footer" *ngIf = "post.showcomments">
-    <div class="card-header textleft" *ngFor="let comment of post.comments;">
+  <div class="card-footer rolavel" style="height:auto;max-height:300px; background:none;" *ngIf="post.showcomments">
+    <div class="card-header textleft" *ngFor="let comment of post.comments;" style="padding: 0px;">
       <div class="col-xs-2" style="width:auto;">
         <img [src]="comment.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
       </div>
