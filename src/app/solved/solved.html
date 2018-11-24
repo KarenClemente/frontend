@@ -195,7 +195,7 @@
  <!--Card-->
  <div class="card pointer"  *ngFor="let post of posts;">
   <div class="row" >
-    <div class="col-md-4 firstcol column"(click)="post.collapsed=!post.collapsed">
+    <div class="col-md-4 firstcol column">
       <img [src]="post?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
     </div>
     <div class="col-md-4 secndcol column">
@@ -216,7 +216,7 @@
               {{post?.total_likes}}</a>
             </div>
 
-              <div class="textl icon">
+              <div class="textl icon" (click)="post.collapsed=!post.collapsed">
                 <a class="pointer icon " style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments" style="margin-left: 20px;"></i>
                 {{post?.comments?.length}} comentários
                 </a>

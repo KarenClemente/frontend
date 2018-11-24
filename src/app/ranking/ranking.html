@@ -224,7 +224,7 @@
                 {{post?.total_likes}}</a>
               </div>
 
-                <div class="textl icon">
+                <div class="textl icon" (click)="post.collapsed=!post.collapsed">
                   <a class="pointer icon " style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments" style="margin-left: 20px;"></i>
                   {{post?.comments?.length}} comentários
                   </a>

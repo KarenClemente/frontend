@@ -214,7 +214,7 @@
                   {{post?.total_likes}}</a>
                 </div>
 
-                  <div class="textl icon">
+                  <div class="textl icon" (click)="post.collapsed=!post.collapsed">
                     <a class="pointer icon " style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments" style="margin-left: 20px;"></i>
                     {{post?.comments?.length}} comentários
                     </a>
@@ -310,17 +310,17 @@
             <div class="col-md-4 firstcol column" (click)="sugestions.collapsed=!sugestions.collapsed">
               <img [src]="sugestions?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
             </div>
-            <div class="col-md-4 secndcol column" (click)="sugestions.collapsed=!sugestions.collapsed">
-              <div class="row " >
+            <div class="col-md-4 secndcol column">
+              <div class="row " (click)="sugestions.collapsed=!sugestions.collapsed">
                <a style="font-size:16px; text-decoration: none; color:#0066cc;"  >{{sugestions?.title}}</a>
               </div>
-              <div class="row">
+              <div class="row" (click)="sugestions.collapsed=!sugestions.collapsed">
                 <a class="text-muted" style="font-size:13px; text-decoration:none;"> {{sugestions?.created_date}}</a>&nbsp;
                 <br>
                 <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;"></i>&nbsp;
                 <a style="color:black;font-size:15px; text-decoration:none;">{{sugestions?.local}}</a>
               </div>
-              <div class="row" (click)="sugestions.collapsed=!sugestions.collapsed">
+              <div class="row">
                 <ul class="list-inline">
 
                   <div class="pull-left notLiked">
@@ -328,8 +328,8 @@
                       {{sugestions?.total_likes}}</a>
                     </div>
 
-                      <div class="textl icon">
-                        <a class="pointer icon " style="text-decoration: none;" (click)="sugestions.collapsed=!sugestions.collapsed"><i class="fa fa-comments" style="margin-left: 20px;"></i>
+                      <div class="textl icon" (click)="sugestions.collapsed=!sugestions.collapsed">
+                        <a class="pointer icon " style="text-decoration: none;"><i class="fa fa-comments" style="margin-left: 20px;"></i>
                         {{sugestions?.comments?.length}} comentários
                         </a>
                       </div>
