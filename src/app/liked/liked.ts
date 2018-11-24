@@ -20,7 +20,7 @@ export class LikedComponent implements OnInit{
   password: any;
   pswconfirm: any;
   
-    constructor(private _router: Router, private server: ServerProvider) {}
+    constructor(private _router: Router, public server: ServerProvider) {}
 
   ngOnInit(){
     this.server.getSelectedDemands({}).then(response => {

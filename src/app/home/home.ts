@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit{
   @ViewChild('closeModalLoginButton') closeModalLoginButton: ElementRef;
   @ViewChild('closeModalCadastroButton') closeModalCadastroButton: ElementRef;
   @ViewChild('closeModalPswButton') closeModalPswButton: ElementRef;
+  @ViewChild('closeModalTermsButton') closeModalTermsButton: ElementRef;
+
   
   email: any;
   password: any;

@@ -37,6 +37,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
 
+    GrdFilterPipes,
     AppComponent,
     HomeComponent,
     MadeByMeComponent,

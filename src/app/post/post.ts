@@ -12,7 +12,6 @@ export class PostComponent implements OnInit {
   card1: boolean = true;
   card2: boolean = false;
   card3: boolean = false;
-  card4: boolean = false;
   posts: boolean = false;
   
   ambienteIn: boolean = true;
@@ -28,10 +27,8 @@ export class PostComponent implements OnInit {
   password: any;
   pswconfirm: any;
   public comment;
-  type: any;
-  campus: any;
  
-    constructor(private _router: Router, private server: ServerProvider) {}
+    constructor(private _router: Router, public server: ServerProvider) {}
     
     // Functions
     ngOnInit(){
