@@ -7,6 +7,14 @@ a {text-decoration: none;}
   color: #0066cc;
 }
 
+.responsivo{
+   margin-left: 5px;
+}
+
+.responsivo2{
+   margin-left: 20px;
+}
+
 .notLiked{
   color:gray;
 }
@@ -109,6 +117,14 @@ div.center {
   }
   .thirdcol{
     text-align: center;
+  }
+
+  .responsivo{
+     margin-left: 180px;
+  }
+
+  .responsivo2{
+     margin-left: -160px;
   }
 
 

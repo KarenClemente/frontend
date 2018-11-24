@@ -206,16 +206,18 @@
             <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;">&nbsp;</i>
             <a style="color:black;font-size:15px; text-decoration: none;">{{post?.local}}</a>
           </div>
+
+
           <div class="row">
             <ul class="list-inline">
 
               <div class="pull-left notLiked">
-                  <a (click)="like(post)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style=" margin-left: 5px; font-size: 15px;"></i>
+                  <a (click)="like(post)" class="pointer responsivo" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="font-size: 15px;"></i>
                   {{post?.total_likes}}</a>
                 </div>
 
                   <div class="textl icon" (click)="post.collapsed=!post.collapsed">
-                    <a class="pointer icon " style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments" style="margin-left: 20px;"></i>
+                    <a class="pointer icon responsivo2" style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments" ></i>
                     {{post?.comments?.length}} comentários
                     </a>
                   </div>
@@ -324,12 +326,12 @@
                 <ul class="list-inline">
 
                   <div class="pull-left notLiked">
-                      <a (click)="like(sugestions)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': sugestions.gave_like == 'true', 'notLiked': sugestions.gave_like == 'false'}"><i class="fa fa-thumbs-up" style=" margin-left: 5px; font-size: 15px;"></i>
+                      <a (click)="like(sugestions)" class="pointer responsivo" style="text-decoration: none;" [ngClass]="{'liked': sugestions.gave_like == 'true', 'notLiked': sugestions.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="font-size: 15px;"></i>
                       {{sugestions?.total_likes}}</a>
                     </div>
 
                       <div class="textl icon" (click)="sugestions.collapsed=!sugestions.collapsed">
-                        <a class="pointer icon " style="text-decoration: none;"><i class="fa fa-comments" style="margin-left: 20px;"></i>
+                        <a class="pointer icon responsivo2" style="text-decoration: none;"><i class="fa fa-comments"></i>
                         {{sugestions?.comments?.length}} comentários
                         </a>
                       </div>

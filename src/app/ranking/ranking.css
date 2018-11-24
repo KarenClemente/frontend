@@ -1,6 +1,15 @@
 .pointer {cursor: pointer;}
 /*CSS PERFIL*/
 .principal {background-color:  rgb(242, 244, 247);}
+
+.responsivo{
+   margin-left: 5px;
+}
+
+.responsivo2{
+   margin-left: 20px;
+}
+
 .liked{
   color: #0066cc;
 }
@@ -123,6 +132,13 @@ div.center {
     text-align: center;
   }
 
+  .responsivo{
+     margin-left: 220px;
+  }
+
+  .responsivo2{
+     margin-left: -160px;
+  }
 
   }
 
