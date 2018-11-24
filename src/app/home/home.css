@@ -1,5 +1,17 @@
 /*CSS PAGINA INICIAL*/
 
+.rolavel {
+  height: 1000px;
+
+  overflow-y: scroll;
+  background-color: rgb(242,244,247);
+  overflow-x: hidden;
+
+}
+::-webkit-scrollbar {
+    width: 0px;
+  }
+
 body {
 	font-size: 15px;
     line-height: 1.52;
@@ -104,6 +116,11 @@ Banner
     text-align: center;
     padding: 0px 20px 10px;
 }
+.login-box-msg2, .register-box-msg {
+    margin: 0px;
+    text-align: justify;
+    padding: 0px 20px 10px;
+}
 .modal-sm {
     width: 400px;
 }
@@ -193,4 +210,3 @@ Footer
     background-color:rgb(101, 191, 91);
     color: #fff;
 }
-
