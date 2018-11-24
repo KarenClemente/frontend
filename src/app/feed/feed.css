@@ -5,7 +5,11 @@
   height: 100%;
   overflow: scroll;
 }
-
+.dropdown:hover .dropdown-toggle {
+    background-color: #0066cc;
+}
+.dropdown-menu > li > a:hover {background-color: #0066cc;color: rgb(101, 191, 91);}
+.dropdown-menu > li > a {color:#fff;}
 
 .liked{
   color: #0066cc;
