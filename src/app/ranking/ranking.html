@@ -141,10 +141,10 @@
               <div class="btncolumn" style="color:white;">
                 <input style="margin-top: 0px;background-color: #cccccc"type="submit" class="btn   btn-flat" value="Sim" (click)="report()">
                 </div>
-     
+
                 <div class="btncolumn" style="color:white;">
                 <input style="margin-top: 0px; background-color: #cccccc; margin-left:20px;"type="submit" class="btn btn-flat" value="Não" data-dismiss="modal">
-     
+
             </div>
             </div>
 
@@ -219,13 +219,16 @@
         <div class="row" (click)="post.collapsed=!post.collapsed">
           <ul class="list-inline">
 
-                <a (click)="like(post)" class="pointer" style="text-decoration: none; padding-right:20px; margin-left:5px;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="font-size: 15px;"></i>
+            <div class="pull-left notLiked">
+                <a (click)="like(post)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style=" margin-left: 5px; font-size: 15px;"></i>
                 {{post?.total_likes}}</a>
+              </div>
 
-
-                <a class="pointer" style="text-decoration: none;"><i class="fa fa-comments"></i>
-                {{post?.comments?.length}} comentários
-                </a>
+                <div class="textl icon">
+                  <a class="pointer icon " style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments" style="margin-left: 20px;"></i>
+                  {{post?.comments?.length}} comentários
+                  </a>
+                </div>
 
 
           </ul>
@@ -271,14 +274,13 @@
         <div class="col-sm-12">
       <div class="linha"></div>
       <ul class="list-inline">
-        <div class="pull-left">
+        <div class="pull-left notLiked">
             <a (click)="like(post)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
             font-size: 15px;"></i>
             {{post?.total_likes}}</a>
           </div>
-
-          <div class="textl pull-right">
-            <a class="pointer" style="text-decoration: none; margin-right:20px;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments"></i>
+          <div class="textl pull-right icon">
+            <a class="pointer icon " style="text-decoration: none; margin-right: 20px;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments" ></i>
             {{post?.comments?.length}} comentários
             </a>
           </div>
@@ -316,9 +318,9 @@
       </p>
   </div>
   </div>
-  <div class="textleft inputWithIcon" >
-    <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
-    <a (click)="newComment(post, comment)" class="pointer" style="text-decoration: none;"><i class="fa fa-mail-forward" ></i></a>
+  <div class="textleft inputWithIcon icon" >
+  <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
+  <a (click)="newComment(post, comment)" class="pointer icon" style="text-decoration: none;"><i class="fa fa-mail-forward"></i></a>
   </div>
 </div>
 </div>

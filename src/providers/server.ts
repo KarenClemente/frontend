@@ -9,11 +9,11 @@ const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
 
 @Injectable()
 export class ServerProvider {
- 
+
 
     public user: any ={};
     public token: any;
-    //public token: any = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ob21vbC5yZWRlcy51bmIuYnJcL3Nvcy11bmJcL2FwaVwvIiwic3ViIjoiMjIiLCJleHAiOjE1NDMwNTcwNjIsImlhdCI6MTU0Mjk3MDY2MiwidXNlciI6Ik1hcmlhbmEgZGUgQXNzdW5jYW8gVmFyYW5kYSJ9.1D-L76Uso99aA9RVtob3y-4fHBAezdBOYGBCRAxxIvQ"; 
+    //public token: any = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ob21vbC5yZWRlcy51bmIuYnJcL3Nvcy11bmJcL2FwaVwvIiwic3ViIjoiMjIiLCJleHAiOjE1NDMwNTcwNjIsImlhdCI6MTU0Mjk3MDY2MiwidXNlciI6Ik1hcmlhbmEgZGUgQXNzdW5jYW8gVmFyYW5kYSJ9.1D-L76Uso99aA9RVtob3y-4fHBAezdBOYGBCRAxxIvQ";
 
     constructor(public http: Http) {
   }
@@ -23,7 +23,7 @@ export class ServerProvider {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
-    let options = new RequestOptions({ headers: headers });  
+    let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
     body.set('status', params.hasOwnProperty('status')? params.status: '');
@@ -32,42 +32,42 @@ export class ServerProvider {
     console.log(body.toString());
     return this.http.post(BASE_URL + '/get-demands/feed', body.toString(), options).toPromise();
   }
-  
+
 //RANKING
   getRankingDemands(accessToken, params){
   let headers = new Headers();
   headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
-  let options = new RequestOptions({ headers: headers });  
+  let options = new RequestOptions({ headers: headers });
   let body = new URLSearchParams();
   body.set('Authorization', this.token);
   body.set('campus', params.hasOwnProperty('campus')? params.campus: '');
 
   console.log(body.toString());
   return this.http.post(BASE_URL + '/get-demands/ranking', body.toString(), options).toPromise();
-  }  
+  }
 
 //DEMANDS
   getSelectedDemands(accessToken){
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
-  
-    let options = new RequestOptions({ headers: headers });  
+
+    let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
-  
+
     console.log(body.toString());
     return this.http.post(BASE_URL + '/get-demands/profile', body.toString(), options).toPromise();
   }
-  
+
 //SOLVED
   getSolvedDemands(){
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
-  
-    let options = new RequestOptions({ headers: headers });  
+
+    let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
-  
+
     console.log(body.toString());
     return this.http.post(BASE_URL + '/get-demands/resolved', body.toString(), options).toPromise();
   }
@@ -103,9 +103,9 @@ export class ServerProvider {
     });
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams ();
-    body.set('email', "varandaeng@gmail.com");
+    body.set('email', "karenclemente@gmail.com");
     body.set('password', "123456");
-    
+
     console.log(body.toString());
     return this.http.post(BASE_URL + '/sessions/login', body.toString(), options).toPromise();
   }
@@ -114,11 +114,11 @@ export class ServerProvider {
   newPsw(email){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
-     
+
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('email', email);
- 
+
     console.log(body.toString());
     return this.http.post(BASE_URL + '/sessions/recover', body.toString(),options).toPromise();
   }
@@ -134,7 +134,7 @@ export class ServerProvider {
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
     body.set('demands_id', params);
-    
+
     console.log(body.toString());
     return this.http.post(BASE_URL + '/like/add', body.toString(), options).toPromise();
   };
@@ -148,7 +148,7 @@ export class ServerProvider {
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
     body.set('demands_id', params);
-    
+
     console.log(body.toString());
     return this.http.post(BASE_URL + '/like/delete', body.toString(), options).toPromise();
   };
@@ -157,7 +157,7 @@ export class ServerProvider {
   commentDemand(accessToken, params, comment){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
-    
+
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
@@ -172,12 +172,12 @@ export class ServerProvider {
   deleteComment(accessToken, params){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
-     
+
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
     body.set('comment_id', params);
- 
+
     console.log(body.toString());
     return this.http.post(BASE_URL + '/coments/delete', body.toString(),options).toPromise();
   }
@@ -186,12 +186,12 @@ export class ServerProvider {
   reportDemand(accessToken, params){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
-     
+
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
     body.set('demands_id',params);
- 
+
     console.log(body.toString());
     return this.http.post(BASE_URL + '/demands/report', body.toString(),options).toPromise();
   }
@@ -204,7 +204,7 @@ export class ServerProvider {
   updateInfo(accessToken, photo, email, newPass, newPassConf){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
-     
+
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
@@ -212,7 +212,7 @@ export class ServerProvider {
     body.set('email', email);
     body.set('newPass', newPass);
     body.set('newPassConf', newPassConf);
- 
+
     console.log(body.toString());
     return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
   }
@@ -221,13 +221,12 @@ export class ServerProvider {
   deleteAccount(accessToken){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
-     
+
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
- 
+
     console.log(body.toString());
     return this.http.post(BASE_URL + '/user/delete', body.toString(),options).toPromise();
   }
 }
-
