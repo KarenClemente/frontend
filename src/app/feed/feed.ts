@@ -95,7 +95,7 @@ export class FeedComponent implements OnInit{
       this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
         console.log(response);
        // post.comments.length += 1;
-       post.comments.push({name: 'Mari', image_profile: '../../assets/img/avatar.png', comment: comment});
+       post.comments.push({name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment});
       }).catch(error => {
         console.log(error);
       });
@@ -103,12 +103,12 @@ export class FeedComponent implements OnInit{
       this.comment = "";
   }
    
-  delComment(comment){
+  delComment(post){
     //Delete comment
-      this.server.deleteComment(this.server.token,comment.comment_id).then(response => {
+      this.server.deleteComment(this.server.token,post.comment_id).then(response => {
         console.log(response);
-        this.posts.comments = this.posts.comments.filter(obj => {
-          return obj.comment_id !== comment.comment_id;
+        post.comments = post.comments.filter(obj => {
+          return obj.comment_id !== post.comments.comment_id;
         });
       }).catch(error => {
         console.log(error);

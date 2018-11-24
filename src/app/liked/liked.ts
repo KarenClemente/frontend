@@ -103,7 +103,7 @@ export class LikedComponent implements OnInit{
       });
   }
    
-  report(post){
+  report(){
     this.server.reportDemand(this.server.token,this.id).then(response => {
       console.log(response);
       this.closeModalDangerButton.nativeElement.click();

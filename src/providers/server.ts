@@ -103,7 +103,11 @@ export class ServerProvider {
     });
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams ();
+<<<<<<< HEAD
     body.set('email', "karenclemente@gmail.com");
+=======
+    body.set('email', "user4@gmail.com");
+>>>>>>> d4e62970f5ad73239f9e2669de3d8361c34f9739
     body.set('password', "123456");
 
     console.log(body.toString());
