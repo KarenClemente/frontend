@@ -12,8 +12,8 @@ export class ServerProvider {
  
 
     public user: any ={};
-    //public token: any;
-    public token: any = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ob21vbC5yZWRlcy51bmIuYnJcL3Nvcy11bmJcL2FwaVwvIiwic3ViIjoiMjIiLCJleHAiOjE1NDMwNTcwNjIsImlhdCI6MTU0Mjk3MDY2MiwidXNlciI6Ik1hcmlhbmEgZGUgQXNzdW5jYW8gVmFyYW5kYSJ9.1D-L76Uso99aA9RVtob3y-4fHBAezdBOYGBCRAxxIvQ"; 
+    public token: any;
+    //public token: any = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ob21vbC5yZWRlcy51bmIuYnJcL3Nvcy11bmJcL2FwaVwvIiwic3ViIjoiMjIiLCJleHAiOjE1NDMwNTcwNjIsImlhdCI6MTU0Mjk3MDY2MiwidXNlciI6Ik1hcmlhbmEgZGUgQXNzdW5jYW8gVmFyYW5kYSJ9.1D-L76Uso99aA9RVtob3y-4fHBAezdBOYGBCRAxxIvQ"; 
 
     constructor(public http: Http) {
   }
@@ -103,8 +103,8 @@ export class ServerProvider {
     });
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams ();
-    body.set('email', email);
-    body.set('password', password);
+    body.set('email', "varandaeng@gmail.com");
+    body.set('password', "123456");
     
     console.log(body.toString());
     return this.http.post(BASE_URL + '/sessions/login', body.toString(), options).toPromise();
@@ -121,20 +121,6 @@ export class ServerProvider {
  
     console.log(body.toString());
     return this.http.post(BASE_URL + '/sessions/recover', body.toString(),options).toPromise();
-  }
-
-  // Info data
-  infoUser(accessToken){
-    let headers = new Headers(
-    {
-        'Content-Type' : 'application/x-www-form-urlencoded',
-    });
-    let options = new RequestOptions({ headers: headers });
-    let body = new URLSearchParams ();
-    body.set('Authorization', this.token);
-    
-    console.log(body.toString());
-    return this.http.post(BASE_URL + '/user/get', body.toString(), options).toPromise();
   }
 
 //POSTS FUNCTIONS

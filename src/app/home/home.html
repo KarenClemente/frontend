@@ -7,7 +7,7 @@
       <span class="icon-bar"></span>
     </button>
     <!--<a class="navbar-brand" href="index.html">SoS<span>UnB</span></a>-->
-    <a routerLink="/feed" style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
+    <a (click)="signin()" style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
   </div>
   <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
@@ -162,9 +162,9 @@
           <form method="post" action="#" id="formsenha">
             <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
               <label for="email" style="font-size: 1.3rem">E-mail</label>
-              <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="email"/>
+              <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="mail"/>
             </div>
-                <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="newPass(email)">Enviar</button>
+                <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="newPass(mail)">Enviar</button>
               <!--  <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="passForgot(email)">Enviar</button>-->
               </form>
           </div>
@@ -283,6 +283,19 @@
   </div>
 </div>
 <div class="container">
+  <div class="row" *ngFor="let post of posts">
+    <div class="col-md-4 col-sm-6 padleft-right">
+      <figure class="imghvr-fold-up">
+        <img [src]="post?.image_demand" class="img-responsive">
+        <figcaption>
+          <h3>{{post?.title}}</h3>
+          <p>{{post?.answers?.comment}}</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="showImg">
   <div class="row">
     <div class="col-md-4 col-sm-6 padleft-right">
       <figure class="imghvr-fold-up">
@@ -342,3 +355,28 @@
 </div>
 </section>
 <!--Footer-->
+<footer style="margin-bottom: 0px;" id="footer" class="footer">
+  <div class="container text-center">
+    <div class="row">
+      <div class="fea">
+          <div class="col-md-4">
+              <h5 style="color: #fff;">Termos de uso</h5>
+              <a href="#"><i style="color: #fff; font-size: 25px;"  class="fa fa-file"></i></a>
+          </div>
+      </div>
+       <div class="fea">
+          <div class="col-md-4">
+              <h5 style="color: #fff;">Baixe o Aplicativo</h5>
+              <a href="https://itunes.apple.com/br/app/apple-store/id375380948?mt=8" target="_blank"><i style="color: #fff; font-size: 30px;"  class="fa fa-apple"></i></a>&nbsp;
+              <a href="https://play.google.com/store/apps?hl=br" target="_blank"><i style="color: #fff; font-size: 30px;"  class="fa fa-android"></i></a>
+          </div>
+      </div>
+           <div class="col-md-4">
+              <h5 style="color: #fff;">Universidade de Brasília</h5>
+              <a href="http://unb.br/" target="_blank"><img src="./assets/img/UnB.png" width="40" height="40" alt=""></a>&nbsp;
+              <a href="http://www.ene.unb.br/" target="_blank"><img src="./assets/img/ft.png" width="110" height="40" alt=""></a>
+          </div>
+   </div>
+</div>
+</footer>
+<!--/ Footer-->

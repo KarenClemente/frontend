@@ -33,7 +33,7 @@
          <div class="modal-body">
            <div class="login-box-body">
              <div>
-               <img [src]="server.image_profile" class="rounded" style="width: 80px; height:80px; margin-left: 38%;">
+               <img [src]="server.user.image_profile" class="rounded" style="width: 80px; height:80px; margin-left: 38%;">
              </div>
              <p class="login-box-msg" style="color: grey;">Insira uma foto</p>
              <form action="#" method="post" name="changeInfo" style="width: 350px; margin-left:-20px;" >
@@ -43,26 +43,26 @@
              <div class="form-group" style="margin-bottom:0rem">
               <!----- username -------------->
               <label for="nome" style="font-size: 1.3rem">Nome completo:</label><br>
-              <p style="font-size: 1.3rem">{{server.name}}</p>
+              <p style="font-size: 1.3rem">{{server.user.name}}</p>
             </div>
             <div class="form-group" style="margin-bottom:0rem">                    <!----- matricula -------------->
               <label for="matricula" style="font-size: 1.3rem">Matrícula:</label>
-              <p style="font-size: 1.3rem">{{server.registry}}</p>
+              <p style="font-size: 1.3rem">{{server.user.registry}}</p>
             </div>
             <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
              <label for="rg" style="font-size: 1.3rem;">Número RG:</label><br>
-             <p style="font-size: 1.3rem">{{server.identity}}</p>
+             <p style="font-size: 1.3rem">{{server.user.identity}}</p>
             </div>
 
 
           <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
             <label for="campoData" style="font-size: 1.3rem">Data de nascimento:</label>
-            <p style="font-size: 1.3rem">{{server.date_birth}}</p>
+            <p style="font-size: 1.3rem">{{server.user.date_birth}}</p>
           </div>
 
             <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
               <label for="email" style="font-size: 1.3rem">E-mail</label>
-              <input class="form-control" placeholder="server.email" id="email" type="email" name="email" required="" [(ngModel)]="email" />
+              <input class="form-control" placeholder="Novo email" id="email" type="email" name="email" required="" [(ngModel)]="email" />
               <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
 
             </div>
@@ -159,10 +159,12 @@
   <!-- Sidebar-->
   <div class="s-layout__sidebar">
     <nav class="s-sidebar__nav" style="margin-top: 60px;">
-      <ul>
-        <img [src]="server.image_profile">
+      <ul style="width: 144px;height: auto;">
+        <img [src]="server.user.image_profile">
         <br>
-        <em style="padding-left:10%;">{{server.name}}</em>
+        <div class="row" style="margin-left: 20px; text-align: center;">
+        <em class="text-center">{{server.user.name}}</em>
+      </div>
         <li>
           <a class="s-sidebar__nav-link" href="#" data-target="#changeInfo" data-toggle="modal" (click)="clearInputs()" >
           <i class="fa fa-user"></i><em>Editar Perfil</em>
