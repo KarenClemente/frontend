@@ -7,6 +7,7 @@ import { ServerProvider} from '../../providers/server';
   templateUrl: './solved.html',
   styleUrls: ['./solved.css']
 })
+
 export class SolvedComponent implements OnInit{
   
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
@@ -15,21 +16,11 @@ export class SolvedComponent implements OnInit{
   public posts: Array<any>;
   public id;
   public comment;
-
   email: any;
   password: any;
   pswconfirm: any;
 
-  clearInputs() {
-    this.email ="";
-    this.password ="";
-    this.pswconfirm = "";
-   }
-  
-  constructor(private _router: Router, private server: ServerProvider) {
-    
-    this.posts = [];
-}
+  constructor(private _router: Router, private server: ServerProvider) {}
 
 ngOnInit(){
   this.server.getSolvedDemands().then(response => {
@@ -37,7 +28,7 @@ ngOnInit(){
     console.log(response.json());
 
     response = response.json();
-    this.posts = response['dados'];
+    this.posts.push(response['dados']);
   }).catch(error => {
     console.log(error);
   });
@@ -100,6 +91,7 @@ report(post){
     console.log(error);
   });
 }
+
 reportId(post){
   this.id = post.demand_id;
   console.log(this.id);
@@ -112,6 +104,13 @@ changeInfo(accessToken, image, email, password, pswconfirm){
      console.log(error);
    });
 }
+
+clearInputs() {
+  this.email ="";
+  this.password ="";
+  this.pswconfirm = "";
+ }
+
 logout(){
   this.server.token = "";
   this._router.navigate(['/home']);

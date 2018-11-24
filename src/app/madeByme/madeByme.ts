@@ -12,27 +12,15 @@ export class MadeByMeComponent implements OnInit{
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
-  public posts: Array<any>;
-  public demands: Array<any>;
+  public posts: any = [];
+  public demands: any = [];
+  public id;
+  public comment;
   email: any;
   password: any;
   pswconfirm: any;
-  public id;
-  public comment;
 
-  clearInputs() {
-    this.email ="";
-    this.password ="";
-    this.pswconfirm = "";
-   }
-  
-
-  constructor(private _router: Router, private server: ServerProvider) {
-
-    this.posts = [];
-    this.demands = [];
-
-  }
+   constructor(private _router: Router, private server: ServerProvider) {}
 
 ngOnInit(){
   this.server.getSelectedDemands({}).then(response => {
@@ -117,9 +105,15 @@ reportId(post){
   this.id = post.demand_id;
   console.log(this.id);
 }
+
+clearInputs() {
+  this.email ="";
+  this.password ="";
+  this.pswconfirm = "";
+}
+
 logout(){
   this.server.token = "";
   this._router.navigate(['/home']);
 }
-
 }

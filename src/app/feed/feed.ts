@@ -15,10 +15,8 @@ export class FeedComponent implements OnInit{
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
-  public searchText : string;
   public posts: any = [];
   public users: Array<any>;
-  public admin: Array<any>;
   public cont: number = 0;
   public id;
   public comment;
@@ -27,16 +25,7 @@ export class FeedComponent implements OnInit{
   password: any;
   pswconfirm: any;
 
-  clearInputs() {
-    this.email ="";
-    this.password ="";
-    this.pswconfirm = "";
-   }
-
-
-      constructor(private _router: Router, public server: ServerProvider) {
-
-  }
+  constructor(private _router: Router, public server: ServerProvider) {}
 
   ngOnInit(){
     this.getPosts();
@@ -147,6 +136,12 @@ export class FeedComponent implements OnInit{
       console.log(error);
     });
   }
+
+  clearInputs() {
+    this.email ="";
+    this.password ="";
+    this.pswconfirm = "";
+   }
 
   logout(){
     this.server.token = "";

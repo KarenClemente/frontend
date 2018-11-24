@@ -1,22 +1,16 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import {catchError} from 'rxjs/operators';
-//import 'rxjs/add/operator/toPromise';
 
-//const BASE_URL = "http://sosunb.000webhostapp.com/api";
 const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
 
 
 @Injectable()
 export class ServerProvider {
 
-
     public user: any ={};
     public token: any;
-    //public token: any = "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ob21vbC5yZWRlcy51bmIuYnJcL3Nvcy11bmJcL2FwaVwvIiwic3ViIjoiMjIiLCJleHAiOjE1NDMwNTcwNjIsImlhdCI6MTU0Mjk3MDY2MiwidXNlciI6Ik1hcmlhbmEgZGUgQXNzdW5jYW8gVmFyYW5kYSJ9.1D-L76Uso99aA9RVtob3y-4fHBAezdBOYGBCRAxxIvQ";
 
-    constructor(public http: Http) {
-  }
+    constructor(public http: Http) {}
 
 //FEED
   getFeedDemands(accessToken, params, limit){
@@ -72,7 +66,6 @@ export class ServerProvider {
     return this.http.post(BASE_URL + '/get-demands/resolved', body.toString(), options).toPromise();
   }
 
-
 //HOME PAGE
 
   // Registration
@@ -93,7 +86,7 @@ export class ServerProvider {
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/user/register', body.toString(), options).toPromise();
-}
+  }
 
   // Login
   loginUser(email, password){
@@ -103,8 +96,8 @@ export class ServerProvider {
     });
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams ();
-    body.set('email', email);
-    body.set('password', password);
+    body.set('email', "user5@gmail.com");
+    body.set('password', "123456");
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/sessions/login', body.toString(), options).toPromise();
@@ -198,9 +191,58 @@ export class ServerProvider {
 
 //POST PAGE
 
+  // Get demand type
+  typeDemand(accessToken){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', this.token);
+
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/type-demand/get', body.toString(),options).toPromise();
+  }
+  // Get campus
+  getCampus(accessToken){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', this.token);
+
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/campus/get', body.toString(),options).toPromise();
+  }
+  // Get area
+  areaDemand(accessToken){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', this.token);
+
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/area/get', body.toString(),options).toPromise();
+  }
+  // Get problem type
+  categoryDemand(accessToken){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', this.token);
+
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/type-problem/get', body.toString(),options).toPromise();
+  }
+
 //PROFILE FUNCTIONS
 
-// Change infos
+  // Change infos
   updateInfo(accessToken, photo, email, newPass, newPassConf){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')

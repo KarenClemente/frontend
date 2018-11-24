@@ -236,8 +236,9 @@
           </div>
           <div class="card-body text-center">
             <p style="color:#0066cc">Qual o tipo da sua demanda?</p>
-            <input type="radio" name="tipo" style="margin:10px;" checked>Sugestão
-            <input type="radio" name="tipo" style="margin:10px;">Problema
+            <div class="row" *ngFor="let type of types">
+                <input type="radio" style="margin:10px;" name="tipo" (click)="setType(type)">{{type?.demands}}
+            </div>
             <br>
             <br>
             <i class="fa fa-map-marker" aria-hidden="true" id="local" style="font-size:54px"></i>
@@ -248,10 +249,7 @@
             <br>
             <br>
             <select id="campus" name="campus">
-              <option value="1">Ceilândia</option>
-              <option value="2" selected>Darcy Ribeiro</option>
-              <option value="3">Gama</option>
-              <option value="4">Planaltina</option>
+              <option *ngFor="let campus of campusArray" (click)="setCampus(campus)">{{campus?.campus}}</option>
             </select>
             <br>
             <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)="proxcard()">CONFIRMAR</button>
@@ -265,11 +263,12 @@
           </div>
           <div class="card-body text-center">
               <p style="color:#0066cc">Sua demanda está localizada
-              em um ambiente externo ou interno?</p>
-              <input type="radio" name="space" value="intern" (click) = "setradio('intern')" style="margin:10px;" ngModel>Interno
-                  <input type="radio" name="space" value="extern" (click) = "setradio('extern')" style="margin:10px;" ngModel>Externo
-                  <br>
-                  <br>
+              em que tipo de ambiente?</p>
+              <div class="row" *ngFor="let area of areas">
+              <input type="radio" style="margin:10px;" name="ambiente" (click)="setArea(area)">{{area?.area}}
+              </div>
+              <br>
+              <br>
             <i class="fa fa-sitemap" aria-hidden="true" style="font-size:54px"></i>
             <br>
             <label for="category">
@@ -278,11 +277,8 @@
             <br>
             <br>
             <select id="category" name="category">
-                <option value="1">Elétrica</option>
-                <option value="2">Estrutural</option>
-                <option value="3">Hidráulica</option>
-                <option value="4">Jardim</option>
-              </select>
+                <option *ngFor="let category of categories" (click)="setCategory(category)">{{category?.type}}</option>
+            </select>
             <br>
             <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)="ambiente()">CONFIRMAR</button>
           </div>
@@ -365,84 +361,8 @@
               <button style="margin-top: 20px;" type="button" class="btn btn-green btn-block">Publicar</button>
             </div>
           </div>
-        </div>
       </div>
-    </div>
-      <!--Modal demandas similares-->
-      <div class="modal fade" id="Posts" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-          <div class="modal-dialog" >
-            <div class="modal-content" style="background-color:rgb(242,244,247)">
-              <div class="modal-header ">
-                  <button #closeModalDemandsButton type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h3 class="modal-title" id="modalLabel">Verifique se existe alguma demanda similar a sua!</h3>
-                  <h5>Caso não exista, continue criando sua demanda para que todos possam ter acesso!</h5>
-              </div>
-              <div class="modal-body">
-                <div class="mar rolavel" style="margin-top:0px">
-                  <div class="card" *ngFor="let post of postsSimilar ">
-
-                    <div class="card-header textleft">
-                      <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
-                        <img [src]="post?.user.profilePicture" style="object-fit:cover; border-radius: 50%;">
-                      </div>
-                      <p style="padding-top:5px;">
-                        <a style="color:#0066cc">  {{post?.user.name}}</a>
-                        publicou
-                        <b>{{post?.title}}</b>
-                        em<br>
-                        <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
-                        {{post?.location}} {{post?.date}} às {{post?.hour}}
-                      </p>
-                    </div>
-                    <div class="card-body" style="background-color:#fff;         border-radius: 10px;">
-                      <img [src]="post?.image" style="width:100%">
-                      <p>
-                      {{post?.description}}
-                      </p>
-                      <div class="row">
-                        <div class="col-sm-12">
-                      <div class="linha"></div>
-                      <ul class="list-inline">
-                        <div class="pull-left">
-                            <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 0px;
-                            font-size: 15px;color:#3366BB"></i></a>
-                          <a style="
-                          font-size: 14px;color:#3366BB">  {{post?.likes}}</a>
-                          </div>
-                          <div class="textl pull-right">
-                            <i class="fa fa-comments btn btn-link " style="padding-right:13px;"></i>
-                            <a class="btn btn-link " style="padding:0;" (click)="post.showcomments=!post.showcomments">
-                            {{post?.commentnum}} comentários
-                            </a>
-                          </div>
-
-                      </ul>
-
-                        </div>
-                      </div>
-
-                    </div>
-                    <div class="card-footer"  style="background-color:#fff;" *ngIf="post.showcomment">
-                        <div class="linha2"></div>
-                      <div class="card-header textleft">
-                        <div class="col-xs-2" style="width:auto;">
-                          <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
-                        </div>
-                        <p class="borda">
-                          <a style="color:#3366BB">  {{post?.comment.user.name}}</a>
-                          <br>
-                          {{post?.comment.com}}
-                        </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-                <button style="margin-top: 20px;" type="button" class="btn btn-green" data-dismiss="modal" (click)="demand()">Continuar demanda</button>
-            </div>
-          </div>
-                <!--/Card-->
-    </div>
+      </div>
   </div>
-        <!--/Modal demandas similares-->
 </div>
 <script src="post.ts"></script>

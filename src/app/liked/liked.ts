@@ -12,26 +12,15 @@ export class LikedComponent implements OnInit{
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
-  public posts: Array<any>;
-  public demands: Array<any>;
+  public posts: any = [];
+  public demands: any = [];
+  public id;
+  public comment;
   email: any;
   password: any;
   pswconfirm: any;
-  public id;
-  public comment;
-
-  clearInputs() {
-    this.email ="";
-    this.password ="";
-    this.pswconfirm = "";
-   }
-
-    constructor(private _router: Router, private server: ServerProvider) {
-      
-      this.posts = [];
-      this.demands = [];
-
-  }
+  
+    constructor(private _router: Router, private server: ServerProvider) {}
 
   ngOnInit(){
     this.server.getSelectedDemands({}).then(response => {
@@ -123,6 +112,12 @@ export class LikedComponent implements OnInit{
      }).catch(error => {
        console.log(error);
      });
+  }
+
+  clearInputs() {
+    this.email ="";
+    this.password ="";
+    this.pswconfirm = "";
   }
 
   logout(){

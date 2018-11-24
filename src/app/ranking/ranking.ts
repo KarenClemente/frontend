@@ -7,51 +7,21 @@ import { ServerProvider} from '../../providers/server';
   templateUrl: './ranking.html',
   styleUrls: ['./ranking.css']
 })
+
 export class RankingComponent implements OnInit {
   
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
-public searchText : string;
   public posts: Array<any>;
+  public id;
+  public comment;
   email: any;
   password: any;
   pswconfirm: any;
-  public id;
-  public comment;
+     
+  constructor(private _router: Router, private server: ServerProvider) {}
 
-
-  clearInputs() {
-    this.email ="";
-    this.password ="";
-    this.pswconfirm = "";
-   }
-   
-  constructor(private _router: Router, private server: ServerProvider) {
-    
-    this.posts = [];
-
-    /*
-    
-    image_demand:"",
-    image_profile:"",
-    total_likes:"",
-    demand_id:"",
-    title:"",
-    description:"",
-    created_date:"",
-    name:"",
-    local:"",
-    status:"",
-    campus:"",
-    type_demand:"",
-    owner_demands:"",
-    gave_like: "",
-    comments: [],
-    answers: []
-
-    */
-}
 ngOnInit(){
   this.server.getRankingDemands({},'').then(response => {
     console.log(response);
@@ -94,9 +64,9 @@ like(post){
       console.log(error);
     });
   }
- }
+}
 
- newComment(post, comment){
+newComment(post, comment){
   //Add comment
     this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
       console.log(response);
@@ -139,6 +109,13 @@ changeInfo(accessToken, image, email, password, pswconfirm){
      console.log(error);
    });
 }
+
+clearInputs() {
+  this.email ="";
+  this.password ="";
+  this.pswconfirm = "";
+}
+
 logout(){
   this.server.token = "";
   this._router.navigate(['/home']);

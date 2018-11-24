@@ -20,7 +20,6 @@ import { LikedComponent } from './liked/liked';
 import { RankingComponent } from './ranking/ranking';
 import { PostComponent } from './post/post';
 import { FeedComponent } from './feed/feed';
-import { GrdFilterPipe } from './ranking/grd-filter.pipe';
 import { GrdFilterPipes } from './feed/grd-filter.pipe';
 import { ConfirmEqualValidatorDirective } from '../shared/confirm-equal-validator.directive';
 
@@ -38,7 +37,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
 
-     GrdFilterPipe,
     AppComponent,
     HomeComponent,
     MadeByMeComponent,

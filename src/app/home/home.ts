@@ -13,18 +13,16 @@ export class HomeComponent implements OnInit{
   @ViewChild('closeModalLoginButton') closeModalLoginButton: ElementRef;
   @ViewChild('closeModalCadastroButton') closeModalCadastroButton: ElementRef;
   @ViewChild('closeModalPswButton') closeModalPswButton: ElementRef;
-
+  
+  email: any;
+  password: any;
   user: any = {};
   public posts: any = {};
   public showImg: boolean = true;
-  email: any;
-  password: any;
 
-    constructor(private _router: Router, public server: ServerProvider) {
-     
-    }
+    constructor(private _router: Router, public server: ServerProvider) {}
 
-    ngOnInit(){
+      ngOnInit(){
       this.server.getSolvedDemands().then(response => {
         console.log(response);
         console.log(response.json());
@@ -35,17 +33,24 @@ export class HomeComponent implements OnInit{
       }).catch(error => {
         console.log(error);
         });
-    }
+      }
+      
       confirm(user){
 
-        this.server.createUser(this.user).then(response => {
+        this.server.createUser(user).then(response => {
           console.log(response);
           console.log(response["_body"]);
           let body = JSON.parse(response['_body']);
-          console.log(body.token);
-          this.closeModalCadastroButton.nativeElement.click();
+          console.log(body.dados.name);
+          this.server.token = body.token;
+          this.server.user.name = body.dados.name;
+          this.server.user.registry = body.dados.registry;
+          this.server.user.identity = body.dados.identity;
+          this.server.user.date_birth = body.dados.date_birth;
+          this.server.user.email = body.dados.email;
+          this.server.user.image_profile = body.dados.image_profile;
+          this.closeModalLoginButton.nativeElement.click();
           this._router.navigate(['/feed']);
-
         }).catch(error => {
           console.log(error);
           let body = JSON.parse(error['_body']);
@@ -65,8 +70,8 @@ export class HomeComponent implements OnInit{
         });
       }
 
-      signin(mail, pass){
-        this.server.loginUser(this.email,this.password).then(response => {
+      signin(email, password){
+        this.server.loginUser(email,password).then(response => {
           console.log(response);
           console.log(response["_body"]);
           let body = JSON.parse(response['_body']);
@@ -100,7 +105,7 @@ export class HomeComponent implements OnInit{
       }
 
       newPass(email){
-        this.server.newPsw(this.email).then(response => {
+        this.server.newPsw(email).then(response => {
           console.log(response);
           console.log(response["_body"]);
           this.closeModalPswButton.nativeElement.click();
