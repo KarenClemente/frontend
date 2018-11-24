@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Added
 import { ServerProvider } from '../../providers/server';
 
@@ -8,20 +8,34 @@ import { ServerProvider } from '../../providers/server';
   styleUrls: ['./home.css']
   
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
   @ViewChild('closeModalLoginButton') closeModalLoginButton: ElementRef;
   @ViewChild('closeModalCadastroButton') closeModalCadastroButton: ElementRef;
   @ViewChild('closeModalPswButton') closeModalPswButton: ElementRef;
 
   user: any = {};
+  public posts: any = {};
+  public showImg: boolean = true;
   email: any;
   password: any;
 
     constructor(private _router: Router, public server: ServerProvider) {
      
     }
-      
+
+    ngOnInit(){
+      this.server.getSolvedDemands().then(response => {
+        console.log(response);
+        console.log(response.json());
+    
+        response = response.json();
+        this.posts.push(response['dados']);
+        this.showImg = false;
+      }).catch(error => {
+        console.log(error);
+        });
+    }
       confirm(user){
 
         this.server.createUser(this.user).then(response => {
@@ -56,28 +70,16 @@ export class HomeComponent {
           console.log(response);
           console.log(response["_body"]);
           let body = JSON.parse(response['_body']);
-          console.log(body.token);
+          console.log(body.dados.name);
           this.server.token = body.token;
+          this.server.user.name = body.dados.name;
+          this.server.user.registry = body.dados.registry;
+          this.server.user.identity = body.dados.identity;
+          this.server.user.date_birth = body.dados.date_birth;
+          this.server.user.email = body.dados.email;
+          this.server.user.image_profile = body.dados.image_profile;
           this.closeModalLoginButton.nativeElement.click();
           this._router.navigate(['/feed']);
-
-          this.server.infoUser(this.server.token).then(response => {
-          console.log(response);
-          let body = JSON.parse(response['dados']);
-          this.server.user.name = body.name;
-          this.server.user.registry = body.registry;
-          this.server.user.identity = body.identity;
-          this.server.user.date_birth = body.date_birth;
-          this.server.user.email = body.email;
-          this.server.user.image_profile = body.image_profile;
-          console.log(this.server.user.name);
-          console.log(this.server.user.registry);
-          console.log(this.server.user.identity);
-          console.log(this.server.user.date_birth);
-          console.log(this.server.user.email);
-          console.log(this.server.user.image_profile);
-
-        })
         }).catch(error => {
           console.log(error);
           let body = JSON.parse(error['_body']);

@@ -156,38 +156,40 @@
     </div>
 
   <!--/ Modal box-->
-  <!-- Sidebar-->
-  <div class="s-layout__sidebar">
-    <nav class="s-sidebar__nav" style="margin-top: 60px;">
-      <ul>
-        <img src="./assets/img/avatar.png">
-        <br>
-        <em style="padding-left:10%;">Felipe Dias Pinheiro</em>
-        <li>
-          <a class="s-sidebar__nav-link" href="#" data-target="#changeInfo" data-toggle="modal" (click)="clearInputs()">
-          <i class="fa fa-user"></i><em>Editar Perfil</em>
-          </a>
-        </li>
-        <li>
-          <a class="s-sidebar__nav-link" routerLink="/post">
-          <i class="fa fa-newspaper-o"></i><em>Publicar</em>
-          </a>
-        </li>
-        <li>
-          <a class="s-sidebar__nav-link" href="#demo" data-toggle="collapse">
-          <i class="fa fa-pencil-square-o"></i><em>Demandas</em>
-          </a>
-        </li>
-        <div id="demo" class="collapse">
-          <div style="margin-left: 60px; margin-top: 8px; padding-top: 40px;"><a  style="text-decoration: none;" routerLink="/madeByme" >Criadas</a></div>
-            <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;"routerLink="/liked" >Curtidas/<br>Comentadas</a></div>
-             <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;" routerLink="/solved">Solucionadas</a></div>
-             </div>
+ <!-- Sidebar-->
+ <div class="s-layout__sidebar">
+  <nav class="s-sidebar__nav" style="margin-top: 60px;">
+    <ul style="width: 144px;height: auto;">
+      <img [src]="server.user.image_profile">
+      <br>
+      <div class="row" style="margin-left: 20px; text-align: center;">
+      <em class="text-center">{{server.user.name}}</em>
+    </div>
+    <li>
+        <a class="s-sidebar__nav-link" href="#" data-target="#changeInfo" data-toggle="modal" (click)="clearInputs()" >
+        <i class="fa fa-user"></i><em>Editar Perfil</em>
+        </a>
+      </li>
+      <li>
+        <a class="s-sidebar__nav-link" routerLink="/post">
+        <i class="fa fa-newspaper-o"></i><em>Publicar</em>
+        </a>
+      </li>
+      <li>
+        <a class="s-sidebar__nav-link" href="#demo" data-toggle="collapse">
+        <i class="fa fa-pencil-square-o"></i><em>Demandas</em>
+        </a>
+      </li>
+      <div id="demo" class="collapse">
+        <div style="margin-left: 60px; margin-top: 8px; padding-top: 40px;"><a  style="text-decoration: none;" routerLink="/madeByme" >Criadas</a></div>
+          <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;"routerLink="/liked" >Curtidas/<br>Comentadas</a></div>
+           <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;" routerLink="/solved">Solucionadas</a></div>
+           </div>
 
-      </ul>
-    </nav>
-  </div>
-  <!--/ Sidebar-->
+    </ul>
+  </nav>
+</div>
+<!--/ Sidebar-->
   <!--Cabeçalho-->
   <div class="s-layout__content">
     <div class="mar">

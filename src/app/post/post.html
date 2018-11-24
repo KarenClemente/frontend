@@ -217,11 +217,13 @@
   <!-- Sidebar-->
   <div class="s-layout__sidebar">
     <nav class="s-sidebar__nav" style="margin-top: 60px;">
-      <ul>
-        <img src="./assets/img/avatar.png">
+      <ul style="width: 144px;height: auto;">
+        <img [src]="server.user.image_profile">
         <br>
-        <em style="padding-left:10%;">Felipe Dias Pinheiro</em>
-        <li>
+        <div class="row" style="margin-left: 20px; text-align: center;">
+        <em class="text-center">{{server.user.name}}</em>
+      </div>
+       <li>
           <a class="s-sidebar__nav-link" href="#" data-target="#changeInfo" data-toggle="modal" (click)="clearInputs()" >
           <i class="fa fa-user"></i><em>Editar Perfil</em>
           </a>
