@@ -136,13 +136,13 @@
 
           <div class="row" style="padding-left: 30%;" >
 
-          <div class="btncolumn" style="color:white;">
-          <input style="margin-top: 0px;background-color: #cccccc"type="submit" class="btn   btn-flat" value="Sim">
-          </div>
-
-          <div class="btncolumn" style="color:white;">
-          <input style="margin-top: 0px; background-color: #cccccc; margin-left:20px;"type="submit" class="btn btn-flat" value="Não">
-
+            <div class="btncolumn" style="color:white;">
+              <input style="margin-top: 0px;background-color: #cccccc"type="submit" class="btn   btn-flat" value="Sim" (click)="report()">
+              </div>
+   
+              <div class="btncolumn" style="color:white;">
+              <input style="margin-top: 0px; background-color: #cccccc; margin-left:20px;"type="submit" class="btn btn-flat" value="Não" data-dismiss="modal">
+   
           </div>
           </div>
 
@@ -232,7 +232,7 @@
     <div class="card" style="padding-bottom:15px;" *ngIf="post.collapsed">
       <div class="linha"></div>
       <div class="pull-right">
-        <a data-toggle="modal" data-target="#modalLabel">
+        <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)">
           <i class="fa fa-exclamation pointer" style="font-size:30px; color:#dc3545; padding: 10px;"></i>
         </a>
       </div>
@@ -330,7 +330,7 @@
                 <a href="#" style="color:black;font-size:15px;">{{sugestions?.local}}</a>
               </div>
               <div class="row">
-                <a href="#" class="text-muted" style="font-family:Arial;font-size:13px;"[ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i style="font-size:13px" class="fa fa-thumbs-up"></i>{{sugestions?.total_likes}}</a>&nbsp;
+                <a href="#" class="text-muted" style="font-family:Arial;font-size:13px;"[ngClass]="{'liked': sugestions.gave_like == 'true', 'notLiked': sugestions.gave_like == 'false'}"><i style="font-size:13px" class="fa fa-thumbs-up"></i>{{sugestions?.total_likes}}</a>&nbsp;
                 <a href="#" style="font-family:Arial;font-size:13px;" class="text-muted" (click)="sugestions.collapsed=!sugestions.collapsed; sugestions.showcomment=!sugestions.showcomment"><i style="color:#0066cc;font-size:13px" class="fa fa-comment"></i>{{sugestions?.comments?.length}} comentários</a>
               </div>
               </div>
@@ -339,7 +339,7 @@
         <div class="card" style="padding-bottom:15px;" *ngIf="sugestions.collapsed">
           <div class="linha"></div>
           <div class="pull-right">
-            <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01">
+            <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01" (click)="reportId(sugestions)">
               <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
             </button>
           </div>
@@ -366,12 +366,12 @@
             <div class="linha"></div>
             <ul class="list-inline">
               <div class="pull-left">
-                <a (click)="like(sugestions)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
+                <a (click)="like(sugestions)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': sugestions.gave_like == 'true', 'notLiked': sugestions.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
                 font-size: 15px;"></i>
                 {{sugestions?.total_likes}}</a>
               </div>
               <div class="textl pull-right">
-                <a class="pointer" style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments"></i>
+                <a class="pointer" style="text-decoration: none;" (click)="sugestions.showcomments=!sugestions.showcomments;"><i class="fa fa-comments"></i>
                 {{sugestions?.comments?.length}} comentários
                 </a>
               </div>

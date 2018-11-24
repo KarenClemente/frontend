@@ -115,7 +115,7 @@ export class FeedComponent implements OnInit{
       });
   }
   
-  report(post){
+  report(){
     this.server.reportDemand(this.server.token,this.id).then(response => {
       console.log(response);
       this.closeModalDangerButton.nativeElement.click();
@@ -133,6 +133,16 @@ export class FeedComponent implements OnInit{
     this.server.updateInfo(this.server.token, image, email, password, pswconfirm).then(response => {
       console.log(response);
       this.closeModalChangeButton.nativeElement.click();
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  delete(accessToken){
+    this.server.deleteAccount(this.server.token).then(response => {
+      console.log(response);
+      this.closeModalChangeButton.nativeElement.click();
+      this.logout();
     }).catch(error => {
       console.log(error);
     });

@@ -218,17 +218,16 @@ export class ServerProvider {
   }
 
   // Delete account
-  deleteAccount(accessToken, email){
+  deleteAccount(accessToken){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
      
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
-    body.set('email', email);
  
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+    return this.http.post(BASE_URL + '/user/delete', body.toString(),options).toPromise();
   }
 }
 
