@@ -1,6 +1,7 @@
 .pointer {cursor: pointer;}
 /*CSS PERFIL*/
 .principal {background-color:  rgb(242, 244, 247);}
+
 .liked{
   color: #0066cc;
 }
@@ -8,6 +9,12 @@
 .notLiked{
   color:gray;
 }
+
+.icon{
+  color: gray;
+}
+.icon a:hover,
+.notLiked a:hover{color: #0066cc;}
 
 /* Create two equal columns that floats next to each other */
 .firstcol{

@@ -11,6 +11,12 @@ a {text-decoration: none;}
   color:gray;
 }
 
+.icon{
+  color: gray;
+}
+.icon a:hover,
+.notLiked a:hover{color: #0066cc;}
+
 /* Create two equal columns that floats next to each other */
 .firstcol{
     text-align: right;
