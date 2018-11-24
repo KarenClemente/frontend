@@ -13,7 +13,7 @@ export class SolvedComponent implements OnInit{
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
-  public posts: Array<any>;
+  public posts: any =[];
   public id;
   public comment;
   email: any;

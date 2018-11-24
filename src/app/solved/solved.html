@@ -19,8 +19,8 @@
     </div>
   </nav>
   <!--/Navigation bar-->
-<!--modal editar perfil-->
-<div class="modal fade" id="changeInfo" role="dialog" aria-hidden="true">
+  <!--modal editar perfil-->
+  <div class="modal fade" id="changeInfo" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -110,8 +110,8 @@
       </div>
     </div>
   </div>
-</div>
-<!--/modal editar perfil-->
+  </div>
+  <!--/modal editar perfil-->
   <!-- Sidebar-->
   <div class="s-layout__sidebar">
     <nav class="s-sidebar__nav" style="margin-top: 60px;">
@@ -243,10 +243,6 @@
         <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
         <br>
         {{comment.comment}}
-
-
-
-
       </p>
   </div>
   <div class="card-header textleft" *ngFor="let comment of post.answers;">

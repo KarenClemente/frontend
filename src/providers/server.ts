@@ -1,7 +1,7 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
-const BASE_URL = "http://homol.redes.unb.br/sos-unb/api";
+const BASE_URL = "https://homol.redes.unb.br/sos-unb/api";
 
 
 @Injectable()
@@ -238,6 +238,42 @@ export class ServerProvider {
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/type-problem/get', body.toString(),options).toPromise();
+  }
+  // Get local
+  getLocal(accessToken, demand){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', this.token);
+    body.set('campus', demand.selectedCampus);
+    body.set('area', demand.selectedArea);
+
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/local/get', body.toString(),options).toPromise();
+  }
+  // Add demand
+  newDemand(accessToken, demand){
+    let headers = new Headers(
+      {
+          'Content-Type' : 'application/x-www-form-urlencoded',
+      });
+      let options = new RequestOptions({ headers: headers });
+      let body = new URLSearchParams();
+      body.set('Authorization', this.token);
+      body.set('title', demand.title);
+      body.set('description', demand.description);
+      body.set('type_problems_id', demand.selectedCategory);
+      body.set('type_demand_id', demand.selectedType);
+      body.set('local_id', demand.selectedLocal);
+      body.set('campus_id', demand.selectedCampus);
+      body.set('environment_id', demand.selectedEnvironment);
+      body.set('image', demand.hasOwnProperty('image')? demand.image: '');
+
+      console.log(body.toString());
+      return this.http.post(BASE_URL + '/demands/add', body.toString(), options).toPromise();
+   
   }
 
 //PROFILE FUNCTIONS

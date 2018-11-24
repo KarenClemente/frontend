@@ -248,11 +248,11 @@
             </label>
             <br>
             <br>
-            <select id="campus" name="campus">
-              <option *ngFor="let campus of campusArray" (click)="setCampus(campus)">{{campus?.campus}}</option>
+            <select id="campus" name="campus" [(ngModel)]="selectedValue">
+              <option *ngFor="let campus of campusArray" [ngValue]="campus">{{campus?.campus}}</option>
             </select>
             <br>
-            <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)="proxcard()">CONFIRMAR</button>
+            <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)="proxcard(); setCampus(selectedValue);">CONFIRMAR</button>
           </div>
         </div>
       </div>
@@ -276,11 +276,11 @@
             </label>
             <br>
             <br>
-            <select id="category" name="category">
-                <option *ngFor="let category of categories" (click)="setCategory(category)">{{category?.type}}</option>
+            <select id="category" name="category" [(ngModel)]="selectedValue">
+                <option *ngFor="let category of categories"  [ngValue]="category">{{category?.type}}</option>
             </select>
             <br>
-            <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)="ambiente()">CONFIRMAR</button>
+            <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)="ambiente(); setCategory(selectedValue);">CONFIRMAR</button>
           </div>
         </div>
       </div>
@@ -297,40 +297,17 @@
             </label>
             <br>
             <br>
-            <select *ngIf="predio" name="predio">
+            <select *ngIf="ambienteIn" name="local" [(ngModel)] = "demand.selectedValueLocal">
+                <option *ngFor="let local of locais" [ngValue]="local">{{local.local}}</option>
             </select>
             <br>
-            <button style="margin-bottom: 20px;" type="button" class="btn btn-green btn-block" (click)="lastpart()">CONFIRMAR</button>
-          </div>
-        </div>
-      </div>
-      <div class="group" *ngIf="card4">
-        <div class="card">
-          <div class="card-header text-center">
-            <h4>Vamos criar sua demanda!</h4>
-          </div>
-          <div class="card-body text-center">
-             <i class="fa fa-map-marker" aria-hidden="true" id="local" style="font-size:54px"></i>
             <br>
-            <label for="ambiente">
-              Selecione agora uma opção de ambiente no qual sua demanda está localizada
-            </label>
-            <br>
-            <br>
-            <select *ngIf="ambienteIn" name="ambiente">
-                <option value="1">Sala</option>
-                <option value="2">Corredor</option>
-                <option value="3">Gama</option>
-                <option value="4">Planaltina</option>
-            </select>
-            <select *ngIf="ambienteOut" name="ambiente">
-                <option value="1">Pista</option>
-                <option value="2">Corredor</option>
-                <option value="3">Gama</option>
-                <option value="4">Planaltina</option>
+            <select name="ambiente" [(ngModel)]="demand.selectedValueEnvironment">
+                <option *ngFor="let environment of environments" [ngValue]="environment">{{environment.environment}}</option>
             </select>
             <br>
-            <button style="margin-top: 20px;" type="button" class="btn btn-green btn-block" data-toggle="modal" data-target="#Posts">CONFIRMAR</button>
+            <br>
+            <button style="margin-bottom: 20px;" type="button" data-toggle="modal" data-target="#Posts" class="btn btn-green btn-block" (click)="setLocal(demand.selectedValueLocal); setEnvironment(demand.selectedValueEnvironment)">CONFIRMAR</button>
           </div>
         </div>
       </div>
@@ -341,11 +318,11 @@
             </div>
             <div class="card-body text-center">
                 <label for="titleDemand" style="color:#0066cc; font-size: 14px">Dê um título à sua demanda</label>
-                <input type="text" id="titleDemand" required maxlength="25" style="border-radius:10px">
+                <input type="text" id="titleDemand" required maxlength="25" style="border-radius:10px" [(ngModel)]="demand.title">
                 <br>
                 <br>
                 <label for="description" style="color:#0066cc; font-size: 14px">Faça uma breve descrição sobre a demanda e o local onde está localizada (ex: sala BT15/18)</label>
-                <textarea type="text" id="description" required maxlength="150" style="width: 100%; height: 100px;"></textarea>
+                <textarea type="text" id="description" required maxlength="150" style="width: 100%; height: 100px;" [(ngModel)]="demand.description"></textarea>
                 <br>
                 <br>
                 <br>
@@ -356,9 +333,9 @@
               </label>
               <br>
               <br>
-              <input class="text-justify" type="file" style="font-size: 14px;">
+              <input class="text-justify" style="font-size: 14px;" type="file" accept="image/*" (change)="changeListener($event)">
               <br>
-              <button style="margin-top: 20px;" type="button" class="btn btn-green btn-block">Publicar</button>
+              <button style="margin-top: 20px;" type="button" class="btn btn-green btn-block" (click)="addDemand(demand)">Publicar</button>
             </div>
           </div>
       </div>

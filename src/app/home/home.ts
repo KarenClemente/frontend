@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit{
   email: any;
   password: any;
   user: any = {};
-  public posts: any = {};
+  public posts: any = [];
   public showImg: boolean = true;
 
     constructor(private _router: Router, public server: ServerProvider) {}
