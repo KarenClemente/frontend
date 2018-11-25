@@ -176,17 +176,17 @@
 <!--Modal termos-->
 <div class="modal fade" id="termos" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-sm">
-  
+
     <!-- Modal content no 1-->
     <div class="modal-content" style="width:500px;">
       <div class="modal-header">
           <button #closeModalTermsButton type="button" class="close" data-dismiss="modal">&times;</button>
-  
+
         <h4 class="modal-title text-center form-title" style="color: #0066cc;">Termos de uso</h4>
       </div>
       <div class="modal-body">
         <div class="login-box-body rolavel" style="height:auto;max-height:500px; background:none;">
-  
+
             <div style="text-align:center;">
             <b>Termos de uso do SOS UnB</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
             SOS UnB é fruto de um projeto acadêmico coordenado pelo Professor Doutor Flávio
@@ -196,7 +196,7 @@
             turma do segundo semestre de 2018. O projeto teve por gestor o aluno Lucas Garcia e a
             participação dos seguintes alunos: Phelipe Resende, Fillipe Barros, Mariana Varanda, Pedro,
             Mariana Grijó, José Lucas Amaro, Trajano Melo, Karen Clemente, Victor Albédio e Heitor.<br>&nbsp;&nbsp;
-  
+
             Os presentes termos de uso regem as relações dos usuários com o SOS UnB e quando
             você formaliza o cadastro estará concordando com eles.<br><br></p>
             <div style="text-align:center;">
@@ -225,7 +225,7 @@
             de uso.<br><br></p>
             <div style="text-align:center;">
             <b>Política de Dados</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
-  
+
             Para realizar nossos serviços é necessário confirmar o seu vínculo com a Universidade
             de Brasília, por este motivo, você concorda em fornecer o seu nome completo, número de
             matrícula e data de nascimento. Concorda, também, que possamos armazenar tais dados em
@@ -237,8 +237,8 @@
             segurança de seus dados.<br><br></p>
             <div style="text-align:center;">
             <b>Compromissos do Usuário</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
-  
-  
+
+
             Para utilizar os serviços do SOS UnB você deve agir segundo as regras abaixo:<br></p>
             <div style="text-align:left; color:gray; margin-left:45px;">
               - Você deve ter vínculo com a Universidade de Brasília como aluno, servidor ou professor;<br><br>
@@ -256,24 +256,24 @@
               - Você concorda com a possibilidade de baixarmos e instalarmos atualizações do nosso serviço em seus dispositivos.</div><br><br>
             <div style="text-align:center;">
             <b>Remoção de Conteúdo</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
-  
-  
+
+
             Qualquer usuário pode denunciar qualquer publicação realizada em nossa plataforma.
             Sempre que uma ‘postagem‘ tiver sido denunciada ela poderá ser, preventivamente, retirada
             de nosso serviço. Você será notificado e poderá contestar as denúncias.<br>&nbsp;&nbsp;
-  
+
             Para que nosso serviço seja realizado de forma satisfatória, você concorda que
             possamos retirar suas postagens, independentemente de notificação, sempre que julgarmos
             que sua publicação seja ofensiva ou fira nossos termos de uso.<br>&nbsp;&nbsp;
-  
+
             Alertamos que publicações ofensivas poderão ser levadas à administração da
             Universidade de Brasília para providências disciplinares eventualmente cabíveis.<br>&nbsp;&nbsp;
             Alertamos, igualmente, que publicações ofensivas podem constituir infrações
             criminais, sendo o autor responsável por seus atos.<br><br></p>
             <div style="text-align:center;">
             <b>Disposições finais</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
-  
-  
+
+
             Não podemos garantir que os nossos serviços funcionarão perfeitamente a todo
             tempo.<br>&nbsp;&nbsp;
             Não nos responsabilizamos pelo conteúdo publicado por terceiros e não somos
@@ -283,14 +283,14 @@
             termos de utilização.<br><br></p>
             <div style="text-align:center;color: grey;">
             Este termo foi atualizado em 11 de novembro de 2018.</div>
-  
-  
-  
+
+
+
           </div>
         </div>
       </div>
     </div>
-  
+
 </div>
 <!--/Modal termos-->
 <!--Banner-->
@@ -404,9 +404,9 @@
 </div>
 <div class="container" *ngIf="!showImg">
   <div class="row">
-    <div class="col-md-4 col-sm-6 padleft-right" *ngFor="let post of posts">
-      <figure class="imghvr-fold-up">
-        <img [src]="post?.image_demand" class="img-responsive" style="width:cover">
+    <div class="col-md-4 col-sm-6 padleft-right" *ngFor="let post of posts" style="width:375px; height:252.67;">
+      <figure class="imghvr-fold-up" style="width:370px; height:246.67;">
+        <img [src]="post?.image_demand" class="img-responsive" style="object-fit: cover;width:370px; height:100%;">
         <figcaption>
           <h3>{{post?.title}}</h3>
           <p>{{post?.description}}</p>
@@ -500,4 +500,3 @@
 </div>
 </footer>
 <!--/ Footer-->
-
