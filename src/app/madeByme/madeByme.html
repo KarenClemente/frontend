@@ -155,7 +155,7 @@
   <!--Card-->
   <div class="card pointer"  *ngFor="let post of posts;">
       <div class="row" >
-        <div class="col-md-4 firstcol column">
+        <div class="col-md-4 firstcol column" (click)="post.collapsed=!post.collapsed">
           <img [src]="post?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
         </div>
         <div class="col-md-4 secndcol column">
@@ -172,7 +172,7 @@
             <ul class="list-inline">
 
               <div class="pull-left notLiked">
-                  <a (click)="like(post)" class="pointer responsivo2" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="font-size: 15px;"></i>
+                  <a (click)="like(post)" class="pointer responsivo" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="font-size: 15px;"></i>
                   {{post?.total_likes}}</a>
                 </div>
 
@@ -188,103 +188,105 @@
           </div>
           </div>
       </div>
-    <!--Expanded card1-->
-    <div class="card" style="padding-bottom:15px;" *ngIf="post.collapsed">
-      <div class="linha"></div>
-      <div class="card-header textleft">
-        <div class="col-xs-2" style="width:auto; padding:1; height: 90%;">
-          <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top: 10px;">
-        </div>
-        <p style="padding-top:5px;">
-          <a>  {{post?.name}}</a>
-          publicou
-          <b>{{post?.title}}</b>
-          em<br>
-          <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
-          {{post?.local}}
-        </p>
-      </div>
-      <div class="card-body" style="background-color:#fff; text-align: justify;">
-        <img [src]="post?.image_demand" style="width:100%">
-        <p>
-        {{post?.description}}
-        </p>
-        <div class="row">
-          <div class="col-sm-12">
+      <!--Expanded card1-->
+      <div class="card" style="padding-bottom:15px;" *ngIf="post.collapsed">
         <div class="linha"></div>
-        <ul class="list-inline">
-          <div class="pull-left notLiked">
-              <a (click)="like(post)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
-              font-size: 15px;"></i>
-              {{post?.total_likes}}</a>
-            </div>
-            <div class="textl pull-right icon">
-              <a class="pointer icon " style="text-decoration: none; margin-right: 20px;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments" ></i>
-              {{post?.comments?.length}} comentários
-              </a>
-            </div>
-        </ul>
-
-          </div>
+        <div class="pull-right">
+          <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)">
+            <i class="fa fa-exclamation pointer" style="font-size:30px; color:#dc3545; padding: 10px;"></i>
+          </a>
         </div>
-            <div class="linha2"></div>
-      </div>
-      <div class="card-footer rolavel" style="height:auto;max-height:300px; background:none;" *ngIf="post.showcomments">
-        <div class="card-header textleft" *ngFor="let comment of post.comments;" style="padding: 0px;">
-          <div class="col-xs-2" style="width:auto;">
-            <img [src]="comment.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
+        <div class="card-header textleft">
+          <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
+            <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top: 10px;">
+          </div>
+          <p style="padding-top:5px;">
+            <a>  {{post?.name}}</a>
+            publicou
+            <b>{{post?.title}}</b>
+            em<br>
+            <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
+            {{post?.local}}
+          </p>
+        </div>
+        <div class="card-body" style="background-color:#fff; text-align: justify;">
+          <img [src]="post?.image_demand" style="width:90%">
+          <p>
+          {{post?.description}}
+          </p>
+          <div class="row">
+            <div class="col-sm-12">
+          <div class="linha"></div>
+          <ul class="list-inline">
+            <div class="pull-left notLiked">
+                <a (click)="like(post)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
+                font-size: 15px;"></i>
+                {{post?.total_likes}}</a>
+              </div>
+              <div class="textl pull-right icon">
+                <a class="pointer icon " style="text-decoration: none; margin-right: 20px;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments" ></i>
+                {{post?.comments?.length}} comentários
+                </a>
+              </div>
+
+          </ul>
+            </div>
+          </div>
+              <div class="linha2"></div>
+        </div>
+        <div class="card-footer rolavel" style="height:auto;max-height:300px; background:none;" *ngIf="post.showcomments">
+          <div class="card-header textleft" *ngFor="let comment of post.comments;" style="padding: 0px;">
+            <div class="col-xs-2" style="width:auto;">
+              <img [src]="comment.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
+            </div>
+            <p class="borda">
+              <a class="pointer" style="text-decoration: none;">  {{comment.name}}</a>
+
+              <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
+              <br>
+              {{comment.comment}}
+            </p>
+        </div>
+        <div class="card-header textleft" *ngFor="let comment of post.answers;">
+          <div class="col-xs-2" style="width:auto; background: #0066cc;">
+            <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
           </div>
           <p class="borda">
-            <a class="pointer" style="text-decoration: none;">  {{comment.name}}</a>
+            <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
 
             <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
             <br>
-            {{comment.comment}}
-
-
-
-
+            {{comment?.comment}}
           </p>
       </div>
-      <div class="card-header textleft" *ngFor="let comment of post.answers;">
-        <div class="col-xs-2" style="width:auto; background: #0066cc;">
-          <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
-        </div>
-        <p class="borda">
-          <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
+      </div>
+      <div class="textleft inputWithIcon icon" >
+        <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
+        <a (click)="newComment(post, comment)" class="pointer icon" style="text-decoration: none;"><i class="fa fa-mail-forward"></i></a>
+      </div>
+    </div>
+    </div>
+    <!--/Card-->
 
-          <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
-          <br>
-          {{comment?.comment}}
-        </p>
-    </div>
-    </div>
-    <div class="textleft inputWithIcon icon" >
-    <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
-    <a (click)="newComment(post, comment)" class="pointer icon" style="text-decoration: none;"><i class="fa fa-mail-forward"></i></a>
-    </div>
-  </div>
-  </div>
-  <!--/Card-->
 
-      <!--Card-->
-      <div class="card pointer"  *ngFor="let sugestions of demands;">
-          <div class="row">
-            <div class="col-md-4 firstcol column" (click)="sugestions.collapsed=!sugestions.collapsed">
-              <img [src]="sugestions?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
+    <!--Card-->
+    <div class="card pointer"  *ngFor="let sugestions of demands;">
+        <div class="row">
+          <div class="col-md-4 firstcol column" (click)="sugestions.collapsed=!sugestions.collapsed">
+            <img [src]="sugestions?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
+          </div>
+          <div class="col-md-4 secndcol column">
+            <div class="row " (click)="sugestions.collapsed=!sugestions.collapsed">
+             <a style="font-size:16px; text-decoration: none; color:#0066cc;"  >{{sugestions?.title}}</a>
             </div>
-            <div class="col-md-4 secndcol column">
-              <div class="row " (click)="sugestions.collapsed=!sugestions.collapsed">
-               <a style="font-size:16px; text-decoration: none; color:#0066cc;"  >{{sugestions?.title}}</a>
-              </div>
-              <div class="row" (click)="sugestions.collapsed=!sugestions.collapsed">
-                <a class="text-muted" style="font-size:13px; text-decoration:none;"> {{sugestions?.created_date}}</a>&nbsp;
-                <br>
-                <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;"></i>
-                <a style="color:black;font-size:15px;">{{sugestions?.local}}</a>
-              </div>
-              <div class="row">
-                <ul class="list-inline">
+            <div class="row" (click)="sugestions.collapsed=!sugestions.collapsed">
+              <a class="text-muted" style="font-size:13px; text-decoration:none;"> {{sugestions?.created_date}}</a>&nbsp;
+              <br>
+              <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;"></i>&nbsp;
+              <a style="color:black;font-size:15px; text-decoration:none;">{{sugestions?.local}}</a>
+            </div>
+            <div class="row">
+              <ul class="list-inline">
 
                 <div class="pull-left notLiked">
                     <a (click)="like(sugestions)" class="pointer responsivo" style="text-decoration: none;" [ngClass]="{'liked': sugestions.gave_like == 'true', 'notLiked': sugestions.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="font-size: 15px;"></i>
@@ -292,73 +294,66 @@
                   </div>
 
                     <div class="textl icon" (click)="sugestions.collapsed=!sugestions.collapsed">
-                      <a class="pointer icon responsivo2 " style="text-decoration: none;" (click)="sugestions.collapsed=!sugestions.collapsed"><i class="fa fa-comments"></i>
+                      <a class="pointer icon responsivo2" style="text-decoration: none;"><i class="fa fa-comments"></i>
                       {{sugestions?.comments?.length}} comentários
                       </a>
                     </div>
 
               </ul>
-              </div>
-              </div>
+            </div>
+            </div>
+        </div>
+      <!--Expanded card1-->
+      <div class="card" style="padding-bottom:15px;" *ngIf="sugestions.collapsed">
+        <div class="linha"></div>
+        <div class="pull-right">
+          <button class="btn btn-link" data-toggle="modal" data-target="#post01"  aria-controls="post01" (click)="reportId(sugestions)">
+            <i class="fa fa-exclamation" style="font-size:30px; color:#dc3545"></i>
+          </button>
+        </div>
+        <div class="card-header textleft">
+          <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
+            <img [src]="sugestions?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top: 10px;">
           </div>
-        <!--Expanded card1-->
-        <div class="card" style="padding-bottom:15px;" *ngIf="sugestions.collapsed">
+          <p style="padding-top:5px;">
+            <a>  {{sugestions?.name}}</a>
+            publicou
+            <b>{{sugestions?.title}}</b>
+            em<br>
+            <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
+            {{sugestions?.local}}
+          </p>
+        </div>
+        <div class="card-body" style="background-color:#fff; text-align: justify;">
+          <img [src]="sugestions?.image_demand" style="width:100%">
+          <p>
+          {{sugestions?.description}}
+          </p>
+          <div class="row">
+            <div class="col-sm-12">
           <div class="linha"></div>
-          <div class="card-header textleft">
-            <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
-              <img [src]="sugestions?.image_profile" style="object-fit:cover; border-radius: 50%;margin-top: 10px;">
-            </div>
-            <p style="padding-top:5px;">
-              <a>  {{sugestions?.name}}</a>
-              publicou
-              <b>{{sugestions?.title}}</b>
-              em<br>
-              <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
-              {{sugestions?.local}}
-            </p>
-          </div>
-          <div class="card-body" style="background-color:#fff; text-align: justify;">
-            <img [src]="sugestions?.image_demand" style="width:100%">
-            <p>
-            {{sugestions?.description}}
-            </p>
-            <div class="row">
-              <div class="col-sm-12">
-            <div class="linha"></div>
-            <ul class="list-inline">
-              <div class="pull-left notLiked">
-                  <a (click)="like(sugestions)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': sugestions.gave_like == 'true', 'notLiked': sugestions.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
-                  font-size: 15px;"></i>
-                  {{sugestions?.total_likes}}</a>
-                </div>
-                <div class="textl pull-right icon">
-                  <a class="pointer icon " style="text-decoration: none; margin-right: 20px;" (click)="sugestions.showcomments=!sugestions.showcomments;"><i class="fa fa-comments" ></i>
-                  {{sugestions?.comments?.length}} comentários
-                  </a>
-                </div>
-
-            </ul>
-
+          <ul class="list-inline">
+            <div class="pull-left notLiked">
+                <a (click)="like(sugestions)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': sugestions.gave_like == 'true', 'notLiked': sugestions.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
+                font-size: 15px;"></i>
+                {{sugestions?.total_likes}}</a>
               </div>
-            </div>
-                <div class="linha2"></div>
-          </div>
-          <div class="card-footer rolavel" style="height:auto;max-height:300px; background:none;" *ngIf="sugestions.showcomments">
-            <div class="card-header textleft" *ngFor="let comment of sugestions.comments;" style="padding: 0px;">
-              <div class="col-xs-2" style="width:auto;">
-                <img [src]="sugestions?.comments?.image_profile" style="object-fit:cover;border-radius: 50%;">
+              <div class="textl pull-right icon">
+                <a class="pointer icon " style="text-decoration: none; margin-right: 20px;" (click)="sugestions.showcomments=!sugestions.showcomments;"><i class="fa fa-comments" ></i>
+                {{sugestions?.comments?.length}} comentários
+                </a>
               </div>
-              <p class="borda">
-                <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
 
-                <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
-                <br>
-                {{comment?.comment}}
-              </p>
+          </ul>
+
+            </div>
           </div>
-          <div class="card-header textleft" *ngFor="let comment of sugestions.answers;">
-            <div class="col-xs-2" style="width:auto; background: #0066cc;">
-              <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
+              <div class="linha2"></div>
+        </div>
+        <div class="card-footer rolavel" style="height:auto;max-height:300px; background:none;" *ngIf="sugestions.showcomments">
+          <div class="card-header textleft" *ngFor="let comment of sugestions.comments;" style="padding: 0px;">
+            <div class="col-xs-2" style="width:auto;">
+              <img [src]="comment.image_profile" style="object-fit:cover;border-radius: 50%;">
             </div>
             <p class="borda">
               <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
@@ -368,17 +363,28 @@
               {{comment?.comment}}
             </p>
         </div>
-        </div>
-        <div class="textleft inputWithIcon icon" >
-          <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
-          <a (click)="newComment(sugestions, comment)" class="pointer icon" style="text-decoration: none;"><i class="fa fa-mail-forward"></i></a>
-        </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      <!--/Card-->
+        <div class="card-header textleft" *ngFor="let comment of sugestions.answers;">
+          <div class="col-xs-2" style="width:auto; background: #0066cc;">
+            <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
+          </div>
+          <p class="borda">
+            <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
 
+            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
+            <br>
+            {{comment?.comment}}
+          </p>
+      </div>
+      </div>
+      <div class="textleft inputWithIcon icon" >
+        <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
+        <a (click)="newComment(sugestions, comment)" class="pointer icon" style="text-decoration: none;"><i class="fa fa-mail-forward"></i></a>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!--/Card-->
 
 
 <script src="madeByme.ts"></script>
