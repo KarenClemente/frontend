@@ -9,7 +9,13 @@
 .responsivo2{
    margin-left: 20px;
 }
+.caixa{
+border: 0px 1px 1px 0px;
+border-radius: 0px 18px 18px 0px;
+border-color:white;
+    background-color: #fff;
 
+}
 .liked{
   color: #0066cc;
 }
