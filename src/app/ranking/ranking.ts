@@ -14,6 +14,9 @@ export class RankingComponent implements OnInit {
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
   public posts: any = [];
+  public user: any = [];
+  public campusArray: any = [];
+  public selectedValue: any ='';
   public id;
   public comment;
   email: any;
@@ -23,7 +26,37 @@ export class RankingComponent implements OnInit {
   constructor(private _router: Router, public server: ServerProvider) {}
 
 ngOnInit(){
-  this.server.getRankingDemands({},'').then(response => {
+  this.server.getRankingDemands({},this.selectedValue).then(response => {
+    console.log(response);
+    console.log(response.json());
+
+    response = response.json();
+   // this.posts = response['dados'];
+   for (var i = 0; i < response['dados'].length; i++){
+    response['dados'][i].collapsed = false;
+    this.posts.push(response['dados'][i]);
+   }
+  }).catch(error => {
+    console.log(error);
+  });
+  this.server.getCampus({}).then(response => {
+    console.log(response);
+    console.log(response.json());
+    response = response.json();
+
+    for (var i = 0; i < response['dados'].length; i++){
+      this.campusArray.push(response['dados'][i]);
+     }
+     console.log(this.campusArray)
+  }).catch(error => {
+    console.log(error);
+  });
+}
+
+setCampus(e): void {
+  this.selectedValue = e.id; 
+  console.log(this.selectedValue);
+  this.server.getRankingDemands({},this.selectedValue).then(response => {
     console.log(response);
     console.log(response.json());
 
@@ -88,7 +121,7 @@ delComment(post){
     });
 }
  
-report(post){
+report(){
   this.server.reportDemand(this.server.token,this.id).then(response => {
     console.log(response);
     this.closeModalDangerButton.nativeElement.click();
@@ -102,12 +135,47 @@ reportId(post){
   console.log(this.id);
 }
 
-changeInfo(accessToken, image, email, password, pswconfirm){
-   this.server.updateInfo(this.server.token, image, email, password, pswconfirm).then(response => {
-     console.log(response);
-   }).catch(error => {
-     console.log(error);
-   });
+changeListener($event) : void {
+  this.readThis($event.target);
+}
+
+readThis(inputValue: any): void {
+  var file:File = inputValue.files[0];
+  var myReader:FileReader = new FileReader();
+
+  myReader.onloadend = (e) => {
+    this.user.image = myReader.result;
+    console.log(this.user.image);
+  }
+  myReader.readAsDataURL(file);
+}
+
+updateInfo(user){
+  this.user.email = user.email;
+  this.user.password = user.password;
+  this.server.updateInfo(this.server.token, this.user).then(response => {
+    console.log(this.user);
+  }).catch(error => {
+    console.log(error);
+  });
+  if (user.password.length > 0){
+  this.server.updatePsw(this.server.token, this.user).then(response => {
+    console.log(response);
+    this.closeModalChangeButton.nativeElement.click();
+  }).catch(error => {
+    console.log(error);
+  })
+}
+}
+
+delete(){
+  this.server.deleteAccount(this.server.token).then(response => {
+    console.log(response);
+    this.closeModalChangeButton.nativeElement.click();
+    this.logout();
+  }).catch(error => {
+    console.log(error);
+  });
 }
 
 clearInputs() {

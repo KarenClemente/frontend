@@ -34,9 +34,7 @@
             </div>
             <p class="login-box-msg" style="color: grey;">Insira uma foto</p>
             <form action="#" method="post" name="changeInfo" style="width: 350px; margin-left:-20px;" >
-            <input class="form-control" id="perfilImg" type="file" name="perfilImg" accept="image/*" [(ngModel)]="image_profile"/>
-
-
+            <input class="form-control" type="file" accept="image/*" (change)="changePhoto($event)"/>
             <div class="form-group" style="margin-bottom:0rem">
              <!----- username -------------->
              <label for="nome" style="font-size: 1.3rem">Nome completo:</label><br>
@@ -59,13 +57,13 @@
 
            <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
              <label for="email" style="font-size: 1.3rem">E-mail</label>
-             <input class="form-control" placeholder="Novo email" id="email" type="email" name="email" required="" [(ngModel)]="email" />
+             <input class="form-control" placeholder="Novo email" id="email" type="email" name="email" required="" [(ngModel)]="user.email" />
              <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
 
            </div>
            <div class="form-group" style="margin-bottom:0rem" [class.has-error]="password1.touched && password1.invalid">                    <!----- password -------------->
             <label style="font-size: 1.3rem">Nova senha</label>
-            <input class="form-control" placeholder="Senha" type="password" name="password" required [(ngModel)]="password" #password1="ngModel">
+            <input class="form-control" placeholder="Senha" type="password" name="password" required [(ngModel)]="user.password" #password1="ngModel">
             <span style="color: red; font-size: 11px;" *ngIf="password1.touched && password1.errors?.required">
             Digite uma senha
             </span>
@@ -73,7 +71,7 @@
           </div>
           <div class="form-group" [class.has-error]="password2.touched && password2.invalid">                    <!----- password -------------->
             <label style="font-size: 1.3rem">Confirme a senha</label>
-            <input class="form-control" placeholder="Repita senha" type="password" name="pswconfirm" signUpConfirmEqualValidator="password" required [(ngModel)]="pswconfirm" #password2="ngModel">
+            <input class="form-control" placeholder="Repita senha" type="password" name="pswconfirm" signUpConfirmEqualValidator="password" required [(ngModel)]="user.pswconfirm" #password2="ngModel">
             <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.required">
             Confirme sua senha<br>
             </span>
@@ -101,8 +99,7 @@
               </div>
 
             </div>
-
-             <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Alterar">
+             <input style="margin-top: 20px;"type="submit" class="btn btn-green btn-block btn-flat" value="Alterar" (click)="updateInfo(user)">
 
            </div>
             </form>

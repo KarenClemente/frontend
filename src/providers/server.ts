@@ -279,22 +279,33 @@ export class ServerProvider {
 //PROFILE FUNCTIONS
 
   // Change infos
-  updateInfo(accessToken, photo, email, newPass, newPassConf){
+  updateInfo(accessToken, newinfo){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
-    body.set('image',photo);
-    body.set('email', email);
-    body.set('newPass', newPass);
-    body.set('newPassConf', newPassConf);
+    body.set('image',newinfo.hasOwnProperty('image')? newinfo.image: this.user.image_profile);
+    body.set('email', newinfo.hasOwnProperty('email')? newinfo.email: this.user.email);
 
     console.log(body.toString());
-    return this.http.post(BASE_URL + '/?', body.toString(),options).toPromise();
+    return this.http.post(BASE_URL + '/user/update', body.toString(),options).toPromise();
   }
 
+  // Change Password
+  updatePsw(accessToken, user){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', this.token);
+    body.set('password',user.password);
+
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/user/update/password', body.toString(),options).toPromise();
+  }
   // Delete account
   deleteAccount(accessToken){
     let headers = new Headers();

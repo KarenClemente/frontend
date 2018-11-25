@@ -14,6 +14,7 @@ export class SolvedComponent implements OnInit{
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
   public posts: any =[];
+  public user: any =[];
   public id;
   public comment;
   email: any;
@@ -97,12 +98,47 @@ reportId(post){
   console.log(this.id);
 }
 
-changeInfo(accessToken, image, email, password, pswconfirm){
-   this.server.updateInfo(this.server.token,image, email, password, pswconfirm).then(response => {
-     console.log(response);
-   }).catch(error => {
-     console.log(error);
-   });
+changeListener($event) : void {
+  this.readThis($event.target);
+}
+
+readThis(inputValue: any): void {
+  var file:File = inputValue.files[0];
+  var myReader:FileReader = new FileReader();
+
+  myReader.onloadend = (e) => {
+    this.user.image = myReader.result;
+    console.log(this.user.image);
+  }
+  myReader.readAsDataURL(file);
+}
+
+updateInfo(user){
+  this.user.email = user.email;
+  this.user.password = user.password;
+  this.server.updateInfo(this.server.token, this.user).then(response => {
+    console.log(this.user);
+  }).catch(error => {
+    console.log(error);
+  });
+  if (user.password.length > 0){
+  this.server.updatePsw(this.server.token, this.user).then(response => {
+    console.log(response);
+    this.closeModalChangeButton.nativeElement.click();
+  }).catch(error => {
+    console.log(error);
+  })
+}
+}
+
+delete(){
+  this.server.deleteAccount(this.server.token).then(response => {
+    console.log(response);
+    this.closeModalChangeButton.nativeElement.click();
+    this.logout();
+  }).catch(error => {
+    console.log(error);
+  });
 }
 
 clearInputs() {

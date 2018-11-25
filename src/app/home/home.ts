@@ -30,9 +30,17 @@ export class HomeComponent implements OnInit{
         console.log(response.json());
     
         response = response.json();
-        this.posts.push(response['dados']);
-        this.showImg = false;
-      }).catch(error => {
+        if (response['dados'].length > 5){
+          this.showImg = false;
+        
+        for (var i = 0; i < response['dados'].length; i++){
+          this.posts.push(response['dados'][i]);
+         }
+        }
+        else{
+        
+        }
+        }).catch(error => {
         console.log(error);
         });
       }
@@ -51,7 +59,7 @@ export class HomeComponent implements OnInit{
           this.server.user.date_birth = body.dados.date_birth;
           this.server.user.email = body.dados.email;
           this.server.user.image_profile = body.dados.image_profile;
-          this.closeModalLoginButton.nativeElement.click();
+          this.closeModalCadastroButton.nativeElement.click();
           this._router.navigate(['/feed']);
         }).catch(error => {
           console.log(error);
@@ -122,6 +130,6 @@ export class HomeComponent implements OnInit{
         this.user = {};
         this.email ="";
         this.password ="";
-       }
+      }
       
 }

@@ -16,7 +16,7 @@ export class FeedComponent implements OnInit{
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
   public posts: any = [];
-  public users: Array<any>;
+  public user: any = [];
   public cont: number = 0;
   public id;
   public comment;
@@ -46,8 +46,6 @@ export class FeedComponent implements OnInit{
     this.posts.push(response['dados'][i]);
    }
    this.cont += 5;
-   this.users = this.posts.comments;
-
 });
   }
 
@@ -118,16 +116,40 @@ export class FeedComponent implements OnInit{
     console.log(this.id);
   }
 
-  changeInfo(accessToken, image, email, password, pswconfirm){
-    this.server.updateInfo(this.server.token, image, email, password, pswconfirm).then(response => {
+  changeListener($event) : void {
+    this.readThis($event.target);
+  }
+  
+  readThis(inputValue: any): void {
+    var file:File = inputValue.files[0];
+    var myReader:FileReader = new FileReader();
+  
+    myReader.onloadend = (e) => {
+      this.user.image = myReader.result;
+      console.log(this.user.image);
+    }
+    myReader.readAsDataURL(file);
+  }
+
+  updateInfo(user){
+    this.user.email = user.email;
+    this.user.password = user.password
+    this.server.updateInfo(this.server.token, this.user).then(response => {
+      console.log(this.user);
+    }).catch(error => {
+      console.log(error);
+    });
+   /* if (user.password.length > 0){
+    this.server.updatePsw(this.server.token, this.user).then(response => {
       console.log(response);
       this.closeModalChangeButton.nativeElement.click();
     }).catch(error => {
       console.log(error);
-    });
+    })
+    }*/
   }
 
-  delete(accessToken){
+  delete(){
     this.server.deleteAccount(this.server.token).then(response => {
       console.log(response);
       this.closeModalChangeButton.nativeElement.click();

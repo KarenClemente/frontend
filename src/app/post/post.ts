@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router'; // Added
 import { ServerProvider } from '../../providers/server';
 
@@ -8,6 +8,8 @@ import { ServerProvider } from '../../providers/server';
   styleUrls: ['./post.css']
 })
 export class PostComponent implements OnInit {
+
+  @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
   card1: boolean = true;
   card2: boolean = false;
@@ -23,6 +25,7 @@ export class PostComponent implements OnInit {
   public categories: any = [];
   public locais: any = [];
   public environments: any = [];
+  public user:any = [];
   email: any;
   password: any;
   pswconfirm: any;
@@ -158,6 +161,49 @@ export class PostComponent implements OnInit {
         console.log(this.demands.image);
       }
       myReader.readAsDataURL(file);
+    }
+
+    changePhoto($event) : void {
+      this.readThisPhoto($event.target);
+    }
+    
+    readThisPhoto(inputValue: any): void {
+      var file:File = inputValue.files[0];
+      var myReader:FileReader = new FileReader();
+    
+      myReader.onloadend = (e) => {
+        this.user.image = myReader.result;
+        console.log(this.user.image);
+      }
+      myReader.readAsDataURL(file);
+    }
+
+    updateInfo(user){
+      this.user.email = user.email;
+      this.user.password = user.password;
+      this.server.updateInfo(this.server.token, this.user).then(response => {
+        console.log(this.user);
+      }).catch(error => {
+        console.log(error);
+      });
+      if (user.password.length > 0){
+      this.server.updatePsw(this.server.token, this.user).then(response => {
+        console.log(response);
+        this.closeModalChangeButton.nativeElement.click();
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+    }
+    
+    delete(){
+      this.server.deleteAccount(this.server.token).then(response => {
+        console.log(response);
+        this.closeModalChangeButton.nativeElement.click();
+        this.logout();
+      }).catch(error => {
+        console.log(error);
+      });
     }
 
     clearInputs() {

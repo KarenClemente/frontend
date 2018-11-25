@@ -14,6 +14,7 @@ export class MadeByMeComponent implements OnInit{
 
   public posts: any = [];
   public demands: any = [];
+  public user: any = [];
   public id;
   public comment;
   email: any;
@@ -104,6 +105,49 @@ report(){
 reportId(post){
   this.id = post.demand_id;
   console.log(this.id);
+}
+
+changeListener($event) : void {
+  this.readThis($event.target);
+}
+
+readThis(inputValue: any): void {
+  var file:File = inputValue.files[0];
+  var myReader:FileReader = new FileReader();
+
+  myReader.onloadend = (e) => {
+    this.user.image = myReader.result;
+    console.log(this.user.image);
+  }
+  myReader.readAsDataURL(file);
+}
+
+updateInfo(user){
+  this.user.email = user.email;
+  this.user.password = user.password;
+  this.server.updateInfo(this.server.token, this.user).then(response => {
+    console.log(this.user);
+  }).catch(error => {
+    console.log(error);
+  });
+  if (user.password.length > 0){
+  this.server.updatePsw(this.server.token, this.user).then(response => {
+    console.log(response);
+    this.closeModalChangeButton.nativeElement.click();
+  }).catch(error => {
+    console.log(error);
+  })
+}
+}
+
+delete(){
+  this.server.deleteAccount(this.server.token).then(response => {
+    console.log(response);
+    this.closeModalChangeButton.nativeElement.click();
+    this.logout();
+  }).catch(error => {
+    console.log(error);
+  });
 }
 
 clearInputs() {
