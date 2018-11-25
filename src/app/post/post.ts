@@ -82,13 +82,14 @@ export class PostComponent implements OnInit {
     }
 
     setLocal(e): void {
-      this.demands.selectedLocal = e.id; 
+      this.demands.selectedLocal = e.selectedValueLocal.id; 
       console.log(this.demands.selectedLocal);
     }
 
     setEnvironment(e): void {
-      this.demands.selectedEnvironment = e.id; 
+      this.demands.selectedEnvironment = e.selectedValueEnvironment.id; 
       console.log(this.demands.selectedEnvironment);
+      this.setLocal(e);
     }
 
     getCard2(){

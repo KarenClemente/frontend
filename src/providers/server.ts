@@ -96,8 +96,8 @@ export class ServerProvider {
     });
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams ();
-    body.set('email', email);
-    body.set('password', password);
+    body.set('email', "varandaeng@gmail.com");
+    body.set('password', "123456");
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/sessions/login', body.toString(), options).toPromise();
@@ -266,7 +266,7 @@ export class ServerProvider {
       body.set('description', demand.description);
       body.set('type_problems_id', demand.selectedCategory);
       body.set('type_demand_id', demand.selectedType);
-      body.set('local_id', demand.selectedLocal);
+      body.set('local_id', demand.hasOwnProperty('local_id')? demand.selectedLocal: 1);
       body.set('campus_id', demand.selectedCampus);
       body.set('environment_id', demand.selectedEnvironment);
       body.set('image', demand.hasOwnProperty('image')? demand.image: '');
