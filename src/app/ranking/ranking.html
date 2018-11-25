@@ -179,7 +179,6 @@
       <div id="demo" class="collapse">
         <div style="margin-left: 60px; margin-top: 8px; padding-top: 40px;"><a  style="text-decoration: none;" routerLink="/madeByme" >Criadas</a></div>
           <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;"routerLink="/liked" >Curtidas/<br>Comentadas</a></div>
-           <div style="margin-left: 60px; margin-top: 8px;"><a  style="text-decoration: none;" routerLink="/solved">Solucionadas</a></div>
            </div>
 
     </ul>
@@ -288,6 +287,18 @@
           <div class="linha2"></div>
     </div>
     <div class="card-footer rolavel" style="height:auto;max-height:300px; background:none;" *ngIf="post.showcomments">
+      <div class="card-header textleft" *ngFor="let comment of post.answers;" style=" background: #0066cc;">
+        <div class="col-xs-2">
+          <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
+        </div>
+        <p class="borda">
+          <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
+  
+          <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
+          <br>
+          {{comment?.comment}}
+        </p>
+    </div>
       <div class="card-header textleft" *ngFor="let comment of post.comments;" style="padding: 0px;">
         <div class="col-xs-2" style="width:auto;">
           <img [src]="comment.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
@@ -301,18 +312,6 @@
 
         </p>
     </div>
-    <div class="card-header textleft" *ngFor="let comment of post.answers;">
-      <div class="col-xs-2" style="width:auto; background: #0066cc;">
-        <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
-      </div>
-      <p class="borda">
-        <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
-
-        <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
-        <br>
-        {{comment?.comment}}
-      </p>
-  </div>
   </div>
   <div class="textleft inputWithIcon icon" >
   <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
