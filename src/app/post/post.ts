@@ -82,8 +82,8 @@ export class PostComponent implements OnInit {
     }
 
     setLocal(e): void {
-      this.demands.selectedLocal = e.selectedValueLocal.id; 
-      console.log(this.demands.selectedLocal);
+      this.demands.local_id = e.selectedValueLocal.id; 
+      console.log(this.demands.local_id);
     }
 
     setEnvironment(e): void {

@@ -12,10 +12,12 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
       <li>
-      <a style="margin-bottom:0px" ><select id="campus" name="campus" [(ngModel)]="selectedValue" (click)="setCampus(selectedValue)">
+      <a style="margin-bottom:0px" ><select [(ngModel)]="selectedValue">
         <option *ngFor="let campus of campusArray" [ngValue]="campus">{{campus?.campus}}</option>
       </select>
-      </a></li>
+      </a>
+      <button class="fa fa-search" (click)="setCampus(selectedValue)"></button>
+      </li>
         <li><a routerLink="/feed">Feed</a></li>
         <li><a routerLink="/ranking">Ranking</a></li>
         <li><a (click)="logout()">Logout</a></li>

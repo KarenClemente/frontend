@@ -16,7 +16,7 @@ export class RankingComponent implements OnInit {
   public posts: any = [];
   public user: any = [];
   public campusArray: any = [];
-  public selectedValue: any ='';
+  public campus: any = '';
   public id;
   public comment;
   email: any;
@@ -26,19 +26,6 @@ export class RankingComponent implements OnInit {
   constructor(private _router: Router, public server: ServerProvider) {}
 
 ngOnInit(){
-  this.server.getRankingDemands({},this.selectedValue).then(response => {
-    console.log(response);
-    console.log(response.json());
-
-    response = response.json();
-   // this.posts = response['dados'];
-   for (var i = 0; i < response['dados'].length; i++){
-    response['dados'][i].collapsed = false;
-    this.posts.push(response['dados'][i]);
-   }
-  }).catch(error => {
-    console.log(error);
-  });
   this.server.getCampus({}).then(response => {
     console.log(response);
     console.log(response.json());
@@ -51,12 +38,25 @@ ngOnInit(){
   }).catch(error => {
     console.log(error);
   });
+  this.server.getRankingDemands({},'').then(response => {
+    console.log(response);
+    console.log(response.json());
+
+    response = response.json();
+   // this.posts = response['dados'];
+   for (var i = 0; i < response['dados'].length; i++){
+    response['dados'][i].collapsed = false;
+    this.posts.push(response['dados'][i]);
+   }
+  }).catch(error => {
+    console.log(error);
+  });
 }
 
 setCampus(e): void {
-  this.selectedValue = e.id; 
-  console.log(this.selectedValue);
-  this.server.getRankingDemands({},this.selectedValue).then(response => {
+  this.campus = e.id; 
+  console.log(this.campus);
+  this.server.getRankingDemands(this.server.token,this.campus).then(response => {
     console.log(response);
     console.log(response.json());
 

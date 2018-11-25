@@ -266,7 +266,7 @@ export class ServerProvider {
       body.set('description', demand.description);
       body.set('type_problems_id', demand.selectedCategory);
       body.set('type_demand_id', demand.selectedType);
-      body.set('local_id', demand.hasOwnProperty('local_id')? demand.selectedLocal: 1);
+      body.set('local_id', demand.hasOwnProperty('local_id')? demand.local_id: "");
       body.set('campus_id', demand.selectedCampus);
       body.set('environment_id', demand.selectedEnvironment);
       body.set('image', demand.hasOwnProperty('image')? demand.image: '');
