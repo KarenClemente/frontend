@@ -10,6 +10,10 @@ export class ServerProvider {
     public user: any ={};
     public token: any;
     public demand: any = [];
+    public problems: any =[];
+    public suggestions: any =[];
+    public liked: any=[];
+    public commented: any=[];
 
     constructor(public http: Http) {}
 

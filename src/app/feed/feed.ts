@@ -79,6 +79,20 @@ export class FeedComponent implements OnInit{
     this.getPosts();
   }
 
+  getProfileDemands(){
+    this.server.getSelectedDemands().then(response => {
+      console.log(response);
+    let body = JSON.parse(response['_body']);
+    console.log(body.dados);
+    this.server.problems = body.dados.reclamacao;
+    this.server.suggestions = body.dados.sugestao;
+    this.server.liked = body.dados.likes;
+    this.server.commented = body.dados.comentarios;
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
   like(post){  
   //Remove like
   //parseInt(post.total_likes, 10);

@@ -359,9 +359,10 @@
   </div>
   <!--/Card-->
 
+  
       <!--Card-->
       <div class="card pointer"  *ngFor="let sugestions of demands;">
-          <div class="row">
+          <div class="row" *ngIf="!sugestions.gave_like">
             <div class="col-md-4 firstcol column" (click)="sugestions.collapsed=!sugestions.collapsed">
               <img [src]="sugestions?.image_demand" class="rounded" style="width: 70px; height:70px;"  vspace="5">
             </div>

@@ -9,12 +9,13 @@ import { ServerProvider} from '../../providers/server';
 })
 export class MadeByMeComponent implements OnInit{
 
-  @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
+  @ViewChild('closeModalDeleteButton') closeModalDeleteButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
 
   public posts: any = [];
   public demands: any = [];
   public user: any = [];
+  public mine: any =[];
   public id;
   public comment;
   email: any;
@@ -32,16 +33,24 @@ ngOnInit(){
    // this.posts = response['dados'];
    for (var i = 0; i < response['dados'].reclamacao.length; i++){
     response['dados'].reclamacao[i].collapsed = false;
-    this.posts.push(response['dados'].reclamacao[i]);
+    this.mine.push(response['dados'].reclamacao[i]);
    }
    for (var i = 0; i < response['dados'].sugestao.length; i++){
     response['dados'].sugestao[i].collapsed = false;
     this.demands.push(response['dados'].sugestao[i]);
    }
+   this.posts = this.unique(this.mine.concat(this.demands));
 
     }).catch(error => {
     console.log(error);
   });
+}
+
+unique(a){
+  return a.reduce(function(p,c){
+    if (p.indexOf(c) < 0) p.push(c);
+    return p;
+  }, []);
 }
 
 like(post){  
@@ -93,10 +102,10 @@ delComment(post){
     });
 }
 
-report(){
-  this.server.reportDemand(this.id).then(response => {
+deleteDemand(){
+  this.server.deleteDemand(this.id).then(response => {
     console.log(response);
-    this.closeModalDangerButton.nativeElement.click();
+    this.closeModalDeleteButton.nativeElement.click();
   }).catch(error => {
     console.log(error);
   });
