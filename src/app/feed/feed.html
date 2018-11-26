@@ -208,16 +208,17 @@
         <div class="col-xs-2 card-header2" style="width:auto; padding:1; height: 100%;">
           <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top:8px;">
         </div>
-        <div class="row">
-        <p style="padding-top:5px;">
-          <a style="text-decoration:none;">  {{post?.name}}</a>
+        <div class="container" style="width:237.33;">
+
+          <a style="text-decoration:none;textleft">  {{post?.name}}</a>
           publicou
-          <b>{{post?.title}}</b>
-          em
-          &nbsp;<i class="fa fa-map-marker" style="color:gray;" name="pin">
+          <b>{{post?.title}}</b><br>
+
+
+          <i class="fa fa-map-marker" style="color:gray;" name="pin">
           {{post?.local}}</i>
 
-          </p>
+        </div>
 
           <div class="icon" style="text-align:center" *ngIf="post.status=='Aberta'">
             <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;">&nbsp; Aberta</i></a>
@@ -246,7 +247,7 @@
 
 
 
-      </div>
+
       <div class="card-body" style="background-color:#fff; ;">
         <img [src]="post?.image_demand" style="width:90%">
         <div style="background:none;">
