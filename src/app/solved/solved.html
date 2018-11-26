@@ -152,8 +152,8 @@
         </a>
       </div>
       <div class="card-header textleft">
-        <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
-          <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top:10px;">
+        <div class="col-xs-2 card-header2" style="width:auto; padding:1; height: 100%;">
+          <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top:10px; margin-top:8px;">
         </div>
         <p style="padding-top:5px;">
           <a>  {{post?.name}}</a>
@@ -185,11 +185,11 @@
         </div>
 
 
-    
+
       </div>
       <div class="card-body" style="background-color:#fff; ;">
         <img [src]="post?.image_demand" style="width:90%">
-        <p  style="text-align:left;">
+        <p  style="text-align:left; margin-left: 35px; margin-top: 5px;">
         {{post?.description}}
         </p>
         <div class="row">
@@ -202,7 +202,7 @@
                   {{post?.total_likes}}</a>
                 </div>
                 <div class="textl pull-right icon">
-                  <a class="pointer icon " style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments"></i>
+                  <a class="pointer icon " style="text-decoration: none; margin-right: 20px;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments"></i>
                   {{post?.comments?.length}} comentários
                   </a>
                 </div>

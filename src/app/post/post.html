@@ -123,11 +123,11 @@
                   <div class="card" style="padding-bottom:15px" *ngFor="let post of postsSimilar ">
 
                     <div class="card-header textleft">
-                      <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
-                        <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%;">
+                      <div class="col-xs-2 card-header2" style="width:auto; padding:1; height: 100%;">
+                        <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top:8px;">
                       </div>
                       <p style="padding-top:5px;">
-                        <a style="color:#0066cc" >  {{post?.name}}</a>
+                        <a style="color:#0066cc; text-decoration: none;" >  {{post?.name}}</a>
                         publicou
                         <b>{{post?.title}}</b>
                         em
@@ -155,35 +155,27 @@
                         <a class="icon pointer" title="A demanda está sendo analisada"><i class="fa fa-clock-o" aria-hidden="true" style="font-size:15px;">&nbsp; Em Análise</i></a>
                       </div>
 
-
-
-
-
-
-
-
                     </div>
                     <div class="card-body" style="background-color:#fff;         border-radius: 10px;">
-                      <img [src]="post?.image_demand" style="width:100%">
-                      <p>
+                      <img [src]="post?.image_demand" style="width:90%">
+                      <p  style="text-align:left; margin-left: 35px; margin-top: 5px;">
                       {{post?.description}}
                       </p>
                       <div class="row">
                         <div class="col-sm-12">
                       <div class="linha"></div>
                       <ul class="list-inline">
-                        <div class="pull-left">
-                            <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 0px;
-                            font-size: 15px;color:#3366BB"></i></a>
-                          <a style="
-                          font-size: 14px;color:#3366BB">  {{post?.total_likes}}</a>
+                        <div class="pull-left notLiked">
+                            <a (click)="like(post)" class="pointer" style="text-decoration: none;" [ngClass]="{'liked': post.gave_like == 'true', 'notLiked': post.gave_like == 'false'}"><i class="fa fa-thumbs-up" style="  margin-left: 20px;
+                            font-size: 15px;"></i>
+                            {{post?.total_likes}}</a>
                           </div>
-                              <div class=" pull-right"  >
-                                <i class="fa fa-comments btn btn-link " style="padding-right:0; "></i>
-                                <a class="btn btn-link " style="padding:0;color: #0066cc; margin-right: 20px;">
-                                {{post?.comments?.length}} comentários
-                                </a>
-                              </div>
+
+                          <div class="textl pull-right icon">
+                            <a class="pointer icon " style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments"></i>
+                            {{post?.comments?.length}} comentários
+                            </a>
+                          </div>
                           </ul>
 
                         </div>
