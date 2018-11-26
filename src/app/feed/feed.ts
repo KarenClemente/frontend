@@ -196,9 +196,7 @@ export class FeedComponent implements OnInit{
   }
 
   clearInputs() {
-    this.email ="";
-    this.password ="";
-    this.pswconfirm = "";
+    this.user = {};
    }
 
   logout(){

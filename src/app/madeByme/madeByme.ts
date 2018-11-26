@@ -188,9 +188,7 @@ delete(){
 }
 
 clearInputs() {
-  this.email ="";
-  this.password ="";
-  this.pswconfirm = "";
+  this.user = {};
 }
 
 logout(){
