@@ -10,12 +10,13 @@ import { ServerProvider } from '../../providers/server';
 export class PostComponent implements OnInit {
 
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
-
+  @ViewChild('closeModalDemandsButton') closeModalDemandsButton: ElementRef;
   card1: boolean = true;
   card2: boolean = false;
   card3: boolean = false;
   posts: boolean = false;
   
+  demandsSimilar: boolean = false;
   ambienteIn: boolean = true;
   public demands: any = [];
   public postsSimilar: any = [];
@@ -143,7 +144,16 @@ export class PostComponent implements OnInit {
         console.log(response.json());
 
     response = response.json();
-    this.postsSimilar.push(response['dados']);
+    if (response['dados'].length > 0){
+      this.demandsSimilar = true;
+      console.log(this.demandsSimilar);
+    for(var i=0; i < response['dados'].length; i++){
+    this.postsSimilar.push(response['dados'][i]);
+    }
+    }
+    else{
+
+    }
     }).catch(error => {
         console.log(error);
     });
@@ -151,6 +161,7 @@ export class PostComponent implements OnInit {
 
     seeDemand(post){
       this.server.demand = post.demand_id;
+      this.closeModalDemandsButton.nativeElement.click();
       this._router.navigate(['/solved']);
     }
     

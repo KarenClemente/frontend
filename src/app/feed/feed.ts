@@ -136,6 +136,7 @@ export class FeedComponent implements OnInit{
     this.user.password = user.password
     this.server.updateInfo(this.server.token, this.user).then(response => {
       console.log(this.user);
+      this.server.user.image_profile = user.image;
     }).catch(error => {
       console.log(error);
     });
@@ -147,6 +148,7 @@ export class FeedComponent implements OnInit{
       console.log(error);
     })
     }*/
+    this.closeModalChangeButton.nativeElement.click();
   }
 
   delete(){

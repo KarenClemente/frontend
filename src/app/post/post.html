@@ -110,7 +110,7 @@
   </div>
   <!--/modal editar perfil-->
   <!--Modal demandas similares-->
-  <div class="modal fade" id="Posts" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal fade" id="Posts"  tabindex="-1" role="dialog" aria-labelledby="modalLabel">
           <div class="modal-dialog" >
             <div class="modal-content" style="background-color:rgb(242,244,247)">
               <div class="modal-header ">
@@ -119,7 +119,7 @@
                   <h5>Caso não exista, continue criando sua demanda para que todos possam ter acesso!</h5>
               </div>
               <div class="modal-body">
-                <div class="mar rolavel" style="margin-top:0px">
+                <div class="mar rolavel" style="margin-top:0px" *ngIf="demandsSimilar">
                   <div class="card" style="padding-bottom:15px" *ngFor="let post of postsSimilar ">
 
                     <div class="card-header textleft">
@@ -127,7 +127,7 @@
                         <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%;">
                       </div>
                       <p style="padding-top:5px;">
-                        <a style="color:#0066cc" (click)="seeDemand(post)">  {{post?.user.name}}</a>
+                        <a style="color:#0066cc" (click)="seeDemand(post)">  {{post?.name}}</a>
                         publicou
                         <b>{{post?.title}}</b>
                         em
@@ -162,6 +162,9 @@
                     </div>
                 </div>
               </div>
+              <div class="mar rolavel" style="margin-top:0px" *ngIf="!demandsSimilar">
+                <h5>Não existem demandas similares, por favor, crie sua demanda.</h5>
+            </div>
                 <button style="margin-top: 20px;" type="button" class="btn btn-green" data-dismiss="modal" (click)="demand()">Continuar demanda</button>
             </div>
           </div>
@@ -293,11 +296,12 @@
             </div>
             <div class="card-body text-center">
                 <label for="titleDemand" style="color:#0066cc; font-size: 14px">Dê um título à sua demanda</label>
+                <br>
                 <input type="text" id="titleDemand" required maxlength="25" style="border-radius:10px" [(ngModel)]="demand.title">
                 <br>
                 <br>
                 <label for="description" style="color:#0066cc; font-size: 14px">Faça uma breve descrição sobre a demanda e o local onde está localizada (ex: sala BT15/18)</label>
-                <textarea type="text" id="description" required maxlength="150" style="width: 100%; height: 100px;" [(ngModel)]="demand.description"></textarea>
+                <textarea type="text" id="description" required maxlength="150" style="width: 100%; height: 100px;margin-top:15px; border:#0066cc solid" [(ngModel)]="demand.description"></textarea>
                 <br>
                 <br>
                 <br>

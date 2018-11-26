@@ -29,7 +29,8 @@ ngOnInit(){
     console.log(response.json());
 
     response = response.json();
-    this.posts.push(response['dados']);
+    for(var i=0; i < response['dados'].length; i++)
+    this.posts.push(response['dados'][i]);
   }).catch(error => {
     console.log(error);
   });
