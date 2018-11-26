@@ -139,7 +139,7 @@ reportId(post){
   console.log(this.id);
 }
 
-cchangeListener($event) : void {
+changeListener($event) : void {
   this.readThis($event.target);
 }
 
