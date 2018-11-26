@@ -127,7 +127,7 @@
                         <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%;">
                       </div>
                       <p style="padding-top:5px;">
-                        <a style="color:#0066cc" (click)="seeDemand(post)">  {{post?.name}}</a>
+                        <a style="color:#0066cc" >  {{post?.name}}</a>
                         publicou
                         <b>{{post?.title}}</b>
                         em
@@ -157,8 +157,12 @@
                                 </a>
                               </div>
                           </ul>
+
                         </div>
+
+<div style="text-align:center"><button style="margin-top: 15px;color:white;font-size:12px; "class="btn btn-blue" type="button" (click)="seeDemand(post)">Ver esta demanda</button></div>
                       </div>
+
                     </div>
                 </div>
               </div>
