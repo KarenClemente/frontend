@@ -9,6 +9,7 @@ export class ServerProvider {
 
     public user: any ={};
     public token: any;
+    public demand: any = [];
 
     constructor(public http: Http) {}
 
@@ -252,6 +253,39 @@ export class ServerProvider {
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/local/get', body.toString(),options).toPromise();
+  }
+  // Get similars
+  getDemandsSimilar(demand){
+    let headers = new Headers(
+      {
+          'Content-Type' : 'application/x-www-form-urlencoded',
+      });
+      let options = new RequestOptions({ headers: headers });
+      let body = new URLSearchParams();
+      body.set('Authorization', this.token);
+      body.set('type_problems_id', demand.selectedCategory);
+      body.set('type_demand_id', demand.selectedType);
+      body.set('local_id', demand.hasOwnProperty('local_id')? demand.local_id: "");
+      body.set('campus_id', demand.selectedCampus);
+      body.set('area_id', demand.selectedArea);
+      body.set('environment_id', demand.selectedEnvironment);
+
+      console.log(body.toString());
+      return this.http.post(BASE_URL + '/get-demands/similar', body.toString(), options).toPromise();
+  }
+  // See demand
+  seeDemand(){
+    let headers = new Headers(
+      {
+          'Content-Type' : 'application/x-www-form-urlencoded',
+      });
+      let options = new RequestOptions({ headers: headers });
+      let body = new URLSearchParams();
+      body.set('Authorization', this.token);
+      body.set('demands_id', this.demand);
+
+      console.log(body.toString());
+      return this.http.post(BASE_URL + '/get-demands/single', body.toString(), options).toPromise();
   }
   // Add demand
   newDemand(accessToken, demand){

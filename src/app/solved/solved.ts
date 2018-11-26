@@ -24,7 +24,7 @@ export class SolvedComponent implements OnInit{
   constructor(private _router: Router, public server: ServerProvider) {}
 
 ngOnInit(){
-  this.server.getSolvedDemands().then(response => {
+  this.server.seeDemand().then(response => {
     console.log(response);
     console.log(response.json());
 

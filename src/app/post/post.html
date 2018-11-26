@@ -124,19 +124,19 @@
 
                     <div class="card-header textleft">
                       <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
-                        <img [src]="post?.user.profilePicture" style="object-fit:cover; border-radius: 50%;">
+                        <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%;">
                       </div>
                       <p style="padding-top:5px;">
-                        <a style="color:#0066cc">  {{post?.user.name}}</a>
+                        <a style="color:#0066cc" (click)="seeDemand(post)">  {{post?.user.name}}</a>
                         publicou
                         <b>{{post?.title}}</b>
-                        em<br>
-                        <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
-                        {{post?.location}} {{post?.date}} às {{post?.hour}}
+                        em
+                        <i class="fa fa-map-marker" style="color:gray;" name="pin">
+                        {{post?.local}}</i>
                       </p>
                     </div>
                     <div class="card-body" style="background-color:#fff;         border-radius: 10px;">
-                      <img [src]="post?.image" style="width:100%">
+                      <img [src]="post?.image_demand" style="width:100%">
                       <p>
                       {{post?.description}}
                       </p>
@@ -148,39 +148,18 @@
                             <a (click)="like(post)"><i class="fa fa-thumbs-up btn btn-link" style="  margin-left: 0px;
                             font-size: 15px;color:#3366BB"></i></a>
                           <a style="
-                          font-size: 14px;color:#3366BB">  {{post?.likes}}</a>
+                          font-size: 14px;color:#3366BB">  {{post?.total_likes}}</a>
                           </div>
                               <div class=" pull-right"  >
                                 <i class="fa fa-comments btn btn-link " style="padding-right:0; "></i>
-                                <a class="btn btn-link " style="padding:0;color: #0066cc; margin-right: 20px;" (click)="post.showcomment=!post.showcomment">
-                                {{post?.commentnum}} comentários
+                                <a class="btn btn-link " style="padding:0;color: #0066cc; margin-right: 20px;">
+                                {{post?.comments?.length}} comentários
                                 </a>
                               </div>
-
-
                           </ul>
-
                         </div>
                       </div>
-
                     </div>
-                    <div class="card-footer"  style="background-color:#fff;" *ngIf="post.showcomment">
-                        <div class="linha2"></div>
-                      <div class="card-header textleft">
-                        <div class="col-xs-2" style="width:auto;">
-                          <img [src]="post?.comment.user.profilePicture" style="object-fit:cover;border-radius: 50%;">
-                        </div>
-                        <p class="borda">
-                          <a style="color:#3366BB">  {{post?.comment.user.name}}</a>
-                          <br>
-                          {{post?.comment.com}}
-                        </p>
-                    </div>
-                  </div>
-                  <div class="textleft inputWithIcon" >
-                    <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;">
-                    <i  class="fa fa-mail-forward btn btn-link " aria-hidden="true"></i>
-                  </div>
                 </div>
               </div>
                 <button style="margin-top: 20px;" type="button" class="btn btn-green" data-dismiss="modal" (click)="demand()">Continuar demanda</button>
@@ -303,7 +282,7 @@
             </select>
             <br>
             <br>
-            <button style="margin-bottom: 20px;" type="button" data-toggle="modal" data-target="#Posts" class="btn btn-green btn-block" (click)="setEnvironment(demand)">CONFIRMAR</button>
+            <button style="margin-bottom: 20px;" type="button" data-toggle="modal" data-target="#Posts" class="btn btn-green btn-block" (click)="setEnvironment(demand); getSimilars(demand)">CONFIRMAR</button>
           </div>
         </div>
       </div>

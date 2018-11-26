@@ -18,7 +18,7 @@ export class PostComponent implements OnInit {
   
   ambienteIn: boolean = true;
   public demands: any = [];
-  public postsSimilar: Array<any>;
+  public postsSimilar: any = [];
   public types: any = [];
   public campusArray: any = [];
   public areas: any = [];
@@ -137,6 +137,23 @@ export class PostComponent implements OnInit {
       });
     }
 
+    getSimilars(){
+      this.server.getDemandsSimilar(this.demands).then(response => {
+        console.log(response);
+        console.log(response.json());
+
+    response = response.json();
+    this.postsSimilar.push(response['dados']);
+    }).catch(error => {
+        console.log(error);
+    });
+    }
+
+    seeDemand(post){
+      this.server.demand = post.demand_id;
+      this._router.navigate(['/solved']);
+    }
+    
     addDemand(demand){
     this.demands.title = demand.title;
     this.demands.description = demand.description;
