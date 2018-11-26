@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
         <li><a routerLink="/feed">Feed</a></li>
         <li><a routerLink="/ranking">Ranking</a></li>
-        <li><a (click)="logout()" class="pointer">Logout</a></li>
+        <li><a data-target="#Sair" data-toggle="modal"  class="pointer">Logout</a></li>
 
       </ul>
     </div>
@@ -112,6 +112,39 @@
     </div>
   </div>
   <!--/modal editar perfil-->
+  <div class="modal fade" id="Sair" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+
+    <!-- Modal content no 1-->
+     <div class="modal-content">
+       <div class="modal-header">
+          <button #closeModalLogoutButton type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h4 class="modal-title text-center form-title" style="color: #0066cc;">Sair</h4>
+       </div>
+      <div class="modal-body">
+        <div class="login-box-body">
+          <p class="login-box-msg" style="color: grey;margin-bottom:20px">Você realmente deseja sair?</p>
+
+
+          <div class="row" style="padding-left: 30%;" >
+
+          <div class="btncolumn" style="color:white;">
+          <input style="margin-top: 0px;background-color:#cccccc" type="submit" class="btn   btn-flat"  (click)="logout()" value="Sim" >
+          </div>
+
+          <div class="btncolumn" style="color:white;">
+          <input style="margin-top: 0px; background-color: #cccccc; margin-left:20px;"type="submit" class="btn btn-flat" value="Não" data-dismiss="modal">
+
+          </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
   <!-- Sidebar-->
   <div class="s-layout__sidebar">
     <nav class="s-sidebar__nav" style="margin-top: 60px;">
@@ -196,7 +229,7 @@
       <div class="card-body" style="background-color:#fff; ;">
         <img [src]="post?.image_demand" style="width:90%">
         <div style="background:none;" >
-        <p  style="text-align:left; margin-left: 50px; margin-top: 5px; word-break: break-all;width:460px; ">
+        <p  style="text-align:left; margin-left: 50px; margin-top: 5px; overflow-wrap: break-word;width:460px; ">
         {{post?.description}}<br>
         </p>
         </div>
@@ -237,7 +270,7 @@
           <div class="col-xs-2" style="width:auto;">
             <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
           </div>
-          <p class="borda" style="word-break: break-all;width:500px;">
+          <p class="borda" style="overflow-wrap: break-word;width:500px;">
             <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
 
             <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(post)" *ngIf="comment.owner_comment == 'true'"></a>

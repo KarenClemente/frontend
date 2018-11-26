@@ -9,9 +9,10 @@ import { ServerProvider} from '../../providers/server';
 })
 
 export class RankingComponent implements OnInit {
-  
+
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
+  @ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
 
   public posts: any = [];
   public user: any = [];
@@ -24,7 +25,7 @@ export class RankingComponent implements OnInit {
   email: any;
   password: any;
   pswconfirm: any;
-     
+
   constructor(private _router: Router, public server: ServerProvider) {}
 
 ngOnInit(){
@@ -55,7 +56,7 @@ ngOnInit(){
 }
 
 setCampus(e): void {
-  this.campus = e.id; 
+  this.campus = e.id;
   console.log(e);
   this.server.getRankingDemands(this.campus).then(response => {
     console.log(response);
@@ -114,7 +115,7 @@ newComment(post, comment){
 
     this.comment = "";
 }
- 
+
 delComment(post){
   //Delete comment
     this.server.deleteComment(post.comment_id).then(response => {
@@ -123,7 +124,7 @@ delComment(post){
       console.log(error);
     });
 }
- 
+
 report(){
   this.server.reportDemand(this.id).then(response => {
     console.log(response);
@@ -160,7 +161,7 @@ updateInfo(user){
   else{
   this.user.email = user.email;
   }
-  
+
   this.server.updateInfo(this.user).then(response => {
     console.log(response);
     this.closeModalChangeButton.nativeElement.click();
@@ -224,5 +225,6 @@ clearInputs() {
 logout(){
   this.server.token = "";
   this._router.navigate(['/home']);
+  this.closeModalLogoutButton.nativeElement.click();
 }
 }

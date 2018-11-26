@@ -11,11 +11,12 @@ export class PostComponent implements OnInit {
 
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
   @ViewChild('closeModalDemandsButton') closeModalDemandsButton: ElementRef;
+  @ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
   card1: boolean = true;
   card2: boolean = false;
   card3: boolean = false;
   posts: boolean = false;
-  
+
   demandsSimilar: boolean = false;
   ambienteIn: boolean = true;
   public demands: any = [];
@@ -31,9 +32,9 @@ export class PostComponent implements OnInit {
   password: any;
   pswconfirm: any;
   public comment;
- 
+
     constructor(private _router: Router, public server: ServerProvider) {}
-    
+
     // Functions
     ngOnInit(){
       this.server.typeDemand().then(response => {
@@ -61,34 +62,34 @@ export class PostComponent implements OnInit {
         console.log(error);
       });
     }
-    
+
     setType(e): void {
-    this.demands.selectedType = e.id; 
+    this.demands.selectedType = e.id;
     console.log(this.demands.selectedType);
     }
 
     setCampus(e): void {
-      this.demands.selectedCampus = e.id; 
+      this.demands.selectedCampus = e.id;
       console.log(this.demands.selectedCampus);
     }
-    
+
     setArea(e): void {
-    this.demands.selectedArea = e.id; 
+    this.demands.selectedArea = e.id;
     console.log(this.demands.selectedArea);
     }
 
     setCategory(e): void {
-      this.demands.selectedCategory = e.id; 
+      this.demands.selectedCategory = e.id;
       console.log(this.demands.selectedCategory);
     }
 
     setLocal(e): void {
-      this.demands.local_id = e.selectedValueLocal.id; 
+      this.demands.local_id = e.selectedValueLocal.id;
       console.log(this.demands.local_id);
     }
 
     setEnvironment(e): void {
-      this.demands.selectedEnvironment = e.selectedValueEnvironment.id; 
+      this.demands.selectedEnvironment = e.selectedValueEnvironment.id;
       console.log(this.demands.selectedEnvironment);
       this.setLocal(e);
     }
@@ -164,7 +165,7 @@ export class PostComponent implements OnInit {
       this.closeModalDemandsButton.nativeElement.click();
       this._router.navigate(['/solved']);
     }
-    
+
     addDemand(demand){
     this.demands.title = demand.title;
     this.demands.description = demand.description;
@@ -180,11 +181,11 @@ export class PostComponent implements OnInit {
     changeListener($event) : void {
       this.readThis($event.target);
     }
-    
+
     readThis(inputValue: any): void {
       var file:File = inputValue.files[0];
       var myReader:FileReader = new FileReader();
-    
+
       myReader.onloadend = (e) => {
         this.demands.image = myReader.result;
         console.log(this.demands.image);
@@ -195,18 +196,18 @@ export class PostComponent implements OnInit {
     changePhoto($event) : void {
       this.readThisPhoto($event.target);
     }
-    
+
     readThisPhoto(inputValue: any): void {
       var file:File = inputValue.files[0];
       var myReader:FileReader = new FileReader();
-    
+
       myReader.onloadend = (e) => {
         this.user.image = myReader.result;
         console.log(this.user.image);
       }
       myReader.readAsDataURL(file);
     }
-  
+
     updateInfo(user){
       if(typeof user.email == 'undefined' || user.email == ''){
         this.user.email = this.server.user.email;
@@ -214,7 +215,7 @@ export class PostComponent implements OnInit {
       else{
       this.user.email = user.email;
       }
-      
+
       this.server.updateInfo(this.user).then(response => {
         console.log(response);
         this.closeModalChangeButton.nativeElement.click();
@@ -228,7 +229,7 @@ export class PostComponent implements OnInit {
         this.server.user.image_profile = this.user.image;
       }
     }
-    
+
     verifyPsw(user){
       if(user.password != user.pswconfirm || typeof user.password == 'undefined'){
         alert('Senhas devem ser iguais e conter no mínimo 6 caracteres')
@@ -237,7 +238,7 @@ export class PostComponent implements OnInit {
         this.updatePsw(user);
       }
     }
-    
+
     updatePsw(user){
       this.server.updatePsw(user.password).then(response => {
         console.log(response);
@@ -246,14 +247,14 @@ export class PostComponent implements OnInit {
       }).catch(error => {
         console.log(error);
         let body = JSON.parse(error['_body']);
-  
+
             switch(body.erro.update){
-  
+
               case 3:{
                 alert("Senha deve ter no mínimo 6 caracteres");
                 break;
               }
-  
+
               default:{
                 alert("Erro. Tente novamente.");
                 break;
@@ -261,7 +262,7 @@ export class PostComponent implements OnInit {
             }
       })
     }
-    
+
     delete(){
       this.server.deleteAccount().then(response => {
         console.log(response);
@@ -279,6 +280,7 @@ export class PostComponent implements OnInit {
     logout(){
       this.server.token = "";
       this._router.navigate(['/home']);
+      this.closeModalLogoutButton.nativeElement.click();
     }
     // Seleção de cards
     proxcard(){
@@ -292,7 +294,7 @@ export class PostComponent implements OnInit {
       this.card2 = !this.card2;
       this.card3 = !this.card3;
     }
-  
+
     demand(){
       this.card3 = !this.card3;
       this.posts = !this.posts;

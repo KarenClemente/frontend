@@ -11,6 +11,7 @@ export class LikedComponent implements OnInit{
 
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
+  @ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
 
   public posts: any = [];
   public demands: any = [];
@@ -20,14 +21,14 @@ export class LikedComponent implements OnInit{
   email: any;
   password: any;
   pswconfirm: any;
-  
+
     constructor(private _router: Router, public server: ServerProvider) {}
 
   ngOnInit(){
     this.server.getSelectedDemands().then(response => {
       console.log(response);
       console.log(response.json());
-  
+
       response = response.json();
      // this.posts = response['dados'];
      for (var i = 0; i < response['dados'].likes.length; i++){
@@ -38,13 +39,13 @@ export class LikedComponent implements OnInit{
       response['dados'].comentarios[i].collapsed = false;
       this.demands.push(response['dados'].comentarios[i]);
      }
-  
+
       }).catch(error => {
       console.log(error);
     });
   }
 
-  like(post){  
+  like(post){
     post.total_likes = Number(post.total_likes);
   //Remove like
   if (post.gave_like == "true"){
@@ -83,7 +84,7 @@ export class LikedComponent implements OnInit{
 
       this.comment = "";
   }
-   
+
   delComment(post){
     //Delete comment
       this.server.deleteComment(post.comment_id).then(response => {
@@ -92,7 +93,7 @@ export class LikedComponent implements OnInit{
         console.log(error);
       });
   }
-   
+
   report(){
     this.server.reportDemand(this.id).then(response => {
       console.log(response);
@@ -106,15 +107,15 @@ export class LikedComponent implements OnInit{
     this.id = post.demand_id;
     console.log(this.id);
   }
- 
+
   changeListener($event) : void {
     this.readThis($event.target);
   }
-  
+
   readThis(inputValue: any): void {
     var file:File = inputValue.files[0];
     var myReader:FileReader = new FileReader();
-  
+
     myReader.onloadend = (e) => {
       this.user.image = myReader.result;
       console.log(this.user.image);
@@ -129,7 +130,7 @@ export class LikedComponent implements OnInit{
     else{
     this.user.email = user.email;
     }
-    
+
     this.server.updateInfo(this.user).then(response => {
       console.log(response);
       this.closeModalChangeButton.nativeElement.click();
@@ -143,7 +144,7 @@ export class LikedComponent implements OnInit{
       this.server.user.image_profile = this.user.image;
     }
   }
-  
+
   verifyPsw(user){
     if(user.password != user.pswconfirm || typeof user.password == 'undefined'){
       alert('Senhas devem ser iguais e conter no mínimo 6 caracteres')
@@ -152,7 +153,7 @@ export class LikedComponent implements OnInit{
       this.updatePsw(user);
     }
   }
-  
+
   updatePsw(user){
     this.server.updatePsw(user.password).then(response => {
       console.log(response);
@@ -194,5 +195,6 @@ export class LikedComponent implements OnInit{
   logout(){
     this.server.token = "";
     this._router.navigate(['/home']);
+    this.closeModalLogoutButton.nativeElement.click();
   }
 }

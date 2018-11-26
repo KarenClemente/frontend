@@ -14,7 +14,7 @@ export class FeedComponent implements OnInit{
 
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
-
+@ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
   public posts: any = [];
   public user: any = [];
   public cont: number = 0;
@@ -37,7 +37,7 @@ export class FeedComponent implements OnInit{
       console.log(response);
       console.log(response.json());
       response = response.json();
-  
+
       for (var i = 0; i < response['dados'].length; i++){
         this.statusOptions.push(response['dados'][i]);
        }
@@ -47,7 +47,7 @@ export class FeedComponent implements OnInit{
     });
     this.getPosts();
   }
-  
+
   onScroll (){
     console.log('scrolled!!')
     this.getPosts();
@@ -71,7 +71,7 @@ export class FeedComponent implements OnInit{
   }
 
   setStatus(e): void {
-    this.status = e.id; 
+    this.status = e.id;
     console.log(e);
     this.posts = [];
     this.cont = 0;
@@ -79,7 +79,7 @@ export class FeedComponent implements OnInit{
   }
 
   setSearch(e): void {
-    this.search = e; 
+    this.search = e;
     console.log(e);
     this.posts = [];
     this.cont = 0;
@@ -100,7 +100,7 @@ export class FeedComponent implements OnInit{
     });
   }
 
-  like(post){  
+  like(post){
   //Remove like
   //parseInt(post.total_likes, 10);
   post.total_likes = Number(post.total_likes);
@@ -140,7 +140,7 @@ export class FeedComponent implements OnInit{
 
       this.comment = "";
   }
-   
+
   delComment(post){
     //Delete comment
     console.log(post);
@@ -155,7 +155,7 @@ export class FeedComponent implements OnInit{
         console.log(error);
       });
   }
-  
+
   report(){
     this.server.reportDemand(this.id).then(response => {
       console.log(response);
@@ -173,11 +173,11 @@ export class FeedComponent implements OnInit{
   changeListener($event) : void {
     this.readThis($event.target);
   }
-  
+
   readThis(inputValue: any): void {
     var file:File = inputValue.files[0];
     var myReader:FileReader = new FileReader();
-  
+
     myReader.onloadend = (e) => {
       this.user.image = myReader.result;
       console.log(this.user.image);
@@ -192,7 +192,7 @@ export class FeedComponent implements OnInit{
     else{
     this.user.email = user.email;
     }
-    
+
     this.server.updateInfo(this.user).then(response => {
       console.log(response);
       this.closeModalChangeButton.nativeElement.click();
@@ -215,7 +215,7 @@ export class FeedComponent implements OnInit{
       this.updatePsw(user);
     }
   }
-  
+
   updatePsw(user){
     this.server.updatePsw(user.password).then(response => {
       console.log(response);
@@ -258,6 +258,6 @@ export class FeedComponent implements OnInit{
     this.server.token = "";
     this._router.navigate(['/home']);
     console.log(this.server.token)
+    this.closeModalLogoutButton.nativeElement.click();
   }
 }
-  

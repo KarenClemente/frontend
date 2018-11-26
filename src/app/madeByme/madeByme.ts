@@ -11,6 +11,7 @@ export class MadeByMeComponent implements OnInit{
 
   @ViewChild('closeModalDeleteButton') closeModalDeleteButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
+  @ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
 
   public posts: any = [];
   public demands: any = [];
@@ -21,7 +22,7 @@ export class MadeByMeComponent implements OnInit{
   email: any;
   password: any;
   pswconfirm: any;
-  
+
     constructor(private _router: Router, public server: ServerProvider) {}
 
 ngOnInit(){
@@ -53,7 +54,7 @@ unique(a){
   }, []);
 }
 
-like(post){  
+like(post){
   post.total_likes = Number(post.total_likes);
 //Remove like
 if (post.gave_like == "true"){
@@ -92,7 +93,7 @@ newComment(post, comment){
 
     this.comment = "";
 }
- 
+
 delComment(post){
   //Delete comment
     this.server.deleteComment(post.comment_id).then(response => {
@@ -138,7 +139,7 @@ updateInfo(user){
   else{
   this.user.email = user.email;
   }
-  
+
   this.server.updateInfo(this.user).then(response => {
     console.log(response);
     this.closeModalChangeButton.nativeElement.click();
@@ -203,5 +204,6 @@ clearInputs() {
 logout(){
   this.server.token = "";
   this._router.navigate(['/home']);
+  this.closeModalLogoutButton.nativeElement.click();
 }
 }
