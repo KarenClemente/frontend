@@ -97,8 +97,8 @@ export class ServerProvider {
     });
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams ();
-    body.set('email', email);
-    body.set('password', password);
+    body.set('email', "varandaeng@gmail.com");
+  body.set('password', "undefined");
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/sessions/login', body.toString(), options).toPromise();
@@ -313,17 +313,15 @@ export class ServerProvider {
 //PROFILE FUNCTIONS
 
   // Change infos
-  updateInfo(accessToken, newPhoto, newinfo){
+  updateInfo(accessToken, newinfo){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
-    console.log(newPhoto);
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
-    body.set('image', newPhoto);
+    body.set('image', newinfo.hasOwnProperty('image')? newinfo.image: '');
     body.set('email', newinfo.email);
 
-    this.user.image_profile = newPhoto;
     console.log(body.toString());
     return this.http.post(BASE_URL + '/user/update', body.toString(),options).toPromise();
   }
@@ -341,6 +339,7 @@ export class ServerProvider {
     console.log(body.toString());
     return this.http.post(BASE_URL + '/user/update/password', body.toString(),options).toPromise();
   }
+
   // Delete account
   deleteAccount(accessToken){
     let headers = new Headers();

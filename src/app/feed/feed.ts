@@ -20,7 +20,6 @@ export class FeedComponent implements OnInit{
   public cont: number = 0;
   public id;
   public comment;
-  public image: any = this.server.user.image_profile;
   email: any;
   password: any;
   pswconfirm: any;
@@ -29,7 +28,6 @@ export class FeedComponent implements OnInit{
 
   ngOnInit(){
     this.getPosts();
-    console.log(this.image);
   }
   
   onScroll (){
@@ -126,14 +124,13 @@ export class FeedComponent implements OnInit{
     var myReader:FileReader = new FileReader();
   
     myReader.onloadend = (e) => {
-      this.image = myReader.result;
-      console.log(this.image);
+      this.user.image = myReader.result;
+      console.log(this.user.image);
     }
     myReader.readAsDataURL(file);
   }
 
   updateInfo(user){
-    console.log(this.image);
     if(typeof user.email == 'undefined' || user.email == ''){
       this.user.email = this.server.user.email;
     }
@@ -141,13 +138,29 @@ export class FeedComponent implements OnInit{
     this.user.email = user.email;
     }
     
-    this.server.updateInfo(this.server.token, this.image, this.user).then(response => {
+    this.server.updateInfo(this.server.token, this.user).then(response => {
       console.log(response);
       this.closeModalChangeButton.nativeElement.click();
     }).catch(error => {
       console.log(error);
     });
+    if(typeof this.user.image == 'undefined' || this.user.image == ''){
+      this.server.user.image_profile = this.server.user.image_profile;
+    }
+    else{
+      this.server.user.image_profile = this.user.image;
+    }
   }
+
+  verifyPsw(user){
+    if(user.password != user.pswconfirm || typeof user.password == 'undefined'){
+      alert('Senhas devem ser iguais e conter no mínimo 6 caracteres')
+    }
+    else{
+      this.updatePsw(user);
+    }
+  }
+  
   updatePsw(user){
     this.server.updatePsw(this.server.token, user.password).then(response => {
       console.log(response);
@@ -155,6 +168,20 @@ export class FeedComponent implements OnInit{
       this.closeModalChangeButton.nativeElement.click();
     }).catch(error => {
       console.log(error);
+      let body = JSON.parse(error['_body']);
+
+          switch(body.erro.update){
+
+            case 3:{
+              alert("Senha deve ter no mínimo 6 caracteres");
+              break;
+            }
+
+            default:{
+              alert("Erro. Tente novamente.");
+              break;
+            }
+          }
     })
   }
 
