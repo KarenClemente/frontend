@@ -20,7 +20,10 @@ export class FeedComponent implements OnInit{
   public cont: number = 0;
   public id;
   public comment;
+  public comment_id;
   public statusOptions: any = [];
+  public usersComments: any = [];
+  public adminComments: any = [];
   public status: any = '';
   public search: any = '';
   email: any;
@@ -56,9 +59,13 @@ export class FeedComponent implements OnInit{
     console.log(response.json());
 
     response = response.json();
-    for (var i = 1; i < response['dados'].length; i++){
+    for (var i = 0; i < response['dados'].length; i++){
     this.posts.push(response['dados'][i]);
+    this.usersComments.push(response['dados'][i].comments);
+    this.adminComments.push(response['dados'][i].answers);
    }
+   console.log(this.usersComments);
+   console.log(this.adminComments);
    this.cont += 5;
 });
   }
@@ -123,10 +130,10 @@ export class FeedComponent implements OnInit{
 
   newComment(post, comment){
     //Add comment
-      this.server.commentDemand(post.demand_id,comment).then(response => {
+      this.server.commentDemand(post.demand_id, comment).then(response => {
         console.log(response);
-       // post.comments.length += 1;
-       post.comments.push({name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment});
+        this.comment_id = response['_body'].dados.comment_id;
+        post.comments.push({comment_id: this.comment_id, name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment, owner_comment:"true"});
       }).catch(error => {
         console.log(error);
       });
@@ -136,11 +143,14 @@ export class FeedComponent implements OnInit{
    
   delComment(post){
     //Delete comment
-      this.server.deleteComment(post.comment_id).then(response => {
+    console.log(post);
+      this.server.deleteComment(post.comments.comment_id).then(response => {
         console.log(response);
-        post.comments = post.comments.filter(obj => {
-          return obj.comment_id !== post.comments.comment_id;
-        });
+        for (var i = this.posts.comments.length - 1; i >= 0; --i) {
+          if (this.posts[i].comments.comment_id == post.comments.comment_id){
+            post.splice(i,1);
+          }
+        }
       }).catch(error => {
         console.log(error);
       });

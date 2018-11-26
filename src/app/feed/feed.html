@@ -211,7 +211,7 @@
           <b>{{post?.title}}</b><br>
 
 
-          <i class="fa fa-map-marker" style="color:gray;" name="pin">
+          <i class="fa fa-map-marker" style="color:gray" name="pin">
           {{post?.local}}</i>
 
         </div>
@@ -278,21 +278,21 @@
       <p class="borda"  style=" background: #0066cc; color:white;">
         <a class="pointer" style="text-decoration: none;"></a>{{comment?.name}}
 
-        <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
+        <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(post)" *ngIf="comment.owner_comment == 'true'"></a>
         <br>
         {{comment?.comment}}
       </p>
   </div>
-        <div class="card-header textleft" *ngFor="let comment of post.comments;" style="padding: 0px;">
+        <div class="card-header textleft" *ngFor="let comment of post.comments" style="padding: 0px;">
           <div class="col-xs-2" style="width:auto;">
-            <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
+            <img [src]="comment.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
           </div>
           <p class="borda" style="word-break: break-all;width:500px;">
-            <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
+            <a class="pointer" style="text-decoration: none;">{{comment.name}}</a>
 
             <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(post)" *ngIf="comment.owner_comment == 'true'"></a>
             <br>
-            {{comment?.comment}}
+            {{comment.comment}}
           </p>
       </div>
 
