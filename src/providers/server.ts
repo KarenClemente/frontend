@@ -97,8 +97,8 @@ export class ServerProvider {
     });
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams ();
-    body.set('email', "varandaeng@gmail.com");
-  body.set('password', "undefined");
+    body.set('email', email);
+    body.set('password', password);
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/sessions/login', body.toString(), options).toPromise();
