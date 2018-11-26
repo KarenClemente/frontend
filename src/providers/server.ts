@@ -313,29 +313,30 @@ export class ServerProvider {
 //PROFILE FUNCTIONS
 
   // Change infos
-  updateInfo(accessToken, newinfo){
+  updateInfo(accessToken, newPhoto, newinfo){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
-
+    console.log(newPhoto);
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
-    body.set('image',newinfo.hasOwnProperty('image')? newinfo.image: this.user.image_profile);
-    body.set('email', newinfo.hasOwnProperty('email')? newinfo.email: this.user.email);
+    body.set('image', newPhoto);
+    body.set('email', newinfo.email);
 
+    this.user.image_profile = newPhoto;
     console.log(body.toString());
     return this.http.post(BASE_URL + '/user/update', body.toString(),options).toPromise();
   }
 
   // Change Password
-  updatePsw(accessToken, user){
+  updatePsw(accessToken, password){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
-    body.set('password',user.password);
+    body.set('password',password);
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/user/update/password', body.toString(),options).toPromise();
