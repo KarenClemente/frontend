@@ -34,8 +34,8 @@
             </div>
             <p class="login-box-msg" style="color: grey;">Insira uma foto</p>
             <form action="#" method="post" name="changeInfo" style="width: 350px; margin-left:-20px;" >
-            <input class="form-control" type="file" accept="image/*" (change)="changePhoto($event)"/>
-            <div class="form-group" style="margin-bottom:0rem">
+              <input class="form-control" type="file" name="image" accept="image/*" (change)="changePhoto($event)" [(ngModel)]="user.image"/>
+              <div class="form-group" style="margin-bottom:0rem">
              <!----- username -------------->
              <label for="nome" style="font-size: 1.3rem">Nome completo:</label><br>
              <p style="font-size: 1.3rem">{{server.user.name}}</p>
@@ -78,6 +78,9 @@
             <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
             As senhas devem ser iguais<br>
             </span>
+            <a  (click)="verifyPsw(user)">
+              <label style="font-size: 1.3rem; color:#717f86; margin-top: 4px;" class="pointer">Alterar Senha</label></a>
+              <br>
 
             <a  href="#excluir" data-toggle="collapse">
             <label style="font-size: 1.3rem; color:#717f86; margin-top: 4px;" class="pointer">Excluir conta</label></a>

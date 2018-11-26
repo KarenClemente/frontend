@@ -17,7 +17,6 @@ export class MadeByMeComponent implements OnInit{
   public user: any = [];
   public id;
   public comment;
-  public image: any = this.server.user.image_profile;
   email: any;
   password: any;
   pswconfirm: any;
@@ -117,14 +116,13 @@ readThis(inputValue: any): void {
   var myReader:FileReader = new FileReader();
 
   myReader.onloadend = (e) => {
-    this.image = myReader.result;
-    console.log(this.image);
+    this.user.image = myReader.result;
+    console.log(this.user.image);
   }
   myReader.readAsDataURL(file);
 }
 
 updateInfo(user){
-  console.log(this.image);
   if(typeof user.email == 'undefined' || user.email == ''){
     this.user.email = this.server.user.email;
   }
@@ -132,20 +130,51 @@ updateInfo(user){
   this.user.email = user.email;
   }
   
-  this.server.updateInfo(this.server.token, this.image, this.user).then(response => {
-    console.log(response);
-  }).catch(error => {
-    console.log(error);
-  });
- /* if (user.password.length > 0){
-  this.server.updatePsw(this.server.token, this.user).then(response => {
+  this.server.updateInfo(this.server.token, this.user).then(response => {
     console.log(response);
     this.closeModalChangeButton.nativeElement.click();
   }).catch(error => {
     console.log(error);
+  });
+  if(typeof this.user.image == 'undefined' || this.user.image == ''){
+    this.server.user.image_profile = this.server.user.image_profile;
+  }
+  else{
+    this.server.user.image_profile = this.user.image;
+  }
+}
+
+verifyPsw(user){
+  if(user.password != user.pswconfirm || typeof user.password == 'undefined'){
+    alert('Senhas devem ser iguais e conter no mínimo 6 caracteres')
+  }
+  else{
+    this.updatePsw(user);
+  }
+}
+
+updatePsw(user){
+  this.server.updatePsw(this.server.token, user.password).then(response => {
+    console.log(response);
+    alert('Senha alterada com sucesso.')
+    this.closeModalChangeButton.nativeElement.click();
+  }).catch(error => {
+    console.log(error);
+    let body = JSON.parse(error['_body']);
+
+        switch(body.erro.update){
+
+          case 3:{
+            alert("Senha deve ter no mínimo 6 caracteres");
+            break;
+          }
+
+          default:{
+            alert("Erro. Tente novamente.");
+            break;
+          }
+        }
   })
-  }*/
-  this.closeModalChangeButton.nativeElement.click();
 }
 
 delete(){
@@ -159,9 +188,7 @@ delete(){
 }
 
 clearInputs() {
-  this.email ="";
-  this.password ="";
-  this.pswconfirm = "";
+  this.user = {};
 }
 
 logout(){
