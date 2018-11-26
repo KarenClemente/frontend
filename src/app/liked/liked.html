@@ -13,8 +13,7 @@
       <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
         <li><a routerLink="/feed">Feed</a></li>
         <li><a routerLink="/ranking">Ranking</a></li>
-        <li><a class="pointer"(click)="logout()">Logout</a></li>
-
+        <li><a (click)="logout()" class="pointer">Logout</a></li>
 
       </ul>
     </div>
@@ -253,7 +252,7 @@
       <div class="linha"></div>
       <div class="pull-right icon">
         <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)" class="icon" >
-          <i class="fa fa-ellipsis-v pointer" style="font-size:20px; padding: 15px;padding-top: 10px;"></i>
+          <i class="fa fa-ellipsis-v pointer" style="font-size:20px; padding: 15px;padding-top: 5px;"></i>
         </a>
       </div>
       <div class="card-header textleft">
@@ -420,7 +419,7 @@
           <div class="linha"></div>
           <div class="pull-right icon">
             <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)" class="icon" >
-              <i class="fa fa-ellipsis-v pointer" style="font-size:20px; padding: 15px;padding-top: 10px;"></i>
+              <i class="fa fa-ellipsis-v pointer" style="font-size:20px; padding: 15px;padding-top: 5px;"></i>
             </a>
           </div>
           <div class="card-header textleft">

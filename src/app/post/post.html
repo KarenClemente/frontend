@@ -115,9 +115,9 @@
   <div class="modal fade" id="Posts"  tabindex="-1" role="dialog" aria-labelledby="modalLabel">
           <div class="modal-dialog" >
             <div class="modal-content" style="background-color:rgb(242,244,247)">
-              <div class="modal-header ">
+              <div class="modal-header " style="text-align:center;">
                   <button #closeModalDemandsButton type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h3 class="modal-title" id="modalLabel">Verifique se existe alguma demanda similar a sua!</h3>
+                  <h3 class="modal-title" id="modalLabel"> Verifique se existe alguma demanda similar a sua!</h3>
                   <h5>Caso não exista, continue criando sua demanda para que todos possam ter acesso!</h5>
               </div>
               <div class="modal-body">
@@ -188,10 +188,11 @@
                     </div>
                 </div>
               </div>
-              <div class="mar rolavel" style="margin-top:0px" *ngIf="!demandsSimilar">
+              <div class="mar rolavel" style="margin-top:0px;text-align:center" *ngIf="!demandsSimilar">
                 <h5>Não existem demandas similares, por favor, crie sua demanda.</h5>
             </div>
-                <button style="margin-top: 20px;" type="button" class="btn btn-green" data-dismiss="modal" (click)="demand()">Continuar demanda</button>
+              <div style="text-align:center">
+                <button style="margin-top: 20px;" type="button" class="btn btn-green" data-dismiss="modal" (click)="demand()" >Continuar demanda</button></div>
             </div>
           </div>
                 <!--/Card-->
