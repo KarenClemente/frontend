@@ -67,7 +67,23 @@ export class FeedComponent implements OnInit{
    console.log(this.usersComments);
    console.log(this.adminComments);
    this.cont += 5;
-});
+}).catch(error => {
+  console.log(error);
+          let body = JSON.parse(error['_body']);
+
+          switch(body.erro.demandas){
+
+            case 8:{
+              alert("Dados incorretos");
+              break;
+            }
+
+            default:{
+              alert("Ainda nao existem publicações no SOSUNB!");
+              break;
+            }
+          }
+        });
   }
 
   setStatus(e): void {
