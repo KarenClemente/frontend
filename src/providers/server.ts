@@ -265,7 +265,7 @@ export class ServerProvider {
       body.set('Authorization', this.token);
       body.set('type_problems_id', demand.selectedCategory);
       body.set('type_demand_id', demand.selectedType);
-      body.set('local_id', demand.hasOwnProperty('local_id')? demand.local_id: "");
+      body.set('local_id', demand.hasOwnProperty('local_id')? demand.local_id: demand.selectedArea);
       body.set('campus', demand.selectedCampus);
       body.set('area_id', demand.selectedArea);
       body.set('environment', demand.selectedEnvironment);
@@ -300,7 +300,7 @@ export class ServerProvider {
       body.set('description', demand.description);
       body.set('type_problems_id', demand.selectedCategory);
       body.set('type_demand_id', demand.selectedType);
-      body.set('local_id', demand.hasOwnProperty('local_id')? demand.local_id: "");
+      body.set('local_id', demand.hasOwnProperty('local_id')? demand.local_id: demand.selectedArea);
       body.set('campus_id', demand.selectedCampus);
       body.set('environment_id', demand.selectedEnvironment);
       body.set('image', demand.hasOwnProperty('image')? demand.image: '');
