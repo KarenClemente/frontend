@@ -16,7 +16,7 @@
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Campus
       <span class="caret"></span></a>
       <ul class="dropdown-menu" style="background-color: #0066cc;">
-        <li><a *ngFor="let campus of campusArray" value="campus" (click)="setCampus(campus)">{{campus?.campus}}</a></li>
+        <li><a *ngFor="let campus of campusArray" value="campus" (click)="setCampus(campus)" class="pointer">{{campus?.campus}}</a></li>
       </ul>
     </li>
         <li><a routerLink="/feed">Feed</a></li>
