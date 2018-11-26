@@ -111,6 +111,40 @@
     </div>
   </div>
   <!--/modal editar perfil-->
+  <!--modal deletar demanda-->
+  <div class="modal fade" id="modalLabel" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+       <div class="modal-content">
+         <div class="modal-header">
+            <button #closeModalDeleteButton type="button" class="close" data-dismiss="modal">&times;</button>
+
+          <h4 class="modal-title text-center form-title" style="color: #0066cc;">Excluir Demanda</h4>
+         </div>
+        <div class="modal-body">
+          <div class="login-box-body">
+            <p class="login-box-msg" style="color: grey;">Esta publicação será excluída.<br>
+            Deseja continuar?</p>
+
+
+            <div class="row" style="padding-left: 30%;" >
+
+            <div class="btncolumn" style="color:white;">
+            <input style="margin-top: 0px;background-color: #cccccc"type="submit" class="btn   btn-flat" value="Sim" (click)="deleteDemand()">
+            </div>
+
+            <div class="btncolumn" style="color:white;">
+            <input style="margin-top: 0px; background-color: #cccccc; margin-left:20px;"type="submit" class="btn btn-flat" value="Não" data-dismiss="modal">
+
+            </div>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+ <!--/modal excluir demanda-->
   <!-- Sidebar-->
   <div class="s-layout__sidebar">
     <nav class="s-sidebar__nav" style="margin-top: 60px;">
@@ -315,6 +349,7 @@
       </div>
     </div>
     </div>
+<<<<<<< HEAD
     <!--/Card-->
 
 
@@ -476,44 +511,10 @@
       </div>
     </div>
     </div>
+=======
+>>>>>>> 085e895d57ef4f84479cbfbd97e53904cdd2018e
     </div>
     </div>
     <!--/Card-->
-    <!--/modal editar perfil-->
-     <div class="modal fade" id="modalLabel" role="dialog" aria-hidden="true">
-       <div class="modal-dialog modal-sm">
-
-       <!-- Modal content no 1-->
-        <div class="modal-content">
-          <div class="modal-header">
-             <button #closeModalDangerButton type="button" class="close" data-dismiss="modal">&times;</button>
-
-           <h4 class="modal-title text-center form-title" style="color: #0066cc;">Excluir Demanda</h4>
-          </div>
-         <div class="modal-body">
-           <div class="login-box-body">
-             <p class="login-box-msg" style="color: grey;">Esta publicação será excluída.<br>
-             Deseja continuar?</p>
-
-
-             <div class="row" style="padding-left: 30%;" >
-
-             <div class="btncolumn" style="color:white;">
-             <input style="margin-top: 0px;background-color: #cccccc"type="submit" class="btn   btn-flat" value="Sim" (click)="report()">
-             </div>
-
-             <div class="btncolumn" style="color:white;">
-             <input style="margin-top: 0px; background-color: #cccccc; margin-left:20px;"type="submit" class="btn btn-flat" value="Não" data-dismiss="modal">
-
-             </div>
-             </div>
-
-             </div>
-           </div>
-         </div>
-       </div>
-
-     </div>
-  <!--/modal excluir demanda-->
-
+  
 <script src="madeByme.ts"></script>
