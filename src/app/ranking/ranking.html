@@ -11,17 +11,14 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
-      <li>
-      <a style="margin-bottom:0px;" >
 
-        <select style=" border-radius: 18px 0px 0px 18px;">
-        <option *ngFor="let campus of campusArray" [ngValue]="campus">{{campus?.campus}}</option>
-
-      </select>
-<a class="caixa"style="padding-top  :1px;padding-right  :7px;padding-bottom  :1px"><button style="background-color:#fff;color:rgb(101,191,91);border-width:0px;height:20px;margin-bottom:7px;"class="fa fa-search" ></button></a>
-      </a>
-
-      </li>
+      <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Campus
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu" style="background-color: #0066cc;">
+        <li><a *ngFor="let campus of campusArray" >{{campus?.campus}}</a></li>
+      </ul>
+    </li>
         <li><a routerLink="/feed">Feed</a></li>
         <li><a routerLink="/ranking">Ranking</a></li>
         <li><a (click)="logout()">Logout</a></li>
@@ -297,7 +294,7 @@
         </div>
         <p class="borda">
           <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
-  
+
           <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
           <br>
           {{comment?.comment}}
