@@ -404,9 +404,9 @@
 </div>
 <div class="container" *ngIf="!showImg">
   <div class="row">
-    <div class="col-md-4 col-sm-6 padleft-right" *ngFor="let post of posts" style="width:375px; height:252.67;">
-      <figure class="imghvr-fold-up" style="width:370px; height:246.67;">
-        <img [src]="post?.image_demand" class="img-responsive" style="object-fit: cover;width:370px; height:100%;">
+    <div class="col-md-4 col-sm-6 padleft-right" *ngFor="let post of posts" style="width:375px; height:252.67px;object-fit: cover;margin-bottom:4px;">
+      <figure class="imghvr-fold-up" >
+        <img [src]="post?.image_demand" class="img-responsive" style="object-fit: cover;width:370px; height:252.67px;">
         <figcaption>
           <h3>{{post?.title}}</h3>
           <p>{{post?.description}}</p>
