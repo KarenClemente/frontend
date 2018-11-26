@@ -307,7 +307,7 @@ export class ServerProvider {
 
       console.log(body.toString());
       return this.http.post(BASE_URL + '/demands/add', body.toString(), options).toPromise();
-   
+
   }
 
 //PROFILE FUNCTIONS

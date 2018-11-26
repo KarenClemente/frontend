@@ -6,7 +6,7 @@ import { ServerProvider } from '../../providers/server';
   selector: 'app-home',
   templateUrl: './home.html',
   styleUrls: ['./home.css']
-  
+
 })
 export class HomeComponent implements OnInit{
 
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit{
   @ViewChild('closeModalPswButton') closeModalPswButton: ElementRef;
   @ViewChild('closeModalTermsButton') closeModalTermsButton: ElementRef;
 
-  
+
   email: any;
   password: any;
   user: any = {};
@@ -28,39 +28,32 @@ export class HomeComponent implements OnInit{
       this.server.getSolvedDemands().then(response => {
         console.log(response);
         console.log(response.json());
-    
+
         response = response.json();
         if (response['dados'].length > 5){
           this.showImg = false;
-        
+
         for (var i = 0; i < response['dados'].length; i++){
           this.posts.push(response['dados'][i]);
          }
         }
         else{
-        
+
         }
         }).catch(error => {
         console.log(error);
         });
       }
-      
+
       confirm(user){
 
         this.server.createUser(user).then(response => {
           console.log(response);
           console.log(response["_body"]);
-          let body = JSON.parse(response['_body']);
-          console.log(body.dados.name);
-          this.server.token = body.token;
-          this.server.user.name = body.dados.name;
-          this.server.user.registry = body.dados.registry;
-          this.server.user.identity = body.dados.identity;
-          this.server.user.date_birth = body.dados.date_birth;
-          this.server.user.email = body.dados.email;
-          this.server.user.image_profile = body.dados.image_profile;
           this.closeModalCadastroButton.nativeElement.click();
-          this._router.navigate(['/feed']);
+        this.signin(user.email,user.password);
+
+        
         }).catch(error => {
           console.log(error);
           let body = JSON.parse(error['_body']);
@@ -131,5 +124,5 @@ export class HomeComponent implements OnInit{
         this.email ="";
         this.password ="";
       }
-      
+
 }
