@@ -134,6 +134,34 @@
                         <i class="fa fa-map-marker" style="color:gray;" name="pin">
                         {{post?.local}}</i>
                       </p>
+
+                      <div class="icon" style="text-align:center" *ngIf="post.status=='Aberta'">
+                        <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;">&nbsp; Aberta</i></a>
+                      </div>
+
+                      <div class="icon" style="text-align:center" *ngIf="post.status=='Reclassificada'">
+                        <a class="icon pointer" title="Demanda Reclassificada"><i class="fa fa-refresh" aria-hidden="true" style="font-size:15px;">&nbsp; Reclassificada</i></a>
+                      </div>
+
+                      <div class="icon" style="text-align:center" *ngIf="post.status=='Resolvida'">
+                        <a class="icon pointer" title="Demanda Resolvida"><i class="fa fa-check-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Resolvida</i></a>
+                      </div>
+
+                      <div class="icon" style="text-align:center" *ngIf="post.status=='Solução Inviável'">
+                        <a class="icon pointer" title="Não foi possível resolver"><i class="fa fa-times-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Solução Inviável</i></a>
+                      </div>
+
+                      <div class="icon" style="text-align:center" *ngIf="post.status=='Em Análise'">
+                        <a class="icon pointer" title="A demanda está sendo analisada"><i class="fa fa-clock-o" aria-hidden="true" style="font-size:15px;">&nbsp; Em Análise</i></a>
+                      </div>
+
+
+
+
+
+
+
+
                     </div>
                     <div class="card-body" style="background-color:#fff;         border-radius: 10px;">
                       <img [src]="post?.image_demand" style="width:100%">

@@ -218,23 +218,23 @@
                     </a>
                   </div>
 
-                  <div class="icon" style="text-align:center" *ngIf="post.status=='Aberta'">
-                    <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;">&nbsp; Aberta</i></a>
+                  <div class="icon" style="margin-left:3px;" *ngIf="post.status=='Aberta'" (click)="post.collapsed=!post.collapsed">
+                    <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;" >&nbsp; Aberta</i></a>
                   </div>
 
-                  <div class="icon" style="text-align:center" *ngIf="post.status=='Reclassificada'">
+                  <div class="icon" style="margin-left:3px;" *ngIf="post.status=='Reclassificada'"(click)="post.collapsed=!post.collapsed">
                     <a class="icon pointer" title="Demanda Reclassificada"><i class="fa fa-refresh" aria-hidden="true" style="font-size:15px;">&nbsp; Reclassificada</i></a>
                   </div>
 
-                  <div class="icon" style="text-align:center" *ngIf="post.status=='Resolvida'">
+                  <div class="icon" style="margin-left:3px;" *ngIf="post.status=='Resolvida'" (click)="post.collapsed=!post.collapsed">
                     <a class="icon pointer" title="Demanda Resolvida"><i class="fa fa-check-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Resolvida</i></a>
                   </div>
 
-                  <div class="icon" style="text-align:center" *ngIf="post.status=='Solução Inviável'">
+                  <div class="icon" style="margin-left:3px;" *ngIf="post.status=='Solução Inviável'" (click)="post.collapsed=!post.collapsed">
                     <a class="icon pointer" title="Não foi possível resolver"><i class="fa fa-times-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Solução Inviável</i></a>
                   </div>
 
-                  <div class="icon" style="text-align:center" *ngIf="post.status=='Em Análise'">
+                  <div class="icon" style="margin-left:3px;" *ngIf="post.status=='Em Análise'" (click)="post.collapsed=!post.collapsed">
                     <a class="icon pointer" title="A demanda está sendo analisada"><i class="fa fa-clock-o" aria-hidden="true" style="font-size:15px;">&nbsp; Em Análise</i></a>
                   </div>
 
@@ -380,6 +380,29 @@
                         {{sugestions?.comments?.length}} comentários
                         </a>
                       </div>
+
+                      <div class="icon" style="margin-left:3px;" *ngIf="sugestions.status=='Aberta'" (click)="sugestions.collapsed=!sugestions.collapsed">
+                        <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;">&nbsp; Aberta</i></a>
+                      </div>
+
+                      <div class="icon" style="margin-left:3px;" *ngIf="sugestions.status=='Reclassificada'" (click)="sugestions.collapsed=!sugestions.collapsed">
+                        <a class="icon pointer" title="Demanda Reclassificada"><i class="fa fa-refresh" aria-hidden="true" style="font-size:15px;">&nbsp; Reclassificada</i></a>
+                      </div>
+
+                      <div class="icon" style="margin-left:3px;" *ngIf="sugestions.status=='Resolvida'" (click)="sugestions.collapsed=!sugestions.collapsed">
+                        <a class="icon pointer" title="Demanda Resolvida"><i class="fa fa-check-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Resolvida</i></a>
+                      </div>
+
+                      <div class="icon" style="margin-left:3px;" *ngIf="sugestions.status=='Solução Inviável'" (click)="sugestions.collapsed=!sugestions.collapsed">
+                        <a class="icon pointer" title="Não foi possível resolver"><i class="fa fa-times-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Solução Inviável</i></a>
+                      </div>
+
+                      <div class="icon" style="margin-left:3px;" *ngIf="sugestions.status=='Em Análise'" (click)="sugestions.collapsed=!sugestions.collapsed">
+                        <a class="icon pointer" title="A demanda está sendo analisada"><i class="fa fa-clock-o" aria-hidden="true" style="font-size:15px;">&nbsp; Em Análise</i></a>
+                      </div>
+
+
+
 
                 </ul>
               </div>
