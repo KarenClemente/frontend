@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
         <li><a routerLink="/feed">Feed</a></li>
         <li><a routerLink="/ranking">Ranking</a></li>
-        <li><a (click)="logout()" class="pointer">Logout</a></li>
+          <li><a data-target="#Sair" data-toggle="modal"  class="pointer">Logout</a></li>
 
       </ul>
     </div>
@@ -147,6 +147,39 @@
 
     </div>
   <!--/ Modal box-->
+  <div class="modal fade" id="Sair" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+
+    <!-- Modal content no 1-->
+     <div class="modal-content">
+       <div class="modal-header">
+          <button #closeModalLogoutButton type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h4 class="modal-title text-center form-title" style="color: #0066cc;">Sair</h4>
+       </div>
+      <div class="modal-body">
+        <div class="login-box-body">
+          <p class="login-box-msg" style="color: grey;margin-bottom:20px">Você realmente deseja sair?</p>
+
+
+          <div class="row" style="padding-left: 30%;" >
+
+          <div class="btncolumn" style="color:white;">
+          <input style="margin-top: 0px;background-color:#cccccc" type="submit" class="btn   btn-flat"  (click)="logout()" value="Sim" >
+          </div>
+
+          <div class="btncolumn" style="color:white;">
+          <input style="margin-top: 0px; background-color: #cccccc; margin-left:20px;"type="submit" class="btn btn-flat" value="Não" data-dismiss="modal">
+
+          </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
   <!-- Sidebar-->
   <div class="s-layout__sidebar">
     <nav class="s-sidebar__nav" style="margin-top: 60px;">
@@ -359,7 +392,7 @@
   </div>
   <!--/Card-->
 
-  
+
       <!--Card-->
       <div class="card pointer"  *ngFor="let sugestions of demands;">
           <div class="row" *ngIf="!sugestions.gave_like">

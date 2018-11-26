@@ -9,9 +9,10 @@ import { ServerProvider} from '../../providers/server';
 })
 
 export class SolvedComponent implements OnInit{
-  
+
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
+  @ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
 
   public posts: any =[];
   public user: any =[];
@@ -36,7 +37,7 @@ ngOnInit(){
   });
 }
 
-like(post){  
+like(post){
   post.total_likes = Number(post.total_likes);
 //Remove like
 if (post.gave_like == "true"){
@@ -75,7 +76,7 @@ newComment(post, comment){
 
     this.comment = "";
 }
- 
+
 delComment(post){
   //Delete comment
     this.server.deleteComment(post.comment_id).then(response => {
@@ -84,7 +85,7 @@ delComment(post){
       console.log(error);
     });
 }
- 
+
 report(post){
   this.server.reportDemand(this.id).then(response => {
     console.log(response);
@@ -121,7 +122,7 @@ updateInfo(user){
   else{
   this.user.email = user.email;
   }
-  
+
   this.server.updateInfo(this.user).then(response => {
     console.log(response);
     this.closeModalChangeButton.nativeElement.click();
@@ -185,6 +186,7 @@ clearInputs() {
 logout(){
   this.server.token = "";
   this._router.navigate(['/home']);
-  console.log(this.server.token)
+  console.log(this.server.token);
+  this.closeModalLogoutButton.nativeElement.click();
 }
 }
