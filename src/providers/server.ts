@@ -14,14 +14,15 @@ export class ServerProvider {
     constructor(public http: Http) {}
 
 //FEED
-  getFeedDemands(accessToken, params, limit){
+  getFeedDemands(search, status, limit){
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams();
     body.set('Authorization', this.token);
-    body.set('status', params.hasOwnProperty('status')? params.status: '');
+    body.set('search', search);
+    body.set('status', status);
     body.set('limit', limit);
 
     console.log(body.toString());
@@ -29,21 +30,22 @@ export class ServerProvider {
   }
 
 //RANKING
-  getRankingDemands(accessToken, params){
+  getRankingDemands(campus){
   let headers = new Headers();
   headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
   let options = new RequestOptions({ headers: headers });
   let body = new URLSearchParams();
+  console.log(campus);
   body.set('Authorization', this.token);
-  body.set('campus', params.hasOwnProperty('campus')? params.campus: '');
+  body.set('campus', campus);
 
   console.log(body.toString());
   return this.http.post(BASE_URL + '/get-demands/ranking', body.toString(), options).toPromise();
   }
 
 //DEMANDS
-  getSelectedDemands(accessToken){
+  getSelectedDemands(){
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
@@ -88,7 +90,6 @@ export class ServerProvider {
     console.log(body.toString());
     return this.http.post(BASE_URL + '/user/register', body.toString(), options).toPromise();
   }
-
   // Login
   loginUser(email, password){
     let headers = new Headers(
@@ -97,13 +98,12 @@ export class ServerProvider {
     });
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams ();
-    body.set('email', email);
-    body.set('password', password);
+    body.set('email', "varandaeng@gmail.com");
+    body.set('password', "123456");
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/sessions/login', body.toString(), options).toPromise();
   }
-
   // Forgot password
   newPsw(email){
     let headers = new Headers();
@@ -120,7 +120,7 @@ export class ServerProvider {
 //POSTS FUNCTIONS
 
   // like demand
-  likeDemand(accessToken, params) {
+  likeDemand(params) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
@@ -132,9 +132,8 @@ export class ServerProvider {
     console.log(body.toString());
     return this.http.post(BASE_URL + '/like/add', body.toString(), options).toPromise();
   };
-
   // Unlike demand
-  unlikeDemand(accessToken, params) {
+  unlikeDemand(params) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
@@ -146,9 +145,8 @@ export class ServerProvider {
     console.log(body.toString());
     return this.http.post(BASE_URL + '/like/delete', body.toString(), options).toPromise();
   };
-
   // New comment
-  commentDemand(accessToken, params, comment){
+  commentDemand(params, comment){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
@@ -160,10 +158,9 @@ export class ServerProvider {
 
     console.log(body.toString());
     return this.http.post(BASE_URL + '/coments/add', body.toString(),options).toPromise();
-    }
-
+  }
   // Delete comment
-  deleteComment(accessToken, params){
+  deleteComment(params){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
@@ -175,9 +172,8 @@ export class ServerProvider {
     console.log(body.toString());
     return this.http.post(BASE_URL + '/coments/delete', body.toString(),options).toPromise();
   }
-
   // Report demand
-  reportDemand(accessToken, params){
+  reportDemand(params){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
@@ -193,7 +189,7 @@ export class ServerProvider {
 //POST PAGE
 
   // Get demand type
-  typeDemand(accessToken){
+  typeDemand(){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
@@ -205,7 +201,7 @@ export class ServerProvider {
     return this.http.post(BASE_URL + '/type-demand/get', body.toString(),options).toPromise();
   }
   // Get campus
-  getCampus(accessToken){
+  getCampus(){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
@@ -216,8 +212,20 @@ export class ServerProvider {
     console.log(body.toString());
     return this.http.post(BASE_URL + '/campus/get', body.toString(),options).toPromise();
   }
+  // Get status
+  getStatus(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/x-www-form-urlencoded')
+
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', this.token);
+
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/status/get', body.toString(),options).toPromise();
+  }
   // Get area
-  areaDemand(accessToken){
+  areaDemand(){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
@@ -229,7 +237,7 @@ export class ServerProvider {
     return this.http.post(BASE_URL + '/area/get', body.toString(),options).toPromise();
   }
   // Get problem type
-  categoryDemand(accessToken){
+  categoryDemand(){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
@@ -241,7 +249,7 @@ export class ServerProvider {
     return this.http.post(BASE_URL + '/type-problem/get', body.toString(),options).toPromise();
   }
   // Get local
-  getLocal(accessToken, demand){
+  getLocal(demand){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
@@ -288,7 +296,7 @@ export class ServerProvider {
       return this.http.post(BASE_URL + '/get-demands/single', body.toString(), options).toPromise();
   }
   // Add demand
-  newDemand(accessToken, demand){
+  newDemand(demand){
     let headers = new Headers(
       {
           'Content-Type' : 'application/x-www-form-urlencoded',
@@ -300,7 +308,7 @@ export class ServerProvider {
       body.set('description', demand.description);
       body.set('type_problems_id', demand.selectedCategory);
       body.set('type_demand_id', demand.selectedType);
-      body.set('local_id', demand.hasOwnProperty('local_id')? demand.local_id: demand.selectedArea);
+      body.set('local_id', demand.hasOwnProperty('local_id')? demand.local_id: '');
       body.set('campus_id', demand.selectedCampus);
       body.set('environment_id', demand.selectedEnvironment);
       body.set('image', demand.hasOwnProperty('image')? demand.image: '');
@@ -312,8 +320,22 @@ export class ServerProvider {
 
 //PROFILE FUNCTIONS
 
+  // Delete demand
+  deleteDemand(demand_id){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded')
+
+    let options = new RequestOptions({ headers: headers });
+    let body = new URLSearchParams();
+    body.set('Authorization', this.token);
+    body.set('demands_id', demand_id);
+
+    console.log(body.toString());
+    return this.http.post(BASE_URL + '/demands/delete', body.toString(), options).toPromise();
+
+  }
   // Change infos
-  updateInfo(accessToken, newinfo){
+  updateInfo(newinfo){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
     let options = new RequestOptions({ headers: headers });
@@ -325,9 +347,8 @@ export class ServerProvider {
     console.log(body.toString());
     return this.http.post(BASE_URL + '/user/update', body.toString(),options).toPromise();
   }
-
   // Change Password
-  updatePsw(accessToken, password){
+  updatePsw(password){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 
@@ -339,9 +360,8 @@ export class ServerProvider {
     console.log(body.toString());
     return this.http.post(BASE_URL + '/user/update/password', body.toString(),options).toPromise();
   }
-
   // Delete account
-  deleteAccount(accessToken){
+  deleteAccount(){
     let headers = new Headers();
     headers.append('Content-Type','application/x-www-form-urlencoded')
 

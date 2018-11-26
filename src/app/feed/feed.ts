@@ -20,6 +20,9 @@ export class FeedComponent implements OnInit{
   public cont: number = 0;
   public id;
   public comment;
+  public statusOptions: any = [];
+  public status: any = '';
+  public search: any = '';
   email: any;
   password: any;
   pswconfirm: any;
@@ -27,6 +30,18 @@ export class FeedComponent implements OnInit{
   constructor(private _router: Router, public server: ServerProvider) {}
 
   ngOnInit(){
+    this.server.getStatus().then(response => {
+      console.log(response);
+      console.log(response.json());
+      response = response.json();
+  
+      for (var i = 0; i < response['dados'].length; i++){
+        this.statusOptions.push(response['dados'][i]);
+       }
+       console.log(this.statusOptions)
+    }).catch(error => {
+      console.log(error);
+    });
     this.getPosts();
   }
   
@@ -36,16 +51,32 @@ export class FeedComponent implements OnInit{
   }
 
   getPosts(){
-  this.server.getFeedDemands({},'',this.cont).then(response => {
+  this.server.getFeedDemands(this.search,this.status,this.cont).then(response => {
     console.log(response);
     console.log(response.json());
 
     response = response.json();
-  for (var i = 0; i < 5; i++){
+    for (var i = 1; i < response['dados'].length; i++){
     this.posts.push(response['dados'][i]);
    }
    this.cont += 5;
 });
+  }
+
+  setStatus(e): void {
+    this.status = e.id; 
+    console.log(e);
+    this.posts = [];
+    this.cont = 0;
+    this.getPosts();
+  }
+
+  setSearch(e): void {
+    this.search = e; 
+    console.log(e);
+    this.posts = [];
+    this.cont = 0;
+    this.getPosts();
   }
 
   like(post){  
@@ -53,7 +84,7 @@ export class FeedComponent implements OnInit{
   //parseInt(post.total_likes, 10);
   post.total_likes = Number(post.total_likes);
   if (post.gave_like == "true"){
-    this.server.unlikeDemand(this.server.token, post.demand_id).then(response => {
+    this.server.unlikeDemand(post.demand_id).then(response => {
     console.log(response);
     post.total_likes -= 1;
     post.gave_like = "false";
@@ -64,7 +95,7 @@ export class FeedComponent implements OnInit{
   }
   //Add like
   else{
-    this.server.likeDemand(this.server.token,post.demand_id).then(response => {
+    this.server.likeDemand(post.demand_id).then(response => {
       console.log(response);
       post.total_likes += 1;
       post.gave_like = "true";
@@ -78,7 +109,7 @@ export class FeedComponent implements OnInit{
 
   newComment(post, comment){
     //Add comment
-      this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
+      this.server.commentDemand(post.demand_id,comment).then(response => {
         console.log(response);
        // post.comments.length += 1;
        post.comments.push({name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment});
@@ -91,7 +122,7 @@ export class FeedComponent implements OnInit{
    
   delComment(post){
     //Delete comment
-      this.server.deleteComment(this.server.token,post.comment_id).then(response => {
+      this.server.deleteComment(post.comment_id).then(response => {
         console.log(response);
         post.comments = post.comments.filter(obj => {
           return obj.comment_id !== post.comments.comment_id;
@@ -102,7 +133,7 @@ export class FeedComponent implements OnInit{
   }
   
   report(){
-    this.server.reportDemand(this.server.token,this.id).then(response => {
+    this.server.reportDemand(this.id).then(response => {
       console.log(response);
       this.closeModalDangerButton.nativeElement.click();
     }).catch(error => {
@@ -138,7 +169,7 @@ export class FeedComponent implements OnInit{
     this.user.email = user.email;
     }
     
-    this.server.updateInfo(this.server.token, this.user).then(response => {
+    this.server.updateInfo(this.user).then(response => {
       console.log(response);
       this.closeModalChangeButton.nativeElement.click();
     }).catch(error => {
@@ -162,7 +193,7 @@ export class FeedComponent implements OnInit{
   }
   
   updatePsw(user){
-    this.server.updatePsw(this.server.token, user.password).then(response => {
+    this.server.updatePsw(user.password).then(response => {
       console.log(response);
       alert('Senha alterada com sucesso.')
       this.closeModalChangeButton.nativeElement.click();
@@ -186,7 +217,7 @@ export class FeedComponent implements OnInit{
   }
 
   delete(){
-    this.server.deleteAccount(this.server.token).then(response => {
+    this.server.deleteAccount().then(response => {
       console.log(response);
       this.closeModalChangeButton.nativeElement.click();
       this.logout();

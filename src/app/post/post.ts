@@ -36,7 +36,7 @@ export class PostComponent implements OnInit {
     
     // Functions
     ngOnInit(){
-      this.server.typeDemand({}).then(response => {
+      this.server.typeDemand().then(response => {
         console.log(response);
         console.log(response.json());
         response = response.json();
@@ -48,7 +48,7 @@ export class PostComponent implements OnInit {
       }).catch(error => {
         console.log(error);
       });
-      this.server.getCampus({}).then(response => {
+      this.server.getCampus().then(response => {
         console.log(response);
         console.log(response.json());
         response = response.json();
@@ -94,7 +94,7 @@ export class PostComponent implements OnInit {
     }
 
     getCard2(){
-      this.server.areaDemand({}).then(response => {
+      this.server.areaDemand().then(response => {
         console.log(response);
         console.log(response.json());
         response = response.json();
@@ -105,7 +105,7 @@ export class PostComponent implements OnInit {
       }).catch(error => {
         console.log(error);
       });
-      this.server.categoryDemand({}).then(response => {
+      this.server.categoryDemand().then(response => {
         console.log(response);
         console.log(response.json());
         response = response.json();
@@ -119,7 +119,7 @@ export class PostComponent implements OnInit {
     }
 
     local(){
-      this.server.getLocal({}, this.demands).then(response => {
+      this.server.getLocal(this.demands).then(response => {
         console.log(response);
         console.log(response.json());
         response = response.json();
@@ -169,7 +169,7 @@ export class PostComponent implements OnInit {
     this.demands.title = demand.title;
     this.demands.description = demand.description;
 
-    this.server.newDemand({}, this.demands).then(response => {
+    this.server.newDemand(this.demands).then(response => {
         console.log(response);
         this._router.navigate(['/feed']);
        }).catch(error => {
@@ -215,7 +215,7 @@ export class PostComponent implements OnInit {
       this.user.email = user.email;
       }
       
-      this.server.updateInfo(this.server.token, this.user).then(response => {
+      this.server.updateInfo(this.user).then(response => {
         console.log(response);
         this.closeModalChangeButton.nativeElement.click();
       }).catch(error => {
@@ -239,7 +239,7 @@ export class PostComponent implements OnInit {
     }
     
     updatePsw(user){
-      this.server.updatePsw(this.server.token, user.password).then(response => {
+      this.server.updatePsw(user.password).then(response => {
         console.log(response);
         alert('Senha alterada com sucesso.')
         this.closeModalChangeButton.nativeElement.click();
@@ -263,7 +263,7 @@ export class PostComponent implements OnInit {
     }
     
     delete(){
-      this.server.deleteAccount(this.server.token).then(response => {
+      this.server.deleteAccount().then(response => {
         console.log(response);
         this.closeModalChangeButton.nativeElement.click();
         this.logout();

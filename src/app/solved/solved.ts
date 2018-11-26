@@ -40,7 +40,7 @@ like(post){
   post.total_likes = Number(post.total_likes);
 //Remove like
 if (post.gave_like == "true"){
-  this.server.unlikeDemand(this.server.token, post.demand_id).then(response => {
+  this.server.unlikeDemand(post.demand_id).then(response => {
   console.log(response);
   post.total_likes -= 1;
   post.gave_like = "false";
@@ -51,7 +51,7 @@ if (post.gave_like == "true"){
 }
 //Add like
 else{
-  this.server.likeDemand(this.server.token,post.demand_id).then(response => {
+  this.server.likeDemand(post.demand_id).then(response => {
     console.log(response);
     post.total_likes += 1;
     post.gave_like = "true";
@@ -65,7 +65,7 @@ else{
 
 newComment(post, comment){
   //Add comment
-    this.server.commentDemand(this.server.token,post.demand_id,comment).then(response => {
+    this.server.commentDemand(post.demand_id,comment).then(response => {
       console.log(response);
      // post.comments.length += 1;
      post.comments.push({name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment});
@@ -78,7 +78,7 @@ newComment(post, comment){
  
 delComment(post){
   //Delete comment
-    this.server.deleteComment(this.server.token,post.comment_id).then(response => {
+    this.server.deleteComment(post.comment_id).then(response => {
       console.log(response);
     }).catch(error => {
       console.log(error);
@@ -86,7 +86,7 @@ delComment(post){
 }
  
 report(post){
-  this.server.reportDemand(this.server.token,this.id).then(response => {
+  this.server.reportDemand(this.id).then(response => {
     console.log(response);
     this.closeModalDangerButton.nativeElement.click();
   }).catch(error => {
@@ -122,7 +122,7 @@ updateInfo(user){
   this.user.email = user.email;
   }
   
-  this.server.updateInfo(this.server.token, this.user).then(response => {
+  this.server.updateInfo(this.user).then(response => {
     console.log(response);
     this.closeModalChangeButton.nativeElement.click();
   }).catch(error => {
@@ -146,7 +146,7 @@ verifyPsw(user){
 }
 
 updatePsw(user){
-  this.server.updatePsw(this.server.token, user.password).then(response => {
+  this.server.updatePsw(user.password).then(response => {
     console.log(response);
     alert('Senha alterada com sucesso.')
     this.closeModalChangeButton.nativeElement.click();
@@ -169,7 +169,7 @@ updatePsw(user){
   })
 }
 delete(){
-  this.server.deleteAccount(this.server.token).then(response => {
+  this.server.deleteAccount().then(response => {
     console.log(response);
     this.closeModalChangeButton.nativeElement.click();
     this.logout();
