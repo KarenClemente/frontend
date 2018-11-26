@@ -258,9 +258,11 @@
         </div>
         <div class="card-body" style="background-color:#fff; text-align: justify;">
           <img [src]="post?.image_demand" style="width:90%; margin-left: 25px;">
-          <p style="margin-left: 35px;">
-          {{post?.description}}
+          <div style="background:none;" >
+          <p  style="text-align:left; margin-left: 50px; margin-top: 5px; word-break: break-all;width:460px; ">
+          {{post?.description}}<br>
           </p>
+          </div>
           <div class="row">
             <div class="col-sm-12">
           <div class="linha"></div>
@@ -298,7 +300,7 @@
             <div class="col-xs-2" style="width:auto;">
               <img [src]="comment.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
             </div>
-            <p class="borda">
+            <p class="borda" style="word-break: break-all;width:500px;">
               <a class="pointer" style="text-decoration: none;">  {{comment.name}}</a>
 
               <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
@@ -417,8 +419,9 @@
         </div>
         <div class="card-body" style="background-color:#fff; text-align: justify;">
           <img [src]="sugestions?.image_demand" style="width:90%; margin-left: 25px;">
-          <p style="margin-left: 35px;">
-          {{sugestions?.description}}
+          <div style="background:none;" >
+          <p  style="text-align:left; margin-left: 50px; margin-top: 5px; word-break: break-all;width:460px; ">
+          {{sugestions?.description}}<br>
           </p>
           <div class="row">
             <div class="col-sm-12">
@@ -458,7 +461,7 @@
           <div class="col-xs-2" style="width:auto; background: #0066cc;">
             <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
           </div>
-          <p class="borda">
+          <p class="borda" style="word-break: break-all;width:500px;">
             <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
 
             <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
