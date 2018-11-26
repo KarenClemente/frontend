@@ -196,29 +196,31 @@
  <div class="s-layout__content">
   <div class="mar">
     <div class="card" style="padding-bottom:15px;" *ngFor="let post of posts ">
-      <div class="pull-right">
-        <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)">
-          <i class="fa fa-exclamation pointer" style="font-size:30px; color:#dc3545; padding: 10px;"></i>
+      <div class="pull-right icon">
+        <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)" class="icon">
+          <i class="fa fa-ellipsis-v pointer" style="font-size:20px; padding: 15px;padding-top: 20px;"></i>
         </a>
       </div>
       <div class="card-header textleft">
-        <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
-          <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top:10px;">
+        <div class="col-xs-2 card-header2" style="width:auto; padding:1; height: 100%;">
+          <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top:8px;">
         </div>
         <p style="padding-top:5px;">
-          <a>  {{post?.name}}</a>
+          <a style="text-decoration:none;">  {{post?.name}}</a>
           publicou
           <b>{{post?.title}}</b>
-          em<br>
-          <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
-          {{post?.local}}
+          em
+          &nbsp;<i class="fa fa-map-marker" style="color:gray;" name="pin">
+          {{post?.local}}</i>
         </p>
       </div>
       <div class="card-body" style="background-color:#fff; ;">
         <img [src]="post?.image_demand" style="width:90%">
-        <p  style="text-align:left;">
-        {{post?.description}}
+        <div style="background:none;">
+        <p  style="text-align:left; margin-left: 35px; margin-top: 5px;">
+        {{post?.description}}<br>
         </p>
+        </div>
         <div class="row">
           <div class="col-sm-12">
         <div class="linha"></div>

@@ -836,6 +836,11 @@ color: rgb(101, 191, 91);
   height: 40px;
   border-radius: 50%;
 }
+.card .card-header2 img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 .card-footer > .card-header img {
   width: 25px;
   height: 25px;
