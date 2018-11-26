@@ -10,9 +10,9 @@
       <a routerLink="/feed" style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
-        <li>
-              <a style="margin-bottom:0px"><input  type="text" class= "search-txt " placeholder="Pesquisar no Feed"[(ngModel)]="search" style="border:none; font-weight: 400; margin:0px" (keyup)="setSearch(search)"></a>
+      <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;">
+        <li >
+              <a style="margin-bottom:0px;"><input  type="text" class= "search-txt " placeholder="Pesquisar no Feed"[(ngModel)]="search" style="border:none; font-weight: 400; margin:0px;" (keyup)="setSearch(search)"></a>
         </li>
         <li><a  routerLink="/feed">Feed</a></li>
         <li class="dropdown">
@@ -239,7 +239,7 @@
         </div>
         <div class="container" style="width:237.33;">
 
-          <a style="text-decoration:none;textleft">{{post?.name}}</a>
+          <a class="pointer"  style="text-decoration:none;textleft">{{post?.name}}</a>
           publicou
           <b>{{post?.title}}</b><br>
 
