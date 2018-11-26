@@ -159,9 +159,7 @@ export class LikedComponent implements OnInit{
   }
 
   clearInputs() {
-    this.email ="";
-    this.password ="";
-    this.pswconfirm = "";
+    this.user = {};
   }
 
   logout(){

@@ -244,9 +244,7 @@ export class PostComponent implements OnInit {
     }
 
     clearInputs() {
-      this.email ="";
-      this.password ="";
-      this.pswconfirm = "";
+      this.user = {};
     }
 
     logout(){
