@@ -72,7 +72,7 @@
 
            <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
              <label for="email" style="font-size: 1.3rem">E-mail</label>
-             <input class="form-control" placeholder="Novo email" id="email" type="email" name="email" required="" [(ngModel)]="user.email" />
+             <input class="form-control" placeholder="Novo email" id="email" type="email" name="email" required="" [(ngModel)]="user.email" value="server.user.email" />
              <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
 
            </div>
@@ -93,6 +93,9 @@
             <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
             As senhas devem ser iguais<br>
             </span>
+            <a  (click)="updatePsw(user)">
+              <label style="font-size: 1.3rem; color:#717f86; margin-top: 4px;" class="pointer">Alterar Senha</label></a>
+              <br>
 
             <a  href="#excluir" data-toggle="collapse">
             <label style="font-size: 1.3rem; color:#717f86; margin-top: 4px;" class="pointer">Excluir conta</label></a>
@@ -205,16 +208,17 @@
         <div class="col-xs-2 card-header2" style="width:auto; padding:1; height: 100%;">
           <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top:8px;">
         </div>
-        <div class="row">
-        <p style="padding-top:5px;">
-          <a style="text-decoration:none;">  {{post?.name}}</a>
+        <div class="container" style="width:237.33;">
+
+          <a style="text-decoration:none;textleft">  {{post?.name}}</a>
           publicou
-          <b>{{post?.title}}</b>
-          em
-          &nbsp;<i class="fa fa-map-marker" style="color:gray;" name="pin">
+          <b>{{post?.title}}</b><br>
+
+
+          <i class="fa fa-map-marker" style="color:gray;" name="pin">
           {{post?.local}}</i>
 
-          </p>
+        </div>
 
           <div class="icon" style="text-align:center" *ngIf="post.status=='Aberta'">
             <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;">&nbsp; Aberta</i></a>
@@ -243,7 +247,7 @@
 
 
 
-      </div>
+
       <div class="card-body" style="background-color:#fff; ;">
         <img [src]="post?.image_demand" style="width:90%">
         <div style="background:none;">

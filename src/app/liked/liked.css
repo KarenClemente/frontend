@@ -119,11 +119,11 @@ div.center {
     text-align: center;
   }
   .responsivo{
-     margin-left: 180px;
+     margin-left: 101px;
   }
 
   .responsivo2{
-     margin-left: -150px;
+     margin-left: 30px;
   }
 
   }
@@ -463,6 +463,14 @@ Feed
     width: 40px;
     height: 40px;
   }
+
+  .card .card-header2 img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+
   .card .card-footer{
     padding-top: 10px;
     padding-bottom: 20px;

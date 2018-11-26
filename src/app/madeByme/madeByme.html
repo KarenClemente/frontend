@@ -182,6 +182,27 @@
                   </a>
                 </div>
 
+                <div class="icon" style="margin-left:3px;" *ngIf="post.status=='Aberta'" (click)="post.collapsed=!post.collapsed">
+                  <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;" >&nbsp; Aberta</i></a>
+                </div>
+
+                <div class="icon" style="margin-left:3px;" *ngIf="post.status=='Reclassificada'"(click)="post.collapsed=!post.collapsed">
+                  <a class="icon pointer" title="Demanda Reclassificada"><i class="fa fa-refresh" aria-hidden="true" style="font-size:15px;">&nbsp; Reclassificada</i></a>
+                </div>
+
+                <div class="icon" style="margin-left:3px;" *ngIf="post.status=='Resolvida'" (click)="post.collapsed=!post.collapsed">
+                  <a class="icon pointer" title="Demanda Resolvida"><i class="fa fa-check-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Resolvida</i></a>
+                </div>
+
+                <div class="icon" style="margin-left:3px;" *ngIf="post.status=='Solução Inviável'" (click)="post.collapsed=!post.collapsed">
+                  <a class="icon pointer" title="Não foi possível resolver"><i class="fa fa-times-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Solução Inviável</i></a>
+                </div>
+
+                <div class="icon" style="margin-left:3px;" *ngIf="post.status=='Em Análise'" (click)="post.collapsed=!post.collapsed">
+                  <a class="icon pointer" title="A demanda está sendo analisada"><i class="fa fa-clock-o" aria-hidden="true" style="font-size:15px;">&nbsp; Em Análise</i></a>
+                </div>
+
+
 
             </ul>
           </div>
@@ -190,13 +211,13 @@
       <!--Expanded card1-->
       <div class="card" style="padding-bottom:15px;" *ngIf="post.collapsed">
         <div class="linha"></div>
-        <div class="pull-right">
-          <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)">
-            <i class="fa fa-exclamation pointer" style="font-size:30px; color:#dc3545; padding: 10px;"></i>
+        <div class="pull-right icon">
+          <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)" class="icon" >
+            <i class="fa fa-ellipsis-v pointer" style="font-size:20px; padding: 15px;padding-top: 10px;"></i>
           </a>
         </div>
         <div class="card-header textleft">
-          <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
+          <div class="col-xs-2  card-header2" style="width:auto; padding:1; height: 100%;">
             <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top: 10px;">
           </div>
           <p style="padding-top:5px;">
@@ -207,10 +228,35 @@
             <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
             {{post?.local}}
           </p>
+
+          <div class="icon" style="text-align:center" *ngIf="post.status=='Aberta'">
+            <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;">&nbsp; Aberta</i></a>
+          </div>
+
+          <div class="icon" style="text-align:center" *ngIf="post.status=='Reclassificada'">
+            <a class="icon pointer" title="Demanda Reclassificada"><i class="fa fa-refresh" aria-hidden="true" style="font-size:15px;">&nbsp; Reclassificada</i></a>
+          </div>
+
+          <div class="icon" style="text-align:center" *ngIf="post.status=='Resolvida'">
+            <a class="icon pointer" title="Demanda Resolvida"><i class="fa fa-check-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Resolvida</i></a>
+          </div>
+
+          <div class="icon" style="text-align:center" *ngIf="post.status=='Solução Inviável'">
+            <a class="icon pointer" title="Não foi possível resolver"><i class="fa fa-times-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Solução Inviável</i></a>
+          </div>
+
+          <div class="icon" style="text-align:center" *ngIf="post.status=='Em Análise'">
+            <a class="icon pointer" title="A demanda está sendo analisada"><i class="fa fa-clock-o" aria-hidden="true" style="font-size:15px;">&nbsp; Em Análise</i></a>
+          </div>
+
+
+
+
+
         </div>
         <div class="card-body" style="background-color:#fff; text-align: justify;">
-          <img [src]="post?.image_demand" style="width:90%">
-          <p>
+          <img [src]="post?.image_demand" style="width:90%; margin-left: 25px;">
+          <p style="margin-left: 35px;">
           {{post?.description}}
           </p>
           <div class="row">
@@ -240,7 +286,7 @@
             </div>
             <p class="borda">
               <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
-      
+
               <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
               <br>
               {{comment?.comment}}
@@ -298,6 +344,29 @@
                       </a>
                     </div>
 
+                    <div class="icon" style="margin-left:3px;" *ngIf="sugestions.status=='Aberta'" (click)="sugestions.collapsed=!sugestions.collapsed">
+                      <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;">&nbsp; Aberta</i></a>
+                    </div>
+
+                    <div class="icon" style="margin-left:3px;" *ngIf="sugestions.status=='Reclassificada'" (click)="sugestions.collapsed=!sugestions.collapsed">
+                      <a class="icon pointer" title="Demanda Reclassificada"><i class="fa fa-refresh" aria-hidden="true" style="font-size:15px;">&nbsp; Reclassificada</i></a>
+                    </div>
+
+                    <div class="icon" style="margin-left:3px;" *ngIf="sugestions.status=='Resolvida'" (click)="sugestions.collapsed=!sugestions.collapsed">
+                      <a class="icon pointer" title="Demanda Resolvida"><i class="fa fa-check-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Resolvida</i></a>
+                    </div>
+
+                    <div class="icon" style="margin-left:3px;" *ngIf="sugestions.status=='Solução Inviável'" (click)="sugestions.collapsed=!sugestions.collapsed">
+                      <a class="icon pointer" title="Não foi possível resolver"><i class="fa fa-times-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Solução Inviável</i></a>
+                    </div>
+
+                    <div class="icon" style="margin-left:3px;" *ngIf="sugestions.status=='Em Análise'" (click)="sugestions.collapsed=!sugestions.collapsed">
+                      <a class="icon pointer" title="A demanda está sendo analisada"><i class="fa fa-clock-o" aria-hidden="true" style="font-size:15px;">&nbsp; Em Análise</i></a>
+                    </div>
+
+
+
+
               </ul>
             </div>
             </div>
@@ -311,7 +380,7 @@
           </button>
         </div>
         <div class="card-header textleft">
-          <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
+          <div class="col-xs-2 card-header2" style="width:auto; padding:1; height: 100%;">
             <img [src]="sugestions?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top: 10px;">
           </div>
           <p style="padding-top:5px;">
@@ -322,10 +391,31 @@
             <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
             {{sugestions?.local}}
           </p>
+
+          <div class="icon" style="text-align:center" *ngIf="sugestions.status=='Aberta'">
+            <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;">&nbsp; Aberta</i></a>
+          </div>
+
+          <div class="icon" style="text-align:center" *ngIf="sugestions.status=='Reclassificada'">
+            <a class="icon pointer" title="Demanda Reclassificada"><i class="fa fa-refresh" aria-hidden="true" style="font-size:15px;">&nbsp; Reclassificada</i></a>
+          </div>
+
+          <div class="icon" style="text-align:center" *ngIf="sugestions.status=='Resolvida'">
+            <a class="icon pointer" title="Demanda Resolvida"><i class="fa fa-check-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Resolvida</i></a>
+          </div>
+
+          <div class="icon" style="text-align:center" *ngIf="sugestions.status=='Solução Inviável'">
+            <a class="icon pointer" title="Não foi possível resolver"><i class="fa fa-times-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Solução Inviável</i></a>
+          </div>
+
+          <div class="icon" style="text-align:center" *ngIf="sugestions.status=='Em Análise'">
+            <a class="icon pointer" title="A demanda está sendo analisada"><i class="fa fa-clock-o" aria-hidden="true" style="font-size:15px;">&nbsp; Em Análise</i></a>
+          </div>
+
         </div>
         <div class="card-body" style="background-color:#fff; text-align: justify;">
-          <img [src]="sugestions?.image_demand" style="width:100%">
-          <p>
+          <img [src]="sugestions?.image_demand" style="width:90%; margin-left: 25px;">
+          <p style="margin-left: 35px;">
           {{sugestions?.description}}
           </p>
           <div class="row">

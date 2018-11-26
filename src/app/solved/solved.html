@@ -146,14 +146,14 @@
  <div class="s-layout__content">
   <div class="mar">
     <div class="card" style="padding-bottom:15px;" *ngFor="let post of posts ">
-      <div class="pull-right">
-        <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)">
-          <i class="fa fa-exclamation pointer" style="font-size:30px; color:#dc3545; padding: 10px;"></i>
+      <div class="pull-right icon">
+        <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)" class="icon">
+          <i class="fa fa-ellipsis-v pointer" style="font-size:20px; padding: 15px;padding-top: 20px;"></i>
         </a>
       </div>
       <div class="card-header textleft">
-        <div class="col-xs-2" style="width:auto; padding:1; height: 100%;">
-          <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top:10px;">
+        <div class="col-xs-2 card-header2" style="width:auto; padding:1; height: 100%;">
+          <img [src]="post?.image_profile" style="object-fit:cover; border-radius: 50%; margin-top:10px; margin-top:8px;">
         </div>
         <p style="padding-top:5px;">
           <a>  {{post?.name}}</a>
@@ -163,10 +163,33 @@
           <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
           {{post?.local}}
         </p>
+
+        <div class="icon" style="text-align:center" *ngIf="post.status=='Aberta'">
+          <a class="icon pointer" title="Demanda Aberta"><i class="fa fa-info-circle" aria-hidden="true" style="font-size:15px; margin-left:0px;">&nbsp; Aberta</i></a>
+        </div>
+
+        <div class="icon" style="text-align:center" *ngIf="post.status=='Reclassificada'">
+          <a class="icon pointer" title="Demanda Reclassificada"><i class="fa fa-refresh" aria-hidden="true" style="font-size:15px;">&nbsp; Reclassificada</i></a>
+        </div>
+
+        <div class="icon" style="text-align:center" *ngIf="post.status=='Resolvida'">
+          <a class="icon pointer" title="Demanda Resolvida"><i class="fa fa-check-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Resolvida</i></a>
+        </div>
+
+        <div class="icon" style="text-align:center" *ngIf="post.status=='Solução Inviável'">
+          <a class="icon pointer" title="Não foi possível resolver"><i class="fa fa-times-circle" aria-hidden="true" style="font-size:15px;">&nbsp; Solução Inviável</i></a>
+        </div>
+
+        <div class="icon" style="text-align:center" *ngIf="post.status=='Em Análise'">
+          <a class="icon pointer" title="A demanda está sendo analisada"><i class="fa fa-clock-o" aria-hidden="true" style="font-size:15px;">&nbsp; Em Análise</i></a>
+        </div>
+
+
+
       </div>
       <div class="card-body" style="background-color:#fff; ;">
         <img [src]="post?.image_demand" style="width:90%">
-        <p  style="text-align:left;">
+        <p  style="text-align:left; margin-left: 35px; margin-top: 5px;">
         {{post?.description}}
         </p>
         <div class="row">
@@ -179,7 +202,7 @@
                   {{post?.total_likes}}</a>
                 </div>
                 <div class="textl pull-right icon">
-                  <a class="pointer icon " style="text-decoration: none;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments"></i>
+                  <a class="pointer icon " style="text-decoration: none; margin-right: 20px;" (click)="post.showcomments=!post.showcomments;"><i class="fa fa-comments"></i>
                   {{post?.comments?.length}} comentários
                   </a>
                 </div>
@@ -196,12 +219,12 @@
           </div>
           <p class="borda">
             <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
-    
+
             <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
             <br>
             {{comment?.comment}}
           </p>
-      </div>     
+      </div>
         <div class="card-header textleft" *ngFor="let comment of post.comments;" style="padding: 0px;">
           <div class="col-xs-2" style="width:auto;">
             <img [src]="comment?.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">

@@ -20,7 +20,7 @@ export class FeedComponent implements OnInit{
   public cont: number = 0;
   public id;
   public comment;
-
+  public image: any = this.server.user.image_profile;
   email: any;
   password: any;
   pswconfirm: any;
@@ -29,6 +29,7 @@ export class FeedComponent implements OnInit{
 
   ngOnInit(){
     this.getPosts();
+    console.log(this.image);
   }
   
   onScroll (){
@@ -125,30 +126,36 @@ export class FeedComponent implements OnInit{
     var myReader:FileReader = new FileReader();
   
     myReader.onloadend = (e) => {
-      this.user.image = myReader.result;
-      console.log(this.user.image);
+      this.image = myReader.result;
+      console.log(this.image);
     }
     myReader.readAsDataURL(file);
   }
 
   updateInfo(user){
+    console.log(this.image);
+    if(typeof user.email == 'undefined' || user.email == ''){
+      this.user.email = this.server.user.email;
+    }
+    else{
     this.user.email = user.email;
-    this.user.password = user.password
-    this.server.updateInfo(this.server.token, this.user).then(response => {
-      console.log(this.user);
-      this.server.user.image_profile = user.image;
-    }).catch(error => {
-      console.log(error);
-    });
-   /* if (user.password.length > 0){
-    this.server.updatePsw(this.server.token, this.user).then(response => {
+    }
+    
+    this.server.updateInfo(this.server.token, this.image, this.user).then(response => {
       console.log(response);
       this.closeModalChangeButton.nativeElement.click();
     }).catch(error => {
       console.log(error);
+    });
+  }
+  updatePsw(user){
+    this.server.updatePsw(this.server.token, user.password).then(response => {
+      console.log(response);
+      alert('Senha alterada com sucesso.')
+      this.closeModalChangeButton.nativeElement.click();
+    }).catch(error => {
+      console.log(error);
     })
-    }*/
-    this.closeModalChangeButton.nativeElement.click();
   }
 
   delete(){
