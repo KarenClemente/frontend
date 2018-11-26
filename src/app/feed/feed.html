@@ -311,7 +311,6 @@
       <p class="borda"  style=" background: #0066cc; color:white;">
         <a class="pointer" style="text-decoration: none;"></a>{{comment?.name}}
 
-        <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(post)" *ngIf="comment.owner_comment == 'true'"></a>
         <br>
         {{comment?.comment}}
       </p>
@@ -320,15 +319,10 @@
           <div class="col-xs-2" style="width:auto;">
             <img [src]="comment.image_profile" style="object-fit:cover;border-radius: 50%; margin-top: 10px;">
           </div>
-<<<<<<< HEAD
           <p class="borda" style="word-break: break-all;width:500px;">
             <a class="pointer" style="text-decoration: none;">{{comment.name}}</a>
-=======
-          <p class="borda" style="overflow-wrap: break-word;width:500px;">
-            <a class="pointer" style="text-decoration: none;">{{comment?.name}}</a>
->>>>>>> 402bcbc7b6f27c7b1d1476174fb92e08aa772f74
 
-            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(post)" *ngIf="comment.owner_comment == 'true'"></a>
+            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
             <br>
             {{comment.comment}}
           </p>

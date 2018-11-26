@@ -144,7 +144,7 @@ export class FeedComponent implements OnInit{
   delComment(post){
     //Delete comment
     console.log(post);
-      this.server.deleteComment(post.comments.comment_id).then(response => {
+      this.server.deleteComment(post.comment_id).then(response => {
         console.log(response);
         for (var i = this.posts.comments.length - 1; i >= 0; --i) {
           if (this.posts[i].comments.comment_id == post.comments.comment_id){
