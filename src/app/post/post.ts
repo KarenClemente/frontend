@@ -148,7 +148,7 @@ export class PostComponent implements OnInit {
     }
 
     addDemand(demands){
-      if(demands.title == '' || demands.descrition == '' || typeof demands.title == 'undefined' || typeof demands.descrition == 'undefined'){
+      /*if(demands.title == '' || demands.descrition == '' || typeof demands.title == 'undefined' || typeof demands.descrition == 'undefined'){
         bootbox.alert({ 
           size: "small",
           title: "Ops, algo aconteceu..",
@@ -162,7 +162,12 @@ export class PostComponent implements OnInit {
       this.server.newDemand(this.demands).then(response => {
         this._router.navigate(['/feed']);
        })
-      }
+      }*/
+      this.demands.title = demands.title;
+      this.demands.descrition = demands.descrition;
+      this.server.newDemand(this.demands).then(response => {
+        this._router.navigate(['/feed']);
+    });
     }
 
     changeListener($event) : void {

@@ -21,7 +21,6 @@ export class FeedComponent implements OnInit{
   public cont: number = 0;
   public id;
   public comment;
-  public comment_id;
   public statusOptions: any = [];
   public usersComments: any = [];
   public adminComments: any = [];
@@ -41,7 +40,15 @@ export class FeedComponent implements OnInit{
     for (var i = 0; i < response['dados'].length; i++){
       this.statusOptions.push(response['dados'][i]);
     }
-    })
+    }).catch(error => {
+      try{
+        let body = JSON.parse(error['_body']);
+        switch(body.erro.home){ 
+        }
+      }
+      catch(e){
+      }
+      });
     this.getPosts();
   }
 
@@ -59,8 +66,14 @@ export class FeedComponent implements OnInit{
    }
    this.cont += 5;
 }).catch(error => {
-  console.log(error);
-  });
+    try{
+      let body = JSON.parse(error['_body']);
+      switch(body.erro.feed){ 
+      }
+    }
+    catch(e){
+    }
+    });
   }
 
   setStatus(e): void {
@@ -85,8 +98,14 @@ export class FeedComponent implements OnInit{
     this.server.liked = body.dados.likes;
     this.server.commented = body.dados.comentarios;
     }).catch(error => {
-      console.log(error);
-    });
+      try{
+        let body = JSON.parse(error['_body']);
+        switch(body.erro.profile){ 
+        }
+      }
+      catch(e){
+      }
+      });
   }
 
   like(post){
@@ -110,9 +129,9 @@ export class FeedComponent implements OnInit{
   newComment(post, comment){
     //Add comment
     this.server.commentDemand(post.demand_id, comment).then(response => {
+      response = response.json();
       console.log(response);
-      this.comment_id = response['_body'].comment_id;
-        post.comments.push({comment_id: this.comment_id, name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment, owner_comment:"true"});
+        post.comments.push({comment_id: response['dados'].comment_id, name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment, owner_comment:"true"});
       }).catch(error => {
         console.log(error);
       });
@@ -120,14 +139,15 @@ export class FeedComponent implements OnInit{
       this.comment = "";
   }
 
-  delComment(post){
+  delComment(post, demand){
     //Delete comment
     console.log(post);
       this.server.deleteComment(post.comment_id).then(response => {
+        response = response.json();
         console.log(response);
-        for (var i = this.posts.comments.length - 1; i >= 0; --i) {
-          if (this.posts[i].comments.comment_id == post.comments.comment_id){
-            post.splice(i,1);
+        for (var i = demand.comments.length - 1; i >= 0; --i) {
+          if (demand.comments[i].comment_id == post.comment_id){
+            demand.comments.splice(i,1);
           }
         }
       }).catch(error => {
@@ -178,7 +198,8 @@ export class FeedComponent implements OnInit{
     }).catch(error => {
       let body = JSON.parse(error['_body']);
 
-      switch(body.erro.cadastro){
+      if(body.hasOwnProperty('erro')){
+      switch(body.erro.update){
 
       case 6:{
         bootbox.alert({ 
@@ -198,6 +219,7 @@ export class FeedComponent implements OnInit{
           backdrop: true, 
         })
       }
+    }
     }
     });
     if(typeof this.user.image == 'undefined' || this.user.image == ''){
@@ -231,6 +253,7 @@ export class FeedComponent implements OnInit{
       this.closeModalChangeButton.nativeElement.click();
     }).catch(error => {
       let body = JSON.parse(error['_body']);
+      if(body.hasOwnProperty('erro')){
       switch(body.erro.password){
 
       case 3:{
@@ -252,6 +275,7 @@ export class FeedComponent implements OnInit{
         break;
       }
       }
+    }
     })
   }
 

@@ -39,29 +39,17 @@ export class HomeComponent implements OnInit{
         this.posts.push(response['dados'][i]);
       }
       }
-      else{
-        bootbox.alert({ 
-          size: "small",
-          title: "Ops, algo aconteceu..",
-          message: "Todos os campos são requeridos para cadastro.", 
-          backdrop: true,
-        })
-      }
       }).catch(error => {
         try{
           let body = JSON.parse(error['_body']);
-          switch(body.erro.home){
-            
+          switch(body.erro.home){ 
           }
         }
-          catch(e){
-            
-          }
-
+        catch(e){
+        }
         });
       }
       
-
       setTermo(): void {
         if(this.aceitoTermo==false){
       this.aceitoTermo = true;}
@@ -204,7 +192,7 @@ export class HomeComponent implements OnInit{
           bootbox.alert({ 
             size: "small",
             title: "Ops, algo aconteceu..",
-            message: "Todos os campos são requeridos para cadastro.", 
+            message: "Servidor indisponível. Por favor tente novamente.",
             backdrop: true,
           })
         }
@@ -215,9 +203,11 @@ export class HomeComponent implements OnInit{
         this.server.newPsw(email).then(response => {
           this.closeModalPswButton.nativeElement.click();
         }).catch(error => {
-          let body = JSON.parse(error['_body']);
-
-          switch(body.erro.recover){
+          try{
+            let body = JSON.parse(error['_body']);
+  
+            if(body.hasOwnProperty('erro')){
+            switch(body.erro.recover){
 
             case 6:{
               bootbox.alert({ 
@@ -238,6 +228,15 @@ export class HomeComponent implements OnInit{
               })
               break;
             }
+          }
+        }}
+          catch(e){
+            bootbox.alert({ 
+              size: "small",
+              title: "Ops, algo aconteceu..",
+              message: "Servidor indisponível. Por favor tente novamente.",
+              backdrop: true,
+            })
           }
         });
       }

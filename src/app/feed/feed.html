@@ -241,9 +241,8 @@
 
           <a class="pointer"  style="text-decoration:none;textleft">{{post?.name}}</a>
           publicou
-          <b>{{post?.title}}</b><br>
-
-
+          <b>{{post?.title}}</b>
+          <br>
           <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="!post.local==''">
             {{post?.local}}</i>
             <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
@@ -274,11 +273,6 @@
 
 
           </div>
-
-
-
-
-
       <div class="card-body" style="background-color:#fff;">
         <img [src]="post?.image_demand" style="width:90%">
         <div style="background:none;" >
@@ -324,7 +318,7 @@
           <p class="borda" style="word-break: break-all;width:500px;">
             <a class="pointer" style="text-decoration: none;">{{comment.name}}</a>
 
-            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment)" *ngIf="comment.owner_comment == 'true'"></a>
+            <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment,post)" *ngIf="comment.owner_comment == 'true'"></a>
             <br>
             {{comment.comment}}
           </p>
