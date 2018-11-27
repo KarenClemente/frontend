@@ -135,18 +135,16 @@
                 As senhas devem ser iguais
                 </span>
                 <div class="form-group" style="margin-bottom:0rem">
-                  <label style="font-size: 1.2rem"><input type="checkbox" style="margin:10px;" name="term" />
+                  <label style="font-size: 1.2rem"><input type="checkbox" style="margin:10px;" name="term" (click)="setTermo()" >
                 Concordo com os <a href="#" data-target="#termos" data-toggle="modal">
                   Termos de Uso
                 </a>
                 do SOSUNB.
               </label>
                 </div>
-               <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block btn-flat" name="send" [disabled]="!cadastroForm.form.valid" (click)="confirm(user)">Cadastrar</button>
+               <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block btn-flat" name="send" [disabled]="!cadastroForm.form.valid || !aceitoTermo" (click)="confirm(user)">Cadastrar</button>
               </div>
-              <div class="col-xs-12">
 
-              </div>
             </form>
               </div>
           </div>

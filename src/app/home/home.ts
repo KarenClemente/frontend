@@ -24,8 +24,19 @@ export class HomeComponent implements OnInit{
   user: any = {};
   public posts: any = [];
   public showImg: boolean = true;
+  public aceitoTermo: boolean = false;
+
 
     constructor(private _router: Router, public server: ServerProvider) {}
+
+
+    setTermo(): void {
+      if(this.aceitoTermo==false){
+    this.aceitoTermo = true;}
+    else{
+      this.aceitoTermo=false;
+    }
+    }
 
       ngOnInit(){
       this.server.getSolvedDemands().then(response => {
@@ -103,6 +114,8 @@ export class HomeComponent implements OnInit{
             }
           }
         });
+
+
       }
 
       signin(email, password){
