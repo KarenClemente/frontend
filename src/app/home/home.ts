@@ -30,14 +30,6 @@ export class HomeComponent implements OnInit{
     constructor(private _router: Router, public server: ServerProvider) {}
 
 
-    setTermo(): void {
-      if(this.aceitoTermo==false){
-    this.aceitoTermo = true;}
-    else{
-      this.aceitoTermo=false;
-    }
-    }
-
       ngOnInit(){
       this.server.getSolvedDemands().then(response => {
       response = response.json();
@@ -47,8 +39,35 @@ export class HomeComponent implements OnInit{
         this.posts.push(response['dados'][i]);
       }
       }
-      else{}
-      })
+      else{
+        bootbox.alert({ 
+          size: "small",
+          title: "Ops, algo aconteceu..",
+          message: "Todos os campos são requeridos para cadastro.", 
+          backdrop: true,
+        })
+      }
+      }).catch(error => {
+        try{
+          let body = JSON.parse(error['_body']);
+          switch(body.erro.home){
+            
+          }
+        }
+          catch(e){
+            
+          }
+
+        });
+      }
+      
+
+      setTermo(): void {
+        if(this.aceitoTermo==false){
+      this.aceitoTermo = true;}
+      else{
+        this.aceitoTermo=false;
+      }
       }
 
       confirm(user){
@@ -56,7 +75,10 @@ export class HomeComponent implements OnInit{
           this.closeModalCadastroButton.nativeElement.click();
           this.signin(user.email,user.password);
         }).catch(error => {
+          try{
           let body = JSON.parse(error['_body']);
+
+          if(body.hasOwnProperty('erro')){
           switch(body.erro.cadastro){
             case 1:{
               bootbox.alert({ 
@@ -113,6 +135,15 @@ export class HomeComponent implements OnInit{
               break;
             }
           }
+        }
+      }
+          catch(e){
+            bootbox.alert({
+              size: "small",
+              title: "Ops, algo aconteceu..",
+              message: "Servidor indisponível. Por favor tente novamente."
+            })
+          }
         });
 
 
@@ -132,8 +163,10 @@ export class HomeComponent implements OnInit{
           this.closeModalTermsButton.nativeElement.click();
           this._router.navigate(['/feed']);
         }).catch(error => {
+          try{
           let body = JSON.parse(error['_body']);
 
+          if(body.hasOwnProperty('erro')){
           switch(body.erro.login){
             case 1:{
               bootbox.alert({ 
@@ -165,6 +198,16 @@ export class HomeComponent implements OnInit{
               break;
             }
           }
+        }
+      }
+        catch(e){
+          bootbox.alert({ 
+            size: "small",
+            title: "Ops, algo aconteceu..",
+            message: "Todos os campos são requeridos para cadastro.", 
+            backdrop: true,
+          })
+        }
         });
       }
 
