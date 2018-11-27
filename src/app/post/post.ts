@@ -166,9 +166,7 @@ export class PostComponent implements OnInit {
       this._router.navigate(['/solved']);
     }
 
-    addDemand(demand){
-    this.demands.title = demand.title;
-    this.demands.description = demand.description;
+    addDemand(demands){
 
     this.server.newDemand(this.demands).then(response => {
         console.log(response);
