@@ -133,8 +133,10 @@
                         publicou
                         <b>{{post?.title}}</b>
                         em
-                        <i class="fa fa-map-marker" style="color:gray;" name="pin">
-                        {{post?.local}}</i>
+                        <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="!post.local==''">
+                          {{post?.local}}</i>
+                          <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
+                          {{post?.environment}} no {{post?.campus}}</i>
                       </p>
 
                       <div class="icon" style="text-align:center" *ngIf="post.status=='Aberta'">

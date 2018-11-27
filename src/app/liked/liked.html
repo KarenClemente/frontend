@@ -235,8 +235,10 @@
           <div class="row"(click)="post.collapsed=!post.collapsed">
             <a class="text-muted" style="font-size:13px; text-decoration: none;"> {{post?.created_date}}</a>&nbsp;
             <br>
-            <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;">&nbsp;</i>
-            <a style="color:black;font-size:15px; text-decoration: none;">{{post?.local}}</a>
+            <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="!post.local==''">
+            {{post?.local}}</i>
+            <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
+            {{post?.environment}} no {{post?.campus}}</i>
           </div>
 
 
@@ -297,10 +299,11 @@
           <a style="text-decoration:none;textleft">  {{post?.name}}</a>
           publicou
           <b>{{post?.title}}</b><br>
-
-
-          <i class="fa fa-map-marker" style="color:gray;" name="pin">
-          {{post?.local}}</i>
+          <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="!post.local==''">
+            {{post?.local}}</i>
+            <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
+            {{post?.environment}} no {{post?.campus}}</i>
+        
 
         </div>
 
@@ -406,8 +409,11 @@
               <div class="row" (click)="sugestions.collapsed=!sugestions.collapsed">
                 <a class="text-muted" style="font-size:13px; text-decoration:none;"> {{sugestions?.created_date}}</a>&nbsp;
                 <br>
-                <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;"></i>&nbsp;
-                <a style="color:black;font-size:15px; text-decoration:none;">{{sugestions?.local}}</a>
+                <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="!post.local==''">
+                  {{post?.local}}</i>
+                  <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
+                  {{post?.environment}} no {{post?.campus}}</i>
+                
               </div>
               <div class="row">
                 <ul class="list-inline">
@@ -467,11 +473,11 @@
               <a style="text-decoration:none;textleft">  {{post?.name}}</a>
               publicou
               <b>{{post?.title}}</b><br>
-
-
-              <i class="fa fa-map-marker" style="color:gray;" name="pin">
-              {{post?.local}}</i>
-
+              <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="!post.local==''">
+                {{post?.local}}</i>
+                <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
+                {{post?.environment}} no {{post?.campus}}</i>
+            
             </div>
 
             <div class="icon" style="text-align:center" *ngIf="sugestions.status=='Aberta'">

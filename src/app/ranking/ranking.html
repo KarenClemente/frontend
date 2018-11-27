@@ -247,8 +247,10 @@
         <div class="row" >
           <a class="text-muted" style="font-size:13px; text-decoration: none;"> {{post?.created_date}}</a>&nbsp;
           <br>
-          <i class="fa fa-map-marker" style="color: rgb(184, 185, 186); font-size:15px;">&nbsp;</i>
-          <a style="color:black;font-size:15px; text-decoration: none;">{{post?.local}}</a>
+          <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="!post.local==''">
+            {{post?.local}}</i>
+            <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
+            {{post?.environment}} no {{post?.campus}}</i>
         </div>
         <div class="row" (click)="post.collapsed=!post.collapsed">
           <ul class="list-inline">
@@ -314,8 +316,10 @@
         publicou
         <b>{{post?.title}}</b>
         em<br>
-        <i class="fa fa-map-marker" style="color:gray;" name="pin"></i>
-        {{post?.local}}
+        <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="!post.local==''">
+          {{post?.local}}</i>
+          <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
+          {{post?.environment}} no {{post?.campus}}</i>
       </p>
 
       <div class="icon" style="text-align:center" *ngIf="post.status=='Aberta'">

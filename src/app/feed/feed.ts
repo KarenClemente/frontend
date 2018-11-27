@@ -14,7 +14,8 @@ export class FeedComponent implements OnInit{
 
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
-@ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
+  @ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
+  
   public posts: any = [];
   public user: any = [];
   public cont: number = 0;
@@ -30,7 +31,8 @@ export class FeedComponent implements OnInit{
   password: any;
   pswconfirm: any;
 
-  constructor(private _router: Router, public server: ServerProvider) {}
+  constructor(private _router: Router, public server: ServerProvider) {
+  }
 
   ngOnInit(){
     this.server.getStatus().then(response => {
@@ -271,7 +273,7 @@ export class FeedComponent implements OnInit{
    }
 
   logout(){
-    this.server.token = "";
+    this.server.token = null;
     this._router.navigate(['/home']);
     this.closeModalLogoutButton.nativeElement.click();
   }
