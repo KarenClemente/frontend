@@ -14,7 +14,7 @@ export class FeedComponent implements OnInit{
 
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
-@ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
+  @ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
   public posts: any = [];
   public user: any = [];
   public cont: number = 0;
