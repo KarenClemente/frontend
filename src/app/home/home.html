@@ -7,7 +7,7 @@
       <span class="icon-bar"></span>
     </button>
     <!--<a class="navbar-brand" href="index.html">SoS<span>UnB</span></a>-->
-    <a (click)="signin()" style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
+    <a routerLink="/feed" style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
   </div>
   <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
@@ -24,7 +24,7 @@
 <!--/ Navigation bar-->
 <!--Modal box-->
 <div class="modal fade" id="login" role="dialog" aria-hidden="true">
-<div class="modal-dialog modal-sm">
+<div class="modal-dialog modal-sm" style="margin-top: 10px;">
 
   <!-- Modal content no 1-->
   <div class="modal-content">
@@ -72,7 +72,7 @@
 <!--/ Modal box-->
 <!--Modal box cadastro-->
 <div class="modal fade" id="cadastro" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm" style="margin-top: 10px;">
 
     <!-- Modal content no 1-->
     <div class="modal-content">
@@ -84,7 +84,7 @@
       <div class="modal-body">
 
         <div class="login-box-body">
-          <form #cadastroForm="ngForm">
+          <form #cadastroForm="ngForm" >
               <p class="login-box-msg" style="color: grey;">Preencha os campos</p>
                <div class="form-group" style="margin-bottom:0rem">
                 <!----- username -------------->
@@ -134,8 +134,15 @@
                 <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
                 As senhas devem ser iguais
                 </span>
-
-              <a href="#" data-target="#termosCadastro" data-toggle="modal" style="text-decoration:none;"><button style="margin-top: 20px;" type="button"  class="btn btn-green btn-block btn-flat" [disabled]="cadastroForm.invalid || cadastroForm.pending" >Cadastrar</button></a>
+                <div class="form-group" style="margin-bottom:0rem">
+                  <label style="font-size: 1.2rem"><input type="checkbox" style="margin:10px;" name="term" />
+                Concordo com os <a href="#" data-target="#termos" data-toggle="modal">
+                  Termos de Uso
+                </a>
+                do SOSUNB.
+              </label>
+                </div>
+               <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block btn-flat" name="send" [disabled]="!cadastroForm.form.valid">Cadastrar</button>
               </div>
               <div class="col-xs-12">
 
@@ -149,7 +156,7 @@
 <!--/ Modal box cadastro-->
 <!--Modal esqueci senha-->
 <div class="modal fade" id="senha" role="dialog" aria-hidden="true">
-<div class="modal-dialog modal-sm">
+<div class="modal-dialog modal-sm" style="margin-top: 10px;">
   <div class="modal-content">
     <div class="modal-header">
         <button #closeModalPswButton type="button" class="close" data-dismiss="modal">&times;</button>
@@ -175,7 +182,7 @@
 <!--/Modal esqueci senha-->
 <!--Modal termos-->
 <div class="modal fade" id="termos" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm" style="margin-top: 10px;">
 
     <!-- Modal content no 1-->
     <div class="modal-content" style="width:500px;">
@@ -293,155 +300,6 @@
 
 </div>
 <!--/Modal termos-->
-
-
-<!--termos cadastro-->
-<div class="modal fade" id="termosCadastro" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-
-    <!-- Modal content no 1-->
-    <div class="modal-content" style="width:500px;">
-      <div class="modal-header">
-          <button #closeModalTermsButton type="button" class="close" data-dismiss="modal">&times;</button>
-
-        <h4 class="modal-title text-center form-title" style="color: #0066cc;">Termos de uso</h4>
-      </div>
-      <div class="modal-body">
-        <div class="login-box-body rolavel" style="height:auto;max-height:500px; background:none;">
-
-            <div style="text-align:center;">
-            <b>Termos de uso do SOS UnB</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
-            SOS UnB é fruto de um projeto acadêmico coordenado pelo Professor Doutor Flávio
-            Elias Gomes de Deus, do Departamento de Engenharia da Faculdade de Tecnologia da
-            Universidade de Brasília. Resultado do trabalho final da disciplina Projeto Transversal em
-            Redes de Comunicação II, do Curso de Bacharelado em Engenharia de Redes, produzido pela
-            turma do segundo semestre de 2018. O projeto teve por gestor o aluno Lucas Garcia e a
-            participação dos seguintes alunos: Fillipe Barros, Heitor de Melo, Karen Clemente, Lucas Amaro
-            Mariana Grijó, Mariana Varanda, Pedro Henrique, Phelipe Resende, Trajano Melo e Victor Albedio.<br>&nbsp;&nbsp;
-
-            Os presentes termos de uso regem as relações dos usuários com o SOS UnB e quando
-            você formaliza o cadastro estará concordando com eles.<br><br></p>
-            <div style="text-align:center;">
-            <b>O Serviço do SOS UnB</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
-            O SOS UnB é um serviço destinado à comunidade acadêmica da Universidade de
-            Brasília e objetiva dar visibilidade aos problemas de infraestrutura e facilitar a comunicação de
-            demandas à administração da UnB.<br>&nbsp;&nbsp;
-            Para se cadastrar você precisa ser aluno, servidor ou professor da Universidade de
-            Brasília. Após cadastrado você poderá reportar demandas (problemas ou sugestões), visualizar
-            todas as apontadas pelos usuários além de ajudar a ranquear as que lhe interesse ou lhe
-            pareça mais importante.<br>&nbsp;&nbsp;
-            Sua colaboração tornará mais dinâmica a apresentação de demandas (problemas e
-            sugestões) para os gestores da Universidade de Brasília e lançará luz sobre aspectos
-            importantes que influenciam no nosso dia-a-dia como membros desta comunidade acadêmica.<br>&nbsp;&nbsp;
-            O serviço oferecido apresentará toda e qualquer demanda (problema ou sugestão)
-            apontada pelos usuários, indicando eventuais ações adotadas pela administração da
-            Universidade. Você terá acesso ao ranking das demandas, classificadas por Campi,
-            considerando o número de usuários que se solidarizam com a demanda conforme a
-            quantidade de ‘likes’ dados pelos membros de nossa rede.<br>&nbsp;&nbsp;
-            As informações passadas pelos usuários sobre as ‘demandas criadas’ são visualizadas
-            por todos os demais usuários, catalogadas, ranqueadas e, dependendo de sua repercussão,
-            serão disponibilizadas para acesso facilitado à administração da UnB.<br>&nbsp;&nbsp;
-            As informações sobre ‘demandas solucionadas’ estarão disponíveis a toda população
-            por meio do endereço eletrônico na rede mundial de computadores.<br>&nbsp;&nbsp;
-            Você pode excluir sua conta a qualquer tempo caso não concorde com nossos termos
-            de uso.<br><br></p>
-            <div style="text-align:center;">
-            <b>Política de Dados</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
-
-            Para realizar nossos serviços é necessário confirmar o seu vínculo com a Universidade
-            de Brasília, por este motivo, você concorda em fornecer o seu nome completo, número de
-            matrícula e data de nascimento. Concorda, também, que possamos armazenar tais dados em
-            nosso banco de dados. Essas informações serão confrontadas com a base de dados da
-            Universidade de Brasília e, se você for aluno, servidor ou professor, poderá ter acesso aos
-            nossos serviços.<br>&nbsp;&nbsp;
-            Não compartilhamos seus dados com nenhum outro aplicativo ou sistema.
-            Adotaremos as medidas tecnológicas disponíveis em nossos servidores para garantir a
-            segurança de seus dados.<br><br></p>
-            <div style="text-align:center;">
-            <b>Compromissos do Usuário</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
-
-
-            Para utilizar os serviços do SOS UnB você deve agir segundo as regras abaixo:<br></p>
-            <div style="text-align:left; color:gray; margin-left:45px;">
-              - Você deve ter vínculo com a Universidade de Brasília como aluno, servidor ou professor;<br><br>
-              - Você não pode estar respondendo a procedimento administrativo disciplinar na Universidade de Brasília;<br><br>
-              - Você não pode ter tido condenação criminal;<br><br>
-              - Você não pode fornecer informações imprecisas e não pode se cadastrar por outra pessoa sem o conhecimento prévio e concordância dela;<br><br>
-              - Você não pode usar nossa plataforma para algo ilícito, enganoso, fraudulento ou com
-              finalidade ilegal ou não autorizada;<br><br>
-              - Você não pode agir para tentar interferir ou afetar nosso serviço;<br><br>
-              - Você não pode tentar acessar ou coletar informações de formas não autorizadas, incluindo os casos de coleta de informações sem nossa permissão expressa;<br><br>
-              - Você não pode utilizar a plataforma para publicar informações particulares ou confidenciais e nem mesmo fazer algo que prejudique direito de terceiros, inclusive direitos de propriedade
-              intelectual;<br><br>
-              - O conteúdo que você publica é seu, mas você nos concede o direito de sua utilização de forma gratuita, podendo revogar tal concessão solicitando a exclusão de sua conta. Os conteúdos publicados até o processamento do pedido de exclusão, que não excederá a 5 dias úteis, permanecerão aparecendo com as informações então prestadas;<br><br>
-              - Você nos concede o direito de usar o seu nome e a foto que inclua em seu perfil. Em toda publicação que você fizer nós colocaremos o seu nome e sua foto de perfil caso tenha cadastrado alguma;<br><br>
-              - Você concorda com a possibilidade de baixarmos e instalarmos atualizações do nosso serviço em seus dispositivos.</div><br><br>
-            <div style="text-align:center;">
-            <b>Remoção de Conteúdo</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
-
-
-            Qualquer usuário pode denunciar qualquer publicação realizada em nossa plataforma.
-            Sempre que uma ‘postagem‘ tiver sido denunciada ela poderá ser, preventivamente, retirada
-            de nosso serviço. Você será notificado e poderá contestar as denúncias.<br>&nbsp;&nbsp;
-
-            Para que nosso serviço seja realizado de forma satisfatória, você concorda que
-            possamos retirar suas postagens, independentemente de notificação, sempre que julgarmos
-            que sua publicação seja ofensiva ou fira nossos termos de uso.<br>&nbsp;&nbsp;
-
-            Alertamos que publicações ofensivas poderão ser levadas à administração da
-            Universidade de Brasília para providências disciplinares eventualmente cabíveis.<br>&nbsp;&nbsp;
-            Alertamos, igualmente, que publicações ofensivas podem constituir infrações
-            criminais, sendo o autor responsável por seus atos.<br><br></p>
-            <div style="text-align:center;">
-            <b>Disposições finais</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
-
-
-            Não podemos garantir que os nossos serviços funcionarão perfeitamente a todo
-            tempo.<br>&nbsp;&nbsp;
-            Não nos responsabilizamos pelo conteúdo publicado por terceiros e não somos
-            responsáveis por suas condutas.<br>&nbsp;&nbsp;
-            Nossos serviços podem passar por processos de atualização e nossos termos de uso
-            também. Enquanto você estiver utilizando nossos serviços significa que concorda com os
-            termos de utilização.<br><br></p>
-            <div style="text-align:center;color: grey;">
-            Este termo foi atualizado em 11 de novembro de 2018.</div>
-
-
-
-          </div>
-          <div class="linha"></div>
-        </div>
-
-        <div class="login-box-body">
-          <p class="login-box-msg" style="color: grey;margin-bottom:20px margin-top:-30px;">Você está de acordo com os termos de uso do SoSUnB?</p>
-
-
-            <div class="row" style="padding-left: 35%;" >
-
-                <div class="btncolumn" style="color:white;">
-                <input style="margin-top: 0px;background-color:#cccccc" type="submit" class="btn   btn-flat"   value="Sim" (click)="confirm(user);">
-                </div>
-
-                <div class="btncolumn" style="color:white;">
-                <input style="margin-top: 0px; background-color: #cccccc; margin-left:20px;"type="submit" class="btn btn-flat" value="Não" data-dismiss="modal"
-                >
-                </div>
-            </div>
-
-          </div>
-        </div>
-
-
-
-      </div>
-
-
-</div>
-
-
-
-
-<!--/termos cadastro-->
 <!--Banner-->
 <div class="banner">
 <div class="bg-color">

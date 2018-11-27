@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit{
   @ViewChild('closeModalPswButton') closeModalPswButton: ElementRef;
   @ViewChild('closeModalTermsButton') closeModalTermsButton: ElementRef;
 
-
   email: any;
   password: any;
   user: any = {};
@@ -51,7 +50,7 @@ export class HomeComponent implements OnInit{
           console.log(response);
           console.log(response["_body"]);
           this.closeModalCadastroButton.nativeElement.click();
-        this.signin(user.email,user.password);
+          this.signin(user.email,user.password);
 
         
         }).catch(error => {
@@ -87,6 +86,7 @@ export class HomeComponent implements OnInit{
           this.server.user.email = body.dados.email;
           this.server.user.image_profile = body.dados.image_profile;
           this.closeModalLoginButton.nativeElement.click();
+          this.closeModalTermsButton.nativeElement.click();
           this._router.navigate(['/feed']);
         }).catch(error => {
           console.log(error);

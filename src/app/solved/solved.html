@@ -196,10 +196,10 @@
           <a style="text-decoration:none;textleft">  {{post?.name}}</a>
           publicou
           <b>{{post?.title}}</b><br>
-
-
-          <i class="fa fa-map-marker" style="color:gray;" name="pin">
-          {{post?.local}}</i>
+          <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="!post.local==''">
+            {{post?.local}}</i>
+            <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
+            {{post?.environment}} no {{post?.campus}}</i>
 
         </div>
 
