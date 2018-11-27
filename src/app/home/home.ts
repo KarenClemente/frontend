@@ -20,8 +20,15 @@ export class HomeComponent implements OnInit{
   user: any = {};
   public posts: any = [];
   public showImg: boolean = true;
+  public aceitoTermo: boolean = false;
+
 
     constructor(private _router: Router, public server: ServerProvider) {}
+
+
+    setTermo(): void {
+    this.aceitoTermo = true;
+    }
 
       ngOnInit(){
       this.server.getSolvedDemands().then(response => {
@@ -52,7 +59,7 @@ export class HomeComponent implements OnInit{
           this.closeModalCadastroButton.nativeElement.click();
           this.signin(user.email,user.password);
 
-        
+
         }).catch(error => {
           console.log(error);
           let body = JSON.parse(error['_body']);
@@ -70,6 +77,8 @@ export class HomeComponent implements OnInit{
             }
           }
         });
+
+
       }
 
       signin(email, password){
