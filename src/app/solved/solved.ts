@@ -26,42 +26,28 @@ export class SolvedComponent implements OnInit{
 
 ngOnInit(){
   this.server.seeDemand().then(response => {
-    console.log(response);
-    console.log(response.json());
-
     response = response.json();
     for(var i=0; i < response['dados'].length; i++)
     this.posts.push(response['dados'][i]);
-  }).catch(error => {
-    console.log(error);
   });
 }
 
 like(post){
+  //Remove like
   post.total_likes = Number(post.total_likes);
-//Remove like
-if (post.gave_like == "true"){
-  this.server.unlikeDemand(post.demand_id).then(response => {
-  console.log(response);
-  post.total_likes -= 1;
-  post.gave_like = "false";
-  console.log(post.gave_like);
-  }).catch(error => {
-    console.log(error);
-  });
-}
-//Add like
-else{
-  this.server.likeDemand(post.demand_id).then(response => {
-    console.log(response);
-    post.total_likes += 1;
-    post.gave_like = "true";
-    console.log(post.gave_like);
-    console.log(post.total_likes);
-  }).catch(error => {
-    console.log(error);
-  });
-}
+  if (post.gave_like == "true"){
+    this.server.unlikeDemand(post.demand_id).then(response => {
+    post.total_likes -= 1;
+    post.gave_like = "false";
+    })
+  }
+  //Add like
+  else{
+    this.server.likeDemand(post.demand_id).then(response => {
+      post.total_likes += 1;
+      post.gave_like = "true";
+    })
+  }
 }
 
 newComment(post, comment){
@@ -86,18 +72,20 @@ delComment(post){
     });
 }
 
-report(post){
+report(){
   this.server.reportDemand(this.id).then(response => {
-    console.log(response);
     this.closeModalDangerButton.nativeElement.click();
-  }).catch(error => {
-    console.log(error);
-  });
+    bootbox.alert({ 
+        size: "small",
+        title: "Atenção!",
+        message: "A demanda foi denunciada. Você não conseguirá mais visualizá-la.", 
+        backdrop: true,
+      })
+  })
 }
 
 reportId(post){
   this.id = post.demand_id;
-  console.log(this.id);
 }
 
 changeListener($event) : void {
@@ -110,7 +98,6 @@ readThis(inputValue: any): void {
 
   myReader.onloadend = (e) => {
     this.user.image = myReader.result;
-    console.log(this.user.image);
   }
   myReader.readAsDataURL(file);
 }
@@ -124,10 +111,31 @@ updateInfo(user){
   }
 
   this.server.updateInfo(this.user).then(response => {
-    console.log(response);
     this.closeModalChangeButton.nativeElement.click();
   }).catch(error => {
-    console.log(error);
+    let body = JSON.parse(error['_body']);
+
+    switch(body.erro.cadastro){
+
+    case 6:{
+      bootbox.alert({ 
+        size: "small",
+        title: "Ops, algo aconteceu..",
+        message: "Email inválido.",
+        backdrop: true, 
+      })
+      break; 
+    }
+    
+    default:{
+      bootbox.alert({
+        size: "small",
+        title: "Ops, algo aconteceu..",
+        message: "Erro.",
+        backdrop: true, 
+      })
+    }
+  }
   });
   if(typeof this.user.image == 'undefined' || this.user.image == ''){
     this.server.user.image_profile = this.server.user.image_profile;
@@ -139,8 +147,12 @@ updateInfo(user){
 
 verifyPsw(user){
   if(user.password != user.pswconfirm || typeof user.password == 'undefined'){
-    alert('Senhas devem ser iguais e conter no mínimo 6 caracteres')
-  }
+    bootbox.alert({ 
+      size: "small",
+      title: "Ops, algo aconteceu..",
+      message: "As senhas devem ser iguais e conter no mínimo 6 digitos.", 
+    })
+    }
   else{
     this.updatePsw(user);
   }
@@ -148,45 +160,57 @@ verifyPsw(user){
 
 updatePsw(user){
   this.server.updatePsw(user.password).then(response => {
-    console.log(response);
-    alert('Senha alterada com sucesso.')
+    bootbox.alert({ 
+      size: "small",
+      title: "Atenção!",
+      message: "Senha alterada com sucesso.", 
+    })
     this.closeModalChangeButton.nativeElement.click();
   }).catch(error => {
-    console.log(error);
     let body = JSON.parse(error['_body']);
+    switch(body.erro.password){
 
-        switch(body.erro.update){
-
-          case 3:{
-            alert("Senha deve ter no mínimo 6 caracteres");
-            break;
-          }
-
-          default:{
-            alert("Erro. Tente novamente.");
-            break;
-          }
-        }
+    case 3:{
+      bootbox.alert({ 
+        size: "small",
+        title: "Ops, algo aconteceu..",
+        message: "Senha deve conter no mínimo 6 dígitos.", 
+        backdrop: true,
+      })
+      break;
+    }
+    default:{
+      bootbox.alert({ 
+        size: "small",
+        title: "Ops, algo aconteceu..",
+        message: "Erro.", 
+        backdrop: true,
+      })
+      break;
+    }
+    }
   })
 }
+
 delete(){
   this.server.deleteAccount().then(response => {
-    console.log(response);
     this.closeModalChangeButton.nativeElement.click();
+    bootbox.alert({ 
+      size: "small",
+      title: "Atenção",
+      message: "Conta deletada com sucesso.", 
+      backdrop: true,
+    })
     this.logout();
-  }).catch(error => {
-    console.log(error);
-  });
+    })
 }
 
 clearInputs() {
   this.user = {};
- }
+}
 
 logout(){
-  this.server.token = "";
+  this.server.token = null;
   this._router.navigate(['/home']);
-  console.log(this.server.token);
   this.closeModalLogoutButton.nativeElement.click();
-}
-}
+}}

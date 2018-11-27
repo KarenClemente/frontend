@@ -26,12 +26,9 @@ export class LikedComponent implements OnInit{
 
   ngOnInit(){
     this.server.getSelectedDemands().then(response => {
-      console.log(response);
-      console.log(response.json());
-
       response = response.json();
-     // this.posts = response['dados'];
-     for (var i = 0; i < response['dados'].likes.length; i++){
+
+      for (var i = 0; i < response['dados'].likes.length; i++){
       response['dados'].likes[i].collapsed = false;
       this.posts.push(response['dados'].likes[i]);
      }
@@ -39,37 +36,25 @@ export class LikedComponent implements OnInit{
       response['dados'].comentarios[i].collapsed = false;
       this.demands.push(response['dados'].comentarios[i]);
      }
-
-      }).catch(error => {
-      console.log(error);
-    });
+      })
   }
 
   like(post){
+    //Remove like
     post.total_likes = Number(post.total_likes);
-  //Remove like
-  if (post.gave_like == "true"){
-    this.server.unlikeDemand(post.demand_id).then(response => {
-    console.log(response);
-    post.total_likes -= 1;
-    post.gave_like = "false";
-    console.log(post.gave_like);
-    }).catch(error => {
-      console.log(error);
-    });
-  }
-  //Add like
-  else{
-    this.server.likeDemand(post.demand_id).then(response => {
-      console.log(response);
-      post.total_likes += 1;
-      post.gave_like = "true";
-      console.log(post.gave_like);
-      console.log(post.total_likes);
-    }).catch(error => {
-      console.log(error);
-    });
-  }
+    if (post.gave_like == "true"){
+      this.server.unlikeDemand(post.demand_id).then(response => {
+      post.total_likes -= 1;
+      post.gave_like = "false";
+      })
+    }
+    //Add like
+    else{
+      this.server.likeDemand(post.demand_id).then(response => {
+        post.total_likes += 1;
+        post.gave_like = "true";
+      })
+    }
   }
 
   newComment(post, comment){
@@ -96,16 +81,18 @@ export class LikedComponent implements OnInit{
 
   report(){
     this.server.reportDemand(this.id).then(response => {
-      console.log(response);
       this.closeModalDangerButton.nativeElement.click();
-    }).catch(error => {
-      console.log(error);
-    });
+      bootbox.alert({ 
+          size: "small",
+          title: "Atenção!",
+          message: "A demanda foi denunciada. Você não conseguirá mais visualizá-la.", 
+          backdrop: true,
+        })
+    })
   }
 
   reportId(post){
     this.id = post.demand_id;
-    console.log(this.id);
   }
 
   changeListener($event) : void {
@@ -118,7 +105,6 @@ export class LikedComponent implements OnInit{
 
     myReader.onloadend = (e) => {
       this.user.image = myReader.result;
-      console.log(this.user.image);
     }
     myReader.readAsDataURL(file);
   }
@@ -132,10 +118,31 @@ export class LikedComponent implements OnInit{
     }
 
     this.server.updateInfo(this.user).then(response => {
-      console.log(response);
       this.closeModalChangeButton.nativeElement.click();
     }).catch(error => {
-      console.log(error);
+      let body = JSON.parse(error['_body']);
+
+      switch(body.erro.cadastro){
+
+      case 6:{
+        bootbox.alert({ 
+          size: "small",
+          title: "Ops, algo aconteceu..",
+          message: "Email inválido.",
+          backdrop: true, 
+        })
+        break; 
+      }
+      
+      default:{
+        bootbox.alert({
+          size: "small",
+          title: "Ops, algo aconteceu..",
+          message: "Erro.",
+          backdrop: true, 
+        })
+      }
+    }
     });
     if(typeof this.user.image == 'undefined' || this.user.image == ''){
       this.server.user.image_profile = this.server.user.image_profile;
@@ -147,8 +154,12 @@ export class LikedComponent implements OnInit{
 
   verifyPsw(user){
     if(user.password != user.pswconfirm || typeof user.password == 'undefined'){
-      alert('Senhas devem ser iguais e conter no mínimo 6 caracteres')
-    }
+      bootbox.alert({ 
+        size: "small",
+        title: "Ops, algo aconteceu..",
+        message: "As senhas devem ser iguais e conter no mínimo 6 digitos.", 
+      })
+      }
     else{
       this.updatePsw(user);
     }
@@ -156,36 +167,49 @@ export class LikedComponent implements OnInit{
 
   updatePsw(user){
     this.server.updatePsw(user.password).then(response => {
-      console.log(response);
-      alert('Senha alterada com sucesso.')
+      bootbox.alert({ 
+        size: "small",
+        title: "Atenção!",
+        message: "Senha alterada com sucesso.", 
+      })
       this.closeModalChangeButton.nativeElement.click();
     }).catch(error => {
-      console.log(error);
       let body = JSON.parse(error['_body']);
+      switch(body.erro.password){
 
-          switch(body.erro.update){
-
-            case 3:{
-              alert("Senha deve ter no mínimo 6 caracteres");
-              break;
-            }
-
-            default:{
-              alert("Erro. Tente novamente.");
-              break;
-            }
-          }
+      case 3:{
+        bootbox.alert({ 
+          size: "small",
+          title: "Ops, algo aconteceu..",
+          message: "Senha deve conter no mínimo 6 dígitos.", 
+          backdrop: true,
+        })
+        break;
+      }
+      default:{
+        bootbox.alert({ 
+          size: "small",
+          title: "Ops, algo aconteceu..",
+          message: "Erro.", 
+          backdrop: true,
+        })
+        break;
+      }
+      }
     })
   }
 
   delete(){
     this.server.deleteAccount().then(response => {
-      console.log(response);
       this.closeModalChangeButton.nativeElement.click();
+      bootbox.alert({ 
+        size: "small",
+        title: "Atenção",
+        message: "Conta deletada com sucesso.", 
+        backdrop: true,
+      })
       this.logout();
-    }).catch(error => {
-      console.log(error);
-    });
+      })
   }
 
   clearInputs() {
@@ -193,7 +217,7 @@ export class LikedComponent implements OnInit{
   }
 
   logout(){
-    this.server.token = "";
+    this.server.token = null;
     this._router.navigate(['/home']);
     this.closeModalLogoutButton.nativeElement.click();
   }

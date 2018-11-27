@@ -7,6 +7,7 @@ import { ServerProvider } from '../../providers/server';
   templateUrl: './post.html',
   styleUrls: ['./post.css']
 })
+
 export class PostComponent implements OnInit {
 
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
@@ -38,91 +39,63 @@ export class PostComponent implements OnInit {
     // Functions
     ngOnInit(){
       this.server.typeDemand().then(response => {
-        console.log(response);
-        console.log(response.json());
         response = response.json();
 
         for (var i = 0; i < response['dados'].length; i++){
           this.types.push(response['dados'][i]);
          }
-        console.log(this.types)
-      }).catch(error => {
-        console.log(error);
       });
       this.server.getCampus().then(response => {
-        console.log(response);
-        console.log(response.json());
         response = response.json();
 
         for (var i = 0; i < response['dados'].length; i++){
           this.campusArray.push(response['dados'][i]);
          }
-         console.log(this.campusArray)
-      }).catch(error => {
-        console.log(error);
       });
     }
 
     setType(e): void {
     this.demands.selectedType = e.id;
-    console.log(this.demands.selectedType);
     }
 
     setCampus(e): void {
       this.demands.selectedCampus = e.id;
-      console.log(this.demands.selectedCampus);
     }
 
     setArea(e): void {
     this.demands.selectedArea = e.id;
-    console.log(this.demands.selectedArea);
     }
 
     setCategory(e): void {
       this.demands.selectedCategory = e.id;
-      console.log(this.demands.selectedCategory);
     }
 
     setLocal(e): void {
       this.demands.local_id = e.selectedValueLocal.id;
-      console.log(this.demands.local_id);
     }
 
     setEnvironment(e): void {
       this.demands.selectedEnvironment = e.selectedValueEnvironment.id;
-      console.log(this.demands.selectedEnvironment);
       this.setLocal(e);
     }
 
     getCard2(){
       this.server.areaDemand().then(response => {
-        console.log(response);
-        console.log(response.json());
         response = response.json();
         for (var i = 0; i < response['dados'].length; i++){
           this.areas.push(response['dados'][i]);
          }
-        console.log(this.areas)
-      }).catch(error => {
-        console.log(error);
       });
       this.server.categoryDemand().then(response => {
-        console.log(response);
-        console.log(response.json());
         response = response.json();
         for (var i = 0; i < response['dados'].length; i++){
           this.categories.push(response['dados'][i]);
          }
-        console.log(this.categories)
-      }).catch(error => {
-        console.log(error);
       });
     }
 
     local(){
       this.server.getLocal(this.demands).then(response => {
-        console.log(response);
-        console.log(response.json());
         response = response.json();
         if (response['dados'].local.length == 0){
           this.ambienteIn = false;
@@ -133,31 +106,37 @@ export class PostComponent implements OnInit {
          for (var i = 0; i < response['dados'].environment.length; i++){
           this.environments.push(response['dados'].environment[i]);
          }
-        console.log(this.locais.length)
-      }).catch(error => {
-        console.log(error);
-      });
+      })
     }
 
     getSimilars(){
+      if (this.demands.selectedEnvironment == '' || typeof this.demands.selectedEnvironment == 'undefined'){
+        bootbox.alert({ 
+          size: "small",
+          title: "Atenção!",
+          message: "Marque o ambiente onde sua demanda está localizada.", 
+          backdrop: true,
+        })
+      }
+      else if(this.ambienteIn == true && (typeof this.demands.local == 'undefined' || this.demands.local == '')){
+        bootbox.alert({ 
+          size: "small",
+          title: "Atenção!",
+          message: "Marque o local onde sua demanda está localizada.", 
+          backdrop: true,
+        })
+      }
+      else{
       this.server.getDemandsSimilar(this.demands).then(response => {
-        console.log(response);
-        console.log(response.json());
-
-    response = response.json();
-    if (response['dados'].length > 0){
+      response = response.json();
+      if (response['dados'].length > 0){
       this.demandsSimilar = true;
-      console.log(this.demandsSimilar);
-    for(var i=0; i < response['dados'].length; i++){
-    this.postsSimilar.push(response['dados'][i]);
+      for(var i=0; i < response['dados'].length; i++){
+      this.postsSimilar.push(response['dados'][i]);
     }
     }
-    else{
-
+    })
     }
-    }).catch(error => {
-        console.log(error);
-    });
     }
 
     seeDemand(post){
@@ -167,13 +146,21 @@ export class PostComponent implements OnInit {
     }
 
     addDemand(demands){
-
-    this.server.newDemand(this.demands).then(response => {
-        console.log(response);
+      if(demands.title == '' || demands.descrition == '' || typeof demands.title == 'undefined' || typeof demands.descrition == 'undefined'){
+        bootbox.alert({ 
+          size: "small",
+          title: "Ops, algo aconteceu..",
+          message: "Inclua um título e uma descrição para sua demanda.", 
+          backdrop: true,
+        })
+      }
+      else{
+      this.demands.title = demands.title;
+      this.demands.descrition = demands.descrition;
+      this.server.newDemand(this.demands).then(response => {
         this._router.navigate(['/feed']);
-       }).catch(error => {
-        console.log(error);
-    });
+       })
+      }
     }
 
     changeListener($event) : void {
@@ -213,12 +200,33 @@ export class PostComponent implements OnInit {
       else{
       this.user.email = user.email;
       }
-
+  
       this.server.updateInfo(this.user).then(response => {
-        console.log(response);
         this.closeModalChangeButton.nativeElement.click();
       }).catch(error => {
-        console.log(error);
+        let body = JSON.parse(error['_body']);
+  
+        switch(body.erro.cadastro){
+  
+        case 6:{
+          bootbox.alert({ 
+            size: "small",
+            title: "Ops, algo aconteceu..",
+            message: "Email inválido.",
+            backdrop: true, 
+          })
+          break; 
+        }
+        
+        default:{
+          bootbox.alert({
+            size: "small",
+            title: "Ops, algo aconteceu..",
+            message: "Erro.",
+            backdrop: true, 
+          })
+        }
+      }
       });
       if(typeof this.user.image == 'undefined' || this.user.image == ''){
         this.server.user.image_profile = this.server.user.image_profile;
@@ -230,45 +238,62 @@ export class PostComponent implements OnInit {
 
     verifyPsw(user){
       if(user.password != user.pswconfirm || typeof user.password == 'undefined'){
-        alert('Senhas devem ser iguais e conter no mínimo 6 caracteres')
-      }
+        bootbox.alert({ 
+          size: "small",
+          title: "Ops, algo aconteceu..",
+          message: "As senhas devem ser iguais e conter no mínimo 6 digitos.", 
+        })
+        }
       else{
         this.updatePsw(user);
       }
     }
-
+  
     updatePsw(user){
       this.server.updatePsw(user.password).then(response => {
-        console.log(response);
-        alert('Senha alterada com sucesso.')
+        bootbox.alert({ 
+          size: "small",
+          title: "Atenção!",
+          message: "Senha alterada com sucesso.", 
+        })
         this.closeModalChangeButton.nativeElement.click();
       }).catch(error => {
-        console.log(error);
         let body = JSON.parse(error['_body']);
-
-            switch(body.erro.update){
-
-              case 3:{
-                alert("Senha deve ter no mínimo 6 caracteres");
-                break;
-              }
-
-              default:{
-                alert("Erro. Tente novamente.");
-                break;
-              }
-            }
+        switch(body.erro.password){
+  
+        case 3:{
+          bootbox.alert({ 
+            size: "small",
+            title: "Ops, algo aconteceu..",
+            message: "Senha deve conter no mínimo 6 dígitos.", 
+            backdrop: true,
+          })
+          break;
+        }
+        default:{
+          bootbox.alert({ 
+            size: "small",
+            title: "Ops, algo aconteceu..",
+            message: "Erro.", 
+            backdrop: true,
+          })
+          break;
+        }
+        }
       })
     }
 
     delete(){
       this.server.deleteAccount().then(response => {
-        console.log(response);
         this.closeModalChangeButton.nativeElement.click();
+        bootbox.alert({ 
+          size: "small",
+          title: "Atenção",
+          message: "Conta deletada com sucesso.", 
+          backdrop: true,
+        })
         this.logout();
-      }).catch(error => {
-        console.log(error);
-      });
+        })
     }
 
     clearInputs() {
@@ -276,24 +301,61 @@ export class PostComponent implements OnInit {
     }
 
     logout(){
-      this.server.token = "";
+      this.server.token = null;
       this._router.navigate(['/home']);
       this.closeModalLogoutButton.nativeElement.click();
     }
     // Seleção de cards
     proxcard(){
-   this.card1 = !this.card1;
-   this.card2 = !this.card2;
-   this.getCard2();
+      if(this.demands.selectedType == '' || typeof this.demands.selectedType == 'undefined'){
+        bootbox.alert({ 
+          size: "small",
+          title: "Atenção!",
+          message: "Marque o tipo de sua demanda.", 
+          backdrop: true,
+        })
+      }
+       else if(this.demands.selectedCampus == '' || typeof this.demands.selectedCampus == 'undefined'){
+        bootbox.alert({ 
+          size: "small",
+          title: "Atenção!",
+          message: "Selecione um campus.", 
+          backdrop: true,
+        })
+       }
+       else{      
+      this.getCard2();
+      this.card1 = !this.card1;
+      this.card2 = !this.card2;
+       }
     }
 
     ambiente(){
+      if(this.demands.selectedArea == '' || typeof this.demands.selectedArea == 'undefined'){
+        bootbox.alert({ 
+          size: "small",
+          title: "Atenção!",
+          message: "Marque a área onde sua demanda está localizada.", 
+          backdrop: true,
+        })
+      }
+       else if(this.demands.selectedCategory == '' || typeof this.demands.selectedCategory == 'undefined'){
+        bootbox.alert({ 
+          size: "small",
+          title: "Atenção!",
+          message: "Selecione uma categoria para sua demanda.", 
+          backdrop: true,
+        })
+       }
+       else{ 
       this.local();
       this.card2 = !this.card2;
       this.card3 = !this.card3;
+      }
     }
 
     demand(){
+      this.closeModalDemandsButton.nativeElement.click();
       this.card3 = !this.card3;
       this.posts = !this.posts;
     }

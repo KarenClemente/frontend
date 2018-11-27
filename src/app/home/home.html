@@ -142,7 +142,7 @@
                 do SOSUNB.
               </label>
                 </div>
-               <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block btn-flat" name="send" [disabled]="!cadastroForm.form.valid">Cadastrar</button>
+               <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block btn-flat" name="send" [disabled]="!cadastroForm.form.valid" (click)="confirm(user)">Cadastrar</button>
               </div>
               <div class="col-xs-12">
 

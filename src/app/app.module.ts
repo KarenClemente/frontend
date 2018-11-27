@@ -10,7 +10,6 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {NgxMaskModule} from 'ngx-mask';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll'
-
 // Pages
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home';
@@ -20,7 +19,6 @@ import { LikedComponent } from './liked/liked';
 import { RankingComponent } from './ranking/ranking';
 import { PostComponent } from './post/post';
 import { FeedComponent } from './feed/feed';
-import { GrdFilterPipes } from './feed/grd-filter.pipe';
 import { ConfirmEqualValidatorDirective } from '../shared/confirm-equal-validator.directive';
 
 const appRoutes: Routes = [
@@ -37,7 +35,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
 
-    GrdFilterPipes,
     AppComponent,
     HomeComponent,
     MadeByMeComponent,
@@ -54,7 +51,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     NgxMaskModule.forRoot(),
-    InfiniteScrollModule
+    InfiniteScrollModule,
   ],
   providers: [ ServerProvider ],
   bootstrap: [AppComponent],
