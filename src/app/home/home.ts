@@ -27,7 +27,11 @@ export class HomeComponent implements OnInit{
 
 
     setTermo(): void {
-    this.aceitoTermo = true;
+      if(this.aceitoTermo==false){
+    this.aceitoTermo = true;}
+    else{
+      this.aceitoTermo=false;
+    }
     }
 
       ngOnInit(){
