@@ -1,4 +1,17 @@
 /*CSS PAGINA INICIAL*/
+.linha {
+  margin-bottom: 20px;
+  width: 100%;
+  border-bottom: 1.3px solid #ced4da;
+}
+
+.btncolumn {
+float: left;
+width: 20%;
+padding: 10px;
+text-align: right;
+}
+
 
 .rolavel {
   height: 1000px;
@@ -209,4 +222,12 @@ Footer
 .btn-green, .btn-green:hover{
     background-color:rgb(101, 191, 91);
     color: #fff;
+}
+
+@media screen and (max-width: 991px){
+  .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 }
