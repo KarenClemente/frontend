@@ -2,6 +2,8 @@ import { Component,Injectable, OnInit, ViewChild, ElementRef } from '@angular/co
 import { Router } from '@angular/router'; // Added
 import { ServerProvider} from '../../providers/server';
 
+declare var bootbox: any;
+
 @Component({
   selector: 'app-ranking',
   templateUrl: './ranking.html',

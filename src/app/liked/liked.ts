@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router'; // Added
 import { ServerProvider} from '../../providers/server';
 
+declare var bootbox: any;
+
 @Component({
   selector: 'app-liked',
   templateUrl: './liked.html',

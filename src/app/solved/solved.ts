@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router'; // Added
 import { ServerProvider} from '../../providers/server';
 
+declare var bootbox: any;
+
 @Component({
   selector: 'app-solved',
   templateUrl: './solved.html',
