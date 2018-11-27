@@ -53,7 +53,12 @@ div.center {
     transition: 0.3s;
     border-radius: 50px;
   }
-
+  .btncolumn {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  text-align: right;
+  }
   .btncolumn1 {
   float: left;
   width: 20%;
