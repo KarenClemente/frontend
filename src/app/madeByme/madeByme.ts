@@ -69,27 +69,34 @@ like(post){
   }
   }
 
-newComment(post, comment){
-  //Add comment
-    this.server.commentDemand(post.demand_id,comment).then(response => {
+  newComment(post, comment){
+    //Add comment
+    this.server.commentDemand(post.demand_id, comment).then(response => {
+      response = response.json();
       console.log(response);
-     // post.comments.length += 1;
-     post.comments.push({name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment});
-    }).catch(error => {
-      console.log(error);
-    });
+        post.comments.push({comment_id: response['dados'].comment_id, name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment, owner_comment:"true"});
+      }).catch(error => {
+        console.log(error);
+      });
 
-    this.comment = "";
-}
+      this.comment = "";
+  }
 
-delComment(post){
-  //Delete comment
-    this.server.deleteComment(post.comment_id).then(response => {
-      console.log(response);
-    }).catch(error => {
-      console.log(error);
-    });
-}
+  delComment(post, demand){
+    //Delete comment
+    console.log(post);
+      this.server.deleteComment(post.comment_id).then(response => {
+        response = response.json();
+        console.log(response);
+        for (var i = demand.comments.length - 1; i >= 0; --i) {
+          if (demand.comments[i].comment_id == post.comment_id){
+            demand.comments.splice(i,1);
+          }
+        }
+      }).catch(error => {
+        console.log(error);
+      });
+  }
 
 deleteDemand(){
   this.server.deleteDemand(this.id).then(response => {
