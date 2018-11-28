@@ -16,7 +16,7 @@
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Campus
       <span class="caret"></span></a>
       <ul class="dropdown-menu" style="background-color: #0066cc;">
-        <li><a value="10" (click)="setCampus(value)" class="pointer">Geral</a>
+        <li><a (click)="setCampus(10)" class="pointer">Geral</a>
           <a *ngFor="let campus of campusArray" value="campus" (click)="setCampus(campus)" class="pointer">{{campus?.campus}}</a></li>
       </ul>
     </li>
@@ -395,11 +395,11 @@
               {{comment.comment}}
             </p>
         </div>
+        </div>
   <div class="textleft inputWithIcon icon" >
     <textarea rows="1" type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;  resize: none;" [(ngModel)]="comment">  </textarea>
   <a (click)="newComment(post, comment)" class="pointer icon" style="text-decoration: none;"><i class="fa fa-mail-forward"></i></a>
   </div>
-</div>
 </div>
 </div>
 </div>

@@ -77,7 +77,7 @@ export class FeedComponent implements OnInit{
   }
 
   setStatus(e): void {
-    if(typeof e == 'undefined'){
+    if(e == 10){
       this.status = '';
     }
     else{
@@ -86,7 +86,7 @@ export class FeedComponent implements OnInit{
     this.posts = [];
     this.cont = 0;
     this.getPosts();
-    
+    e = [];
   }
 
   setSearch(e): void {
@@ -165,7 +165,12 @@ export class FeedComponent implements OnInit{
           message: "A demanda foi denunciada. Você não conseguirá mais visualizá-la.", 
           backdrop: true,
         })
-    })
+        for(var i = this.posts.length - 1; i >= 0; --i) {
+          if (this.posts[i].demand_id == this.id){
+            this.posts.splice(i,1);
+          }
+    }
+  })
   }
 
   reportId(post){

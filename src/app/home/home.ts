@@ -60,7 +60,6 @@ export class HomeComponent implements OnInit{
 
       confirm(user){
         this.server.createUser(user).then(response => {
-          console.log(response);
           this.signin(user.email,user.password);
         }).catch(error => {
           try{

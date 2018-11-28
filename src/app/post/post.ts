@@ -208,7 +208,6 @@ export class PostComponent implements OnInit {
 
       myReader.onloadend = (e) => {
         this.demands.image = myReader.result;
-        console.log(this.demands.image);
       }
       myReader.readAsDataURL(file);
     }
@@ -223,7 +222,6 @@ export class PostComponent implements OnInit {
 
       myReader.onloadend = (e) => {
         this.user.image = myReader.result;
-        console.log(this.user.image);
       }
       myReader.readAsDataURL(file);
     }

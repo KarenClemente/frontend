@@ -56,10 +56,8 @@ newComment(post, comment){
   //Add comment
   this.server.commentDemand(post.demand_id, comment).then(response => {
     response = response.json();
-    console.log(response);
       post.comments.push({comment_id: response['dados'].comment_id, name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment, owner_comment:"true"});
     }).catch(error => {
-      console.log(error);
     });
 
     this.comment = "";
@@ -67,17 +65,14 @@ newComment(post, comment){
 
 delComment(post, demand){
   //Delete comment
-  console.log(post);
     this.server.deleteComment(post.comment_id).then(response => {
       response = response.json();
-      console.log(response);
       for (var i = demand.comments.length - 1; i >= 0; --i) {
         if (demand.comments[i].comment_id == post.comment_id){
           demand.comments.splice(i,1);
         }
       }
     }).catch(error => {
-      console.log(error);
     });
 }
 
@@ -90,6 +85,11 @@ report(){
         message: "A demanda foi denunciada. Você não conseguirá mais visualizá-la.", 
         backdrop: true,
       })
+      for(var i = this.posts.length - 1; i >= 0; --i) {
+        if (this.posts[i].demand_id == this.id){
+          this.posts.splice(i,1);
+        }
+  }
   })
 }
 

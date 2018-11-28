@@ -1,8 +1,6 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
-//const BASE_URL = "https://homol.redes.unb.br/sos-unb/api";
-//const BASE_URL = "https://sosunb.000webhostapp.com/api";
 const BASE_URL = "https://mundolalala.com.br/sosunb/api";
 
 
@@ -98,8 +96,8 @@ export class ServerProvider {
     });
     let options = new RequestOptions({ headers: headers });
     let body = new URLSearchParams ();
-    body.set('email', "varandaeng@gmail.com");
-    body.set('password', "123123");
+    body.set('email', email);
+    body.set('password', password);
 
     return this.http.post(BASE_URL + '/sessions/login', body.toString(), options).toPromise();
   }
@@ -282,7 +280,6 @@ export class ServerProvider {
   }
   // Add demand
   newDemand(demand){
-    console.log(demand)
     let headers = new Headers(
       {
           'Content-Type' : 'application/x-www-form-urlencoded',
