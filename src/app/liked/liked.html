@@ -303,7 +303,7 @@
             {{post?.local}}</i>
             <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
             {{post?.environment}} no {{post?.campus}}</i>
-        
+
 
         </div>
 
@@ -388,7 +388,7 @@
       </div>
     </div>
     <div class="textleft inputWithIcon icon" >
-      <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
+        <textarea rows="1" type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;  resize: none;" [(ngModel)]="comment">  </textarea>
       <a (click)="newComment(post, comment)" class="pointer icon" style="text-decoration: none;"><i class="fa fa-mail-forward"></i></a>
     </div>
   </div>
@@ -413,7 +413,7 @@
                   {{post?.local}}</i>
                   <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
                   {{post?.environment}} no {{post?.campus}}</i>
-                
+
               </div>
               <div class="row">
                 <ul class="list-inline">
@@ -477,7 +477,7 @@
                 {{post?.local}}</i>
                 <i class="fa fa-map-marker" style="color:gray" name="pin" *ngIf="post.local==''">
                 {{post?.environment}} no {{post?.campus}}</i>
-            
+
             </div>
 
             <div class="icon" style="text-align:center" *ngIf="sugestions.status=='Aberta'">
@@ -560,7 +560,7 @@
         </div>
         </div>
         <div class="textleft inputWithIcon icon" >
-          <input type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;" [(ngModel)]="comment">
+              <textarea rows="1" type="text" class="form-control" placeholder="Escreva seu comentário..." style="border-radius: 10px;  resize: none;" [(ngModel)]="comment">  </textarea>
           <a (click)="newComment(sugestions, comment)" class="pointer icon" style="text-decoration: none;"><i class="fa fa-mail-forward"></i></a>
         </div>
       </div>

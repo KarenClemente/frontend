@@ -475,12 +475,12 @@ Feed
   border-bottom: 1.3px solid #ced4da;
 }
 
-input[type="text"]:focus {
+textarea[type="text"]:focus {
   border-color: dodgerBlue;
   box-shadow: 0 0 8px 0 dodgerBlue;
 }
 
-.inputWithIcon input[type="text"] {
+.inputWithIcon textarea[type="text"] {
   padding-left: 40px;
 }
 
@@ -498,7 +498,7 @@ input[type="text"]:focus {
   border-radius: 50px;
 }
 
-.inputWithIcon input[type="text"]:focus + i {
+.inputWithIcon textarea[type="text"]:focus + i {
   color: dodgerBlue;
 }
 
