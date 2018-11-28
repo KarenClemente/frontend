@@ -294,7 +294,7 @@
               <option *ngFor="let campus of campusArray" [ngValue]="campus">{{campus?.campus}}</option>
             </select>
             <br>
-            <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)=" setCampus(selectedValue); proxcard();">CONFIRMAR</button>
+            <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)="proxcard(); setCampus(selectedValue)">CONFIRMAR</button>
           </div>
         </div>
       </div>
@@ -339,17 +339,17 @@
             </label>
             <br>
             <br>
-            <select *ngIf="ambienteIn" name="local" [(ngModel)] = "demand.selectedValueLocal">
+            <select *ngIf="ambienteIn" name="local" [(ngModel)] = "demands.selectedValueLocal">
                 <option *ngFor="let local of locais" [ngValue]="local">{{local.local}}</option>
             </select>
             <br>
             <br>
-            <select name="ambiente" [(ngModel)]="demand.selectedValueEnvironment">
+            <select name="ambiente" [(ngModel)]="demands.selectedValueEnvironment">
                 <option *ngFor="let environment of environments" [ngValue]="environment">{{environment.environment}}</option>
             </select>
             <br>
             <br>
-            <button style="margin-bottom: 20px;" type="button" data-toggle="modal" data-target="#Posts" class="btn btn-green btn-block" (click)="setEnvironment(demand); getSimilars(demand)">CONFIRMAR</button>
+            <button style="margin-bottom: 20px;" type="button" data-toggle="modal" data-target="#Posts" class="btn btn-green btn-block" (click)="setEnvironment(demands); getSimilars(demands)">CONFIRMAR</button>
           </div>
         </div>
       </div>

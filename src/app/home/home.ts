@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit{
 
       confirm(user){
         this.server.createUser(user).then(response => {
-          this.closeModalCadastroButton.nativeElement.click();
+          console.log(response);
           this.signin(user.email,user.password);
         }).catch(error => {
           try{
@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit{
               bootbox.alert({
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Erro.",
+                message: "Erro. Por favor, tente novamente.",
                 backdrop: true,
               })
               break;
@@ -134,6 +134,8 @@ export class HomeComponent implements OnInit{
           }
         });
 
+        this.closeModalTermsButton.nativeElement.click();
+        this.closeModalCadastroButton.nativeElement.click();
 
       }
 
@@ -148,7 +150,6 @@ export class HomeComponent implements OnInit{
           this.server.user.email = body.dados.email;
           this.server.user.image_profile = body.dados.image_profile;
           this.closeModalLoginButton.nativeElement.click();
-          this.closeModalTermsButton.nativeElement.click();
           this._router.navigate(['/feed']);
         }).catch(error => {
           try{
@@ -180,10 +181,10 @@ export class HomeComponent implements OnInit{
               bootbox.alert({ 
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Ocorreu um erro.", 
+                message: "Verifique se seu dados estão corretos.", 
                 backdrop: true,
               })
-              break;
+              break; 
             }
           }
         }
@@ -223,7 +224,7 @@ export class HomeComponent implements OnInit{
               bootbox.alert({ 
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Erro.", 
+                message: "Erro. Por favor, tente novamente.", 
                 backdrop: true,
               })
               break;
@@ -245,6 +246,7 @@ export class HomeComponent implements OnInit{
         this.user = {};
         this.email ="";
         this.password ="";
+        this.aceitoTermo = false;
       }
 
 }

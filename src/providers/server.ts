@@ -2,7 +2,9 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 //const BASE_URL = "https://homol.redes.unb.br/sos-unb/api";
-const BASE_URL = "http://sosunb.000webhostapp.com/api";
+//const BASE_URL = "https://sosunb.000webhostapp.com/api";
+const BASE_URL = "https://mundolalala.com.br/sosunb/api";
+
 
 @Injectable()
 export class ServerProvider {

@@ -21,7 +21,7 @@ export class PostComponent implements OnInit {
   posts: boolean = false;
 
   demandsSimilar: boolean = false;
-  ambienteIn: boolean = true;
+  ambienteIn: boolean = false;
   public demands: any = [];
   public postsSimilar: any = [];
   public types: any = [];
@@ -99,8 +99,8 @@ export class PostComponent implements OnInit {
     local(){
       this.server.getLocal(this.demands).then(response => {
         response = response.json();
-        if (response['dados'].local.length == 0){
-          this.ambienteIn = false;
+        if (response['dados'].local.length < 0){
+          this.ambienteIn = true;
         }
         for (var i = 0; i < response['dados'].local.length; i++){
           this.locais.push(response['dados'].local[i]);
@@ -131,6 +131,7 @@ export class PostComponent implements OnInit {
       else{
       this.server.getDemandsSimilar(this.demands).then(response => {
       response = response.json();
+      console.log(response['dados']);
       if (response['dados'].length > 0){
       this.demandsSimilar = true;
       for(var i=0; i < response['dados'].length; i++){
