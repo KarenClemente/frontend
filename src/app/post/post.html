@@ -294,7 +294,7 @@
               <option *ngFor="let campus of campusArray" [ngValue]="campus">{{campus?.campus}}</option>
             </select>
             <br>
-            <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)="proxcard(); setCampus(selectedValue)">CONFIRMAR</button>
+            <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)=" setCampus(selectedValue); proxcard()">CONFIRMAR</button>
           </div>
         </div>
       </div>
@@ -318,11 +318,11 @@
             </label>
             <br>
             <br>
-            <select id="category" name="category" [(ngModel)]="selectedValue">
+            <select id="category" name="category" [(ngModel)]="selectedValueCategory">
                 <option *ngFor="let category of categories"  [ngValue]="category">{{category?.type}}</option>
             </select>
             <br>
-            <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)="setCategory(selectedValue); ambiente();">CONFIRMAR</button>
+            <button style="margin-top: 20px;" type="submit" class="btn btn-green btn-block" (click)="setCategory(selectedValueCategory); ambiente();">CONFIRMAR</button>
           </div>
         </div>
       </div>

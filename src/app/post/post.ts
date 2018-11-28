@@ -61,7 +61,12 @@ export class PostComponent implements OnInit {
     }
 
     setCampus(e): void {
+      if(typeof e == 'undefined'){
+        
+      }
+      else{
       this.demands.selectedCampus = e.id;
+    }
     }
 
     setArea(e): void {
@@ -69,16 +74,43 @@ export class PostComponent implements OnInit {
     }
 
     setCategory(e): void {
+      if(typeof e == 'undefined'){
+        
+      }
+      else{
       this.demands.selectedCategory = e.id;
+    }
     }
 
     setLocal(e): void {
+      if(this.ambienteIn == true && typeof e.selectedValueLocal == 'undefined'){
+        bootbox.alert({ 
+          size: "small",
+          title: "Atenção!",
+          message: "Selecione o local.", 
+          backdrop: true,
+        })
+      }
+      else if(this.ambienteIn == false){
+        
+      }
+      else
       this.demands.local_id = e.selectedValueLocal.id;
     }
 
     setEnvironment(e): void {
+      if(typeof e.selectedValueEnvironment == 'undefined'){
+        bootbox.alert({ 
+          size: "small",
+          title: "Atenção!",
+          message: "Selecione um ambiente.", 
+          backdrop: true,
+        })
+      }
+      else{
       this.demands.selectedEnvironment = e.selectedValueEnvironment.id;
       this.setLocal(e);
+    }
     }
 
     getCard2(){
@@ -99,7 +131,7 @@ export class PostComponent implements OnInit {
     local(){
       this.server.getLocal(this.demands).then(response => {
         response = response.json();
-        if (response['dados'].local.length < 0){
+        if (response['dados'].local.length != 0){
           this.ambienteIn = true;
         }
         for (var i = 0; i < response['dados'].local.length; i++){
@@ -112,7 +144,7 @@ export class PostComponent implements OnInit {
     }
 
     getSimilars(){
-      if (this.demands.selectedEnvironment == '' || typeof this.demands.selectedEnvironment == 'undefined'){
+      if (typeof this.demands.selectedEnvironment == 'undefined'){
         bootbox.alert({ 
           size: "small",
           title: "Atenção!",
@@ -120,7 +152,7 @@ export class PostComponent implements OnInit {
           backdrop: true,
         })
       }
-      else if(this.ambienteIn == true && (typeof this.demands.local == 'undefined' || this.demands.local == '')){
+      else if(this.ambienteIn == true && (typeof this.demands.local == 'undefined')){
         bootbox.alert({ 
           size: "small",
           title: "Atenção!",
@@ -131,7 +163,7 @@ export class PostComponent implements OnInit {
       else{
       this.server.getDemandsSimilar(this.demands).then(response => {
       response = response.json();
-      console.log(response['dados']);
+      console.log(response);
       if (response['dados'].length > 0){
       this.demandsSimilar = true;
       for(var i=0; i < response['dados'].length; i++){
@@ -315,7 +347,7 @@ export class PostComponent implements OnInit {
     }
     // Seleção de cards
     proxcard(){
-      if(this.demands.selectedType == '' || typeof this.demands.selectedType == 'undefined'){
+      if(typeof this.demands.selectedType == 'undefined'){
         bootbox.alert({ 
           size: "small",
           title: "Atenção!",
@@ -323,7 +355,7 @@ export class PostComponent implements OnInit {
           backdrop: true,
         })
       }
-       else if(this.demands.selectedCampus == '' || typeof this.demands.selectedCampus == 'undefined'){
+       else if(typeof this.demands.selectedCampus == 'undefined'){
         bootbox.alert({ 
           size: "small",
           title: "Atenção!",
@@ -339,7 +371,7 @@ export class PostComponent implements OnInit {
     }
 
     ambiente(){
-      if(this.demands.selectedArea == '' || typeof this.demands.selectedArea == 'undefined'){
+      if(typeof this.demands.selectedArea == 'undefined'){
         bootbox.alert({ 
           size: "small",
           title: "Atenção!",
@@ -347,7 +379,7 @@ export class PostComponent implements OnInit {
           backdrop: true,
         })
       }
-       else if(this.demands.selectedCategory == '' || typeof this.demands.selectedCategory == 'undefined'){
+       else if(typeof this.demands.selectedCategory == 'undefined'){
         bootbox.alert({ 
           size: "small",
           title: "Atenção!",
