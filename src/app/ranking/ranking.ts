@@ -48,7 +48,16 @@ ngOnInit(){
 }
 
 setCampus(e): void {
+  if(typeof e == 'undefined'){
+    this.campus = '';
+    this.campusSelect = false;
+    this.campusName = '';
+  }
+  else{
   this.campus = e.id;
+  this.campusSelect = true;
+  this.campusName = e.campus;
+  }
   this.server.getRankingDemands(this.campus).then(response => {
     response = response.json();
     this.posts = [];
@@ -56,8 +65,6 @@ setCampus(e): void {
     response['dados'][i].collapsed = false;
     this.posts.push(response['dados'][i]);
    }
-   this.campusSelect = true;
-   this.campusName = e.campus;
   })
 }
 

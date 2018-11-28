@@ -4,7 +4,7 @@ import{Pipe,PipeTransform} from '@angular/core';
 
  // import { Router } from '@angular/router'; // Added
 // import { RouterModule } from '@angular/router';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import {ServerProvider} from '../providers/server';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';

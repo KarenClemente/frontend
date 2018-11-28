@@ -57,7 +57,6 @@ export class FeedComponent implements OnInit{
   getPosts(){
   this.server.getFeedDemands(this.search,this.status,this.cont).then(response => {
     response = response.json();
-    console.log(response);
     for (var i = 0; i < response['dados'].length; i++){
       if(response['dados'][i].local == null)
       response['dados'][i].hasLocal = false;
@@ -78,10 +77,16 @@ export class FeedComponent implements OnInit{
   }
 
   setStatus(e): void {
+    if(typeof e == 'undefined'){
+      this.status = '';
+    }
+    else{
     this.status = e.id;
+    }
     this.posts = [];
     this.cont = 0;
     this.getPosts();
+    
   }
 
   setSearch(e): void {
@@ -131,10 +136,8 @@ export class FeedComponent implements OnInit{
     //Add comment
     this.server.commentDemand(post.demand_id, comment).then(response => {
       response = response.json();
-      console.log(response);
         post.comments.push({comment_id: response['dados'].comment_id, name: this.server.user.name, image_profile: this.server.user.image_profile, comment: comment, owner_comment:"true"});
       }).catch(error => {
-        console.log(error);
       });
 
       this.comment = "";
@@ -142,17 +145,14 @@ export class FeedComponent implements OnInit{
 
   delComment(post, demand){
     //Delete comment
-    console.log(post);
       this.server.deleteComment(post.comment_id).then(response => {
         response = response.json();
-        console.log(response);
         for (var i = demand.comments.length - 1; i >= 0; --i) {
           if (demand.comments[i].comment_id == post.comment_id){
             demand.comments.splice(i,1);
           }
         }
       }).catch(error => {
-        console.log(error);
       });
   }
 
@@ -292,6 +292,10 @@ export class FeedComponent implements OnInit{
       this.logout();
       })
   }
+
+  reload(){
+    location.reload(true);
+    }
 
   clearInputs() {
     this.user = {};
