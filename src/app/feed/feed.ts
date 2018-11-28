@@ -22,8 +22,6 @@ export class FeedComponent implements OnInit{
   public id;
   public comment;
   public statusOptions: any = [];
-  public usersComments: any = [];
-  public adminComments: any = [];
   public status: any = '';
   public search: any = '';
   email: any;
@@ -59,10 +57,13 @@ export class FeedComponent implements OnInit{
   getPosts(){
   this.server.getFeedDemands(this.search,this.status,this.cont).then(response => {
     response = response.json();
+    console.log(response);
     for (var i = 0; i < response['dados'].length; i++){
-    this.posts.push(response['dados'][i]);
-    this.usersComments.push(response['dados'][i].comments);
-    this.adminComments.push(response['dados'][i].answers);
+      if(response['dados'][i].local == null)
+      response['dados'][i].hasLocal = false;
+      else
+      response['dados'][i].hasLocal = true;
+      this.posts.push(response['dados'][i]);
    }
    this.cont += 5;
 }).catch(error => {

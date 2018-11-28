@@ -260,10 +260,10 @@ export class ServerProvider {
       body.set('Authorization', this.token);
       body.set('type_problems_id', demand.selectedCategory);
       body.set('type_demand_id', demand.selectedType);
-      body.set('local_id', demand.hasOwnProperty('local_id')? demand.local_id: demand.selectedArea);
+      body.set('local_id', demand.local_id);
       body.set('campus', demand.selectedCampus);
       body.set('area_id', demand.selectedArea);
-      body.set('environment', demand.selectedEnvironment);
+      body.set('environment', demand.environment);
 
       return this.http.post(BASE_URL + '/get-demands/similar', body.toString(), options).toPromise();
   }
@@ -282,6 +282,7 @@ export class ServerProvider {
   }
   // Add demand
   newDemand(demand){
+    console.log(demand)
     let headers = new Headers(
       {
           'Content-Type' : 'application/x-www-form-urlencoded',
@@ -293,9 +294,9 @@ export class ServerProvider {
       body.set('description', demand.description);
       body.set('type_problems_id', demand.selectedCategory);
       body.set('type_demand_id', demand.selectedType);
-      body.set('local_id', demand.hasOwnProperty('local_id')? demand.local_id: '');
+      body.set('local_id', demand.local_id);
       body.set('campus_id', demand.selectedCampus);
-      body.set('environment_id', demand.selectedEnvironment);
+      body.set('environment_id', demand.environment);
       body.set('image', demand.hasOwnProperty('image')? demand.image: '');
 
       return this.http.post(BASE_URL + '/demands/add', body.toString(), options).toPromise();

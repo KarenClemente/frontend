@@ -112,7 +112,7 @@
   </div>
   <!--/modal editar perfil-->
   <!--Modal demandas similares-->
-  <div class="modal fade" id="Posts"  tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+  <div class="modal fade" id="Posts"  tabindex="-1" role="dialog" aria-labelledby="modalLabel" >
           <div class="modal-dialog" >
             <div class="modal-content" style="background-color:rgb(242,244,247)">
               <div class="modal-header " style="text-align:center;">
@@ -345,11 +345,12 @@
             <br>
             <br>
             <select name="ambiente" [(ngModel)]="demands.selectedValueEnvironment">
-                <option *ngFor="let environment of environments" [ngValue]="environment">{{environment.environment}}</option>
+                <option *ngFor="let environment of environments" [ngValue]="environment" >{{environment.environment}}</option>
             </select>
             <br>
             <br>
-            <button style="margin-bottom: 20px;" type="button" data-toggle="modal" data-target="#Posts" class="btn btn-green btn-block" (click)="setEnvironment(demands); getSimilars(demands)">CONFIRMAR</button>
+            <button style="margin-bottom: 20px;" type="button" class="btn btn-green btn-block" (click)="setLocal(demands);">CONFIRMAR</button>
+            <button style="margin-bottom: 20px;" [hidden]="true" type="button" id="modalSimilar" data-toggle="modal" data-target="#Posts"></button>          
           </div>
         </div>
       </div>

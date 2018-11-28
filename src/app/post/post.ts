@@ -92,10 +92,13 @@ export class PostComponent implements OnInit {
         })
       }
       else if(this.ambienteIn == false){
-        
+      this.demands.local_id = '';
+      this.setEnvironment(e);
       }
-      else
+      else{
       this.demands.local_id = e.selectedValueLocal.id;
+      this.setEnvironment(e);
+      }
     }
 
     setEnvironment(e): void {
@@ -108,8 +111,8 @@ export class PostComponent implements OnInit {
         })
       }
       else{
-      this.demands.selectedEnvironment = e.selectedValueEnvironment.id;
-      this.setLocal(e);
+      this.demands.environment = e.selectedValueEnvironment.id;
+      this.getSimilars();
     }
     }
 
@@ -144,35 +147,33 @@ export class PostComponent implements OnInit {
     }
 
     getSimilars(){
-      if (typeof this.demands.selectedEnvironment == 'undefined'){
-        bootbox.alert({ 
-          size: "small",
-          title: "Atenção!",
-          message: "Marque o ambiente onde sua demanda está localizada.", 
-          backdrop: true,
-        })
-      }
-      else if(this.ambienteIn == true && (typeof this.demands.local == 'undefined')){
-        bootbox.alert({ 
-          size: "small",
-          title: "Atenção!",
-          message: "Marque o local onde sua demanda está localizada.", 
-          backdrop: true,
-        })
-      }
-      else{
       this.server.getDemandsSimilar(this.demands).then(response => {
       response = response.json();
-      console.log(response);
-      if (response['dados'].length > 0){
+      if (response['dados'].length != 0){
       this.demandsSimilar = true;
+      this.postsSimilar = [];
       for(var i=0; i < response['dados'].length; i++){
       this.postsSimilar.push(response['dados'][i]);
-    }
-    }
-    })
-    }
-    }
+      }
+      }
+      else{
+      this.demandsSimilar = false;
+      }
+    }).catch(error => {
+      try{
+      let body = JSON.parse(error['_body']);
+
+      switch(body.erro.cadastro){
+        
+      }
+  }
+      catch(e){
+       
+      }
+    });
+
+    document.getElementById("modalSimilar").click();
+  }
 
     seeDemand(post){
       this.server.demand = post.demand_id;
@@ -181,7 +182,9 @@ export class PostComponent implements OnInit {
     }
 
     addDemand(demands){
-      /*if(demands.title == '' || demands.descrition == '' || typeof demands.title == 'undefined' || typeof demands.descrition == 'undefined'){
+      this.demands.title = demands.title;
+      this.demands.description = demands.description;
+      if(typeof this.demands.title == 'undefined' || typeof this.demands.description == 'undefined'){
         bootbox.alert({ 
           size: "small",
           title: "Ops, algo aconteceu..",
@@ -190,17 +193,9 @@ export class PostComponent implements OnInit {
         })
       }
       else{
-      this.demands.title = demands.title;
-      this.demands.descrition = demands.descrition;
-      this.server.newDemand(this.demands).then(response => {
+      this.server.newDemand(this.demands);
         this._router.navigate(['/feed']);
-       })
-      }*/
-      this.demands.title = demands.title;
-      this.demands.descrition = demands.descrition;
-      this.server.newDemand(this.demands).then(response => {
-        this._router.navigate(['/feed']);
-    });
+      }
     }
 
     changeListener($event) : void {
