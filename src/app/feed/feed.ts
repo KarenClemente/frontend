@@ -21,6 +21,7 @@ export class FeedComponent implements OnInit{
   public cont: number = 0;
   public id;
   public comment;
+  public isEqual: boolean = true;
   public statusOptions: any = [];
   public status: any = '';
   public search: any = '';
@@ -238,19 +239,23 @@ export class FeedComponent implements OnInit{
   }
 
   verifyPsw(user){
-    if(user.password != user.pswconfirm || typeof user.password == 'undefined'){
+    if(user.password != user.passwordconfirm || typeof user.password == 'undefined'){
+      this.isEqual = false;
+      }
+    else{
+      this.isEqual = true;
+    }
+  }
+
+  updatePsw(user){
+    if(typeof user.password == 'undefined' || typeof user.passwordconfirm == 'undefined'){
       bootbox.alert({ 
         size: "small",
         title: "Ops, algo aconteceu..",
         message: "As senhas devem ser iguais e conter no mínimo 6 digitos.", 
       })
-      }
-    else{
-      this.updatePsw(user);
     }
-  }
-
-  updatePsw(user){
+    else{
     this.server.updatePsw(user.password).then(response => {
       bootbox.alert({ 
         size: "small",
@@ -276,7 +281,7 @@ export class FeedComponent implements OnInit{
         bootbox.alert({ 
           size: "small",
           title: "Ops, algo aconteceu..",
-          message: "Erro.", 
+          message: "Senha deve conter no mínimo 6 dígitos.", 
           backdrop: true,
         })
         break;
@@ -284,6 +289,7 @@ export class FeedComponent implements OnInit{
       }
     }
     })
+  }
   }
 
   delete(){
@@ -299,12 +305,9 @@ export class FeedComponent implements OnInit{
       })
   }
 
-  reload(){
-    location.reload(true);
-    }
-
   clearInputs() {
     this.user = {};
+    this.isEqual = true;
   }
 
   logout(){

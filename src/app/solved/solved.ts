@@ -20,6 +20,7 @@ export class SolvedComponent implements OnInit{
   public user: any =[];
   public id;
   public comment;
+  public isEqual: boolean = true;
   email: any;
   password: any;
   pswconfirm: any;
@@ -124,7 +125,8 @@ updateInfo(user){
   }).catch(error => {
     let body = JSON.parse(error['_body']);
 
-    switch(body.erro.cadastro){
+    if(body.hasOwnProperty('erro')){
+    switch(body.erro.update){
 
     case 6:{
       bootbox.alert({ 
@@ -145,6 +147,7 @@ updateInfo(user){
       })
     }
   }
+  }
   });
   if(typeof this.user.image == 'undefined' || this.user.image == ''){
     this.server.user.image_profile = this.server.user.image_profile;
@@ -155,19 +158,23 @@ updateInfo(user){
 }
 
 verifyPsw(user){
-  if(user.password != user.pswconfirm || typeof user.password == 'undefined'){
+  if(user.password != user.passwordconfirm || typeof user.password == 'undefined'){
+    this.isEqual = false;
+    }
+  else{
+    this.isEqual = true;
+  }
+}
+
+updatePsw(user){
+  if(typeof user.password == 'undefined' || typeof user.passwordconfirm == 'undefined'){
     bootbox.alert({ 
       size: "small",
       title: "Ops, algo aconteceu..",
       message: "As senhas devem ser iguais e conter no mínimo 6 digitos.", 
     })
-    }
-  else{
-    this.updatePsw(user);
   }
-}
-
-updatePsw(user){
+  else{
   this.server.updatePsw(user.password).then(response => {
     bootbox.alert({ 
       size: "small",
@@ -177,6 +184,7 @@ updatePsw(user){
     this.closeModalChangeButton.nativeElement.click();
   }).catch(error => {
     let body = JSON.parse(error['_body']);
+    if(body.hasOwnProperty('erro')){
     switch(body.erro.password){
 
     case 3:{
@@ -192,13 +200,15 @@ updatePsw(user){
       bootbox.alert({ 
         size: "small",
         title: "Ops, algo aconteceu..",
-        message: "Erro.", 
+        message: "Senha deve conter no mínimo 6 dígitos.", 
         backdrop: true,
       })
       break;
     }
     }
+  }
   })
+}
 }
 
 delete(){
@@ -216,6 +226,7 @@ delete(){
 
 clearInputs() {
   this.user = {};
+  this.isEqual  = true;
 }
 
 logout(){

@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit{
   user: any = {};
   public posts: any = [];
   public showImg: boolean = true;
-  public aceitoTermo: boolean = false;
+  public aceitoTermo: boolean = true;
+  public isEqual: boolean = true;
 
 
     constructor(private _router: Router, public server: ServerProvider) {}
@@ -56,9 +57,13 @@ export class HomeComponent implements OnInit{
 
       setTermo(): void {
         if(this.aceitoTermo==false){
-        this.aceitoTermo = true;}
+        this.aceitoTermo = true;
+        console.log(this.aceitoTermo);
+      }
         else{
           this.aceitoTermo=false;
+          console.log(this.aceitoTermo);
+
         }
 
 
@@ -205,6 +210,15 @@ export class HomeComponent implements OnInit{
         });
       }
 
+      verifyPsw(user){
+        if(user.password != user.passwordconfirm || typeof user.password == 'undefined'){
+         this.isEqual = false;
+          }
+        else{
+          this.isEqual = true;
+        }
+      }
+      
       newPass(email){
         this.server.newPsw(email).then(response => {
           this.closeModalPswButton.nativeElement.click();
@@ -251,10 +265,8 @@ export class HomeComponent implements OnInit{
         this.user = {};
         this.email ="";
         this.password ="";
-        this.aceitoTermo == false;
-
-
-
+        this.setTermo();
+        this.isEqual = true;
         }
 
       }

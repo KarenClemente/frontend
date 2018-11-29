@@ -19,8 +19,8 @@
     </div>
   </nav>
   <!--/Navigation bar-->
-<!--modal editar perfil-->
-<div class="modal fade" id="changeInfo" role="dialog" aria-hidden="true">
+ <!--modal editar perfil-->
+ <div class="modal fade" id="changeInfo" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -33,8 +33,8 @@
             <img [src]="server.user.image_profile" class="rounded" style="width: 80px; height:80px; margin-left: 38%;">
           </div>
           <p class="login-box-msg" style="color: grey;">Insira uma foto</p>
-          <form #cadastroForm="ngForm" style="width: 350px; margin-left:-20px;" >
-            <input class="form-control" type="file" name="image" accept="image/*" (change)="changeListener($event)" [(ngModel)]="user.image"/>
+          <form action="#" method="post" name="changeInfo" style="width: 350px; margin-left:-20px;" >
+          <input class="form-control" type="file" name="image" accept="image/*" (change)="changeListener($event)" [(ngModel)]="user.image"/>
           <div class="form-group" style="margin-bottom:0rem">
            <!----- username -------------->
            <label for="nome" style="font-size: 1.3rem">Nome completo:</label><br>
@@ -57,28 +57,22 @@
 
          <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
            <label for="email" style="font-size: 1.3rem">E-mail</label>
-           <input class="form-control" placeholder="Novo email" id="email" type="email" name="email" required="" [(ngModel)]="user.email" />
+           <input class="form-control" placeholder="Novo email" id="email" type="email" name="email" required="" [(ngModel)]="user.email" value="server.user.email" />
            <span style="display:none; font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span>
 
          </div>
-         <div class="form-group" style="margin-bottom:0rem" [class.has-error]="password1.touched && password1.invalid">                    <!----- password -------------->
-          <label style="font-size: 1.3rem">Nova senha</label>
-          <input class="form-control" placeholder="Senha" type="password" name="password" required [(ngModel)]="user.password" #password1="ngModel">
-          <span style="color: red; font-size: 11px;" *ngIf="password1.touched && password1.errors?.required">
-          Digite uma senha
-          </span>
-
-        </div>
-        <div class="form-group" [class.has-error]="password2.touched && password2.invalid">                    <!----- password -------------->
-          <label style="font-size: 1.3rem">Confirme a senha</label>
-          <input class="form-control" placeholder="Repita senha" type="password" name="pswconfirm" signUpConfirmEqualValidator="password" required [(ngModel)]="user.pswconfirm" #password2="ngModel">
-          <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.required">
-          Confirme sua senha<br>
-          </span>
-          <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
-          As senhas devem ser iguais<br>
-          </span>
-          <a  (click)="verifyPsw(user)">
+         <div class="form-group" style="margin-bottom:0rem">                    <!----- password -------------->
+          <label style="font-size: 1.3rem">Senha</label>
+              <input class="form-control" placeholder="Senha" type="password" name="password" required="" [(ngModel)]="user.password" #password1="ngModel">
+             </div>
+            <div class="form-group">                    <!----- password -------------->
+              <label style="font-size: 1.3rem">Confirme a senha</label>
+              <input class="form-control" placeholder="Repita senha" type="password" name="passwordconfirm" required="" [(ngModel)]="user.passwordconfirm" #password2="ngModel" (keyup)="verifyPsw(user)">
+              <span style="color: red; font-size: 11px;" *ngIf="!isEqual">
+              As senhas devem ser iguais
+              </span>
+              <br>
+          <a  (click)="updatePsw(user)">
             <label style="font-size: 1.3rem; color:#717f86; margin-top: 4px;" class="pointer">Alterar Senha</label></a>
             <br>
 

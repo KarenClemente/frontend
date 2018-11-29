@@ -6,8 +6,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <!--<a class="navbar-brand" href="index.html">SoS<span>UnB</span></a>-->
-    <a (click)="signin()" style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
+    <a style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
   </div>
   <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
@@ -16,8 +15,6 @@
       <li><a href="home#courses">Solucionados</a></li>
       <li><a href="#" data-target="#cadastro" data-toggle="modal" (click)="clearInputs()" >Cadastro</a></li>
       <li><a href="#" data-target="#login" data-toggle="modal" (click)="clearInputs()">Login</a></li>
-      <!--<li><a href="#" data-target="#login" data-toggle="modal">Prefeitura</a></li>-->
-    <!--  <li class="btn-trial"><a href="#footer">Free Trail</a></li>-->
     </ul>
   </div>
 </nav>
@@ -30,7 +27,6 @@
   <div class="modal-content">
     <div class="modal-header">
         <button #closeModalLoginButton type="button" class="close" data-dismiss="modal">&times;</button>
-    <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
       <h4 class="modal-title text-center form-title" style="color: #0066cc;">Login</h4>
     </div>
     <div class="modal-body">
@@ -78,7 +74,6 @@
     <div class="modal-content">
       <div class="modal-header">
           <button #closeModalCadastroButton type="button" class="close" data-dismiss="modal" >&times;</button>
-        <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
         <h4 class="modal-title text-center form-title" style="color: #0066cc;">Cadastro</h4>
       </div>
       <div class="modal-body">
@@ -108,7 +103,6 @@
             <div class="form-group" style="margin-bottom:0rem">                    <!----- username -------------->
               <label style="font-size: 1.3rem">Data de nascimento</label>
               <input class="form-control" placeholder="Data de nascimento" type="text" name="date_birth" required="" [(ngModel)]="user.date_birth"/>
-              <!--<input class="form-control" placeholder="Data de nascimento" type="text" specialCharacters="['/']" mask="00/00/0000" name="date_birth" required="" [(ngModel)]="user.date_birth"/>-->
             </div>
 
 
@@ -117,22 +111,18 @@
                 <input class="form-control" placeholder="E-mail" type="email" name="email" required="" [(ngModel)]="user.email"/>
 
               </div>
-              <div class="form-group" style="margin-bottom:0rem" [class.has-error]="password1.invalid">                    <!----- password -------------->
+              <div class="form-group" style="margin-bottom:0rem" >                    <!----- password -------------->
                 <label style="font-size: 1.3rem">Senha</label>
                 <input class="form-control" placeholder="Senha" type="password" name="password" required="" [(ngModel)]="user.password" #password1="ngModel">
-                <span style="color: red; font-size: 11px;" *ngIf="password1.errors?.required">
-                Digite uma senha
-                </span>
-
-              </div>
-              <div class="form-group" [class.has-error]="password2.invalid">                    <!----- password -------------->
+               </div>
+              <div class="form-group">                    <!----- password -------------->
                 <label style="font-size: 1.3rem">Confirme a senha</label>
-                <input class="form-control" placeholder="Repita senha" type="password" name="passwordconfirm" signUpConfirmEqualValidator="password" required="" [(ngModel)]="user.passwordconfirm" #password2="ngModel">
-                <span style="color: red; font-size: 11px;" *ngIf="password2.errors?.notEqual && !password2.errors?.required">
+                <input class="form-control" placeholder="Repita senha" type="password" name="passwordconfirm" required="" [(ngModel)]="user.passwordconfirm" #password2="ngModel" (keyup)="verifyPsw(user)">
+                <span style="color: red; font-size: 11px;" *ngIf="!isEqual">
                 As senhas devem ser iguais
                 </span>
                 <div class="form-group" style="margin-bottom:0rem">
-                  <label style="font-size: 1.2rem"><input type="checkbox" style="margin:10px;" name="term" (click)="setTermo()">
+                  <label style="font-size: 1.2rem"><input type="checkbox" style="margin:10px;" name="term" (click)="setTermo();" [checked]="aceitoTermo">
                 Concordo com os <a href="#" data-target="#termos" data-toggle="modal">
                   Termos de Uso
                 </a>
@@ -155,7 +145,6 @@
   <div class="modal-content">
     <div class="modal-header">
         <button #closeModalPswButton type="button" class="close" data-dismiss="modal">&times;</button>
-    <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
       <h4 class="modal-title text-center form-title" style="color: #0066cc;">Esqueci minha senha</h4>
     </div>
     <div class="modal-body">
@@ -167,7 +156,6 @@
               <input class="form-control" placeholder="E-mail" id="email" type="email" name="email" required="" [(ngModel)]="email"/>
             </div>
                 <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="newPass(email)">Enviar</button>
-              <!--  <button style="margin-top: 20px;"type="button" class="btn btn-green btn-block btn-flat" (click)="passForgot(email)">Enviar</button>-->
               </form>
           </div>
                   </div>
