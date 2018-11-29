@@ -161,12 +161,7 @@ export class PostComponent implements OnInit {
       }
     }).catch(error => {
       try{
-      let body = JSON.parse(error['_body']);
-
-      switch(body.erro.cadastro){
-        
       }
-  }
       catch(e){
        
       }
@@ -194,7 +189,7 @@ export class PostComponent implements OnInit {
       }
       else{
       this.server.newDemand(this.demands);
-        this._router.navigate(['/feed']);
+      this._router.navigate(['/feed']);
       }
     }
 

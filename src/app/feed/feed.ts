@@ -57,6 +57,7 @@ export class FeedComponent implements OnInit{
   getPosts(){
   this.server.getFeedDemands(this.search,this.status,this.cont).then(response => {
     response = response.json();
+    console.log(response);
     for (var i = 0; i < response['dados'].length; i++){
       if(response['dados'][i].local == null)
       response['dados'][i].hasLocal = false;

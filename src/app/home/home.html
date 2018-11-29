@@ -117,21 +117,18 @@
                 <input class="form-control" placeholder="E-mail" type="email" name="email" required="" [(ngModel)]="user.email"/>
 
               </div>
-              <div class="form-group" style="margin-bottom:0rem" [class.has-error]="password1.touched && password1.invalid">                    <!----- password -------------->
+              <div class="form-group" style="margin-bottom:0rem" [class.has-error]="password1.invalid">                    <!----- password -------------->
                 <label style="font-size: 1.3rem">Senha</label>
                 <input class="form-control" placeholder="Senha" type="password" name="password" required="" [(ngModel)]="user.password" #password1="ngModel">
-                <span style="color: red; font-size: 11px;" *ngIf="password1.touched && password1.errors?.required">
+                <span style="color: red; font-size: 11px;" *ngIf="password1.errors?.required">
                 Digite uma senha
                 </span>
 
               </div>
-              <div class="form-group" [class.has-error]="password2.touched && password2.invalid">                    <!----- password -------------->
+              <div class="form-group" [class.has-error]="password2.invalid">                    <!----- password -------------->
                 <label style="font-size: 1.3rem">Confirme a senha</label>
                 <input class="form-control" placeholder="Repita senha" type="password" name="passwordconfirm" signUpConfirmEqualValidator="password" required="" [(ngModel)]="user.passwordconfirm" #password2="ngModel">
-                <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.required">
-                Confirme sua senha
-                </span>
-                <span style="color: red; font-size: 11px;" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required">
+                <span style="color: red; font-size: 11px;" *ngIf="password2.errors?.notEqual && !password2.errors?.required">
                 As senhas devem ser iguais
                 </span>
                 <div class="form-group" style="margin-bottom:0rem">
