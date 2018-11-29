@@ -7,14 +7,14 @@
       <span class="icon-bar"></span>
     </button>
     <!--<a class="navbar-brand" href="index.html">SoS<span>UnB</span></a>-->
-    <a style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
+    <a (click)="signin()" style="margin-left: 10px"><img src="./assets/img/logo.png" width="60" height="60" alt="" ></a>
   </div>
   <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav navbar-right" style="margin-right: 10px">
       <li><a href="home#feature" target="_self">Quem Somos</a></li>
       <li><a href="home#organisations" target="_self">Como funciona</a></li>
       <li><a href="home#courses">Solucionados</a></li>
-      <li><a href="#" data-target="#cadastro" data-toggle="modal" (click)="clearInputs()">Cadastro</a></li>
+      <li><a href="#" data-target="#cadastro" data-toggle="modal" (click)="clearInputs()" >Cadastro</a></li>
       <li><a href="#" data-target="#login" data-toggle="modal" (click)="clearInputs()">Login</a></li>
       <!--<li><a href="#" data-target="#login" data-toggle="modal">Prefeitura</a></li>-->
     <!--  <li class="btn-trial"><a href="#footer">Free Trail</a></li>-->
@@ -77,7 +77,7 @@
     <!-- Modal content no 1-->
     <div class="modal-content">
       <div class="modal-header">
-          <button #closeModalCadastroButton type="button" class="close" data-dismiss="modal">&times;</button>
+          <button #closeModalCadastroButton type="button" class="close" data-dismiss="modal" >&times;</button>
         <!--<h4 style="text-align:center;"><a href="index.html"><img src="img/logo.png" width="70" height="70" alt=""></a></h4>-->
         <h4 class="modal-title text-center form-title" style="color: #0066cc;">Cadastro</h4>
       </div>
@@ -135,7 +135,7 @@
                 As senhas devem ser iguais
                 </span>
                 <div class="form-group" style="margin-bottom:0rem">
-                  <label style="font-size: 1.2rem"><input type="checkbox" style="margin:10px;" name="term" (click)="setTermo()" >
+                  <label style="font-size: 1.2rem"><input type="checkbox" style="margin:10px;" name="term" (click)="setTermo()">
                 Concordo com os <a href="#" data-target="#termos" data-toggle="modal">
                   Termos de Uso
                 </a>
@@ -183,17 +183,17 @@
   <div class="modal-dialog modal-sm" style="margin-top: 10px;">
 
     <!-- Modal content no 1-->
-    <div class="modal-content" style="width:500px;">
+    <div class="modal-content">
       <div class="modal-header">
           <button #closeModalTermsButton type="button" class="close" data-dismiss="modal">&times;</button>
 
         <h4 class="modal-title text-center form-title" style="color: #0066cc;">Termos de uso</h4>
       </div>
       <div class="modal-body">
-        <div class="login-box-body rolavel" style="height:auto;max-height:500px; background:none;">
+        <div class="login-box-body rolavel" style="height:auto;max-height:500px; background:none; padding:0px;">
 
             <div style="text-align:center;">
-            <b>Termos de uso do SOS UnB</b></div><p class="login-box-msg2" style="color: grey;"><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
+            <b>Termos de uso do SOS UnB</b></div><p class="login-box-msg2" style="color: grey;">&nbsp;&nbsp;
             SOS UnB é fruto de um projeto acadêmico coordenado pelo Professor Doutor Flávio
             Elias Gomes de Deus, do Departamento de Engenharia da Faculdade de Tecnologia da
             Universidade de Brasília. Resultado do trabalho final da disciplina Projeto Transversal em
@@ -245,7 +245,7 @@
 
 
             Para utilizar os serviços do SOS UnB você deve agir segundo as regras abaixo:<br></p>
-            <div style="text-align:left; color:gray; margin-left:45px;">
+            <div style="text-align:left; color:gray; margin-left:40px;">
               - Você deve ter vínculo com a Universidade de Brasília como aluno, servidor ou professor;<br><br>
               - Você não pode estar respondendo a procedimento administrativo disciplinar na Universidade de Brasília;<br><br>
               - Você não pode ter tido condenação criminal;<br><br>

@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit{
   @ViewChild('closeModalPswButton') closeModalPswButton: ElementRef;
   @ViewChild('closeModalTermsButton') closeModalTermsButton: ElementRef;
 
-  
+
   email: any;
   password: any;
   user: any = {};
@@ -29,6 +29,10 @@ export class HomeComponent implements OnInit{
 
     constructor(private _router: Router, public server: ServerProvider) {}
 
+
+    clearCheckbox(){
+      this.aceitoTermo == true;
+    }
 
       ngOnInit(){
       this.server.getSolvedDemands().then(response => {
@@ -42,20 +46,22 @@ export class HomeComponent implements OnInit{
       }).catch(error => {
         try{
           let body = JSON.parse(error['_body']);
-          switch(body.erro.home){ 
+          switch(body.erro.home){
           }
         }
         catch(e){
         }
         });
       }
-      
+
       setTermo(): void {
         if(this.aceitoTermo==false){
-      this.aceitoTermo = true;}
-      else{
-        this.aceitoTermo=false;
-      }
+        this.aceitoTermo = true;}
+        else{
+          this.aceitoTermo=false;
+        }
+
+
       }
 
       confirm(user){
@@ -68,48 +74,48 @@ export class HomeComponent implements OnInit{
           if(body.hasOwnProperty('erro')){
           switch(body.erro.cadastro){
             case 1:{
-              bootbox.alert({ 
+              bootbox.alert({
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Todos os campos são requeridos para cadastro.", 
+                message: "Todos os campos são requeridos para cadastro.",
                 backdrop: true,
               })
-              break; 
+              break;
             }
             case 3:{
-              bootbox.alert({ 
+              bootbox.alert({
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Senha deve conter no mínimo 6 digitos.", 
+                message: "Senha deve conter no mínimo 6 digitos.",
                 backdrop: true,
               })
               break;
             }
             case 5:{
-              bootbox.alert({ 
+              bootbox.alert({
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Cadastro já existe.", 
+                message: "Cadastro já existe.",
                 backdrop: true,
               })
-              break; 
+              break;
             }
             case 6:{
-              bootbox.alert({ 
+              bootbox.alert({
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Email inválido.", 
+                message: "Email inválido.",
                 backdrop: true,
               })
-              break; 
+              break;
             }
             case 8:{
-              bootbox.alert({ 
+              bootbox.alert({
                 title: "Ops, algo aconteceu..",
-                message: "Dados não correspondem com registros da UNB. Verifique se os dados estão corretos. (Dica): Retire os acentos do seu nome.", 
+                message: "Dados não correspondem com registros da UNB. Verifique se os dados estão corretos. (Dica): Retire os acentos do seu nome.",
                 backdrop: true,
               })
-              break; 
+              break;
             }
 
             default:{
@@ -157,39 +163,39 @@ export class HomeComponent implements OnInit{
           if(body.hasOwnProperty('erro')){
           switch(body.erro.login){
             case 1:{
-              bootbox.alert({ 
+              bootbox.alert({
                 size: "small",
                 title: "Ops, algo aconteceu..",
                 message: "Todos os campos são requeridos para login.",
-                backdrop: true, 
+                backdrop: true,
               })
-              break; 
+              break;
             }
 
             case 10:{
-              bootbox.alert({ 
+              bootbox.alert({
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Verifique se seu dados estão corretos.", 
+                message: "Verifique se seu dados estão corretos.",
                 backdrop: true,
               })
-              break; 
+              break;
             }
-              
+
             default:{
-              bootbox.alert({ 
+              bootbox.alert({
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Verifique se seu dados estão corretos.", 
+                message: "Verifique se seu dados estão corretos.",
                 backdrop: true,
               })
-              break; 
+              break;
             }
           }
         }
       }
         catch(e){
-          bootbox.alert({ 
+          bootbox.alert({
             size: "small",
             title: "Ops, algo aconteceu..",
             message: "Servidor indisponível. Por favor tente novamente.",
@@ -205,25 +211,25 @@ export class HomeComponent implements OnInit{
         }).catch(error => {
           try{
             let body = JSON.parse(error['_body']);
-  
+
             if(body.hasOwnProperty('erro')){
             switch(body.erro.recover){
 
             case 6:{
-              bootbox.alert({ 
+              bootbox.alert({
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Verifique se seu email está correto.", 
+                message: "Verifique se seu email está correto.",
                 backdrop: true,
               })
-              break; 
+              break;
             }
-                    
+
             default:{
-              bootbox.alert({ 
+              bootbox.alert({
                 size: "small",
                 title: "Ops, algo aconteceu..",
-                message: "Erro. Por favor, tente novamente.", 
+                message: "Erro. Por favor, tente novamente.",
                 backdrop: true,
               })
               break;
@@ -231,7 +237,7 @@ export class HomeComponent implements OnInit{
           }
         }}
           catch(e){
-            bootbox.alert({ 
+            bootbox.alert({
               size: "small",
               title: "Ops, algo aconteceu..",
               message: "Servidor indisponível. Por favor tente novamente.",
@@ -245,7 +251,12 @@ export class HomeComponent implements OnInit{
         this.user = {};
         this.email ="";
         this.password ="";
-        this.aceitoTermo = false;
+        this.aceitoTermo == false;
+
+
+
+        }
+
       }
 
 }
