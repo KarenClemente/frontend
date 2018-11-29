@@ -347,7 +347,7 @@
     </div>
     <div class="card-body" style="background-color:#fff; text-align: justify;">
       <img [src]="post?.image_demand" style="width:90%; margin-left: 25px;">
-      <p style="margin-left: 35px;">
+      <p style="margin-left: 35px; padding-right:30px;">
       {{post?.description}}
       </p>
       <div class="row">
@@ -378,7 +378,7 @@
         </div>
         <p class="borda"  style=" background: #0066cc; color:white;">
           <a class="pointer" style="text-decoration: none;"></a>{{comment?.name}}
-  
+
           <br>
           {{comment?.comment}}
         </p>
@@ -389,7 +389,7 @@
             </div>
             <p class="borda" style="word-break: break-all;width:500px;">
               <a class="pointer" style="text-decoration: none;">{{comment.name}}</a>
-  
+
               <a class="pointer fa fa-trash pull-right" style="padding:0; text-decoration: none;" (click)="delComment(comment,post)" *ngIf="comment.owner_comment == 'true'"></a>
               <br>
               {{comment.comment}}
