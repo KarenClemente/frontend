@@ -31,9 +31,9 @@ export class HomeComponent implements OnInit{
     constructor(private _router: Router, public server: ServerProvider) {}
 
 
-    clearCheckbox(){
+      clearCheckbox(){
       this.aceitoTermo == true;
-    }
+      }
 
       ngOnInit(){
       this.server.getSolvedDemands().then(response => {
@@ -58,11 +58,9 @@ export class HomeComponent implements OnInit{
       setTermo(): void {
         if(this.aceitoTermo==false){
         this.aceitoTermo = true;
-        console.log(this.aceitoTermo);
       }
         else{
           this.aceitoTermo=false;
-          console.log(this.aceitoTermo);
 
         }
 

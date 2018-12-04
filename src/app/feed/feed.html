@@ -14,7 +14,7 @@
         <li >
               <a style="margin-bottom:0px;"><input  type="text" class= "search-txt " placeholder="Pesquisar no Feed"[(ngModel)]="search" style="border:none; font-weight: 400; margin:0px;" (keyup)="setSearch(search)"></a>
         </li>
-        <li><a class="pointer">Feed</a></li>
+        <li><a routerLink="/feed" class="pointer">Feed</a></li>
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Status
             <span class="caret"></span></a>
@@ -153,6 +153,40 @@
 
    </div>
   <!--/ Modal box-->
+  <!--modal deletar demanda-->
+  <div class="modal fade" id="deleteLabel" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+       <div class="modal-header">
+          <button #closeModalDeleteButton type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h4 class="modal-title text-center form-title" style="color: #0066cc;">Excluir Demanda</h4>
+       </div>
+      <div class="modal-body">
+        <div class="login-box-body">
+          <p class="login-box-msg" style="color: grey;">Esta publicação será excluída.<br>
+          Deseja continuar?</p>
+
+
+          <div class="row" style="padding-left: 30%;" >
+
+          <div class="btncolumn" style="color:white;">
+          <input style="margin-top: 0px;background-color: #cccccc"type="submit" class="btn   btn-flat" value="Sim" (click)="deleteDemand()">
+          </div>
+
+          <div class="btncolumn" style="color:white;">
+          <input style="margin-top: 0px; background-color: #cccccc; margin-left:20px;"type="submit" class="btn btn-flat" value="Não" data-dismiss="modal">
+
+          </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+<!--/modal excluir demanda-->
   <div class="modal fade" id="Sair" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
 
@@ -223,8 +257,11 @@
  <div class="s-layout__content">
   <div class="mar">
     <div class="card" style="padding-bottom:15px;" *ngFor="let post of posts ">
-      <div class="pull-right icon">
-        <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)" class="icon">
+      <div class="pull-right icon" *ngIf="post?.status=='Aberta'">
+        <a data-toggle="modal" data-target="#modalLabel" (click)="reportId(post)" class="icon" *ngIf="post?.owner_demands=='false'">
+          <i class="fa fa-ellipsis-v pointer" style="font-size:20px; padding: 15px;padding-top: 10px;"></i>
+        </a>
+        <a data-toggle="modal" data-target="#deleteLabel" (click)="reportId(post)" class="icon" *ngIf="post?.owner_demands=='true'">
           <i class="fa fa-ellipsis-v pointer" style="font-size:20px; padding: 15px;padding-top: 10px;"></i>
         </a>
       </div>

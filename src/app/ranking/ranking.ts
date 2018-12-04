@@ -15,6 +15,7 @@ export class RankingComponent implements OnInit {
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
   @ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
+  @ViewChild('closeModalDeleteButton') closeModalDeleteButton: ElementRef;
 
   public posts: any = [];
   public user: any = [];
@@ -66,7 +67,22 @@ setCampus(e): void {
     response['dados'][i].collapsed = false;
     this.posts.push(response['dados'][i]);
    }
-  })
+  }).catch(error => {
+    let body = JSON.parse(error['_body']);
+
+    switch(body.erro.update){
+    
+    default:{
+      bootbox.alert({
+        size: "small",
+        title: "Ops, algo aconteceu..",
+        message: "Ainda não existe ranking de demandas do campus selecionado",
+        backdrop: true, 
+      })
+    }
+    this.posts=[];
+  }
+  });
 }
 
 like(post){
@@ -127,6 +143,25 @@ report(){
   }
   })
 }
+
+deleteDemand(){
+  this.server.deleteDemand(this.id).then(response => {
+    this.closeModalDeleteButton.nativeElement.click();
+    bootbox.alert({ 
+      size: "small",
+      title: "Atenção!",
+      message: "A demanda foi excluída. Você não conseguirá mais visualizá-la.", 
+      backdrop: true,
+    })
+    for(var i = this.posts.length - 1; i >= 0; --i) {
+      if (this.posts[i].demand_id == this.id){
+        this.posts.splice(i,1);
+      }
+    }
+  }).catch(error =>{
+    
+  })
+  }
 
 reportId(post){
   this.id = post.demand_id;
@@ -225,7 +260,7 @@ updatePsw(user){
       bootbox.alert({ 
         size: "small",
         title: "Ops, algo aconteceu..",
-        message: "Senha deve conter no mínimo 6 dígitos.", 
+        message: "Preecnha os campos. A senha deve conter no mínimo 6 dígitos.", 
         backdrop: true,
       })
       break;
@@ -234,7 +269,7 @@ updatePsw(user){
       bootbox.alert({ 
         size: "small",
         title: "Ops, algo aconteceu..",
-        message: "Senha deve conter no mínimo 6 dígitos.", 
+        message: "Preecnha os campos. A senha deve conter no mínimo 6 dígitos.", 
         backdrop: true,
       })
       break;

@@ -14,6 +14,7 @@ export class LikedComponent implements OnInit{
   @ViewChild('closeModalDangerButton') closeModalDangerButton: ElementRef;
   @ViewChild('closeModalChangeButton') closeModalChangeButton: ElementRef;
   @ViewChild('closeModalLogoutButton') closeModalLogoutButton: ElementRef;
+  @ViewChild('closeModalDeleteButton') closeModalDeleteButton: ElementRef;
 
   public posts: any = [];
   public demands: any = [];
@@ -103,6 +104,25 @@ export class LikedComponent implements OnInit{
         }
     })
   }
+
+  deleteDemand(){
+    this.server.deleteDemand(this.id).then(response => {
+      this.closeModalDeleteButton.nativeElement.click();
+      bootbox.alert({ 
+        size: "small",
+        title: "Atenção!",
+        message: "A demanda foi excluída. Você não conseguirá mais visualizá-la.", 
+        backdrop: true,
+      })
+      for(var i = this.posts.length - 1; i >= 0; --i) {
+        if (this.posts[i].demand_id == this.id){
+          this.posts.splice(i,1);
+        }
+      }
+    }).catch(error =>{
+      
+    })
+    }
 
   reportId(post){
     this.id = post.demand_id;
@@ -201,7 +221,7 @@ export class LikedComponent implements OnInit{
         bootbox.alert({ 
           size: "small",
           title: "Ops, algo aconteceu..",
-          message: "Senha deve conter no mínimo 6 dígitos.", 
+          message: "Preecnha os campos. A senha deve conter no mínimo 6 dígitos.", 
           backdrop: true,
         })
         break;
@@ -210,7 +230,7 @@ export class LikedComponent implements OnInit{
         bootbox.alert({ 
           size: "small",
           title: "Ops, algo aconteceu..",
-          message: "Senha deve conter no mínimo 6 dígitos.", 
+          message: "Preecnha os campos. A senha deve conter no mínimo 6 dígitos.", 
           backdrop: true,
         })
         break;

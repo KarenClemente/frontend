@@ -94,7 +94,7 @@ like(post){
       });
   }
 
-deleteDemand(){
+  deleteDemand(){
   this.server.deleteDemand(this.id).then(response => {
     this.closeModalDeleteButton.nativeElement.click();
     bootbox.alert({ 
@@ -111,11 +111,11 @@ deleteDemand(){
   }).catch(error =>{
     
   })
-}
+  }
 
-reportId(post){
+  reportId(post){
   this.id = post.demand_id;
-}
+  }
 
 changeListener($event) : void {
   this.readThis($event.target);
@@ -210,7 +210,7 @@ updatePsw(user){
       bootbox.alert({ 
         size: "small",
         title: "Ops, algo aconteceu..",
-        message: "Senha deve conter no mínimo 6 dígitos.", 
+        message: "Preecnha os campos. A senha deve conter no mínimo 6 dígitos.", 
         backdrop: true,
       })
       break;
@@ -219,7 +219,7 @@ updatePsw(user){
       bootbox.alert({ 
         size: "small",
         title: "Ops, algo aconteceu..",
-        message: "Senha deve conter no mínimo 6 dígitos.", 
+        message: "Preecnha os campos. A senha deve conter no mínimo 6 dígitos.", 
         backdrop: true,
       })
       break;

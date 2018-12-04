@@ -93,7 +93,6 @@ export class PostComponent implements OnInit {
       }
       else if(this.ambienteIn == false){
       this.demands.local_id = '';
-      console.log(this.demands.local_id);
       this.setEnvironment(e);
       }
       else{
@@ -159,6 +158,7 @@ export class PostComponent implements OnInit {
       }
       else{
       this.demandsSimilar = false;
+      this.postsSimilar = [];
       }
     }).catch(error => {
       try{
@@ -301,7 +301,7 @@ export class PostComponent implements OnInit {
           bootbox.alert({ 
             size: "small",
             title: "Ops, algo aconteceu..",
-            message: "Senha deve conter no mínimo 6 dígitos.", 
+            message: "Preecnha os campos. A senha deve conter no mínimo 6 dígitos.", 
             backdrop: true,
           })
           break;
@@ -310,7 +310,7 @@ export class PostComponent implements OnInit {
           bootbox.alert({ 
             size: "small",
             title: "Ops, algo aconteceu..",
-            message: "Senha deve conter no mínimo 6 dígitos.", 
+            message: "Preecnha os campos. A senha deve conter no mínimo 6 dígitos.", 
             backdrop: true,
           })
           break;
